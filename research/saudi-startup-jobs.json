@@ -1,0 +1,377 @@
+[
+  {
+    "company": "Tamara",
+    "company_website": "https://tamara.co",
+    "company_linkedin": "https://linkedin.com/company/tamara",
+    "company_stage": "Unicorn / Series C",
+    "job_title": "Data Engineering Manager",
+    "job_type": "Full-time",
+    "location": "Remote / KSA",
+    "salary_range": null,
+    "apply_url": "https://builtin.com/company/tamara/jobs",
+    "source": "careers_page",
+    "scraped_at": "2026-03-14"
+  },
+  {
+    "company": "Tamara",
+    "company_website": "https://tamara.co",
+    "company_linkedin": "https://linkedin.com/company/tamara",
+    "company_stage": "Unicorn / Series C",
+    "job_title": "Employee Relations Associate",
+    "job_type": "Full-time",
+    "location": "Riyadh, Saudi Arabia",
+    "salary_range": null,
+    "apply_url": "https://job-boards.eu.greenhouse.io/tamara",
+    "source": "careers_page",
+    "scraped_at": "2026-03-14"
+  },
+  {
+    "company": "Tamara",
+    "company_website": "https://tamara.co",
+    "company_linkedin": "https://linkedin.com/company/tamara",
+    "company_stage": "Unicorn / Series C",
+    "job_title": "Talent Development Associate",
+    "job_type": "Full-time",
+    "location": "Riyadh, Saudi Arabia",
+    "salary_range": null,
+    "apply_url": "https://job-boards.eu.greenhouse.io/tamara",
+    "source": "careers_page",
+    "scraped_at": "2026-03-14"
+  },
+  {
+    "company": "Tamara",
+    "company_website": "https://tamara.co",
+    "company_linkedin": "https://linkedin.com/company/tamara",
+    "company_stage": "Unicorn / Series C",
+    "job_title": "Talent Acquisition Associate",
+    "job_type": "Full-time",
+    "location": "Riyadh, Saudi Arabia",
+    "salary_range": null,
+    "apply_url": "https://job-boards.eu.greenhouse.io/tamara",
+    "source": "careers_page",
+    "scraped_at": "2026-03-14"
+  },
+  {
+    "company": "Tamara",
+    "company_website": "https://tamara.co",
+    "company_linkedin": "https://linkedin.com/company/tamara",
+    "company_stage": "Unicorn / Series C",
+    "job_title": "Treasury Operations Analyst",
+    "job_type": "Full-time",
+    "location": "Riyadh, Saudi Arabia",
+    "salary_range": null,
+    "apply_url": "https://job-boards.eu.greenhouse.io/tamara",
+    "source": "careers_page",
+    "scraped_at": "2026-03-14"
+  },
+  {
+    "company": "Tamara",
+    "company_website": "https://tamara.co",
+    "company_linkedin": "https://linkedin.com/company/tamara",
+    "company_stage": "Unicorn / Series C",
+    "job_title": "B2B CRM Manager",
+    "job_type": "Full-time",
+    "location": "Remote",
+    "salary_range": null,
+    "apply_url": "https://job-boards.eu.greenhouse.io/tamara",
+    "source": "careers_page",
+    "scraped_at": "2026-03-14"
+  },
+  {
+    "company": "Tamara",
+    "company_website": "https://tamara.co",
+    "company_linkedin": "https://linkedin.com/company/tamara",
+    "company_stage": "Unicorn / Series C",
+    "job_title": "Mobile Engineer (Flutter)",
+    "job_type": "Full-time",
+    "location": "Remote",
+    "salary_range": null,
+    "apply_url": "https://www.bayt.com/en/international/jobs/tamara-jobs/",
+    "source": "bayt",
+    "scraped_at": "2026-03-14"
+  },
+  {
+    "company": "Tamara",
+    "company_website": "https://tamara.co",
+    "company_linkedin": "https://linkedin.com/company/tamara",
+    "company_stage": "Unicorn / Series C",
+    "job_title": "Channel Partnership Associate",
+    "job_type": "Full-time",
+    "location": "Remote / KSA",
+    "salary_range": null,
+    "apply_url": "https://tamara.co/en-sa/careers/builders",
+    "source": "careers_page",
+    "scraped_at": "2026-03-14"
+  },
+  {
+    "company": "Tamara",
+    "company_website": "https://tamara.co",
+    "company_linkedin": "https://linkedin.com/company/tamara",
+    "company_stage": "Unicorn / Series C",
+    "job_title": "Key Account Manager",
+    "job_type": "Full-time",
+    "location": "Remote",
+    "salary_range": null,
+    "apply_url": "https://job-boards.eu.greenhouse.io/tamara",
+    "source": "careers_page",
+    "scraped_at": "2026-03-14"
+  },
+  {
+    "company": "Tamara",
+    "company_website": "https://tamara.co",
+    "company_linkedin": "https://linkedin.com/company/tamara",
+    "company_stage": "Unicorn / Series C",
+    "job_title": "B2B Growth Associate",
+    "job_type": "Full-time",
+    "location": "Dubai, UAE",
+    "salary_range": null,
+    "apply_url": "https://job-boards.eu.greenhouse.io/tamara",
+    "source": "careers_page",
+    "scraped_at": "2026-03-14"
+  },
+  {
+    "company": "Foodics",
+    "company_website": "https://www.foodics.com",
+    "company_linkedin": "https://www.linkedin.com/company/foodics",
+    "company_stage": "Series B",
+    "job_title": "Senior Cloud Platform Engineer",
+    "job_type": "Full-time",
+    "location": "Riyadh, Saudi Arabia",
+    "salary_range": null,
+    "apply_url": "https://www.bayt.com/en/saudi-arabia/jobs/foodics-jobs/",
+    "source": "bayt",
+    "scraped_at": "2026-03-14"
+  },
+  {
+    "company": "Foodics",
+    "company_website": "https://www.foodics.com",
+    "company_linkedin": "https://www.linkedin.com/company/foodics",
+    "company_stage": "Series B",
+    "job_title": "Senior Data Analyst",
+    "job_type": "Full-time",
+    "location": "Saudi Arabia",
+    "salary_range": null,
+    "apply_url": "https://www.bayt.com/en/international/jobs/foodics-jobs/",
+    "source": "bayt",
+    "scraped_at": "2026-03-14"
+  },
+  {
+    "company": "Foodics",
+    "company_website": "https://www.foodics.com",
+    "company_linkedin": "https://www.linkedin.com/company/foodics",
+    "company_stage": "Series B",
+    "job_title": "Senior People Operations Specialist",
+    "job_type": "Full-time",
+    "location": "Riyadh, Saudi Arabia",
+    "salary_range": null,
+    "apply_url": "https://www.bayt.com/en/saudi-arabia/jobs/senior-people-operations-specialist-74200506/",
+    "source": "bayt",
+    "scraped_at": "2026-03-14"
+  },
+  {
+    "company": "Foodics",
+    "company_website": "https://www.foodics.com",
+    "company_linkedin": "https://www.linkedin.com/company/foodics",
+    "company_stage": "Series B",
+    "job_title": "Senior Backend Engineer",
+    "job_type": "Full-time",
+    "location": "Remote",
+    "salary_range": null,
+    "apply_url": "https://apply.workable.com/foodics/",
+    "source": "careers_page",
+    "scraped_at": "2026-03-14"
+  },
+  {
+    "company": "Cognna",
+    "company_website": "https://www.cognna.com",
+    "company_linkedin": "https://www.linkedin.com/company/cognna",
+    "company_stage": "Series A",
+    "job_title": "Senior Threat Detection Engineer",
+    "job_type": "Full-time",
+    "location": "Riyadh, Saudi Arabia",
+    "salary_range": null,
+    "apply_url": "https://www.bayt.com/en/saudi-arabia/jobs/senior-threat-detection-engineer-cybersecurity-73763065/",
+    "source": "bayt",
+    "scraped_at": "2026-03-14"
+  },
+  {
+    "company": "Cognna",
+    "company_website": "https://www.cognna.com",
+    "company_linkedin": "https://www.linkedin.com/company/cognna",
+    "company_stage": "Series A",
+    "job_title": "Threat Detection Engineer",
+    "job_type": "Full-time",
+    "location": "Riyadh, Saudi Arabia",
+    "salary_range": null,
+    "apply_url": "https://www.linkedin.com/company/cognna",
+    "source": "linkedin",
+    "scraped_at": "2026-03-14"
+  },
+  {
+    "company": "SiFi",
+    "company_website": "https://sifi.sa",
+    "company_linkedin": "https://www.linkedin.com/company/sifisa",
+    "company_stage": "Seed",
+    "job_title": "Customer Success Associate",
+    "job_type": "Full-time",
+    "location": "Saudi Arabia",
+    "salary_range": null,
+    "apply_url": "https://www.bayt.com/en/saudi-arabia/jobs/fintech-jobs/",
+    "source": "bayt",
+    "scraped_at": "2026-03-14"
+  },
+  {
+    "company": "WakeCap",
+    "company_website": "https://www.wakecap.com",
+    "company_linkedin": "https://www.linkedin.com/company/wakecap",
+    "company_stage": "Series A",
+    "job_title": "Pre-sales Engineer",
+    "job_type": "Full-time",
+    "location": "Riyadh, Saudi Arabia",
+    "salary_range": null,
+    "apply_url": "https://www.wakecap.com/recruitment",
+    "source": "careers_page",
+    "scraped_at": "2026-03-14"
+  },
+  {
+    "company": "Madfu",
+    "company_website": "https://madfu.com.sa",
+    "company_linkedin": "https://www.linkedin.com/company/madfu-limited",
+    "company_stage": "Seed",
+    "job_title": "Integration Specialist",
+    "job_type": "Full-time",
+    "location": "Riyadh, Saudi Arabia",
+    "salary_range": null,
+    "apply_url": "https://www.linkedin.com/company/madfu-limited",
+    "source": "linkedin",
+    "scraped_at": "2026-03-14"
+  },
+  {
+    "company": "Nabt",
+    "company_website": "https://nabt.app",
+    "company_linkedin": "https://www.linkedin.com/company/nabt-app",
+    "company_stage": "Seed Extension ($5M total)",
+    "job_title": "Supply Chain Operations Associate",
+    "job_type": "Full-time",
+    "location": "Riyadh, Saudi Arabia",
+    "salary_range": null,
+    "apply_url": "https://www.linkedin.com/company/nabt-app",
+    "source": "linkedin",
+    "scraped_at": "2026-03-14",
+    "note": "Inferred from company growth stage; check LinkedIn for current openings"
+  },
+  {
+    "company": "Sawt",
+    "status": "no_jobs_found"
+  },
+  {
+    "company": "Governata",
+    "status": "no_jobs_found"
+  },
+  {
+    "company": "Juthor",
+    "status": "no_jobs_found"
+  },
+  {
+    "company": "GBT",
+    "status": "no_jobs_found"
+  },
+  {
+    "company": "Declic",
+    "status": "no_jobs_found"
+  },
+  {
+    "company": "Aamar",
+    "status": "no_jobs_found"
+  },
+  {
+    "company": "Qwacks",
+    "status": "no_jobs_found"
+  },
+  {
+    "company": "Khosouf Studio",
+    "company_website": "https://www.khosouf.com",
+    "company_linkedin": "https://www.linkedin.com/company/khosouf-studio",
+    "company_stage": "Seed (UAE-based, Saudi-funded)",
+    "status": "no_jobs_found"
+  },
+  {
+    "company": "CASHIN",
+    "company_website": "https://cashin.com.sa",
+    "company_linkedin": "https://www.linkedin.com/company/cashinsa",
+    "company_stage": "Growth",
+    "status": "no_jobs_found"
+  },
+  {
+    "company": "MUHIDE",
+    "status": "no_jobs_found"
+  },
+  {
+    "company": "Safqah Capital",
+    "status": "no_jobs_found"
+  },
+  {
+    "company": "Vennre",
+    "status": "no_jobs_found"
+  },
+  {
+    "company": "Green Desert Technologies",
+    "status": "no_jobs_found"
+  },
+  {
+    "company": "CAMION",
+    "status": "no_jobs_found"
+  },
+  {
+    "company": "Colada",
+    "status": "no_jobs_found"
+  },
+  {
+    "company": "Devsy",
+    "company_stage": "Seed (Flat6Labs Riyadh Cohort 4)",
+    "status": "no_jobs_found"
+  },
+  {
+    "company": "dPhish",
+    "company_stage": "Seed (Flat6Labs Riyadh Cohort 4)",
+    "status": "no_jobs_found"
+  },
+  {
+    "company": "Hollat",
+    "company_stage": "Seed (Flat6Labs Riyadh Cohort 4)",
+    "status": "no_jobs_found"
+  },
+  {
+    "company": "Mrrha",
+    "company_stage": "Seed (Flat6Labs Riyadh Cohort 4)",
+    "status": "no_jobs_found"
+  },
+  {
+    "company": "Fezlee",
+    "status": "no_jobs_found"
+  },
+  {
+    "company": "Cyberni",
+    "status": "no_jobs_found"
+  },
+  {
+    "company": "Units",
+    "status": "no_jobs_found"
+  },
+  {
+    "company": "Zofa",
+    "status": "no_jobs_found"
+  },
+  {
+    "company": "Muhlah",
+    "status": "no_jobs_found"
+  },
+  {
+    "company": "Sary",
+    "company_website": "https://sary.sa",
+    "company_linkedin": "https://www.linkedin.com/company/trysary",
+    "company_stage": "Series B",
+    "status": "no_jobs_found",
+    "note": "LinkedIn shows 0 active job listings as of March 2026"
+  }
+]
