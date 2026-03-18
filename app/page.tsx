@@ -186,7 +186,7 @@ export default function HomePage() {
                       >
                         {c.name}
                       </Link>
-                      <span className="text-sm text-[#D73833] font-mono">{c.sector[0]}</span>
+                      <span className="text-sm text-[#111827] font-mono">{c.sector[0]}</span>
                     </div>
                   ))}
                 </div>
