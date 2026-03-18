@@ -30,7 +30,7 @@ export default async function CompanyPage({
         <div className="mx-auto max-w-[1200px] px-6 py-6">
           <div className="flex items-center justify-between">
             <Link href="/" className="block">
-              <h1 className="text-3xl font-bold tracking-tight text-[#1e3a5f]" style={{ fontFamily: "var(--font-space-mono), monospace" }}>
+              <h1 className="text-3xl font-bold tracking-tight text-[#123C69]" style={{ fontFamily: "var(--font-space-mono), monospace" }}>
                 {"["} BUILDSAUDI {"]"}
               </h1>
             </Link>
@@ -38,7 +38,7 @@ export default async function CompanyPage({
               <Button
                 variant="outline"
                 size="sm"
-                className="border-[#1e3a5f] text-[#1e3a5f] hover:bg-[#1e3a5f] hover:text-white"
+                className="border-[#123C69] text-[#123C69] hover:bg-[#123C69] hover:text-white"
               >
                 Post a Job
               </Button>
@@ -61,14 +61,14 @@ export default async function CompanyPage({
         <div className="rounded-lg border border-[#e5e5e5] bg-white p-6 mb-6">
           <div className="flex items-start gap-5">
             {/* Logo Placeholder */}
-            <div className="flex size-16 shrink-0 items-center justify-center rounded-lg bg-[#f0f0f0] text-2xl font-bold text-[#1e3a5f]">
+            <div className="flex size-16 shrink-0 items-center justify-center rounded-lg bg-[#f0f0f0] text-2xl font-bold text-[#123C69]">
               {company.name.charAt(0)}
             </div>
 
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-3 flex-wrap">
                 <h2 className="text-2xl font-bold">{company.name}</h2>
-                <Badge variant="outline" className="text-xs font-medium text-[#1e3a5f] border-[#1e3a5f]">
+                <Badge variant="outline" className="text-xs font-medium text-[#123C69] border-[#123C69]">
                   {company.stage}
                 </Badge>
               </div>
@@ -94,7 +94,7 @@ export default async function CompanyPage({
                   href={company.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm text-[#1e3a5f] hover:underline"
+                  className="inline-flex items-center gap-1.5 text-sm text-[#123C69] hover:underline"
                 >
                   <Globe className="size-3.5" />
                   Website
@@ -103,7 +103,7 @@ export default async function CompanyPage({
                   href={company.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm text-[#1e3a5f] hover:underline"
+                  className="inline-flex items-center gap-1.5 text-sm text-[#123C69] hover:underline"
                 >
                   <Linkedin className="size-3.5" />
                   LinkedIn
@@ -115,7 +115,7 @@ export default async function CompanyPage({
 
         {/* Open Roles */}
         <div className="mb-4">
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-[#1e3a5f]">
+          <h3 className="text-sm font-semibold uppercase tracking-wider text-[#123C69]">
             Open Roles ({companyJobs.length})
           </h3>
         </div>
@@ -147,7 +147,7 @@ export default async function CompanyPage({
               >
                 <Button
                   size="sm"
-                  className="h-7 bg-[#1e3a5f] text-xs hover:bg-[#162d4a]"
+                  className="h-7 bg-[#123C69] text-xs hover:bg-[#0E2F52]"
                 >
                   Apply
                   <ExternalLink className="ml-1 size-3" />

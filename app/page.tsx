@@ -80,133 +80,159 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen">
-      {/* Header */}
-      <header className="bg-white">
-        <div className="mx-auto max-w-[1200px] px-6 pt-8 pb-6">
-          <div className="flex items-start justify-between">
-            {/* Left: Logo + tagline + buttons */}
-            <div>
-              <Link href="/" className="block">
-                <h1
-                  className="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-none text-[#1e3a5f]"
-                  style={{ fontFamily: "var(--font-space-mono), monospace" }}
-                >
-                  <span className="text-[#1e3a5f]/40">{"["}</span>{" "}
-                  BUILDSAUDI{" "}
-                  <span className="text-[#1e3a5f]/40">{"]"}</span>
-                </h1>
-              </Link>
-              <p className="mt-2 text-sm text-[#6b7280]">
-                a curated directory of companies building the future of saudi
+    <div className="min-h-screen bg-[#F9F9F9]">
+      {/* ============ HEADER ============ */}
+      <header className="border-b border-[#123C69]/20 bg-[#F9F9F9]">
+        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-4 sm:py-6">
+          <div className="flex items-start justify-between gap-4 sm:gap-6">
+            {/* Left: Logo + tagline + action buttons */}
+            <div className="flex-1">
+              {/* Logo */}
+              <div className="flex justify-center sm:justify-start mb-3">
+                <Link href="/" className="block">
+                  <h1
+                    className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-none text-[#123C69] tracking-tight"
+                    style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}
+                  >
+                    <span className="text-[#123C69]/30">{"["}</span>{" "}
+                    BUILDSAUDI{" "}
+                    <span className="text-[#123C69]/30">{"]"}</span>
+                  </h1>
+                </Link>
+              </div>
+
+              {/* Tagline */}
+              <p className="text-[#4C4C4C] text-xs font-mono mb-2 text-center sm:text-left">
+                A curated directory of companies building the future of Saudi.
               </p>
-              <div className="mt-4 flex items-center gap-3">
+
+              {/* Action buttons row */}
+              <div className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-3">
+                {/* Made by pill */}
                 <Link
                   href="/submit"
-                  className="inline-flex items-center gap-2 rounded-full border border-[#e5e5e5] bg-[#f8f8f8] px-4 py-2 text-xs font-medium text-[#4b5563] hover:bg-[#f0f0f0] transition-colors"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[#E5E7EB] bg-white px-3 py-1.5 text-xs font-medium text-[#4B5563] hover:bg-[#F3F4F6] transition-colors"
                 >
-                  <Users className="size-3.5" />
                   Post a Job
                 </Link>
+
+                {/* Join pill - golden */}
                 <Link
                   href="/submit"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#e8a820] px-4 py-2 text-xs font-semibold text-white hover:bg-[#d49a1c] transition-colors"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-[#E8A820] px-3 py-1.5 text-xs font-semibold text-white hover:bg-[#D49A1C] transition-colors"
                 >
-                  <Users className="size-3.5" />
+                  <Users className="size-3" />
                   Join BuildSaudi
                 </Link>
+
+                {/* X icon */}
                 <a
                   href="https://x.com/buildsaudi"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#1a1a1a] hover:text-[#1e3a5f] transition-colors"
+                  className="text-[#111827] hover:text-[#123C69] transition-colors"
                 >
-                  <svg viewBox="0 0 24 24" className="size-5" fill="currentColor">
+                  <svg viewBox="0 0 24 24" className="size-4" fill="currentColor">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
                 </a>
               </div>
-            </div>
 
-            {/* Center-right: Nav buttons */}
-            <div className="hidden md:flex items-center gap-2 mt-4">
-              <button
-                onClick={() => document.getElementById("search-input")?.focus()}
-                className="inline-flex items-center gap-2 rounded-md bg-[#1e3a5f] px-4 py-2 text-xs font-semibold text-white hover:bg-[#162d4a] transition-colors"
-              >
-                <Search className="size-3.5" />
-                Search Jobs
-              </button>
-              <Link
-                href="/submit"
-                className="inline-flex items-center rounded-md border border-[#1e3a5f] px-4 py-2 text-xs font-semibold text-[#1e3a5f] hover:bg-[#1e3a5f] hover:text-white transition-colors"
-              >
-                Sectors
-              </Link>
-            </div>
-
-            {/* Right: Hot Companies box */}
-            <div className="hidden lg:block w-[280px] shrink-0 rounded-md border border-[#e8b4b4] bg-[#fdf2f2] p-4">
-              <div className="flex items-center gap-1.5 mb-3">
-                <Flame className="size-4 text-[#dc2626]" />
-                <span
-                  className="text-xs font-bold uppercase tracking-wider text-[#dc2626]"
-                  style={{ fontFamily: "var(--font-space-mono), monospace" }}
+              {/* Mobile nav buttons */}
+              <div className="flex items-center justify-center sm:justify-start gap-2 mt-2 lg:hidden flex-wrap">
+                <button
+                  onClick={() => document.getElementById("search-input")?.focus()}
+                  className="inline-flex items-center gap-1.5 rounded-md bg-[#123C69] px-3 py-1.5 text-xs font-semibold text-white hover:bg-[#0E2F52] transition-colors"
                 >
-                  Hot Companies
-                </span>
+                  <Search className="size-3" />
+                  Search Jobs
+                </button>
+                <button className="inline-flex items-center rounded-md border border-[#123C69] px-3 py-1.5 text-xs font-semibold text-[#123C69] hover:bg-[#123C69] hover:text-white transition-colors">
+                  Sectors
+                </button>
               </div>
-              <div className="space-y-2">
-                {companies.slice(0, 3).map((c) => (
-                  <div key={c.slug} className="flex items-center justify-between">
-                    <Link
-                      href={`/company/${c.slug}`}
-                      className="text-sm font-semibold text-[#1e3a5f] hover:underline"
-                      style={{ fontFamily: "var(--font-space-mono), monospace" }}
-                    >
-                      {c.name}
-                    </Link>
-                    <span className="text-xs text-[#6b7280]">{c.sector[0]}</span>
-                  </div>
-                ))}
+            </div>
+
+            {/* Right: Nav buttons + Hot Companies */}
+            <div className="hidden lg:flex items-end gap-4 flex-shrink-0">
+              {/* Nav buttons column */}
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => document.getElementById("search-input")?.focus()}
+                  className="inline-flex items-center gap-1.5 rounded-md bg-[#123C69] px-3.5 py-2 text-xs font-semibold text-white hover:bg-[#0E2F52] transition-colors"
+                >
+                  <Search className="size-3.5" />
+                  Search Jobs
+                </button>
+                <button className="inline-flex items-center rounded-md border border-[#123C69] px-3.5 py-2 text-xs font-semibold text-[#123C69] hover:bg-[#123C69] hover:text-white transition-colors">
+                  Sectors
+                </button>
+              </div>
+
+              {/* Hot Companies box */}
+              <div className="w-[260px] rounded-md border border-[#E8B4B4] bg-[#FDF2F2] p-3.5">
+                <div className="flex items-center gap-1.5 mb-2.5">
+                  <Flame className="size-3.5 text-[#DC2626]" />
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#DC2626] font-mono">
+                    Hot Companies
+                  </span>
+                </div>
+                <div className="space-y-1.5">
+                  {companies.slice(0, 3).map((c) => (
+                    <div key={c.slug} className="flex items-center justify-between">
+                      <Link
+                        href={`/company/${c.slug}`}
+                        className="text-sm font-semibold text-[#123C69] hover:underline font-mono"
+                      >
+                        {c.name}
+                      </Link>
+                      <span className="text-[11px] text-[#6B7280] font-mono">{c.sector[0]}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="mx-auto max-w-[1200px] px-6 py-8">
-        {/* Search Bar */}
-        <div className="relative mb-8">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-[#9ca3af]" />
-          <Input
-            placeholder="search keywords..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="h-12 rounded-lg border-[#e5e5e5] bg-white pl-11 text-base shadow-sm placeholder:text-[#9ca3af] focus-visible:border-[#1e3a5f] focus-visible:ring-[#1e3a5f]/20"
-          />
-          {search && (
-            <button
-              onClick={() => setSearch("")}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-[#9ca3af] hover:text-[#1a1a1a]"
-            >
-              <X className="size-4" />
-            </button>
-          )}
+      {/* ============ STICKY SEARCH BAR ============ */}
+      <div className="sticky top-0 z-20 bg-[#F9F9F9]/95 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+          <div className="relative">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-[#9CA3AF]" />
+            <Input
+              id="search-input"
+              placeholder="search keywords..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="h-11 rounded-lg border-[#E5E7EB] bg-white pl-11 text-sm shadow-sm placeholder:text-[#9CA3AF] focus-visible:border-[#123C69] focus-visible:ring-[#123C69]/20"
+            />
+            {search && (
+              <button
+                onClick={() => setSearch("")}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-[#9CA3AF] hover:text-[#111827]"
+              >
+                <X className="size-4" />
+              </button>
+            )}
+          </div>
         </div>
+      </div>
 
+      {/* ============ MAIN CONTENT ============ */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
         <div className="flex gap-8">
           {/* Filters Sidebar */}
-          <aside className="hidden w-[220px] shrink-0 lg:block">
+          <aside className="hidden w-[200px] shrink-0 lg:block">
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-xs font-semibold uppercase tracking-wider text-[#1e3a5f]">
+              <h2 className="text-xs font-bold uppercase tracking-wider text-[#123C69]">
                 Filters
               </h2>
               {activeFilterCount > 0 && (
                 <button
                   onClick={clearFilters}
-                  className="text-xs text-[#6b7280] hover:text-[#1a1a1a]"
+                  className="text-xs text-[#6B7280] hover:text-[#111827]"
                 >
                   Clear all
                 </button>
@@ -215,49 +241,35 @@ export default function HomePage() {
 
             <div className="space-y-5">
               <FilterSelect
-                label="Job Type"
-                value={filters.jobType}
-                onChange={(v) => setFilters((f) => ({ ...f, jobType: v }))}
-                options={filterOptions.jobType}
-                placeholder="All Types"
-              />
-              <FilterSelect
-                label="Experience"
-                value={filters.experienceLevel}
-                onChange={(v) => setFilters((f) => ({ ...f, experienceLevel: v }))}
-                options={filterOptions.experienceLevel}
-                placeholder="All Levels"
-              />
-              <FilterSelect
-                label="Sector"
-                value={filters.sector}
-                onChange={(v) => setFilters((f) => ({ ...f, sector: v }))}
-                options={filterOptions.sector}
-                placeholder="All Sectors"
-              />
-              <FilterSelect
-                label="City"
+                label="HQ Locations"
                 value={filters.city}
                 onChange={(v) => setFilters((f) => ({ ...f, city: v }))}
                 options={filterOptions.city}
-                placeholder="All Locations"
+                placeholder="All HQ Locations"
               />
               <FilterSelect
-                label="Company Stage"
+                label="Stages"
                 value={filters.companyStage}
                 onChange={(v) => setFilters((f) => ({ ...f, companyStage: v }))}
                 options={filterOptions.companyStage}
                 placeholder="All Stages"
               />
+              <FilterSelect
+                label="Sectors"
+                value={filters.sector}
+                onChange={(v) => setFilters((f) => ({ ...f, sector: v }))}
+                options={filterOptions.sector}
+                placeholder="All Sectors"
+              />
             </div>
 
             {/* Email Capture - Sidebar */}
-            <div className="mt-8 rounded-lg border border-[#e5e5e5] bg-white p-4">
+            <div className="mt-8 rounded-lg border border-[#E5E7EB] bg-white p-4">
               <div className="flex items-center gap-2 mb-2">
-                <Mail className="size-4 text-[#1e3a5f]" />
-                <h3 className="text-sm font-semibold">Weekly Jobs</h3>
+                <Mail className="size-4 text-[#123C69]" />
+                <h3 className="text-sm font-semibold text-[#111827]">Weekly Jobs</h3>
               </div>
-              <p className="text-xs text-[#6b7280] mb-3">
+              <p className="text-xs text-[#6B7280] mb-3">
                 get startup jobs in your inbox every week
               </p>
               {emailSubmitted ? (
@@ -277,7 +289,7 @@ export default function HomePage() {
                   <Button
                     type="submit"
                     size="sm"
-                    className="w-full h-8 bg-[#1e3a5f] text-xs hover:bg-[#162d4a]"
+                    className="w-full h-8 bg-[#123C69] text-xs hover:bg-[#0E2F52]"
                   >
                     Subscribe
                   </Button>
@@ -291,10 +303,10 @@ export default function HomePage() {
             {/* Mobile Filters */}
             <div className="flex flex-wrap gap-2 mb-4 lg:hidden">
               <FilterSelect
-                value={filters.jobType}
-                onChange={(v) => setFilters((f) => ({ ...f, jobType: v }))}
-                options={filterOptions.jobType}
-                placeholder="Job Type"
+                value={filters.city}
+                onChange={(v) => setFilters((f) => ({ ...f, city: v }))}
+                options={filterOptions.city}
+                placeholder="Location"
               />
               <FilterSelect
                 value={filters.sector}
@@ -303,17 +315,18 @@ export default function HomePage() {
                 placeholder="Sector"
               />
               <FilterSelect
-                value={filters.city}
-                onChange={(v) => setFilters((f) => ({ ...f, city: v }))}
-                options={filterOptions.city}
-                placeholder="City"
+                value={filters.companyStage}
+                onChange={(v) => setFilters((f) => ({ ...f, companyStage: v }))}
+                options={filterOptions.companyStage}
+                placeholder="Stage"
               />
             </div>
 
             <div className="mb-4 flex items-center justify-between">
-              <p className="text-sm text-[#6b7280]">
-                {filteredJobs.length} {filteredJobs.length === 1 ? "job" : "jobs"}
+              <p className="text-sm text-[#6B7280]">
+                {filteredJobs.length} {filteredJobs.length === 1 ? "company" : "companies"}
               </p>
+              <p className="text-xs text-[#9CA3AF]">Sorted by upvotes</p>
             </div>
 
             {/* Job Cards */}
@@ -323,26 +336,26 @@ export default function HomePage() {
                 return (
                   <div
                     key={job.id}
-                    className="group flex items-center gap-4 rounded-lg border border-[#e5e5e5] bg-white px-5 py-4 transition-all hover:border-[#d0d0d0] hover:shadow-sm"
+                    className="group flex items-center gap-4 rounded-lg border border-[#E5E7EB] bg-white px-5 py-4 transition-all hover:border-[#D1D5DB] hover:shadow-sm"
                   >
                     {/* Company Logo Placeholder */}
-                    <div className="flex size-10 shrink-0 items-center justify-center rounded-md bg-[#f0f0f0] text-sm font-bold text-[#1e3a5f]">
+                    <div className="flex size-10 shrink-0 items-center justify-center rounded-md bg-[#F3F4F6] text-sm font-bold text-[#123C69]">
                       {job.company.charAt(0)}
                     </div>
 
                     {/* Job Info */}
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-[#1a1a1a] truncate">
+                      <h3 className="font-semibold text-[#111827] truncate">
                         {job.title}
                       </h3>
-                      <div className="mt-0.5 flex items-center gap-2 text-sm text-[#6b7280]">
+                      <div className="mt-0.5 flex items-center gap-2 text-sm text-[#6B7280]">
                         <Link
                           href={`/company/${job.company_slug}`}
-                          className="hover:text-[#1e3a5f] hover:underline"
+                          className="hover:text-[#123C69] hover:underline"
                         >
                           {job.company}
                         </Link>
-                        <span className="text-[#d0d0d0]">·</span>
+                        <span className="text-[#D1D5DB]">&middot;</span>
                         <span className="flex items-center gap-1">
                           <MapPin className="size-3" />
                           {job.location}
@@ -350,28 +363,24 @@ export default function HomePage() {
                       </div>
                     </div>
 
-                    {/* Right Side: Badges + Apply */}
+                    {/* Right Side: Sector + Stage + View Jobs */}
                     <div className="hidden sm:flex items-center gap-2 shrink-0">
-                      <Badge variant="outline" className="text-[10px] font-medium text-[#6b7280] border-[#e5e5e5]">
+                      <span className="text-[11px] font-medium text-[#6B7280] uppercase tracking-wide">
                         {job.sector}
-                      </Badge>
+                      </span>
                       {company && (
-                        <Badge variant="outline" className="text-[10px] font-medium text-[#6b7280] border-[#e5e5e5]">
+                        <span className="text-[11px] font-medium text-[#6B7280] uppercase tracking-wide">
                           {company.stage}
-                        </Badge>
+                        </span>
                       )}
                       <a
                         href={job.apply_url}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <Button
-                          size="sm"
-                          className="h-7 bg-[#1e3a5f] text-xs hover:bg-[#162d4a]"
-                        >
-                          Apply
-                          <ExternalLink className="ml-1 size-3" />
-                        </Button>
+                        <span className="inline-flex items-center gap-1 rounded bg-[#123C69] px-2.5 py-1 text-[11px] font-semibold text-white hover:bg-[#0E2F52] transition-colors">
+                          View Jobs
+                        </span>
                       </a>
                     </div>
 
@@ -382,25 +391,22 @@ export default function HomePage() {
                       rel="noopener noreferrer"
                       className="sm:hidden shrink-0"
                     >
-                      <Button
-                        size="sm"
-                        className="h-7 bg-[#1e3a5f] text-xs hover:bg-[#162d4a]"
-                      >
-                        Apply
-                      </Button>
+                      <span className="inline-flex items-center gap-1 rounded bg-[#123C69] px-2.5 py-1 text-[11px] font-semibold text-white">
+                        View Jobs
+                      </span>
                     </a>
                   </div>
                 )
               })}
 
               {filteredJobs.length === 0 && (
-                <div className="rounded-lg border border-[#e5e5e5] bg-white px-6 py-16 text-center">
-                  <Building2 className="mx-auto size-8 text-[#d0d0d0] mb-3" />
-                  <p className="text-sm text-[#6b7280]">
+                <div className="rounded-lg border border-[#E5E7EB] bg-white px-6 py-16 text-center">
+                  <Building2 className="mx-auto size-8 text-[#D1D5DB] mb-3" />
+                  <p className="text-sm text-[#6B7280]">
                     no jobs match your filters.{" "}
                     <button
                       onClick={clearFilters}
-                      className="text-[#1e3a5f] hover:underline"
+                      className="text-[#123C69] hover:underline"
                     >
                       clear all filters
                     </button>
@@ -410,12 +416,12 @@ export default function HomePage() {
             </div>
 
             {/* Mobile Email Capture */}
-            <div className="mt-8 rounded-lg border border-[#e5e5e5] bg-white p-5 lg:hidden">
+            <div className="mt-8 rounded-lg border border-[#E5E7EB] bg-white p-5 lg:hidden">
               <div className="flex items-center gap-2 mb-2">
-                <Mail className="size-4 text-[#1e3a5f]" />
-                <h3 className="font-semibold">get weekly startup jobs</h3>
+                <Mail className="size-4 text-[#123C69]" />
+                <h3 className="font-semibold text-[#111827]">get weekly startup jobs</h3>
               </div>
-              <p className="text-sm text-[#6b7280] mb-3">
+              <p className="text-sm text-[#6B7280] mb-3">
                 curated startup jobs delivered to your inbox. no spam.
               </p>
               {emailSubmitted ? (
@@ -434,7 +440,7 @@ export default function HomePage() {
                   />
                   <Button
                     type="submit"
-                    className="h-9 bg-[#1e3a5f] hover:bg-[#162d4a] shrink-0"
+                    className="h-9 bg-[#123C69] hover:bg-[#0E2F52] shrink-0"
                   >
                     Subscribe
                   </Button>
@@ -443,14 +449,14 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </main>
+      </div>
 
-      {/* Footer */}
-      <footer className="mt-16 border-t border-[#e5e5e5] bg-white">
-        <div className="mx-auto max-w-[1200px] px-6 py-6 flex items-center justify-between text-xs text-[#9ca3af]">
+      {/* ============ FOOTER ============ */}
+      <footer className="mt-16 border-t border-[#E5E7EB] bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex items-center justify-between text-xs text-[#9CA3AF]">
           <p>buildsaudi.co</p>
           <div className="flex items-center gap-4">
-            <Link href="/submit" className="hover:text-[#1a1a1a]">
+            <Link href="/submit" className="hover:text-[#111827]">
               Post a Job
             </Link>
           </div>
@@ -476,7 +482,7 @@ function FilterSelect({
   return (
     <div>
       {label && (
-        <label className="mb-1.5 block text-xs font-medium text-[#6b7280] uppercase tracking-wider">
+        <label className="mb-1.5 block text-[10px] font-bold text-[#6B7280] uppercase tracking-wider">
           {label}
         </label>
       )}
@@ -484,7 +490,7 @@ function FilterSelect({
         value={value || undefined}
         onValueChange={(v) => onChange(v === "__all__" ? "" : v)}
       >
-        <SelectTrigger className="w-full h-9 bg-white text-sm">
+        <SelectTrigger className="w-full h-9 bg-white text-sm border-[#E5E7EB]">
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
