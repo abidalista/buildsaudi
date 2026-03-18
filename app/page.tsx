@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react"
 import Link from "next/link"
-import { Search, ExternalLink, MapPin, Building2, Mail, X } from "lucide-react"
+import { Search, ExternalLink, MapPin, Building2, Mail, X, Flame, Users } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -82,29 +82,94 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <header className="border-b border-[#e5e5e5] bg-white">
-        <div className="mx-auto max-w-[1200px] px-6 py-6">
-          <div className="flex items-center justify-between">
+      <header className="bg-white">
+        <div className="mx-auto max-w-[1200px] px-6 pt-8 pb-6">
+          <div className="flex items-start justify-between">
+            {/* Left: Logo + tagline + buttons */}
             <div>
               <Link href="/" className="block">
-                <h1 className="text-3xl font-bold tracking-tight text-[#1e3a5f]" style={{ fontFamily: "var(--font-geist-mono), monospace" }}>
-                  {"["} BUILDSAUDI {"]"}
+                <h1
+                  className="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-none text-[#1e3a5f]"
+                  style={{ fontFamily: "var(--font-geist-mono), monospace" }}
+                >
+                  <span className="text-[#1e3a5f]/40">{"["}</span>{" "}
+                  BUILDSAUDI{" "}
+                  <span className="text-[#1e3a5f]/40">{"]"}</span>
                 </h1>
               </Link>
-              <p className="mt-1 text-sm text-[#6b7280]">
+              <p className="mt-2 text-sm text-[#6b7280]">
                 a curated directory of companies building the future of saudi
               </p>
-            </div>
-            <div className="flex items-center gap-3">
-              <Link href="/submit">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="border-[#1e3a5f] text-[#1e3a5f] hover:bg-[#1e3a5f] hover:text-white"
+              <div className="mt-4 flex items-center gap-3">
+                <Link
+                  href="/submit"
+                  className="inline-flex items-center gap-2 rounded-full border border-[#e5e5e5] bg-[#f8f8f8] px-4 py-2 text-xs font-medium text-[#4b5563] hover:bg-[#f0f0f0] transition-colors"
                 >
+                  <Users className="size-3.5" />
                   Post a Job
-                </Button>
+                </Link>
+                <Link
+                  href="/submit"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#e8a820] px-4 py-2 text-xs font-semibold text-white hover:bg-[#d49a1c] transition-colors"
+                >
+                  <Users className="size-3.5" />
+                  Join BuildSaudi
+                </Link>
+                <a
+                  href="https://x.com/buildsaudi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#1a1a1a] hover:text-[#1e3a5f] transition-colors"
+                >
+                  <svg viewBox="0 0 24 24" className="size-5" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            {/* Center-right: Nav buttons */}
+            <div className="hidden md:flex items-center gap-2 mt-4">
+              <button
+                onClick={() => document.getElementById("search-input")?.focus()}
+                className="inline-flex items-center gap-2 rounded-md bg-[#1e3a5f] px-4 py-2 text-xs font-semibold text-white hover:bg-[#162d4a] transition-colors"
+              >
+                <Search className="size-3.5" />
+                Search Jobs
+              </button>
+              <Link
+                href="/submit"
+                className="inline-flex items-center rounded-md border border-[#1e3a5f] px-4 py-2 text-xs font-semibold text-[#1e3a5f] hover:bg-[#1e3a5f] hover:text-white transition-colors"
+              >
+                Sectors
               </Link>
+            </div>
+
+            {/* Right: Hot Companies box */}
+            <div className="hidden lg:block w-[280px] shrink-0 rounded-md border border-[#e8b4b4] bg-[#fdf2f2] p-4">
+              <div className="flex items-center gap-1.5 mb-3">
+                <Flame className="size-4 text-[#dc2626]" />
+                <span
+                  className="text-xs font-bold uppercase tracking-wider text-[#dc2626]"
+                  style={{ fontFamily: "var(--font-geist-mono), monospace" }}
+                >
+                  Hot Companies
+                </span>
+              </div>
+              <div className="space-y-2">
+                {companies.slice(0, 3).map((c) => (
+                  <div key={c.slug} className="flex items-center justify-between">
+                    <Link
+                      href={`/company/${c.slug}`}
+                      className="text-sm font-semibold text-[#1e3a5f] hover:underline"
+                      style={{ fontFamily: "var(--font-geist-mono), monospace" }}
+                    >
+                      {c.name}
+                    </Link>
+                    <span className="text-xs text-[#6b7280]">{c.sector[0]}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
