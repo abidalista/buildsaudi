@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react"
 import Link from "next/link"
-import { Search, ExternalLink, MapPin, Building2, Mail, X, Flame, Users } from "lucide-react"
+import { Search, ExternalLink, MapPin, Building2, Mail, X, Users } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -170,23 +170,23 @@ export default function HomePage() {
               </div>
 
               {/* Hot Companies box */}
-              <div className="w-[260px] rounded-md border border-[#E8B4B4] bg-[#FDF2F2] p-3.5">
-                <div className="flex items-center gap-1.5 mb-2.5">
-                  <Flame className="size-3.5 text-[#DC2626]" />
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#DC2626] font-mono">
+              <div className="w-full max-w-96 bg-[#D73833]/10 border-2 border-[#D73833] rounded-lg p-3 shadow-lg">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xl">🔥</span>
+                  <span className="text-sm font-bold uppercase tracking-wider text-[#D73833] font-mono">
                     Hot Companies
                   </span>
                 </div>
-                <div className="space-y-1.5">
+                <div className="divide-y divide-[#D73833]/30">
                   {companies.slice(0, 3).map((c) => (
-                    <div key={c.slug} className="flex items-center justify-between">
+                    <div key={c.slug} className="py-2 first:pt-0 last:pb-0 flex items-center justify-between gap-2">
                       <Link
                         href={`/company/${c.slug}`}
-                        className="text-sm font-semibold text-[#123C69] hover:underline font-mono"
+                        className="text-sm font-bold text-[#D73833] hover:underline font-mono"
                       >
                         {c.name}
                       </Link>
-                      <span className="text-[11px] text-[#6B7280] font-mono">{c.sector[0]}</span>
+                      <span className="text-sm text-[#D73833] font-mono">{c.sector[0]}</span>
                     </div>
                   ))}
                 </div>
