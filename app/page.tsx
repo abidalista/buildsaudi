@@ -140,33 +140,53 @@ export default function HomePage() {
 
               {/* Mobile nav buttons */}
               <div className="flex items-center justify-center sm:justify-start gap-2 mt-2 lg:hidden flex-wrap">
-                <button
-                  onClick={() => document.getElementById("search-input")?.focus()}
-                  className="inline-flex items-center gap-1.5 rounded-md bg-[#123C69] px-3 py-1.5 text-xs font-semibold text-white hover:bg-[#0E2F52] transition-colors"
+                <a
+                  href="#search-input"
+                  onClick={(e) => { e.preventDefault(); document.getElementById("search-input")?.focus() }}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-semibold bg-[#D73833] text-white border border-[#D73833] rounded hover:bg-[#D73833]/90 transition-all"
                 >
-                  <Search className="size-3" />
+                  <svg className="size-3.5 h-3.5" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                   Search Jobs
-                </button>
-                <button className="inline-flex items-center rounded-md border border-[#123C69] px-3 py-1.5 text-xs font-semibold text-[#123C69] hover:bg-[#123C69] hover:text-white transition-colors">
+                </a>
+                <Link
+                  href="/sectors"
+                  className="px-3 py-1.5 text-xs font-mono font-medium bg-[#123C69] text-white border border-[#123C69] rounded hover:bg-transparent hover:text-[#123C69] transition-all"
+                >
                   Sectors
-                </button>
+                </Link>
               </div>
             </div>
 
             {/* Right: Nav buttons + Hot Companies */}
             <div className="hidden lg:flex items-end gap-4 flex-shrink-0">
-              {/* Nav buttons column */}
+              {/* Nav buttons */}
               <div className="flex items-center gap-2">
-                <button
-                  onClick={() => document.getElementById("search-input")?.focus()}
-                  className="inline-flex items-center gap-1.5 rounded-md bg-[#123C69] px-3.5 py-2 text-xs font-semibold text-white hover:bg-[#0E2F52] transition-colors"
+                <a
+                  href="#search-input"
+                  onClick={(e) => { e.preventDefault(); document.getElementById("search-input")?.focus() }}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-semibold bg-[#D73833] text-white border border-[#D73833] rounded hover:bg-[#D73833]/90 hover:shadow-md transition-all whitespace-nowrap"
                 >
-                  <Search className="size-3.5" />
+                  <svg className="size-3.5 h-3.5" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                   Search Jobs
-                </button>
-                <button className="inline-flex items-center rounded-md border border-[#123C69] px-3.5 py-2 text-xs font-semibold text-[#123C69] hover:bg-[#123C69] hover:text-white transition-colors">
+                </a>
+                <Link
+                  href="/news"
+                  className="px-3 py-1.5 text-xs font-mono font-medium bg-[#123C69] text-white border border-[#123C69] rounded hover:bg-transparent hover:text-[#123C69] transition-all"
+                >
+                  News
+                </Link>
+                <Link
+                  href="/map"
+                  className="px-3 py-1.5 text-xs font-mono font-medium bg-[#123C69] text-white border border-[#123C69] rounded hover:bg-transparent hover:text-[#123C69] transition-all"
+                >
+                  Map
+                </Link>
+                <Link
+                  href="/sectors"
+                  className="px-3 py-1.5 text-xs font-mono font-medium bg-[#123C69] text-white border border-[#123C69] rounded hover:bg-transparent hover:text-[#123C69] transition-all"
+                >
                   Sectors
-                </button>
+                </Link>
               </div>
 
               {/* Hot Companies box */}
