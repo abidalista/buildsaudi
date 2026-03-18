@@ -90,7 +90,7 @@ export default function HomePage() {
               <Link href="/" className="block">
                 <h1
                   className="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-none text-[#1e3a5f]"
-                  style={{ fontFamily: "var(--font-geist-mono), monospace" }}
+                  style={{ fontFamily: "var(--font-space-mono), monospace" }}
                 >
                   <span className="text-[#1e3a5f]/40">{"["}</span>{" "}
                   BUILDSAUDI{" "}
@@ -151,7 +151,7 @@ export default function HomePage() {
                 <Flame className="size-4 text-[#dc2626]" />
                 <span
                   className="text-xs font-bold uppercase tracking-wider text-[#dc2626]"
-                  style={{ fontFamily: "var(--font-geist-mono), monospace" }}
+                  style={{ fontFamily: "var(--font-space-mono), monospace" }}
                 >
                   Hot Companies
                 </span>
@@ -162,7 +162,7 @@ export default function HomePage() {
                     <Link
                       href={`/company/${c.slug}`}
                       className="text-sm font-semibold text-[#1e3a5f] hover:underline"
-                      style={{ fontFamily: "var(--font-geist-mono), monospace" }}
+                      style={{ fontFamily: "var(--font-space-mono), monospace" }}
                     >
                       {c.name}
                     </Link>

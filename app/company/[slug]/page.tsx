@@ -30,7 +30,7 @@ export default async function CompanyPage({
         <div className="mx-auto max-w-[1200px] px-6 py-6">
           <div className="flex items-center justify-between">
             <Link href="/" className="block">
-              <h1 className="text-3xl font-bold tracking-tight text-[#1e3a5f]" style={{ fontFamily: "var(--font-geist-mono), monospace" }}>
+              <h1 className="text-3xl font-bold tracking-tight text-[#1e3a5f]" style={{ fontFamily: "var(--font-space-mono), monospace" }}>
                 {"["} BUILDSAUDI {"]"}
               </h1>
             </Link>
