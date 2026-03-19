@@ -252,15 +252,15 @@ export default function HomePage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
         <div className="flex gap-8">
           {/* Filters Sidebar */}
-          <aside className="hidden w-[200px] shrink-0 lg:block">
+          <aside className="hidden w-64 shrink-0 lg:block sticky top-20 z-40 space-y-4 lg:space-y-6">
             {/* FILTERS heading */}
-            <h2 className="text-sm font-bold uppercase tracking-wider text-[#06634D] font-mono mb-5">
+            <h2 className="text-sm font-mono uppercase tracking-wider text-[#06634D]">
               Filters
             </h2>
 
             {/* Missing Info button */}
-            <button className="w-full mb-6 flex items-center justify-center gap-2 rounded-md border-2 border-[#FFBA0A]/60 bg-[#FFBA0A]/10 px-4 py-2.5 text-sm font-mono font-medium text-[#92710C] hover:bg-[#FFBA0A]/20 transition-colors">
-              <svg className="size-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+            <button className="hidden lg:flex items-center justify-center gap-1.5 w-full px-3 py-1.5 bg-[#FFBA0A]/10 border border-[#FFBA0A] rounded text-xs font-mono text-[#4C4C4C] hover:bg-[#FFBA0A]/20 hover:shadow-sm transition-all">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
                 <line x1="12" y1="9" x2="12" y2="13" />
                 <line x1="12" y1="17" x2="12.01" y2="17" />
@@ -269,7 +269,7 @@ export default function HomePage() {
             </button>
 
             {/* Filter dropdowns */}
-            <div className="space-y-6">
+            <div className="w-full">
               <FilterSelect
                 label="HQ Locations"
                 value={filters.city}
@@ -277,6 +277,8 @@ export default function HomePage() {
                 options={filterOptions.city}
                 placeholder="All HQ Locations"
               />
+            </div>
+            <div className="w-full">
               <FilterSelect
                 label="Stages"
                 value={filters.companyStage}
@@ -284,6 +286,8 @@ export default function HomePage() {
                 options={filterOptions.companyStage}
                 placeholder="All Stages"
               />
+            </div>
+            <div className="w-full">
               <FilterSelect
                 label="Sectors"
                 value={filters.sector}
@@ -294,7 +298,7 @@ export default function HomePage() {
             </div>
 
             {/* Divider */}
-            <div className="my-8 border-t border-[#E5E7EB]" />
+            <div className="border-t border-[#E5E7EB]" />
 
             {/* Company count */}
             <p className="text-sm font-mono text-[#6B7280]">
@@ -486,7 +490,7 @@ function FilterSelect({
   return (
     <div>
       {label && (
-        <label className="mb-2 block text-xs font-bold text-[#6B7280] uppercase tracking-wider font-mono">
+        <label className="block text-xs font-mono uppercase tracking-wider text-gray-600 mb-2">
           {label}
         </label>
       )}
@@ -494,7 +498,7 @@ function FilterSelect({
         value={value || undefined}
         onValueChange={(v) => onChange(v === "__all__" ? "" : v)}
       >
-        <SelectTrigger className="w-full h-10 bg-white text-sm border-[#E5E7EB] rounded-md">
+        <SelectTrigger className="w-full bg-white border border-gray-300 text-gray-900 px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#06634D] rounded text-left text-xs">
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
