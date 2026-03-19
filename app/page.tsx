@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react"
 import Link from "next/link"
-import { Search, ExternalLink, MapPin, Building2, Mail, X } from "lucide-react"
+import { Search, Building2, Mail, X } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { jobs, companies, getCompanyBySlug, filterOptions } from "@/lib/data"
+import { companies, getJobsByCompany, filterOptions } from "@/lib/data"
 
 export default function HomePage() {
   const [search, setSearch] = useState("")
@@ -29,35 +29,25 @@ export default function HomePage() {
 
   const activeFilterCount = Object.values(filters).filter(Boolean).length
 
-  const filteredJobs = useMemo(() => {
-    return jobs.filter((job) => {
+  const filteredCompanies = useMemo(() => {
+    return companies.filter((company) => {
       const q = search.toLowerCase()
+      const companyJobs = getJobsByCompany(company.slug)
       const matchesSearch =
         !q ||
-        job.title.toLowerCase().includes(q) ||
-        job.company.toLowerCase().includes(q) ||
-        job.location.toLowerCase().includes(q) ||
-        job.sector.toLowerCase().includes(q)
+        company.name.toLowerCase().includes(q) ||
+        company.description.toLowerCase().includes(q) ||
+        company.sector.some((s) => s.toLowerCase().includes(q)) ||
+        companyJobs.some((j) => j.title.toLowerCase().includes(q))
 
-      const company = getCompanyBySlug(job.company_slug)
-
-      const matchesJobType = !filters.jobType || job.job_type === filters.jobType
-      const matchesExperience =
-        !filters.experienceLevel || job.experience_level === filters.experienceLevel
-      const matchesSector = !filters.sector || job.sector === filters.sector
+      const matchesSector =
+        !filters.sector || company.sector.some((s) => s === filters.sector)
       const matchesCity =
-        !filters.city || job.location.toLowerCase().includes(filters.city.toLowerCase())
+        !filters.city || company.city.toLowerCase().includes(filters.city.toLowerCase())
       const matchesStage =
-        !filters.companyStage || company?.stage === filters.companyStage
+        !filters.companyStage || company.stage === filters.companyStage
 
-      return (
-        matchesSearch &&
-        matchesJobType &&
-        matchesExperience &&
-        matchesSector &&
-        matchesCity &&
-        matchesStage
-      )
+      return matchesSearch && matchesSector && matchesCity && matchesStage
     })
   }, [search, filters])
 
@@ -332,86 +322,66 @@ export default function HomePage() {
 
             <div className="mb-4 flex items-center justify-between">
               <p className="text-sm text-[#6B7280]">
-                {filteredJobs.length} {filteredJobs.length === 1 ? "company" : "companies"}
+                {filteredCompanies.length} {filteredCompanies.length === 1 ? "company" : "companies"}
               </p>
-              <p className="text-xs text-[#9CA3AF]">Sorted by upvotes</p>
+              <p className="text-xs text-[#9CA3AF] font-mono">Sorted by upvotes</p>
             </div>
 
-            {/* Job Cards */}
+            {/* Company Cards */}
             <div className="space-y-3">
-              {filteredJobs.map((job) => {
-                const company = getCompanyBySlug(job.company_slug)
+              {filteredCompanies.map((company) => {
+                const companyJobs = getJobsByCompany(company.slug)
                 return (
                   <div
-                    key={job.id}
-                    className="group flex items-center gap-4 rounded-lg border border-[#E5E7EB] bg-white px-5 py-4 transition-all hover:border-[#D1D5DB] hover:shadow-sm"
+                    key={company.slug}
+                    className="group rounded-lg border border-[#E5E7EB] bg-white px-5 py-4 transition-all hover:border-[#D1D5DB] hover:shadow-sm"
                   >
-                    {/* Company Logo Placeholder */}
-                    <div className="flex size-10 shrink-0 items-center justify-center rounded-md bg-[#F3F4F6] text-sm font-bold text-[#06634D]">
-                      {job.company.charAt(0)}
-                    </div>
+                    <div className="flex items-center gap-3 sm:gap-5">
+                      {/* Company Logo Placeholder */}
+                      <div className="flex size-12 sm:size-14 shrink-0 items-center justify-center rounded-lg bg-[#F3F4F6] border border-[#E5E7EB] text-lg font-bold text-[#06634D]">
+                        {company.name.charAt(0)}
+                      </div>
 
-                    {/* Job Info */}
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-[#111827] truncate">
-                        {job.title}
-                      </h3>
-                      <div className="mt-0.5 flex items-center gap-2 text-sm text-[#6B7280]">
+                      {/* Company Info */}
+                      <div className="flex-1 min-w-0">
                         <Link
-                          href={`/company/${job.company_slug}`}
-                          className="hover:text-[#06634D] hover:underline"
+                          href={`/company/${company.slug}`}
+                          className="text-lg font-bold text-[#111827] hover:text-[#06634D] transition-colors"
                         >
-                          {job.company}
+                          {company.name}
                         </Link>
-                        <span className="text-[#D1D5DB]">&middot;</span>
-                        <span className="flex items-center gap-1">
-                          <MapPin className="size-3" />
-                          {job.location}
+                        <p className="mt-0.5 text-sm text-[#6B7280] truncate">
+                          {company.description}
+                        </p>
+                      </div>
+
+                      {/* Right Side: Sector + Stage + View Jobs */}
+                      <div className="flex-shrink-0 flex flex-col items-end gap-1 sm:gap-2">
+                        <span className="px-1 py-0.5 sm:px-2.5 sm:py-1 bg-gray-100 border border-gray-200 text-gray-700 text-[10px] sm:text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">
+                          {company.sector[0]}
                         </span>
+                        <div className="flex items-center gap-1 sm:gap-2">
+                          <span className="px-1 py-0.5 sm:px-2.5 sm:py-1 bg-gray-100 border border-gray-200 text-gray-700 text-[10px] sm:text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">
+                            {company.stage}
+                          </span>
+                          <Link
+                            href={`/company/${company.slug}`}
+                            className="px-1 py-0.5 sm:px-2.5 sm:py-1 bg-[#06634D] text-white text-[10px] sm:text-xs font-mono rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
+                          >
+                            View Jobs
+                          </Link>
+                        </div>
                       </div>
                     </div>
-
-                    {/* Right Side: Sector + Stage + View Jobs */}
-                    <div className="hidden sm:flex items-center gap-2 shrink-0">
-                      <span className="text-[11px] font-medium text-[#6B7280] uppercase tracking-wide">
-                        {job.sector}
-                      </span>
-                      {company && (
-                        <span className="text-[11px] font-medium text-[#6B7280] uppercase tracking-wide">
-                          {company.stage}
-                        </span>
-                      )}
-                      <a
-                        href={job.apply_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <span className="inline-flex items-center gap-1 rounded bg-[#06634D] px-2.5 py-1 text-[11px] font-semibold text-white hover:bg-[#044D3B] transition-colors">
-                          View Jobs
-                        </span>
-                      </a>
-                    </div>
-
-                    {/* Mobile Apply */}
-                    <a
-                      href={job.apply_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="sm:hidden shrink-0"
-                    >
-                      <span className="inline-flex items-center gap-1 rounded bg-[#06634D] px-2.5 py-1 text-[11px] font-semibold text-white">
-                        View Jobs
-                      </span>
-                    </a>
                   </div>
                 )
               })}
 
-              {filteredJobs.length === 0 && (
+              {filteredCompanies.length === 0 && (
                 <div className="rounded-lg border border-[#E5E7EB] bg-white px-6 py-16 text-center">
                   <Building2 className="mx-auto size-8 text-[#D1D5DB] mb-3" />
                   <p className="text-sm text-[#6B7280]">
-                    no jobs match your filters.{" "}
+                    no companies match your filters.{" "}
                     <button
                       onClick={clearFilters}
                       className="text-[#06634D] hover:underline"
