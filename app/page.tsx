@@ -334,11 +334,11 @@ export default function HomePage() {
                 return (
                   <div
                     key={company.slug}
-                    className="group rounded-lg border border-[#E5E7EB] bg-white px-5 py-4 transition-all hover:border-[#D1D5DB] hover:shadow-sm"
+                    className="group bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden"
                   >
-                    <div className="flex items-center gap-3 sm:gap-5">
+                    <div className="flex items-center gap-3 sm:gap-5 px-5 py-4">
                       {/* Company Logo Placeholder */}
-                      <div className="flex size-12 sm:size-14 shrink-0 items-center justify-center rounded-lg bg-[#F3F4F6] border border-[#E5E7EB] text-lg font-bold text-[#06634D]">
+                      <div className="flex size-12 sm:size-14 shrink-0 items-center justify-center rounded-xl bg-white border border-gray-200 text-lg font-bold text-[#06634D]">
                         {company.name.charAt(0)}
                       </div>
 
@@ -356,10 +356,12 @@ export default function HomePage() {
                       </div>
 
                       {/* Right Side: Sector + Stage + View Jobs */}
-                      <div className="flex-shrink-0 flex flex-col items-end gap-1 sm:gap-2">
-                        <span className="px-1 py-0.5 sm:px-2.5 sm:py-1 bg-gray-100 border border-gray-200 text-gray-700 text-[10px] sm:text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">
-                          {company.sector[0]}
-                        </span>
+                      <div className="flex-shrink-0 flex flex-col items-end gap-1 sm:gap-5">
+                        <div className="flex items-center gap-1 sm:gap-2">
+                          <span className="px-1 py-0.5 sm:px-2.5 sm:py-1 bg-gray-100 border border-gray-200 text-gray-700 text-[10px] sm:text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">
+                            {company.sector[0]}
+                          </span>
+                        </div>
                         <div className="flex items-center gap-1 sm:gap-2">
                           <span className="px-1 py-0.5 sm:px-2.5 sm:py-1 bg-gray-100 border border-gray-200 text-gray-700 text-[10px] sm:text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">
                             {company.stage}
