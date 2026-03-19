@@ -5,7 +5,6 @@ import Link from "next/link"
 import { Search, Building2, Mail, X } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import {
   Select,
   SelectContent,
@@ -26,8 +25,6 @@ export default function HomePage() {
   })
   const [email, setEmail] = useState("")
   const [emailSubmitted, setEmailSubmitted] = useState(false)
-
-  const activeFilterCount = Object.values(filters).filter(Boolean).length
 
   const filteredCompanies = useMemo(() => {
     return companies.filter((company) => {
@@ -89,7 +86,7 @@ export default function HomePage() {
                   {/* Bottom-right corner */}
                   <span className="absolute bottom-0 right-0 w-4 h-4 sm:w-5 sm:h-5 border-r-[3px] border-b-[3px] border-[#06634D]/30" />
                   <h1
-                    className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-none text-[#06634D] tracking-tight"
+                    className="text-[clamp(1.8rem,4vw,3rem)] font-bold leading-none text-[#06634D] tracking-tight"
                     style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}
                   >
                     BUILDSAUDI
@@ -198,12 +195,14 @@ export default function HomePage() {
                 <div className="divide-y divide-[#D73833]/30">
                   {companies.slice(0, 3).map((c) => (
                     <div key={c.slug} className="py-2 first:pt-0 last:pb-0 flex items-center justify-between gap-2">
-                      <Link
-                        href={`/company/${c.slug}`}
+                      <a
+                        href={c.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="text-sm font-bold text-[#D73833] hover:underline font-mono"
                       >
                         {c.name}
-                      </Link>
+                      </a>
                       <span className="text-sm text-[#111827] font-mono">{c.sector[0]}</span>
                     </div>
                   ))}
@@ -330,7 +329,6 @@ export default function HomePage() {
             {/* Company Cards */}
             <div className="space-y-3">
               {filteredCompanies.map((company) => {
-                const companyJobs = getJobsByCompany(company.slug)
                 return (
                   <div
                     key={company.slug}
