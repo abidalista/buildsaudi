@@ -44,7 +44,7 @@ export default function SubmitPage() {
         <div className="mx-auto max-w-[1200px] px-6 py-6">
           <div className="flex items-center justify-between">
             <Link href="/" className="block">
-              <h1 className="text-3xl font-bold tracking-tight text-[#123C69]" style={{ fontFamily: "var(--font-space-mono), monospace" }}>
+              <h1 className="text-3xl font-bold tracking-tight text-[#06634D]" style={{ fontFamily: "var(--font-space-mono), monospace" }}>
                 {"["} BUILDSAUDI {"]"}
               </h1>
             </Link>
@@ -77,7 +77,7 @@ export default function SubmitPage() {
               <Button
                 variant="outline"
                 size="sm"
-                className="mt-6 border-[#123C69] text-[#123C69] hover:bg-[#123C69] hover:text-white"
+                className="mt-6 border-[#06634D] text-[#06634D] hover:bg-[#06634D] hover:text-white"
               >
                 Back to jobs
               </Button>
@@ -203,7 +203,7 @@ export default function SubmitPage() {
 
             <Button
               type="submit"
-              className="w-full h-11 bg-[#123C69] hover:bg-[#0E2F52] text-sm font-medium"
+              className="w-full h-11 bg-[#06634D] hover:bg-[#044D3B] text-sm font-medium"
             >
               Submit for Review
             </Button>

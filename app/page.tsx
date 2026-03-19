@@ -82,7 +82,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-[#F9F9F9]">
       {/* ============ HEADER ============ */}
-      <header className="border-b border-[#123C69]/20 bg-[#F9F9F9]">
+      <header className="border-b border-[#06634D]/20 bg-[#F9F9F9]">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex items-start justify-between gap-4 sm:gap-6">
             {/* Left: Logo + tagline + action buttons */}
@@ -91,15 +91,15 @@ export default function HomePage() {
               <div className="flex justify-center sm:justify-start mb-3">
                 <Link href="/" className="relative inline-block px-5 py-3">
                   {/* Top-left corner */}
-                  <span className="absolute top-0 left-0 w-4 h-4 sm:w-5 sm:h-5 border-l-[3px] border-t-[3px] border-[#123C69]/30" />
+                  <span className="absolute top-0 left-0 w-4 h-4 sm:w-5 sm:h-5 border-l-[3px] border-t-[3px] border-[#06634D]/30" />
                   {/* Top-right corner */}
-                  <span className="absolute top-0 right-0 w-4 h-4 sm:w-5 sm:h-5 border-r-[3px] border-t-[3px] border-[#123C69]/30" />
+                  <span className="absolute top-0 right-0 w-4 h-4 sm:w-5 sm:h-5 border-r-[3px] border-t-[3px] border-[#06634D]/30" />
                   {/* Bottom-left corner */}
-                  <span className="absolute bottom-0 left-0 w-4 h-4 sm:w-5 sm:h-5 border-l-[3px] border-b-[3px] border-[#123C69]/30" />
+                  <span className="absolute bottom-0 left-0 w-4 h-4 sm:w-5 sm:h-5 border-l-[3px] border-b-[3px] border-[#06634D]/30" />
                   {/* Bottom-right corner */}
-                  <span className="absolute bottom-0 right-0 w-4 h-4 sm:w-5 sm:h-5 border-r-[3px] border-b-[3px] border-[#123C69]/30" />
+                  <span className="absolute bottom-0 right-0 w-4 h-4 sm:w-5 sm:h-5 border-r-[3px] border-b-[3px] border-[#06634D]/30" />
                   <h1
-                    className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-none text-[#123C69] tracking-tight"
+                    className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-none text-[#06634D] tracking-tight"
                     style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}
                   >
                     BUILDSAUDI
@@ -115,7 +115,7 @@ export default function HomePage() {
               {/* Action buttons row */}
               <div className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-3">
                 {/* Made by pill */}
-                <span className="inline-flex items-center px-1.5 sm:px-3 py-0.5 sm:py-1.5 bg-[#123C69]/5 border border-[#123C69]/30 rounded text-xs font-mono text-[#123C69] whitespace-nowrap">
+                <span className="inline-flex items-center px-1.5 sm:px-3 py-0.5 sm:py-1.5 bg-[#06634D]/5 border border-[#06634D]/30 rounded text-xs font-mono text-[#06634D] whitespace-nowrap">
                   Made by{" "}
                   <a href="https://x.com/halamanteeshi" target="_blank" rel="noopener noreferrer" className="text-[#D73833] font-bold hover:text-[#D73833]/80 transition-colors ml-1">
                     Abdulla
@@ -123,7 +123,7 @@ export default function HomePage() {
                 </span>
 
                 {/* Join BuildSaudi - golden */}
-                <button className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-1 sm:py-2 bg-[#FFBA0A] border-2 border-[#FFBA0A]/80 rounded-lg text-xs font-mono text-[#123C69] font-semibold hover:bg-[#FFBA0A]/90 hover:shadow-lg hover:scale-105 active:scale-100 transition-all cursor-pointer shadow-md whitespace-nowrap">
+                <button className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-1 sm:py-2 bg-[#FFBA0A] border-2 border-[#FFBA0A]/80 rounded-lg text-xs font-mono text-[#06634D] font-semibold hover:bg-[#FFBA0A]/90 hover:shadow-lg hover:scale-105 active:scale-100 transition-all cursor-pointer shadow-md whitespace-nowrap">
                   <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                     <circle cx="9" cy="7" r="4" />
@@ -139,7 +139,7 @@ export default function HomePage() {
                   href="https://x.com/buildsaudi"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-1 sm:p-1.5 text-[#123C69] hover:text-[#1DA1F2] transition-colors"
+                  className="p-1 sm:p-1.5 text-[#06634D] hover:text-[#1DA1F2] transition-colors"
                   aria-label="Follow BuildSaudi on Twitter"
                 >
                   <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor">
@@ -160,7 +160,7 @@ export default function HomePage() {
                 </a>
                 <Link
                   href="/sectors"
-                  className="px-3 py-1.5 text-xs font-mono font-medium bg-[#123C69] text-white border border-[#123C69] rounded hover:bg-transparent hover:text-[#123C69] transition-all"
+                  className="px-3 py-1.5 text-xs font-mono font-medium bg-[#06634D] text-white border border-[#06634D] rounded hover:bg-transparent hover:text-[#06634D] transition-all"
                 >
                   Sectors
                 </Link>
@@ -181,19 +181,19 @@ export default function HomePage() {
                 </a>
                 <Link
                   href="/news"
-                  className="px-3 py-1.5 text-xs font-mono font-medium bg-[#123C69] text-white border border-[#123C69] rounded hover:bg-transparent hover:text-[#123C69] transition-all"
+                  className="px-3 py-1.5 text-xs font-mono font-medium bg-[#06634D] text-white border border-[#06634D] rounded hover:bg-transparent hover:text-[#06634D] transition-all"
                 >
                   News
                 </Link>
                 <Link
                   href="/map"
-                  className="px-3 py-1.5 text-xs font-mono font-medium bg-[#123C69] text-white border border-[#123C69] rounded hover:bg-transparent hover:text-[#123C69] transition-all"
+                  className="px-3 py-1.5 text-xs font-mono font-medium bg-[#06634D] text-white border border-[#06634D] rounded hover:bg-transparent hover:text-[#06634D] transition-all"
                 >
                   Map
                 </Link>
                 <Link
                   href="/sectors"
-                  className="px-3 py-1.5 text-xs font-mono font-medium bg-[#123C69] text-white border border-[#123C69] rounded hover:bg-transparent hover:text-[#123C69] transition-all"
+                  className="px-3 py-1.5 text-xs font-mono font-medium bg-[#06634D] text-white border border-[#06634D] rounded hover:bg-transparent hover:text-[#06634D] transition-all"
                 >
                   Sectors
                 </Link>
@@ -236,7 +236,7 @@ export default function HomePage() {
               placeholder="search keywords..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="h-11 rounded-lg border-[#E5E7EB] bg-white pl-11 text-sm shadow-sm placeholder:text-[#9CA3AF] focus-visible:border-[#123C69] focus-visible:ring-[#123C69]/20"
+              className="h-11 rounded-lg border-[#E5E7EB] bg-white pl-11 text-sm shadow-sm placeholder:text-[#9CA3AF] focus-visible:border-[#06634D] focus-visible:ring-[#06634D]/20"
             />
             {search && (
               <button
@@ -256,7 +256,7 @@ export default function HomePage() {
           {/* Filters Sidebar */}
           <aside className="hidden w-[200px] shrink-0 lg:block">
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-xs font-bold uppercase tracking-wider text-[#123C69]">
+              <h2 className="text-xs font-bold uppercase tracking-wider text-[#06634D]">
                 Filters
               </h2>
               {activeFilterCount > 0 && (
@@ -296,7 +296,7 @@ export default function HomePage() {
             {/* Email Capture - Sidebar */}
             <div className="mt-8 rounded-lg border border-[#E5E7EB] bg-white p-4">
               <div className="flex items-center gap-2 mb-2">
-                <Mail className="size-4 text-[#123C69]" />
+                <Mail className="size-4 text-[#06634D]" />
                 <h3 className="text-sm font-semibold text-[#111827]">Weekly Jobs</h3>
               </div>
               <p className="text-xs text-[#6B7280] mb-3">
@@ -319,7 +319,7 @@ export default function HomePage() {
                   <Button
                     type="submit"
                     size="sm"
-                    className="w-full h-8 bg-[#123C69] text-xs hover:bg-[#0E2F52]"
+                    className="w-full h-8 bg-[#06634D] text-xs hover:bg-[#044D3B]"
                   >
                     Subscribe
                   </Button>
@@ -369,7 +369,7 @@ export default function HomePage() {
                     className="group flex items-center gap-4 rounded-lg border border-[#E5E7EB] bg-white px-5 py-4 transition-all hover:border-[#D1D5DB] hover:shadow-sm"
                   >
                     {/* Company Logo Placeholder */}
-                    <div className="flex size-10 shrink-0 items-center justify-center rounded-md bg-[#F3F4F6] text-sm font-bold text-[#123C69]">
+                    <div className="flex size-10 shrink-0 items-center justify-center rounded-md bg-[#F3F4F6] text-sm font-bold text-[#06634D]">
                       {job.company.charAt(0)}
                     </div>
 
@@ -381,7 +381,7 @@ export default function HomePage() {
                       <div className="mt-0.5 flex items-center gap-2 text-sm text-[#6B7280]">
                         <Link
                           href={`/company/${job.company_slug}`}
-                          className="hover:text-[#123C69] hover:underline"
+                          className="hover:text-[#06634D] hover:underline"
                         >
                           {job.company}
                         </Link>
@@ -408,7 +408,7 @@ export default function HomePage() {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <span className="inline-flex items-center gap-1 rounded bg-[#123C69] px-2.5 py-1 text-[11px] font-semibold text-white hover:bg-[#0E2F52] transition-colors">
+                        <span className="inline-flex items-center gap-1 rounded bg-[#06634D] px-2.5 py-1 text-[11px] font-semibold text-white hover:bg-[#044D3B] transition-colors">
                           View Jobs
                         </span>
                       </a>
@@ -421,7 +421,7 @@ export default function HomePage() {
                       rel="noopener noreferrer"
                       className="sm:hidden shrink-0"
                     >
-                      <span className="inline-flex items-center gap-1 rounded bg-[#123C69] px-2.5 py-1 text-[11px] font-semibold text-white">
+                      <span className="inline-flex items-center gap-1 rounded bg-[#06634D] px-2.5 py-1 text-[11px] font-semibold text-white">
                         View Jobs
                       </span>
                     </a>
@@ -436,7 +436,7 @@ export default function HomePage() {
                     no jobs match your filters.{" "}
                     <button
                       onClick={clearFilters}
-                      className="text-[#123C69] hover:underline"
+                      className="text-[#06634D] hover:underline"
                     >
                       clear all filters
                     </button>
@@ -448,7 +448,7 @@ export default function HomePage() {
             {/* Mobile Email Capture */}
             <div className="mt-8 rounded-lg border border-[#E5E7EB] bg-white p-5 lg:hidden">
               <div className="flex items-center gap-2 mb-2">
-                <Mail className="size-4 text-[#123C69]" />
+                <Mail className="size-4 text-[#06634D]" />
                 <h3 className="font-semibold text-[#111827]">get weekly startup jobs</h3>
               </div>
               <p className="text-sm text-[#6B7280] mb-3">
@@ -470,7 +470,7 @@ export default function HomePage() {
                   />
                   <Button
                     type="submit"
-                    className="h-9 bg-[#123C69] hover:bg-[#0E2F52] shrink-0"
+                    className="h-9 bg-[#06634D] hover:bg-[#044D3B] shrink-0"
                   >
                     Subscribe
                   </Button>
