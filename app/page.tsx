@@ -89,11 +89,15 @@ export default function HomePage() {
             <div className="flex-1">
               {/* Logo */}
               <div className="flex justify-center sm:justify-start mb-3">
-                <Link href="/" className="relative inline-block px-4 py-2">
-                  {/* Top-left bracket */}
-                  <span className="absolute top-0 left-0 text-[#123C69]/25 text-[clamp(3rem,6vw,5.5rem)] leading-none font-bold select-none" style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}>{"["}</span>
-                  {/* Bottom-right bracket */}
-                  <span className="absolute bottom-0 right-0 text-[#123C69]/25 text-[clamp(3rem,6vw,5.5rem)] leading-none font-bold select-none" style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}>{"]"}</span>
+                <Link href="/" className="relative inline-block px-5 py-3">
+                  {/* Top-left corner */}
+                  <span className="absolute top-0 left-0 w-4 h-4 sm:w-5 sm:h-5 border-l-[3px] border-t-[3px] border-[#123C69]/30" />
+                  {/* Top-right corner */}
+                  <span className="absolute top-0 right-0 w-4 h-4 sm:w-5 sm:h-5 border-r-[3px] border-t-[3px] border-[#123C69]/30" />
+                  {/* Bottom-left corner */}
+                  <span className="absolute bottom-0 left-0 w-4 h-4 sm:w-5 sm:h-5 border-l-[3px] border-b-[3px] border-[#123C69]/30" />
+                  {/* Bottom-right corner */}
+                  <span className="absolute bottom-0 right-0 w-4 h-4 sm:w-5 sm:h-5 border-r-[3px] border-b-[3px] border-[#123C69]/30" />
                   <h1
                     className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-none text-[#123C69] tracking-tight"
                     style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}
@@ -110,11 +114,12 @@ export default function HomePage() {
 
               {/* Action buttons row */}
               <div className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-3">
-                {/* Post a Job pill */}
+                {/* Made by pill */}
                 <span className="inline-flex items-center px-1.5 sm:px-3 py-0.5 sm:py-1.5 bg-[#123C69]/5 border border-[#123C69]/30 rounded text-xs font-mono text-[#123C69] whitespace-nowrap">
-                  <Link href="/submit" className="font-bold hover:text-[#D73833]/80 transition-colors">
-                    Post a Job
-                  </Link>
+                  Made by{" "}
+                  <a href="https://x.com/halamanteeshi" target="_blank" rel="noopener noreferrer" className="text-[#D73833] font-bold hover:text-[#D73833]/80 transition-colors ml-1">
+                    Abdulla
+                  </a>
                 </span>
 
                 {/* Join BuildSaudi - golden */}
