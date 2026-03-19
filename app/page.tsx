@@ -253,21 +253,23 @@ export default function HomePage() {
         <div className="flex gap-8">
           {/* Filters Sidebar */}
           <aside className="hidden w-[200px] shrink-0 lg:block">
-            <div className="flex items-center justify-between mb-5">
-              <h2 className="text-xs font-bold uppercase tracking-wider text-[#06634D]">
-                Filters
-              </h2>
-              {activeFilterCount > 0 && (
-                <button
-                  onClick={clearFilters}
-                  className="text-xs text-[#6B7280] hover:text-[#111827]"
-                >
-                  Clear all
-                </button>
-              )}
-            </div>
+            {/* FILTERS heading */}
+            <h2 className="text-sm font-bold uppercase tracking-wider text-[#06634D] font-mono mb-5">
+              Filters
+            </h2>
 
-            <div className="space-y-5">
+            {/* Missing Info button */}
+            <button className="w-full mb-6 flex items-center justify-center gap-2 rounded-md border-2 border-[#FFBA0A]/60 bg-[#FFBA0A]/10 px-4 py-2.5 text-sm font-mono font-medium text-[#92710C] hover:bg-[#FFBA0A]/20 transition-colors">
+              <svg className="size-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
+              Missing Info?
+            </button>
+
+            {/* Filter dropdowns */}
+            <div className="space-y-6">
               <FilterSelect
                 label="HQ Locations"
                 value={filters.city}
@@ -291,39 +293,13 @@ export default function HomePage() {
               />
             </div>
 
-            {/* Email Capture - Sidebar */}
-            <div className="mt-8 rounded-lg border border-[#E5E7EB] bg-white p-4">
-              <div className="flex items-center gap-2 mb-2">
-                <Mail className="size-4 text-[#06634D]" />
-                <h3 className="text-sm font-semibold text-[#111827]">Weekly Jobs</h3>
-              </div>
-              <p className="text-xs text-[#6B7280] mb-3">
-                get startup jobs in your inbox every week
-              </p>
-              {emailSubmitted ? (
-                <p className="text-xs text-green-600 font-medium">
-                  you&apos;re in. watch your inbox.
-                </p>
-              ) : (
-                <form onSubmit={handleEmailSubmit} className="space-y-2">
-                  <Input
-                    type="email"
-                    placeholder="your@email.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    className="h-8 text-xs"
-                  />
-                  <Button
-                    type="submit"
-                    size="sm"
-                    className="w-full h-8 bg-[#06634D] text-xs hover:bg-[#044D3B]"
-                  >
-                    Subscribe
-                  </Button>
-                </form>
-              )}
-            </div>
+            {/* Divider */}
+            <div className="my-8 border-t border-[#E5E7EB]" />
+
+            {/* Company count */}
+            <p className="text-sm font-mono text-[#6B7280]">
+              {companies.length} companies
+            </p>
           </aside>
 
           {/* Job Listings */}
@@ -510,7 +486,7 @@ function FilterSelect({
   return (
     <div>
       {label && (
-        <label className="mb-1.5 block text-[10px] font-bold text-[#6B7280] uppercase tracking-wider">
+        <label className="mb-2 block text-xs font-bold text-[#6B7280] uppercase tracking-wider font-mono">
           {label}
         </label>
       )}
@@ -518,7 +494,7 @@ function FilterSelect({
         value={value || undefined}
         onValueChange={(v) => onChange(v === "__all__" ? "" : v)}
       >
-        <SelectTrigger className="w-full h-9 bg-white text-sm border-[#E5E7EB]">
+        <SelectTrigger className="w-full h-10 bg-white text-sm border-[#E5E7EB] rounded-md">
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
