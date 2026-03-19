@@ -115,12 +115,10 @@ export default function HomePage() {
               {/* Action buttons row */}
               <div className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-3">
                 {/* Made by pill */}
-                <span className="inline-flex items-center px-1.5 sm:px-3 py-0.5 sm:py-1.5 bg-[#06634D]/5 border border-[#06634D]/30 rounded text-xs font-mono text-[#06634D] whitespace-nowrap">
+                <a href="https://x.com/halamanteeshi" target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-1.5 sm:px-3 py-0.5 sm:py-1.5 bg-[#06634D]/5 border border-[#06634D]/30 rounded text-xs font-mono text-[#06634D] whitespace-nowrap hover:bg-[#06634D]/10 transition-colors">
                   Made by{" "}
-                  <a href="https://x.com/halamanteeshi" target="_blank" rel="noopener noreferrer" className="text-[#D73833] font-bold hover:text-[#D73833]/80 transition-colors ml-1">
-                    Abdulla
-                  </a>
-                </span>
+                  <span className="text-[#D73833] font-bold ml-1">Abdulla</span>
+                </a>
 
                 {/* Join BuildSaudi - golden */}
                 <button className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-1 sm:py-2 bg-[#FFBA0A] border-2 border-[#FFBA0A]/80 rounded-lg text-xs font-mono text-[#06634D] font-semibold hover:bg-[#FFBA0A]/90 hover:shadow-lg hover:scale-105 active:scale-100 transition-all cursor-pointer shadow-md whitespace-nowrap">
