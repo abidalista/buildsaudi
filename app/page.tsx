@@ -134,7 +134,7 @@ export default function HomePage() {
 
                 {/* X / Twitter icon */}
                 <a
-                  href="https://x.com/buildsaudi"
+                  href="https://x.com/halamanteeshi"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-1 sm:p-1.5 text-[#06634D] hover:text-[#1DA1F2] transition-colors"
