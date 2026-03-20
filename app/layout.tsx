@@ -9,9 +9,6 @@ const spaceMono = Space_Mono({ weight: ["400", "700"], subsets: ["latin"], varia
 export const metadata: Metadata = {
   title: 'BuildSaudi — Startup Jobs in Saudi Arabia',
   description: 'A curated directory of companies building the future of Saudi. Find startup jobs at the best companies in the Kingdom.',
-  icons: {
-    icon: '/icon.svg',
-  },
   openGraph: {
     title: 'BuildSaudi — Startup Jobs in Saudi Arabia',
     description: 'A curated directory of companies building the future of Saudi. Find startup jobs at the best companies in the Kingdom.',
