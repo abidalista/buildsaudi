@@ -96,7 +96,7 @@ export default function HomePage() {
 
               {/* Tagline */}
               <p className="text-[#4C4C4C] text-xs font-mono mb-2 text-center sm:text-left">
-                A curated directory of companies building the future of Saudi.
+                A curated directory of companies building the future of Saudi
               </p>
 
               {/* Action buttons row */}
@@ -144,7 +144,7 @@ export default function HomePage() {
                   Search Jobs
                 </a>
                 <Link
-                  href="/sectors"
+                  href="/coming-soon"
                   className="px-3 py-1.5 text-xs font-mono font-medium bg-[#06634D] text-white border border-[#06634D] rounded hover:bg-transparent hover:text-[#06634D] transition-all"
                 >
                   Sectors
@@ -165,19 +165,19 @@ export default function HomePage() {
                   Search Jobs
                 </a>
                 <Link
-                  href="/news"
+                  href="/coming-soon"
                   className="px-3 py-1.5 text-xs font-mono font-medium bg-[#06634D] text-white border border-[#06634D] rounded hover:bg-transparent hover:text-[#06634D] transition-all"
                 >
                   News
                 </Link>
                 <Link
-                  href="/map"
+                  href="/coming-soon"
                   className="px-3 py-1.5 text-xs font-mono font-medium bg-[#06634D] text-white border border-[#06634D] rounded hover:bg-transparent hover:text-[#06634D] transition-all"
                 >
                   Map
                 </Link>
                 <Link
-                  href="/sectors"
+                  href="/coming-soon"
                   className="px-3 py-1.5 text-xs font-mono font-medium bg-[#06634D] text-white border border-[#06634D] rounded hover:bg-transparent hover:text-[#06634D] transition-all"
                 >
                   Sectors
