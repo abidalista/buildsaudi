@@ -60,9 +60,13 @@ export default async function CompanyPage({
         {/* Company Header */}
         <div className="rounded-lg border border-[#e5e5e5] bg-white p-6 mb-6">
           <div className="flex items-start gap-5">
-            {/* Logo Placeholder */}
-            <div className="flex size-16 shrink-0 items-center justify-center rounded-lg bg-[#f0f0f0] text-2xl font-bold text-[#06634D]">
-              {company.name.charAt(0)}
+            {/* Company Logo */}
+            <div className="flex size-16 shrink-0 items-center justify-center rounded-xl bg-white border border-gray-200 overflow-hidden">
+              <img
+                src={company.logo_url}
+                alt={company.name}
+                className="size-10 object-contain"
+              />
             </div>
 
             <div className="flex-1 min-w-0">

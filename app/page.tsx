@@ -335,9 +335,13 @@ export default function HomePage() {
                     className="group bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden"
                   >
                     <div className="flex items-center gap-3 sm:gap-5 px-5 py-4">
-                      {/* Company Logo Placeholder */}
-                      <div className="flex size-12 sm:size-14 shrink-0 items-center justify-center rounded-xl bg-white border border-gray-200 text-lg font-bold text-[#06634D]">
-                        {company.name.charAt(0)}
+                      {/* Company Logo */}
+                      <div className="flex size-12 sm:size-14 shrink-0 items-center justify-center rounded-xl bg-white border border-gray-200 overflow-hidden">
+                        <img
+                          src={company.logo_url}
+                          alt={company.name}
+                          className="size-8 sm:size-9 object-contain"
+                        />
                       </div>
 
                       {/* Company Info */}
