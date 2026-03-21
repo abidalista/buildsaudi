@@ -435,12 +435,47 @@ export default function HomePage() {
 
       {/* ============ FOOTER ============ */}
       <footer className="mt-16 border-t border-[#E5E7EB] bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex items-center justify-between text-xs text-[#9CA3AF]">
-          <p>buildsaudi.co</p>
-          <div className="flex items-center gap-4">
-            <Link href="/submit" className="hover:text-[#111827]">
-              Post a Job
-            </Link>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 text-xs text-[#6B7280]">
+            <div>
+              <h4 className="font-bold text-[#111827] uppercase tracking-wider font-mono mb-3">Jobs by City</h4>
+              <div className="space-y-1.5">
+                <Link href="/jobs/riyadh" className="block hover:text-[#06634D]">Riyadh</Link>
+                <Link href="/jobs/jeddah" className="block hover:text-[#06634D]">Jeddah</Link>
+                <Link href="/jobs/dammam" className="block hover:text-[#06634D]">Dammam</Link>
+                <Link href="/jobs/remote" className="block hover:text-[#06634D]">Remote</Link>
+              </div>
+            </div>
+            <div>
+              <h4 className="font-bold text-[#111827] uppercase tracking-wider font-mono mb-3">Jobs by Sector</h4>
+              <div className="space-y-1.5">
+                <Link href="/jobs/sector/fintech" className="block hover:text-[#06634D]">Fintech</Link>
+                <Link href="/jobs/sector/ai" className="block hover:text-[#06634D]">AI & ML</Link>
+                <Link href="/jobs/sector/b2b-saas" className="block hover:text-[#06634D]">B2B SaaS</Link>
+                <Link href="/jobs/sector/ecommerce" className="block hover:text-[#06634D]">E-commerce</Link>
+                <Link href="/jobs/sector/logistics" className="block hover:text-[#06634D]">Logistics</Link>
+                <Link href="/jobs/sector/cybersecurity" className="block hover:text-[#06634D]">Cybersecurity</Link>
+              </div>
+            </div>
+            <div>
+              <h4 className="font-bold text-[#111827] uppercase tracking-wider font-mono mb-3">By Stage</h4>
+              <div className="space-y-1.5">
+                <Link href="/jobs/stage/unicorn" className="block hover:text-[#06634D]">Unicorns</Link>
+                <Link href="/jobs/stage/series-b" className="block hover:text-[#06634D]">Series B</Link>
+                <Link href="/jobs/stage/series-a" className="block hover:text-[#06634D]">Series A</Link>
+                <Link href="/jobs/stage/seed" className="block hover:text-[#06634D]">Seed</Link>
+              </div>
+            </div>
+            <div>
+              <h4 className="font-bold text-[#111827] uppercase tracking-wider font-mono mb-3">Company</h4>
+              <div className="space-y-1.5">
+                <Link href="/submit" className="block hover:text-[#06634D]">Post a Job</Link>
+                <a href="https://x.com/halamanteeshi" target="_blank" rel="noopener noreferrer" className="block hover:text-[#06634D]">Twitter / X</a>
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 pt-6 border-t border-[#E5E7EB] text-xs text-[#9CA3AF]">
+            <p>buildsaudi.co</p>
           </div>
         </div>
       </footer>

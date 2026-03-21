@@ -4,9 +4,21 @@ import { ArrowLeft, ExternalLink, MapPin, Globe, Linkedin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { companies, getCompanyBySlug, getJobsByCompany } from "@/lib/data"
+import type { Metadata } from "next"
 
 export function generateStaticParams() {
   return companies.map((company) => ({ slug: company.slug }))
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const company = getCompanyBySlug(slug)
+  if (!company) return {}
+  const jobCount = getJobsByCompany(slug).length
+  return {
+    title: `${company.name} Jobs & Careers — ${jobCount} Open Roles | BuildSaudi`,
+    description: `Browse ${jobCount} open jobs at ${company.name}. ${company.description.slice(0, 100)} Apply directly on BuildSaudi.`,
+  }
 }
 
 export default async function CompanyPage({
@@ -23,8 +35,33 @@ export default async function CompanyPage({
 
   const companyJobs = getJobsByCompany(slug)
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: company.name,
+    url: company.website,
+    description: company.description,
+    address: { "@type": "PostalAddress", addressLocality: company.city, addressCountry: "SA" },
+  }
+
+  const jobPostingsLd = companyJobs.map((job) => ({
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    title: job.title,
+    description: `${job.title} at ${company.name}`,
+    datePosted: job.posted_date,
+    employmentType: job.job_type === "Full-time" ? "FULL_TIME" : job.job_type === "Part-time" ? "PART_TIME" : job.job_type === "Contract" ? "CONTRACTOR" : "FULL_TIME",
+    hiringOrganization: { "@type": "Organization", name: company.name, sameAs: company.website },
+    jobLocation: { "@type": "Place", address: { "@type": "PostalAddress", addressLocality: job.location.includes("Remote") ? "Remote" : job.location, addressCountry: "SA" } },
+    directApply: true,
+  }))
+
   return (
     <div className="min-h-screen">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      {jobPostingsLd.map((ld, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
+      ))}
       {/* Header */}
       <header className="border-b border-[#e5e5e5] bg-white">
         <div className="mx-auto max-w-[1200px] px-6 py-6">
