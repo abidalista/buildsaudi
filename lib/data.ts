@@ -50,7 +50,7 @@ export const companies: Company[] = [
 
   // ===== Energy =====
   { slug: "kashon", name: "Kashon", website: "https://kashon.sa", linkedin: "https://www.linkedin.com/company/kashon", logo_url: "/logos/kashon.svg", stage: "Series A", sector: ["Energy"], city: "Riyadh", description: "AI operations platform for fuel stations. $16M Series A.", careers_url: "https://kashon.sa" },
-  { slug: "sadeem", name: "Sadeem", website: "https://sadeem.com", linkedin: "https://www.linkedin.com/company/sadeem", logo_url: "/logos/sadeem.svg", stage: "Series A", sector: ["Energy", "Smart Cities"], city: "Riyadh", description: "AI-powered environmental monitoring and smart city infrastructure.", careers_url: "https://sadeem.com" },
+  { slug: "sadeem", name: "Sadeem", website: "https://sadeem.com", linkedin: "https://www.linkedin.com/company/sadeem", logo_url: "/logos/sadeem.webp", stage: "Series A", sector: ["Energy", "Smart Cities"], city: "Riyadh", description: "AI-powered environmental monitoring and smart city infrastructure.", careers_url: "https://sadeem.com" },
 
   // ===== Proptech =====
   { slug: "ummar", name: "Ummar", website: "https://ummar.sa", linkedin: "https://www.linkedin.com/company/ummar", logo_url: "/logos/ummar.svg", stage: "Seed", sector: ["Proptech"], city: "Riyadh", description: "AI rental and property management automation. $4M seed.", careers_url: "https://ummar.sa" },
@@ -71,7 +71,7 @@ export const companies: Company[] = [
   { slug: "mustadem", name: "Mustadem", website: "https://mustadem.com", linkedin: "https://www.linkedin.com/company/mustadem", logo_url: "/logos/mustadem.png", stage: "Seed", sector: ["Agriculture"], city: "Riyadh", description: "Smart aquaculture tech. AI to enhance fish production and food security.", careers_url: "https://mustadem.com" },
 
   // ===== Geospatial =====
-  { slug: "gbt", name: "GBT", website: "https://gbt.sa", linkedin: "https://www.linkedin.com/company/gbt-sa", logo_url: "/logos/gbt.svg", stage: "Seed", sector: ["Geospatial"], city: "Riyadh", description: "Geospatial AI and no-code spatial data tools. $1.33M pre-seed.", careers_url: "https://gbt.sa" },
+  { slug: "gbt", name: "GBT", website: "https://gbt.sa", linkedin: "https://www.linkedin.com/company/gbt-sa", logo_url: "/logos/gbt.png", stage: "Seed", sector: ["Geospatial"], city: "Riyadh", description: "Geospatial AI and no-code spatial data tools. $1.33M pre-seed.", careers_url: "https://gbt.sa" },
   { slug: "hazen", name: "Hazen.ai", website: "https://hazen.ai", linkedin: "https://www.linkedin.com/company/hazen-ai", logo_url: "/logos/hazen.png", stage: "Seed", sector: ["Geospatial", "Smart Cities"], city: "Makkah", description: "AI computer vision for traffic management and road safety.", careers_url: "https://hazen.ai/careers" },
 
   // ===== HR Tech =====
