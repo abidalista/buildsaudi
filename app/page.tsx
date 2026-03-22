@@ -102,7 +102,7 @@ export default function HomePage() {
               {/* Action buttons row */}
               <div className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-3">
                 {/* Made by pill */}
-                <a href="https://x.com/halamanteeshi" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-1.5 sm:px-3 py-0.5 sm:py-1.5 bg-[#06634D]/5 border border-[#06634D]/30 rounded text-xs text-[#06634D] whitespace-nowrap hover:bg-[#06634D]/10 transition-colors">
+                <a href="https://x.com/abidalista" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-1.5 sm:px-3 py-0.5 sm:py-1.5 bg-[#06634D]/5 border border-[#06634D]/30 rounded text-xs text-[#06634D] whitespace-nowrap hover:bg-[#06634D]/10 transition-colors">
                   <span>Made by</span><span className="text-[#D73833] font-bold font-mono">Abdulla</span>
                 </a>
 
@@ -120,7 +120,7 @@ export default function HomePage() {
 
                 {/* X / Twitter icon */}
                 <a
-                  href="https://x.com/halamanteeshi"
+                  href="https://x.com/abidalista"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-1 sm:p-1.5 text-[#06634D] hover:text-[#1DA1F2] transition-colors"
@@ -471,7 +471,7 @@ export default function HomePage() {
               <h4 className="font-bold text-[#111827] uppercase tracking-wider font-mono mb-3">Company</h4>
               <div className="space-y-1.5">
                 <Link href="/submit" className="block hover:text-[#06634D]">Post a Job</Link>
-                <a href="https://x.com/halamanteeshi" target="_blank" rel="noopener noreferrer" className="block hover:text-[#06634D]">Twitter / X</a>
+                <a href="https://x.com/abidalista" target="_blank" rel="noopener noreferrer" className="block hover:text-[#06634D]">Twitter / X</a>
               </div>
             </div>
           </div>
