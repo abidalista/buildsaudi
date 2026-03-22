@@ -45,6 +45,7 @@ export async function getCompanies(): Promise<Company[]> {
     sector: r.fields.Sector || [],
     city: r.fields.City || "Riyadh",
     description: r.fields.Description || "",
+    careers_url: r.fields["Careers URL"] || r.fields.Website || "",
   }))
 }
 
