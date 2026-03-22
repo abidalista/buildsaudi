@@ -193,6 +193,18 @@ export const companies: Company[] = [
     description: "AI-powered personalized meal planning and delivery. Uses machine learning to create custom nutrition plans.",
     careers_url: "https://www.linkedin.com/company/caborone/jobs",
   },
+  {
+    slug: "atam",
+    name: "ATAM",
+    website: "https://atam.careers",
+    linkedin: "https://www.linkedin.com/company/atam",
+    logo_url: "/logos/atam.png",
+    stage: "Seed",
+    sector: ["AI"],
+    city: "Riyadh",
+    description: "Autonomous defense systems and intelligence technology, built from Saudi Arabia. 19 open roles across engineering and operations.",
+    careers_url: "https://atam.careers",
+  },
 ]
 
 // Jobs archived — now linking directly to company career pages
