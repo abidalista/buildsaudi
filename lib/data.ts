@@ -3,7 +3,7 @@ import { Company, Job } from "./types"
 export const companies: Company[] = [
   // ===== AI Infrastructure =====
   { slug: "humain", name: "Humain", website: "https://humain.ai", linkedin: "https://www.linkedin.com/company/humainai", logo_url: "/logos/humain.svg", stage: "Growth", sector: ["AI Infrastructure"], city: "Riyadh", description: "PIF-backed AI investment company. $23B in partnerships with NVIDIA to build AI factories in KSA.", careers_url: "https://humain.ai" },
-  { slug: "sdaia-hexagon", name: "SDAIA Hexagon", website: "https://hexagon.com", linkedin: "https://www.linkedin.com/company/hexagon", logo_url: "/logos/hexagon.svg", stage: "Growth", sector: ["AI Infrastructure"], city: "Riyadh", description: "World's largest government Tier IV data center. 480MW facility in Riyadh.", careers_url: "https://hexagon.com/company/careers" },
+  { slug: "sdaia-hexagon", name: "SDAIA Hexagon", website: "https://hexagon.com", linkedin: "https://www.linkedin.com/company/hexagon", logo_url: "/logos/hexagon.png", stage: "Growth", sector: ["AI Infrastructure"], city: "Riyadh", description: "World's largest government Tier IV data center. 480MW facility in Riyadh.", careers_url: "https://hexagon.com/company/careers" },
   { slug: "infiniarc", name: "INFINIARC", website: "https://infiniarc.com", linkedin: "https://www.linkedin.com/company/infiniarc", logo_url: "/logos/infiniarc.svg", stage: "Growth", sector: ["AI Infrastructure"], city: "Riyadh", description: "100% Saudi. High-performance AI hardware, servers, and workstations. MOU with Intel.", careers_url: "https://infiniarc.com" },
 
   // ===== AI Research & LLMs =====
