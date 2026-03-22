@@ -367,12 +367,14 @@ export default function HomePage() {
                           <span className="px-1 py-0.5 sm:px-2.5 sm:py-1 bg-gray-100 border border-gray-200 text-gray-700 text-[10px] sm:text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">
                             {company.stage}
                           </span>
-                          <Link
-                            href={`/company/${company.slug}`}
+                          <a
+                            href={company.careers_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="px-1 py-0.5 sm:px-2.5 sm:py-1 bg-[#06634D] text-white text-[10px] sm:text-xs font-mono rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
                           >
                             View Jobs
-                          </Link>
+                          </a>
                         </div>
                       </div>
                     </div>

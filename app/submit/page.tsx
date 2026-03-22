@@ -160,7 +160,7 @@ export default function SubmitPage() {
                       <SelectValue placeholder="Select type" />
                     </SelectTrigger>
                     <SelectContent>
-                      {filterOptions.jobType.map((t) => (
+                      {["Full-time", "Contract", "Part-time", "Internship"].map((t) => (
                         <SelectItem key={t} value={t}>
                           {t}
                         </SelectItem>

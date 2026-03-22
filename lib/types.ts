@@ -8,6 +8,7 @@ export interface Company {
   sector: string[]
   city: string
   description: string
+  careers_url: string
   founded_year?: number
   team_size?: string
 }
