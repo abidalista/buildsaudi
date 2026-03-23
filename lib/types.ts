@@ -8,6 +8,7 @@ export interface Company {
   city: string
   description: string
   careers_url: string
+  logo_override?: string
   founded_year?: number
   team_size?: string
 }

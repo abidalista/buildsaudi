@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useCallback } from "react"
 import type { Company } from "@/lib/types"
 
 function getDomain(website: string): string {
@@ -26,9 +26,18 @@ const sectorColors: Record<string, string> = {
   Construction: "#92400E",
   "Bio & Health": "#DC2626",
   Education: "#9333EA",
+  Edtech: "#9333EA",
   Agriculture: "#15803D",
   Geospatial: "#0D9488",
   "HR Tech": "#E11D48",
+  Foodtech: "#F97316",
+  Robotics: "#6366F1",
+  "Vision 2030": "#0F766E",
+  "Data & Infrastructure": "#475569",
+  "Deep Tech": "#7C3AED",
+  IoT: "#0EA5E9",
+  Media: "#EC4899",
+  Healthtech: "#DC2626",
 }
 
 function LetterAvatar({ name, sector }: { name: string; sector: string[] }) {
@@ -51,23 +60,44 @@ export function CompanyLogo({
   className?: string
 }) {
   const domain = getDomain(company.website)
-  const [fallbackLevel, setFallbackLevel] = useState(0)
-  const [src, setSrc] = useState(
-    `https://logo.clearbit.com/${domain}`
-  )
 
-  const handleError = () => {
-    if (fallbackLevel === 0) {
-      setSrc(
-        `https://www.google.com/s2/favicons?domain=${domain}&sz=128`
-      )
-      setFallbackLevel(1)
-    } else {
-      setFallbackLevel(2)
-    }
+  const getInitialSrc = () => {
+    if (company.logo_override) return company.logo_override
+    return `https://logo.clearbit.com/${domain}`
   }
 
-  if (fallbackLevel === 2) {
+  const getInitialLevel = () => {
+    if (company.logo_override) return -1 // -1 = override mode
+    return 0
+  }
+
+  const [fallbackLevel, setFallbackLevel] = useState(getInitialLevel)
+  const [src, setSrc] = useState(getInitialSrc)
+  const [showLetter, setShowLetter] = useState(false)
+
+  const handleError = useCallback(() => {
+    if (fallbackLevel === -1) {
+      // override failed, go to clearbit
+      setSrc(`https://logo.clearbit.com/${domain}`)
+      setFallbackLevel(0)
+    } else if (fallbackLevel === 0) {
+      setSrc(`https://www.google.com/s2/favicons?domain=${domain}&sz=128`)
+      setFallbackLevel(1)
+    } else {
+      setShowLetter(true)
+    }
+  }, [fallbackLevel, domain])
+
+  const handleLoad = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = e.currentTarget
+    // Catch generic/tiny favicons — if image is smaller than 32px it's likely
+    // a default globe or generic placeholder
+    if (img.naturalWidth > 0 && img.naturalWidth < 32) {
+      handleError()
+    }
+  }, [handleError])
+
+  if (showLetter) {
     return <LetterAvatar name={company.name} sector={company.sector} />
   }
 
@@ -78,6 +108,7 @@ export function CompanyLogo({
       className={className}
       loading="lazy"
       onError={handleError}
+      onLoad={handleLoad}
     />
   )
 }
