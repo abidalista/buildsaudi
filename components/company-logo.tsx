@@ -32,7 +32,6 @@ const sectorColors: Record<string, string> = {
   "HR Tech": "#E11D48",
   Foodtech: "#F97316",
   Robotics: "#6366F1",
-  "Vision 2030": "#0F766E",
   "Data & Infrastructure": "#475569",
   "Deep Tech": "#7C3AED",
   IoT: "#0EA5E9",
