@@ -192,7 +192,7 @@ export default function HomePage() {
                   </span>
                 </div>
                 <div className="divide-y divide-[#D73833]/30">
-                  {companies.slice(0, 3).map((c) => (
+                  {companies.filter((c) => ["humain", "sdaia", "atam"].includes(c.slug)).map((c) => (
                     <div key={c.slug} className="py-2 first:pt-0 last:pb-0 flex items-center justify-between gap-2">
                       <a
                         href={c.website}
