@@ -3,7 +3,6 @@ export interface Company {
   name: string
   website: string
   linkedin: string
-  logo_url: string
   stage: string
   sector: string[]
   city: string

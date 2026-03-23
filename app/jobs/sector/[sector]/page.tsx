@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { companies } from "@/lib/data"
+import { CompanyLogo } from "@/components/company-logo"
 import { sectors } from "@/lib/seo"
 import type { Metadata } from "next"
 
@@ -47,7 +48,7 @@ export default async function SectorPage({ params }: { params: Promise<{ sector:
             <div key={company.slug} className="group bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden">
               <div className="flex items-center gap-3 sm:gap-5 px-5 py-4">
                 <div className="flex size-12 sm:size-14 shrink-0 items-center justify-center rounded-xl bg-white border border-gray-200 overflow-hidden">
-                  <img src={company.logo_url} alt={company.name} className="size-8 sm:size-9 object-contain" />
+                  <CompanyLogo company={company} />
                 </div>
                 <div className="flex-1 min-w-0">
                   <Link href={`/company/${company.slug}`} className="text-lg font-bold text-[#111827] hover:text-[#06634D] transition-colors">{company.name}</Link>

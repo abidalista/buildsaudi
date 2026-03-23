@@ -4,6 +4,7 @@ import { ArrowLeft, ExternalLink, MapPin, Globe, Linkedin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { companies, getCompanyBySlug, getJobsByCompany } from "@/lib/data"
+import { CompanyLogo } from "@/components/company-logo"
 import type { Metadata } from "next"
 
 export function generateStaticParams() {
@@ -99,11 +100,7 @@ export default async function CompanyPage({
           <div className="flex items-start gap-5">
             {/* Company Logo */}
             <div className="flex size-16 shrink-0 items-center justify-center rounded-xl bg-white border border-gray-200 overflow-hidden">
-              <img
-                src={company.logo_url}
-                alt={company.name}
-                className="size-10 object-contain"
-              />
+              <CompanyLogo company={company} className="size-10 object-contain" />
             </div>
 
             <div className="flex-1 min-w-0">

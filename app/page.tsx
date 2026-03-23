@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { companies, getJobsByCompany, filterOptions } from "@/lib/data"
+import { CompanyLogo } from "@/components/company-logo"
 
 export default function HomePage() {
   const [search, setSearch] = useState("")
@@ -336,11 +337,7 @@ export default function HomePage() {
                     <div className="flex items-center gap-3 sm:gap-5 px-5 py-4">
                       {/* Company Logo */}
                       <div className="flex size-12 sm:size-14 shrink-0 items-center justify-center rounded-xl bg-white border border-gray-200 overflow-hidden">
-                        <img
-                          src={company.logo_url}
-                          alt={company.name}
-                          className="size-8 sm:size-9 object-contain"
-                        />
+                        <CompanyLogo company={company} />
                       </div>
 
                       {/* Company Info */}

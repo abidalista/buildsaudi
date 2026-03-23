@@ -40,7 +40,6 @@ export async function getCompanies(): Promise<Company[]> {
     name: r.fields.Name || "",
     website: r.fields.Website || "",
     linkedin: r.fields.LinkedIn || "",
-    logo_url: r.fields["Logo URL"] || `/logos/${(r.fields.Slug || "").toLowerCase()}.png`,
     stage: r.fields.Stage || "Seed",
     sector: r.fields.Sector || [],
     city: r.fields.City || "Riyadh",
