@@ -345,115 +345,111 @@ export default function HomePage() {
                     key={company.slug}
                     className="group bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden"
                   >
-                    <div className="flex items-center gap-3 sm:gap-5 px-5 py-4">
-                      {/* Company Logo */}
-                      <div className="flex size-12 sm:size-14 shrink-0 items-center justify-center rounded-xl bg-white border border-gray-200 overflow-hidden">
-                        <CompanyLogo company={company} />
-                      </div>
+                    <div className="p-3 sm:p-6 cursor-pointer" onClick={() => toggleCard(company.slug)}>
+                      <div className="flex items-center gap-3 sm:gap-5">
+                        {/* Company Logo */}
+                        <div className="flex size-12 sm:size-14 shrink-0 items-center justify-center rounded-xl bg-white border border-gray-200 overflow-hidden">
+                          <CompanyLogo company={company} />
+                        </div>
 
-                      {/* Company Info */}
-                      <div className="flex-1 min-w-0">
-                        <a
-                          href={company.website}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-lg font-bold text-[#111827] hover:text-[#06634D] transition-colors"
-                        >
-                          {company.name}
-                        </a>
-                        <p className="mt-0.5 text-sm text-[#6B7280] truncate">
-                          {company.description}
-                        </p>
-                      </div>
+                        {/* Company Info */}
+                        <div className="flex-1 min-w-0">
+                          <a
+                            href={company.website}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="text-lg font-bold text-[#111827] hover:text-[#06634D] transition-colors"
+                          >
+                            {company.name}
+                          </a>
+                          <p className="mt-0.5 text-sm text-[#6B7280] truncate">
+                            {company.description}
+                          </p>
+                        </div>
 
-                      {/* Right Side: Sector + Stage + View Jobs + Chevron */}
-                      <div className="flex-shrink-0 flex flex-col items-end gap-1 sm:gap-5">
-                        <div className="flex items-center gap-1 sm:gap-2">
+                        {/* Right Side: Sector + Stage + View Jobs */}
+                        <div className="flex-shrink-0 flex flex-col items-end gap-1 sm:gap-2">
                           <span className="px-1 py-0.5 sm:px-2.5 sm:py-1 bg-gray-100 border border-gray-200 text-gray-700 text-[10px] sm:text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">
                             {company.sector[0]}
                           </span>
+                          <div className="flex items-center gap-1 sm:gap-2">
+                            <span className="px-1 py-0.5 sm:px-2.5 sm:py-1 bg-gray-100 border border-gray-200 text-gray-700 text-[10px] sm:text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">
+                              {company.stage}
+                            </span>
+                            <a
+                              href={company.careers_url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="px-1 py-0.5 sm:px-2.5 sm:py-1 bg-[#06634D] text-white text-[10px] sm:text-xs font-mono rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
+                            >
+                              View Jobs
+                            </a>
+                          </div>
                         </div>
-                        <div className="flex items-center gap-1 sm:gap-2">
-                          <span className="px-1 py-0.5 sm:px-2.5 sm:py-1 bg-gray-100 border border-gray-200 text-gray-700 text-[10px] sm:text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">
-                            {company.stage}
-                          </span>
-                          <a
-                            href={company.careers_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-1 py-0.5 sm:px-2.5 sm:py-1 bg-[#06634D] text-white text-[10px] sm:text-xs font-mono rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
-                          >
-                            View Jobs
-                          </a>
-                          <button
-                            onClick={() => toggleCard(company.slug)}
-                            className="p-1 text-gray-400 hover:text-gray-700 transition-colors"
-                            aria-label={isExpanded ? "Collapse details" : "Expand details"}
-                          >
-                            <ChevronDown className={`size-4 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`} />
-                          </button>
-                        </div>
+                      </div>
+
+                      {/* Centered Chevron Toggle */}
+                      <div className="flex justify-center mt-2">
+                        <ChevronDown className={`size-5 text-gray-400 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`} />
                       </div>
                     </div>
 
                     {/* Expandable Details */}
-                    {isExpanded && (
-                      <div className="border-t border-gray-100 bg-gray-50 px-5 py-4">
-                        <div className="grid grid-cols-2 gap-x-8 gap-y-4">
-                          {company.founders && (
-                            <div>
-                              <p className="text-[10px] font-mono uppercase tracking-wider text-gray-500 mb-1">Founders</p>
-                              <p className="text-sm font-semibold text-gray-900">{company.founders}</p>
-                            </div>
-                          )}
-                          {company.total_raised && (
-                            <div>
-                              <p className="text-[10px] font-mono uppercase tracking-wider text-gray-500 mb-1">Total Raised</p>
-                              <p className="text-sm font-semibold text-gray-900">{company.total_raised}</p>
-                            </div>
-                          )}
-                          <div>
-                            <p className="text-[10px] font-mono uppercase tracking-wider text-gray-500 mb-1">HQ City</p>
-                            <p className="text-sm font-semibold text-gray-900">{company.city}</p>
+                    <div
+                      className="overflow-hidden transition-all duration-300 ease-out"
+                      style={{ maxHeight: isExpanded ? "300px" : "0", opacity: isExpanded ? 1 : 0 }}
+                    >
+                      <div className="border-t border-gray-200 bg-gray-50 px-4 sm:px-6 py-3 sm:py-4">
+                        <div className="grid grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-2 sm:gap-y-3">
+                          <div className="flex flex-col gap-0.5 sm:gap-1">
+                            <div className="font-mono text-[10px] sm:text-xs uppercase tracking-wider text-gray-500">Founders</div>
+                            <div className="text-[10px] sm:text-sm text-gray-900 break-words font-medium">{company.founders || "—"}</div>
                           </div>
-                          {company.team_size && (
-                            <div>
-                              <p className="text-[10px] font-mono uppercase tracking-wider text-gray-500 mb-1">Employees</p>
-                              <span className="inline-block px-2 py-0.5 text-sm font-semibold text-gray-900 border border-gray-200 rounded">{company.team_size}</span>
-                            </div>
-                          )}
-                          {company.founded_year && (
-                            <div>
-                              <p className="text-[10px] font-mono uppercase tracking-wider text-gray-500 mb-1">Founded</p>
-                              <p className="text-sm font-semibold text-gray-900">{company.founded_year}</p>
-                            </div>
-                          )}
-                          {company.last_round_date && (
-                            <div>
-                              <p className="text-[10px] font-mono uppercase tracking-wider text-gray-500 mb-1">Last Round Date</p>
-                              <p className="text-sm font-semibold text-gray-900">{company.last_round_date}</p>
-                            </div>
-                          )}
-                          <div>
-                            <p className="text-[10px] font-mono uppercase tracking-wider text-gray-500 mb-1">Socials</p>
-                            <div className="flex items-center gap-3">
-                              {company.twitter_url && (
-                                <a href={company.twitter_url} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900">
-                                  <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
-                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                                  </svg>
-                                </a>
-                              )}
-                              <a href={company.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900">
-                                <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
-                                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                                </svg>
-                              </a>
-                            </div>
+                          <div className="flex flex-col gap-0.5 sm:gap-1">
+                            <div className="font-mono text-[10px] sm:text-xs uppercase tracking-wider text-gray-500">Total Raised</div>
+                            <div className="text-[10px] sm:text-sm text-gray-900 font-medium">{company.total_raised || "—"}</div>
+                          </div>
+                          <div className="flex flex-col gap-0.5 sm:gap-1">
+                            <div className="font-mono text-[10px] sm:text-xs uppercase tracking-wider text-gray-500">HQ City</div>
+                            <div className="text-[10px] sm:text-sm text-gray-900 font-medium">{company.city}</div>
+                          </div>
+                          <div className="flex flex-col gap-0.5 sm:gap-1">
+                            <div className="font-mono text-[10px] sm:text-xs uppercase tracking-wider text-gray-500">Employees</div>
+                            <div className="text-[10px] sm:text-sm text-gray-900 font-medium">{company.team_size || "—"}</div>
+                          </div>
+                          <div className="flex flex-col gap-0.5 sm:gap-1">
+                            <div className="font-mono text-[10px] sm:text-xs uppercase tracking-wider text-gray-500">Founded</div>
+                            <div className="text-[10px] sm:text-sm text-gray-900 font-medium">{company.founded_year || "—"}</div>
+                          </div>
+                          <div className="flex flex-col gap-0.5 sm:gap-1">
+                            <div className="font-mono text-[10px] sm:text-xs uppercase tracking-wider text-gray-500">Last Round</div>
+                            <div className="text-[10px] sm:text-sm text-gray-900 font-medium">{company.last_round_date || "—"}</div>
                           </div>
                         </div>
+                        {/* Socials row */}
+                        <div className="flex items-center gap-3 mt-3 pt-3 border-t border-gray-200">
+                          {company.twitter_url && (
+                            <a href={company.twitter_url} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-gray-500 hover:text-gray-900 transition-colors">
+                              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                              </svg>
+                            </a>
+                          )}
+                          <a href={company.linkedin} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-gray-500 hover:text-gray-900 transition-colors">
+                            <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
+                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                          </a>
+                          <a href={company.website} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-gray-500 hover:text-gray-900 transition-colors">
+                            <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                            </svg>
+                          </a>
+                        </div>
                       </div>
-                    )}
+                    </div>
                   </div>
                 )
               })}
