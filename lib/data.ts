@@ -89,8 +89,62 @@ export const companies: Company[] = [
   // ===== MEDIA =====
   { slug: "telfaz11", name: "Telfaz11", website: "https://telfaz11.com", linkedin: "https://www.linkedin.com/company/telfaz11", stage: "Growth", sector: ["Media"], city: "Riyadh", description: "Saudi digital content and entertainment studio.", careers_url: "https://telfaz11.com" },
 
-  // ===== DEFENSE =====
+  // ===== DEFENSE & AEROSPACE =====
   { slug: "atam", name: "ATAM", website: "https://atam.careers", linkedin: "https://www.linkedin.com/company/atam", stage: "Seed", sector: ["Defense"], city: "Riyadh", description: "Builds autonomous defense systems.", careers_url: "https://atam.careers" },
+  { slug: "neo-space", name: "Neo Space Group", website: "https://neospacegroup.com", linkedin: "https://www.linkedin.com/company/neospacegroup", stage: "Seed", sector: ["Defense"], city: "Riyadh", description: "Builds satellite and space technology.", careers_url: "https://neospacegroup.com" },
+
+  // ===== CYBERSECURITY =====
+  { slug: "cognna", name: "Cognna", website: "https://www.cognna.com", linkedin: "https://www.linkedin.com/company/cognna", stage: "Series A", sector: ["Cybersecurity"], city: "Riyadh", description: "AI-powered SOC automation and advanced threat detection.", careers_url: "https://www.cognna.com" },
+  { slug: "solidrange", name: "Solidrange", website: "https://solidrange.com", linkedin: "https://www.linkedin.com/company/solidrange", stage: "Seed", sector: ["Cybersecurity"], city: "Riyadh", description: "Automates cybersecurity compliance (GRC).", careers_url: "https://solidrange.com" },
+  { slug: "dphish", name: "dPhish", website: "https://dphish.com", linkedin: "https://www.linkedin.com/company/dphish", stage: "Seed", sector: ["Cybersecurity"], city: "Riyadh", description: "Detects and prevents phishing attacks.", careers_url: "https://dphish.com" },
+  { slug: "cyberni", name: "Cyberni", website: "https://cyberni.com", linkedin: "https://www.linkedin.com/company/cyberni", stage: "Seed", sector: ["Cybersecurity"], city: "Riyadh", description: "AI-driven cybersecurity for Saudi enterprises.", careers_url: "https://cyberni.com" },
+
+  // ===== GOVTECH =====
+  { slug: "governata", name: "Governata", website: "https://governata.com", linkedin: "https://www.linkedin.com/company/governata", stage: "Seed", sector: ["Govtech"], city: "Riyadh", description: "AI governance and compliance platform.", careers_url: "https://governata.com" },
+  { slug: "takamul", name: "Takamul", website: "https://takamul.com.sa", linkedin: "https://www.linkedin.com/company/takamul", stage: "Growth", sector: ["Govtech"], city: "Riyadh", description: "Digital transformation for government.", careers_url: "https://takamul.com.sa" },
+
+  // ===== AI (from Airtable) =====
+  { slug: "cranl", name: "Cranl", website: "https://cranl.com", linkedin: "https://www.linkedin.com/company/cranl", stage: "Seed", sector: ["AI"], city: "Riyadh", description: "AI research and intelligent products.", careers_url: "https://cranl.com" },
+  { slug: "intelmatix", name: "Intelmatix", website: "https://intelmatix.ai", linkedin: "https://www.linkedin.com/company/intelmatix", stage: "Series A", sector: ["AI"], city: "Riyadh", description: "AI-powered decision intelligence for enterprise.", careers_url: "https://intelmatix.ai/company-careers.html" },
+  { slug: "nuwayra", name: "Nuwayra", website: "https://nuwayra.ai", linkedin: "https://www.linkedin.com/company/nuwayra", stage: "Seed", sector: ["AI"], city: "Riyadh", description: "Generative AI for government and enterprise.", careers_url: "https://nuwayra.ai" },
+  { slug: "widebot", name: "WideBot", website: "https://widebot.ai", linkedin: "https://www.linkedin.com/company/widebot", stage: "Series A", sector: ["AI"], city: "Riyadh", description: "Arabic AI chatbots for governments and enterprises.", careers_url: "https://widebot.ai" },
+  { slug: "wittify", name: "Wittify.ai", website: "https://wittify.ai", linkedin: "https://www.linkedin.com/company/wittify", stage: "Seed", sector: ["AI"], city: "Riyadh", description: "AI agents for omnichannel customer touchpoints.", careers_url: "https://wittify.ai" },
+  { slug: "infiniarc", name: "INFINIARC", website: "https://infiniarc.com", linkedin: "https://www.linkedin.com/company/infiniarc", stage: "Growth", sector: ["AI"], city: "Riyadh", description: "Builds high-performance AI servers and hardware.", careers_url: "https://infiniarc.com" },
+  { slug: "sdaia-hexagon", name: "SDAIA Hexagon", website: "https://hexagon.com", linkedin: "https://www.linkedin.com/company/hexagon", stage: "Growth", sector: ["AI"], city: "Riyadh", description: "World's largest government Tier IV data center.", careers_url: "https://hexagon.com/company/careers" },
+
+  // ===== SAAS (from Airtable) =====
+  { slug: "unifonic", name: "Unifonic", website: "https://unifonic.com", linkedin: "https://www.linkedin.com/company/unifonic", stage: "Series B", sector: ["SaaS"], city: "Riyadh", description: "AI-powered customer engagement platform (CPaaS).", careers_url: "https://jobs.unifonic.com" },
+  { slug: "rukiza", name: "Rukiza", website: "https://rukiza.com", linkedin: "https://www.linkedin.com/company/rukiza", stage: "Seed", sector: ["SaaS"], city: "Riyadh", description: "Scheduling and document verification.", careers_url: "https://rukiza.com" },
+
+  // ===== FINTECH (from Airtable) =====
+  { slug: "sayfi", name: "SayFi", website: "https://sayfi.co", linkedin: "https://www.linkedin.com/company/sayfi", stage: "Series A", sector: ["Fintech"], city: "Riyadh", description: "AI expense management for finance teams.", careers_url: "https://sayfi.co" },
+  { slug: "oqood", name: "Oqood", website: "https://oqood.ai", linkedin: "https://www.linkedin.com/company/oqood", stage: "Seed", sector: ["Fintech"], city: "Riyadh", description: "Automates legal workflows with AI.", careers_url: "https://oqood.ai" },
+  { slug: "kashon", name: "Kashon", website: "https://kashon.sa", linkedin: "https://www.linkedin.com/company/kashon", stage: "Series A", sector: ["Energy"], city: "Riyadh", description: "AI operations for fuel stations.", careers_url: "https://kashon.sa" },
+
+  // ===== E-COMMERCE (from Airtable) =====
+  { slug: "rawaa", name: "Rawaa", website: "https://rawaa.com", linkedin: "https://www.linkedin.com/company/rawaa", stage: "Series B", sector: ["E-commerce"], city: "Riyadh", description: "Cloud POS with AI accounting for merchants.", careers_url: "https://rawaa.com" },
+  { slug: "judhur", name: "Judhur", website: "https://judhur.com", linkedin: "https://www.linkedin.com/company/judhur", stage: "Seed", sector: ["E-commerce"], city: "Riyadh", description: "Multi-channel e-commerce management.", careers_url: "https://judhur.com" },
+  { slug: "jazer", name: "Jazer", website: "https://jazer.io", linkedin: "https://www.linkedin.com/company/jazer", stage: "Seed", sector: ["E-commerce"], city: "Riyadh", description: "AI inventory for e-commerce sellers.", careers_url: "https://jazer.io" },
+  { slug: "rvin", name: "RVIN", website: "https://rvin.ai", linkedin: "https://www.linkedin.com/company/rvin", stage: "Seed", sector: ["E-commerce"], city: "Riyadh", description: "AI virtual employees for online stores.", careers_url: "https://rvin.ai" },
+
+  // ===== EDUCATION =====
+  { slug: "noon-academy", name: "Noon Academy", website: "https://noon.academy", linkedin: "https://www.linkedin.com/company/noonacademy", stage: "Series A", sector: ["Edtech"], city: "Riyadh", description: "Social learning and AI tutoring.", careers_url: "https://noon.academy" },
+
+  // ===== PROPTECH =====
+  { slug: "ummar", name: "Ummar", website: "https://ummar.sa", linkedin: "https://www.linkedin.com/company/ummar", stage: "Seed", sector: ["Proptech"], city: "Riyadh", description: "Automates rental and property management.", careers_url: "https://ummar.sa" },
+
+  // ===== ENERGY =====
+  { slug: "sadeem", name: "Sadeem", website: "https://sadeem.com", linkedin: "https://www.linkedin.com/company/sadeem", stage: "Series A", sector: ["Energy"], city: "Riyadh", description: "Environmental monitoring and smart infrastructure.", careers_url: "https://sadeem.com" },
+
+  // ===== GEOSPATIAL =====
+  { slug: "gbt", name: "GBT", website: "https://gbt.sa", linkedin: "https://www.linkedin.com/company/gbt-sa", stage: "Seed", sector: ["Geospatial"], city: "Riyadh", description: "No-code geospatial AI tools.", careers_url: "https://gbt.sa" },
+
+  // ===== HR TECH =====
+  { slug: "merit-incentives", name: "Merit Incentives", website: "https://meritincentives.com", linkedin: "https://www.linkedin.com/company/meritincentives", stage: "Growth", sector: ["HR Tech"], city: "Riyadh", description: "Employee engagement and incentives.", careers_url: "https://meritincentives.com" },
+
+  // ===== AGRICULTURE =====
+  { slug: "edama", name: "Edama", website: "https://edama.com", linkedin: "https://www.linkedin.com/company/edama", stage: "Seed", sector: ["Agriculture"], city: "Riyadh", description: "Recycles organic waste into farm products.", careers_url: "https://edama.com" },
+  { slug: "mustadem", name: "Mustadem", website: "https://mustadem.com", linkedin: "https://www.linkedin.com/company/mustadem", stage: "Seed", sector: ["Agriculture"], city: "Riyadh", description: "Smart aquaculture technology.", careers_url: "https://mustadem.com" },
 ]
 
 // Jobs archived — linking directly to company career pages
