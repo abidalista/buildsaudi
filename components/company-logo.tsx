@@ -45,10 +45,19 @@ function LetterAvatar({ name, sector }: { name: string; sector: string[] }) {
   )
 }
 
-// logos under 600 bytes are generic google favicon globes. show letter avatar instead.
+// no local logo file — show letter avatar instead.
 const GENERIC_LOGO_SLUGS = new Set([
-  "bayzat", "d360", "fitting", "fordeal", "gbt", "halo-media",
-  "oqood", "salesfine", "sayfi", "stitch-money", "trukker"
+  "abwab-ai", "aec", "alat", "atam", "ballurh", "bayzat", "bynow",
+  "calo", "capify", "ceer", "collecto", "d360", "edana", "ejar",
+  "engagesoft", "erad", "firnas", "fitting", "foodics", "fordeal",
+  "gathern", "gbt", "glamera", "hala", "halo-media", "hazen",
+  "intella-ai", "jahez", "jazer", "jisr", "judhur", "kashon", "kilow",
+  "kliq", "leejak", "lite", "livedin", "nayla", "neo-space", "ninja",
+  "noon-academy", "nuwayra", "oqood", "open-valley", "petroapp",
+  "picship", "rasan", "rased", "rawaa", "reporty", "salesfine", "sayfi",
+  "sdaia", "silq", "spore", "spoilz", "stitch-money", "string-tech",
+  "supplai", "syarah", "tabsense", "torod", "trubuild", "trukker",
+  "ummar", "velents", "wakecap", "xbites", "yamm", "zenhr"
 ])
 
 export function CompanyLogo({
