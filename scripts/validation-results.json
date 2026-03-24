@@ -1,0 +1,1307 @@
+[
+  {
+    "slug": "ninja",
+    "name": "Ninja",
+    "website": "https://ananinja.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/ananinja",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://ananinja.com",
+    "careers_status": "OK (200)",
+    "verdict": "warn",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin returns 404"
+    ]
+  },
+  {
+    "slug": "tabby",
+    "name": "Tabby",
+    "website": "https://tabby.ai",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/tabbyai",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://tabby.ai/careers",
+    "careers_status": "OK (200)",
+    "verdict": "warn",
+    "issues": [
+      "linkedin returns 404"
+    ]
+  },
+  {
+    "slug": "tamara",
+    "name": "Tamara",
+    "website": "https://tamara.co",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/tamara",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://job-boards.eu.greenhouse.io/tamara",
+    "careers_status": "OK (200)",
+    "verdict": "pass",
+    "issues": [
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "stc-pay",
+    "name": "stc pay",
+    "website": "https://stcpay.com.sa",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/stcpay",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://stcpay.com.sa",
+    "careers_status": "OK (200)",
+    "verdict": "warn",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin returns 404"
+    ]
+  },
+  {
+    "slug": "salla",
+    "name": "Salla",
+    "website": "https://salla.com",
+    "website_status": "HTTP 403",
+    "linkedin": "https://www.linkedin.com/company/sallaapp",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://salla.com",
+    "careers_status": "HTTP 403",
+    "verdict": "warn",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "website returns 403",
+      "careers_url returns 403"
+    ]
+  },
+  {
+    "slug": "noon",
+    "name": "Noon",
+    "website": "https://noon.com",
+    "website_status": "HTTP 403",
+    "linkedin": "https://www.linkedin.com/company/noon",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://noon.com",
+    "careers_status": "HTTP 403",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "website returns 403",
+      "careers_url returns 403"
+    ]
+  },
+  {
+    "slug": "humain",
+    "name": "Humain",
+    "website": "https://humain.ai",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/humainai",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://humain.ai",
+    "careers_status": "OK (200)",
+    "verdict": "pass",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)"
+    ]
+  },
+  {
+    "slug": "lucidya",
+    "name": "Lucidya",
+    "website": "https://lucidya.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/lucidya",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://www.lucidya.com/careers-at-lucidya/",
+    "careers_status": "OK (200)",
+    "verdict": "pass",
+    "issues": [
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "mozn",
+    "name": "Mozn",
+    "website": "https://mozn.ai",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/mozn",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://www.mozn.ai/careers",
+    "careers_status": "OK (200)",
+    "verdict": "pass",
+    "issues": [
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "wakecap",
+    "name": "WakeCap",
+    "website": "https://www.wakecap.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/wakecap",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://www.wakecap.com/recruitment",
+    "careers_status": "OK (200)",
+    "verdict": "pass",
+    "issues": [
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "deep-sa",
+    "name": "DEEP.SA",
+    "website": "https://deep.sa",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/deepsa",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://deep.sa",
+    "careers_status": "OK (200)",
+    "verdict": "pass",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)"
+    ]
+  },
+  {
+    "slug": "sawt",
+    "name": "Sawt",
+    "website": "https://sawt.ai",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/sawt-ai",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://sawt.ai",
+    "careers_status": "OK (200)",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "seed AI company with .ai domain (high hallucination risk)",
+      "linkedin returns 404"
+    ]
+  },
+  {
+    "slug": "hazen",
+    "name": "Hazen.ai",
+    "website": "https://hazen.ai",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/hazen-ai",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://hazen.ai/careers",
+    "careers_status": "OK (200)",
+    "verdict": "pass",
+    "issues": [
+      "seed AI company with .ai domain (high hallucination risk)"
+    ]
+  },
+  {
+    "slug": "artefact",
+    "name": "Artefact",
+    "website": "https://artefact.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/artefact-global",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://artefact.com/careers",
+    "careers_status": "OK (200)",
+    "verdict": "pass",
+    "issues": []
+  },
+  {
+    "slug": "aramco-digital",
+    "name": "Aramco Digital",
+    "website": "https://aramcodigital.com",
+    "website_status": "FAIL (ENOTFOUND)",
+    "linkedin": "https://www.linkedin.com/company/aramcodigital",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://aramcodigital.com",
+    "careers_status": "FAIL (ENOTFOUND)",
+    "verdict": "warn",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "website unreachable: ENOTFOUND",
+      "linkedin returns 404",
+      "careers_url unreachable: ENOTFOUND"
+    ]
+  },
+  {
+    "slug": "aramco-ventures",
+    "name": "Aramco Ventures",
+    "website": "https://aramcoventures.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/aramcoventures",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://aramcoventures.com",
+    "careers_status": "OK (200)",
+    "verdict": "pass",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)"
+    ]
+  },
+  {
+    "slug": "hala",
+    "name": "HALA",
+    "website": "https://hala.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/haborone",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://hala.com",
+    "careers_status": "OK (200)",
+    "verdict": "warn",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin returns 404"
+    ]
+  },
+  {
+    "slug": "erad",
+    "name": "Erad",
+    "website": "https://erad.co",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/erad-co",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://erad.co",
+    "careers_status": "OK (200)",
+    "verdict": "warn",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin returns 404"
+    ]
+  },
+  {
+    "slug": "tamam",
+    "name": "Tamam",
+    "website": "https://tamam.sa",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/tamam-financing",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://tamam.sa",
+    "careers_status": "OK (200)",
+    "verdict": "warn",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin returns 404"
+    ]
+  },
+  {
+    "slug": "d360",
+    "name": "D360 Bank",
+    "website": "https://d360.com",
+    "website_status": "HTTP 500",
+    "linkedin": "https://www.linkedin.com/company/d360bank",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://d360.com",
+    "careers_status": "HTTP 500",
+    "verdict": "warn",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "website returns 500",
+      "careers_url returns 500"
+    ]
+  },
+  {
+    "slug": "lean-technologies",
+    "name": "Lean Technologies",
+    "website": "https://leantech.me",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/leantechnologies",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://leantech.me",
+    "careers_status": "OK (200)",
+    "verdict": "pass",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)"
+    ]
+  },
+  {
+    "slug": "safqah",
+    "name": "Safqah Capital",
+    "website": "https://safqah.com",
+    "website_status": "HTTP 403",
+    "linkedin": "https://www.linkedin.com/company/safqah",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://safqah.com",
+    "careers_status": "OK (200)",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "website returns 403"
+    ]
+  },
+  {
+    "slug": "zid",
+    "name": "Zid",
+    "website": "https://zid.sa",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/zidsa",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://zid.sa",
+    "careers_status": "OK (200)",
+    "verdict": "warn",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin returns 404"
+    ]
+  },
+  {
+    "slug": "syarah",
+    "name": "Syarah",
+    "website": "https://syarah.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/syarah",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://syarah.com",
+    "careers_status": "OK (200)",
+    "verdict": "suspect",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "soum",
+    "name": "Soum",
+    "website": "https://soum.sa",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/soum",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://soum.sa",
+    "careers_status": "OK (200)",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "linkedin returns 404"
+    ]
+  },
+  {
+    "slug": "fordeal",
+    "name": "Fordeal",
+    "website": "https://fordeal.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/fordeal",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://fordeal.com",
+    "careers_status": "OK (200)",
+    "verdict": "suspect",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "sary",
+    "name": "Sary",
+    "website": "https://sary.sa",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/trysary",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://apply.workable.com/sary/",
+    "careers_status": "OK (200)",
+    "verdict": "pass",
+    "issues": []
+  },
+  {
+    "slug": "nana",
+    "name": "NANA",
+    "website": "https://nana.sa",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/nanasa",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://nana.sa",
+    "careers_status": "OK (200)",
+    "verdict": "warn",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin returns 404"
+    ]
+  },
+  {
+    "slug": "rewaa",
+    "name": "Rewaa",
+    "website": "https://rewaa.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/rewaa",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://rewaa.com",
+    "careers_status": "OK (200)",
+    "verdict": "suspect",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "gathern",
+    "name": "Gathern",
+    "website": "https://gathern.co",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/gathern",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://gathern.co",
+    "careers_status": "OK (200)",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "linkedin returns 404"
+    ]
+  },
+  {
+    "slug": "retailo",
+    "name": "Retailo",
+    "website": "https://retailo.co",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/retailo",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://retailo.co",
+    "careers_status": "OK (200)",
+    "verdict": "suspect",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "foodics",
+    "name": "Foodics",
+    "website": "https://www.foodics.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/foodics",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://apply.workable.com/foodics/",
+    "careers_status": "OK (200)",
+    "verdict": "pass",
+    "issues": [
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "jahez",
+    "name": "Jahez",
+    "website": "https://jahez.net",
+    "website_status": "HTTP 403",
+    "linkedin": "https://www.linkedin.com/company/jahez",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://jahez.net",
+    "careers_status": "HTTP 403",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "website returns 403",
+      "careers_url returns 403"
+    ]
+  },
+  {
+    "slug": "trukker",
+    "name": "TruKKer",
+    "website": "https://trukker.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/trukker",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://trukker.com",
+    "careers_status": "OK (200)",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "linkedin returns 404"
+    ]
+  },
+  {
+    "slug": "classera",
+    "name": "Classera",
+    "website": "https://classera.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/classera",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://classera.com",
+    "careers_status": "OK (200)",
+    "verdict": "suspect",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "labayh",
+    "name": "Labayh",
+    "website": "https://labayh.net",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/labayh",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://labayh.net",
+    "careers_status": "OK (200)",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "linkedin returns 404"
+    ]
+  },
+  {
+    "slug": "cura",
+    "name": "Cura",
+    "website": "https://cura.healthcare",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/cura-healthcare",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://cura.healthcare",
+    "careers_status": "OK (200)",
+    "verdict": "pass",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)"
+    ]
+  },
+  {
+    "slug": "jisr",
+    "name": "Jisr",
+    "website": "https://jisr.net",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/jisr",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://jisr.net",
+    "careers_status": "OK (200)",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "linkedin returns 404"
+    ]
+  },
+  {
+    "slug": "zenhr",
+    "name": "ZenHR",
+    "website": "https://zenhr.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/zenhr",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://zenhr.com",
+    "careers_status": "OK (200)",
+    "verdict": "suspect",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "bayzat",
+    "name": "Bayzat",
+    "website": "https://bayzat.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/bayzat",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://bayzat.com",
+    "careers_status": "OK (200)",
+    "verdict": "suspect",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "elm",
+    "name": "Elm",
+    "website": "https://elm.sa",
+    "website_status": "FAIL (UNABLE_TO_VERIFY_LEAF_SIGNATURE)",
+    "linkedin": "https://www.linkedin.com/company/elm",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://career.elm.sa/elm",
+    "careers_status": "OK (200)",
+    "verdict": "warn",
+    "issues": [
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "website unreachable: UNABLE_TO_VERIFY_LEAF_SIGNATURE"
+    ]
+  },
+  {
+    "slug": "rize",
+    "name": "Rize",
+    "website": "https://rize.sa",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/rize-sa",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://rize.sa",
+    "careers_status": "OK (200)",
+    "verdict": "pass",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)"
+    ]
+  },
+  {
+    "slug": "proven-robotics",
+    "name": "PROVEN Robotics",
+    "website": "https://provenrobotics.ai",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/proven-robotics",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://provenrobotics.ai",
+    "careers_status": "OK (200)",
+    "verdict": "suspect",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "neom-tech",
+    "name": "NEOM Tech & Digital",
+    "website": "https://neom.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/neom",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://neom.com/en-us/careers",
+    "careers_status": "OK (200)",
+    "verdict": "pass",
+    "issues": []
+  },
+  {
+    "slug": "alat",
+    "name": "Alat",
+    "website": "https://alat.sa",
+    "website_status": "FAIL (ENOTFOUND)",
+    "linkedin": "https://www.linkedin.com/company/alat-saudi",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://alat.sa",
+    "careers_status": "FAIL (ENOTFOUND)",
+    "verdict": "warn",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "website unreachable: ENOTFOUND",
+      "linkedin returns 404",
+      "careers_url unreachable: ENOTFOUND"
+    ]
+  },
+  {
+    "slug": "riyadh-air",
+    "name": "Riyadh Air",
+    "website": "https://riyadhair.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/riyadhair",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://riyadhair.com/careers",
+    "careers_status": "OK (200)",
+    "verdict": "pass",
+    "issues": []
+  },
+  {
+    "slug": "ceer",
+    "name": "Ceer Motors",
+    "website": "https://ceer.sa",
+    "website_status": "FAIL (ENOTFOUND)",
+    "linkedin": "https://www.linkedin.com/company/ceer-motors",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://ceer.sa",
+    "careers_status": "FAIL (ENOTFOUND)",
+    "verdict": "warn",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "website unreachable: ENOTFOUND",
+      "careers_url unreachable: ENOTFOUND"
+    ]
+  },
+  {
+    "slug": "sdaia",
+    "name": "SDAIA",
+    "website": "https://sdaia.gov.sa",
+    "website_status": "FAIL (This operation was aborted)",
+    "linkedin": "https://www.linkedin.com/company/sdaia",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://sdaia.gov.sa/en/SDAIA/Pages/Careers.aspx",
+    "careers_status": "FAIL (This operation was aborted)",
+    "verdict": "warn",
+    "issues": [
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "website unreachable: This operation was aborted",
+      "linkedin returns 404",
+      "careers_url unreachable: This operation was aborted"
+    ]
+  },
+  {
+    "slug": "aec",
+    "name": "Advanced Electronics Company",
+    "website": "https://aec.com.sa",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/aaborone",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://aec.com.sa",
+    "careers_status": "OK (200)",
+    "verdict": "warn",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin returns 404"
+    ]
+  },
+  {
+    "slug": "stc-solutions",
+    "name": "STC Solutions",
+    "website": "https://stcs.com.sa",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/stc-solutions",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://stcs.com.sa",
+    "careers_status": "OK (200)",
+    "verdict": "suspect",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "center3",
+    "name": "Center3",
+    "website": "https://center3.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/center3",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://center3.com",
+    "careers_status": "OK (200)",
+    "verdict": "suspect",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "falconviz",
+    "name": "FalconViz",
+    "website": "https://falconviz.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/falconviz",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://falconviz.com",
+    "careers_status": "OK (200)",
+    "verdict": "suspect",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "glamera",
+    "name": "Glamera",
+    "website": "https://glamera.com",
+    "website_status": "FAIL (ENOTFOUND)",
+    "linkedin": "https://www.linkedin.com/company/glamera",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://glamera.com",
+    "careers_status": "FAIL (ENOTFOUND)",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "website unreachable: ENOTFOUND",
+      "linkedin returns 404",
+      "careers_url unreachable: ENOTFOUND"
+    ]
+  },
+  {
+    "slug": "telfaz11",
+    "name": "Telfaz11",
+    "website": "https://telfaz11.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/telfaz11",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://telfaz11.com",
+    "careers_status": "OK (200)",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "linkedin returns 404"
+    ]
+  },
+  {
+    "slug": "atam",
+    "name": "ATAM",
+    "website": "https://atam.careers",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/atam",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://atam.careers",
+    "careers_status": "OK (200)",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "linkedin returns 404"
+    ]
+  },
+  {
+    "slug": "neo-space",
+    "name": "Neo Space Group",
+    "website": "https://neospacegroup.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/neospacegroup",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://neospacegroup.com",
+    "careers_status": "OK (200)",
+    "verdict": "pass",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)"
+    ]
+  },
+  {
+    "slug": "cognna",
+    "name": "Cognna",
+    "website": "https://www.cognna.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/cognna",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://www.cognna.com",
+    "careers_status": "OK (200)",
+    "verdict": "suspect",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "solidrange",
+    "name": "Solidrange",
+    "website": "https://solidrange.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/solidrange",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://solidrange.com",
+    "careers_status": "OK (200)",
+    "verdict": "suspect",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "dphish",
+    "name": "dPhish",
+    "website": "https://dphish.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/dphish",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://dphish.com",
+    "careers_status": "OK (200)",
+    "verdict": "suspect",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "cyberni",
+    "name": "Cyberni",
+    "website": "https://cyberni.com",
+    "website_status": "HTTP 403",
+    "linkedin": "https://www.linkedin.com/company/cyberni",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://cyberni.com",
+    "careers_status": "HTTP 403",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "website returns 403",
+      "linkedin returns 404",
+      "careers_url returns 403"
+    ]
+  },
+  {
+    "slug": "governata",
+    "name": "Governata",
+    "website": "https://governata.com",
+    "website_status": "HTTP 500",
+    "linkedin": "https://www.linkedin.com/company/governata",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://governata.com",
+    "careers_status": "HTTP 500",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "website returns 500",
+      "careers_url returns 500"
+    ]
+  },
+  {
+    "slug": "takamul",
+    "name": "Takamul",
+    "website": "https://takamul.com.sa",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/takamul",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://takamul.com.sa",
+    "careers_status": "OK (200)",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "linkedin returns 404"
+    ]
+  },
+  {
+    "slug": "cranl",
+    "name": "Cranl",
+    "website": "https://cranl.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/cranl",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://cranl.com",
+    "careers_status": "OK (200)",
+    "verdict": "suspect",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "intelmatix",
+    "name": "Intelmatix",
+    "website": "https://intelmatix.ai",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/intelmatix",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://intelmatix.ai/company-careers.html",
+    "careers_status": "OK (200)",
+    "verdict": "pass",
+    "issues": [
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "nuwayra",
+    "name": "Nuwayra",
+    "website": "https://nuwayra.ai",
+    "website_status": "FAIL (ENOTFOUND)",
+    "linkedin": "https://www.linkedin.com/company/nuwayra",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://nuwayra.ai",
+    "careers_status": "FAIL (ENOTFOUND)",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "seed AI company with .ai domain (high hallucination risk)",
+      "website unreachable: ENOTFOUND",
+      "linkedin returns 404",
+      "careers_url unreachable: ENOTFOUND"
+    ]
+  },
+  {
+    "slug": "widebot",
+    "name": "WideBot",
+    "website": "https://widebot.ai",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/widebot",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://widebot.ai",
+    "careers_status": "OK (200)",
+    "verdict": "suspect",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "wittify",
+    "name": "Wittify.ai",
+    "website": "https://wittify.ai",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/wittify",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://wittify.ai",
+    "careers_status": "OK (200)",
+    "verdict": "suspect",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "seed AI company with .ai domain (high hallucination risk)"
+    ]
+  },
+  {
+    "slug": "infiniarc",
+    "name": "INFINIARC",
+    "website": "https://infiniarc.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/infiniarc",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://infiniarc.com",
+    "careers_status": "OK (200)",
+    "verdict": "suspect",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "sdaia-hexagon",
+    "name": "SDAIA Hexagon",
+    "website": "https://hexagon.com",
+    "website_status": "HTTP 403",
+    "linkedin": "https://www.linkedin.com/company/hexagon",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://hexagon.com/company/careers",
+    "careers_status": "HTTP 403",
+    "verdict": "warn",
+    "issues": [
+      "website returns 403",
+      "careers_url returns 403"
+    ]
+  },
+  {
+    "slug": "unifonic",
+    "name": "Unifonic",
+    "website": "https://unifonic.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/unifonic",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://jobs.unifonic.com",
+    "careers_status": "OK (200)",
+    "verdict": "pass",
+    "issues": [
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "rukiza",
+    "name": "Rukiza",
+    "website": "https://rukiza.com",
+    "website_status": "HTTP 404",
+    "linkedin": "https://www.linkedin.com/company/rukiza",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://rukiza.com",
+    "careers_status": "HTTP 404",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "website returns 404",
+      "linkedin returns 404",
+      "careers_url returns 404"
+    ]
+  },
+  {
+    "slug": "sayfi",
+    "name": "SayFi",
+    "website": "https://sayfi.co",
+    "website_status": "FAIL (ERR_SSL_SSL/TLS_ALERT_HANDSHAKE_FAILURE)",
+    "linkedin": "https://www.linkedin.com/company/sayfi",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://sayfi.co",
+    "careers_status": "FAIL (ERR_SSL_SSL/TLS_ALERT_HANDSHAKE_FAILURE)",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "website unreachable: ERR_SSL_SSL/TLS_ALERT_HANDSHAKE_FAILURE",
+      "careers_url unreachable: ERR_SSL_SSL/TLS_ALERT_HANDSHAKE_FAILURE"
+    ]
+  },
+  {
+    "slug": "oqood",
+    "name": "Oqood",
+    "website": "https://oqood.ai",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/oqood",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://oqood.ai",
+    "careers_status": "OK (200)",
+    "verdict": "suspect",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "kashon",
+    "name": "Kashon",
+    "website": "https://kashon.sa",
+    "website_status": "FAIL (ENOTFOUND)",
+    "linkedin": "https://www.linkedin.com/company/kashon",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://kashon.sa",
+    "careers_status": "FAIL (ENOTFOUND)",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "website unreachable: ENOTFOUND",
+      "linkedin returns 404",
+      "careers_url unreachable: ENOTFOUND"
+    ]
+  },
+  {
+    "slug": "rawaa",
+    "name": "Rawaa",
+    "website": "https://rawaa.com",
+    "website_status": "HTTP 405",
+    "linkedin": "https://www.linkedin.com/company/rawaa",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://rawaa.com",
+    "careers_status": "HTTP 405",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "website returns 405",
+      "careers_url returns 405"
+    ]
+  },
+  {
+    "slug": "judhur",
+    "name": "Judhur",
+    "website": "https://judhur.com",
+    "website_status": "HTTP 405",
+    "linkedin": "https://www.linkedin.com/company/judhur",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://judhur.com",
+    "careers_status": "HTTP 405",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "website returns 405",
+      "careers_url returns 405"
+    ]
+  },
+  {
+    "slug": "jazer",
+    "name": "Jazer",
+    "website": "https://jazer.io",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/jazer",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://jazer.io",
+    "careers_status": "OK (200)",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "linkedin returns 404"
+    ]
+  },
+  {
+    "slug": "rvin",
+    "name": "RVIN",
+    "website": "https://rvin.ai",
+    "website_status": "HTTP 405",
+    "linkedin": "https://www.linkedin.com/company/rvin",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://rvin.ai",
+    "careers_status": "HTTP 405",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "website returns 405",
+      "careers_url returns 405"
+    ]
+  },
+  {
+    "slug": "noon-academy",
+    "name": "Noon Academy",
+    "website": "https://noon.academy",
+    "website_status": "FAIL (ENOTFOUND)",
+    "linkedin": "https://www.linkedin.com/company/noonacademy",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://noon.academy",
+    "careers_status": "FAIL (ENOTFOUND)",
+    "verdict": "warn",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "website unreachable: ENOTFOUND",
+      "careers_url unreachable: ENOTFOUND"
+    ]
+  },
+  {
+    "slug": "ummar",
+    "name": "Ummar",
+    "website": "https://ummar.sa",
+    "website_status": "FAIL (ENOTFOUND)",
+    "linkedin": "https://www.linkedin.com/company/ummar",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://ummar.sa",
+    "careers_status": "FAIL (ENOTFOUND)",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "website unreachable: ENOTFOUND",
+      "linkedin returns 404",
+      "careers_url unreachable: ENOTFOUND"
+    ]
+  },
+  {
+    "slug": "sadeem",
+    "name": "Sadeem",
+    "website": "https://sadeem.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/sadeem",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://sadeem.com",
+    "careers_status": "OK (200)",
+    "verdict": "suspect",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  },
+  {
+    "slug": "gbt",
+    "name": "GBT",
+    "website": "https://gbt.sa",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/gbt-sa",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://gbt.sa",
+    "careers_status": "OK (200)",
+    "verdict": "warn",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin returns 404"
+    ]
+  },
+  {
+    "slug": "merit-incentives",
+    "name": "Merit Incentives",
+    "website": "https://meritincentives.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/meritincentives",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://meritincentives.com",
+    "careers_status": "OK (200)",
+    "verdict": "warn",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin returns 404"
+    ]
+  },
+  {
+    "slug": "edama",
+    "name": "Edama",
+    "website": "https://edama.com",
+    "website_status": "HTTP 405",
+    "linkedin": "https://www.linkedin.com/company/edama",
+    "linkedin_status": "HTTP 404",
+    "careers_url": "https://edama.com",
+    "careers_status": "HTTP 405",
+    "verdict": "fail",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)",
+      "website returns 405",
+      "linkedin returns 404",
+      "careers_url returns 405"
+    ]
+  },
+  {
+    "slug": "mustadem",
+    "name": "Mustadem",
+    "website": "https://mustadem.com",
+    "website_status": "OK (200)",
+    "linkedin": "https://www.linkedin.com/company/mustadem",
+    "linkedin_status": "OK (200)",
+    "careers_url": "https://mustadem.com",
+    "careers_status": "OK (200)",
+    "verdict": "suspect",
+    "issues": [
+      "careers_url is just the homepage (no dedicated careers page)",
+      "linkedin URL looks auto-generated (matches slug exactly)"
+    ]
+  }
+]

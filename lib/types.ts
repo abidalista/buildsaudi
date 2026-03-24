@@ -11,6 +11,10 @@ export interface Company {
   logo_override?: string
   founded_year?: number
   team_size?: string
+  founders?: string
+  total_raised?: string
+  last_round_date?: string
+  twitter_url?: string
 }
 
 export interface Job {

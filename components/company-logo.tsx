@@ -47,17 +47,15 @@ function LetterAvatar({ name, sector }: { name: string; sector: string[] }) {
 
 // no local logo file — show letter avatar instead.
 const GENERIC_LOGO_SLUGS = new Set([
-  "abwab-ai", "aec", "alat", "atam", "ballurh", "bayzat", "bynow",
-  "calo", "capify", "ceer", "collecto", "d360", "edana", "ejar",
-  "engagesoft", "erad", "firnas", "fitting", "foodics", "fordeal",
-  "gathern", "gbt", "glamera", "hala", "halo-media", "hazen",
-  "intella-ai", "jahez", "jazer", "jisr", "judhur", "kashon", "kilow",
-  "kliq", "leejak", "lite", "livedin", "nayla", "neo-space", "ninja",
-  "noon-academy", "nuwayra", "oqood", "open-valley", "petroapp",
-  "picship", "rasan", "rased", "rawaa", "reporty", "salesfine", "sayfi",
-  "sdaia", "silq", "spore", "spoilz", "stitch-money", "string-tech",
-  "supplai", "syarah", "tabsense", "torod", "trubuild", "trukker",
-  "ummar", "velents", "wakecap", "xbites", "yamm", "zenhr"
+  "aec", "alat", "atam", "ballurh", "bynow", "capify", "ceer",
+  "collecto", "edana", "ejar", "engagesoft", "firnas", "fitting",
+  "gbt", "glamera", "halo-media", "hazen", "intella-ai", "jahez",
+  "jazer", "judhur", "kashon", "kilow", "kliq", "leejak", "lite",
+  "livedin", "nayla", "noon-academy", "nuwayra", "oqood", "open-valley",
+  "petroapp", "picship", "rased", "rawaa", "reporty", "salesfine",
+  "sayfi", "sdaia", "silq", "spore", "spoilz", "stitch-money",
+  "string-tech", "supplai", "tabsense", "torod", "trubuild", "ummar",
+  "xbites", "yamm"
 ])
 
 export function CompanyLogo({
