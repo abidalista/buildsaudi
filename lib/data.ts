@@ -108,7 +108,7 @@ export const companies: Company[] = [
 
   // ===== PROPTECH =====
   { slug: "rize", name: "Rize", website: "https://rize.sa", linkedin: "https://www.linkedin.com/company/rize-sa", stage: "Series A", sector: ["Proptech"], city: "Riyadh", description: "Rent-now-pay-later platform.", careers_url: "https://rize.sa" },
-  { slug: "mnzl", name: "Mnzl", website: "https://mnzl.com", linkedin: "https://www.linkedin.com/company/mnzl", stage: "Seed", sector: ["Proptech"], city: "Riyadh", description: "Short-term rental management.", careers_url: "https://mnzl.com" },
+  { slug: "mnzl", name: "Mnzl", website: "https://mnzil.com", linkedin: "https://www.linkedin.com/company/mnzl", stage: "Seed", sector: ["Proptech"], city: "Riyadh", description: "Short-term rental management.", careers_url: "https://mnzl.com" },
   { slug: "livedin", name: "Livedin", website: "https://livedin.sa", linkedin: "https://www.linkedin.com/company/livedinsa", stage: "Seed", sector: ["Proptech"], city: "Riyadh", description: "Property management and tenant experience.", careers_url: "https://livedin.sa" },
 
   // ===== ROBOTICS =====
