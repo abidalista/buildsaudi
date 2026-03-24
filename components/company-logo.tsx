@@ -51,11 +51,11 @@ const GENERIC_LOGO_SLUGS = new Set([
   "collecto", "edana", "ejar", "engagesoft", "firnas", "fitting",
   "gbt", "glamera", "halo-media", "hazen", "intella-ai", "jahez",
   "jazer", "judhur", "kashon", "kilow", "kliq", "leejak", "lite",
-  "livedin", "nayla", "noon-academy", "nuwayra", "oqood", "open-valley",
-  "petroapp", "picship", "rased", "rawaa", "reporty", "salesfine",
-  "sayfi", "sdaia", "silq", "spore", "spoilz", "stitch-money",
-  "string-tech", "supplai", "tabsense", "torod", "trubuild", "ummar",
-  "xbites", "yamm"
+  "livedin", "nayla", "noon-academy", "nuwayra", "omniful", "oqood",
+  "open-valley", "petroapp", "picship", "rased", "rawaa", "reporty",
+  "salesfine", "sayfi", "sdaia", "silq", "spore", "spoilz",
+  "stitch-money", "string-tech", "supplai", "tabsense", "torod",
+  "trubuild", "ummar", "xbites", "yamm"
 ])
 
 export function CompanyLogo({
