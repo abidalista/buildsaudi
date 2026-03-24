@@ -139,7 +139,7 @@ export const companies: Company[] = [
   { slug: "halo-media", name: "Halo", website: "https://halo.sa", linkedin: "https://www.linkedin.com/company/halosa", stage: "Seed", sector: ["Media"], city: "Riyadh", description: "Digital advertising platform.", careers_url: "https://halo.sa" , founders: "Halo team", total_raised: "Undisclosed", team_size: "1-10", founded_year: 2022 },
 
   // ===== DEFENSE & AEROSPACE =====
-  { slug: "atam", name: "ATAM", website: "https://atam.careers", linkedin: "https://www.linkedin.com/company/atam", stage: "Seed", sector: ["Defense"], city: "Riyadh", description: "Builds autonomous defense systems.", careers_url: "https://atam.careers" , founders: "ATAM team", total_raised: "Undisclosed", team_size: "11-50", founded_year: 2022 },
+  { slug: "atam", name: "ATAM", website: "https://atam.careers", linkedin: "https://www.linkedin.com/company/atam", stage: "Seed", sector: ["Defense"], city: "Riyadh", description: "Builds autonomous defense systems.", careers_url: "https://atam.careers" , founders: "ATAM team", total_raised: "Undisclosed", team_size: "11-50", founded_year: 2025 },
   { slug: "neo-space", name: "Neo Space Group", website: "https://neospacegroup.com", linkedin: "https://www.linkedin.com/company/neospacegroup", stage: "Seed", sector: ["Defense"], city: "Riyadh", description: "Builds satellite and space technology.", careers_url: "https://neospacegroup.com" , founders: "Neo Space team", total_raised: "Undisclosed", team_size: "11-50", founded_year: 2021 },
 
   // ===== CYBERSECURITY =====
