@@ -224,8 +224,8 @@ export default function HomePage() {
       </header>
 
       {/* ============ STICKY SEARCH BAR ============ */}
-      <div className="sticky top-0 z-20 bg-[#F9F9F9]/95 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div className="sticky top-0 z-20 bg-[#F9F9F9]/95 backdrop-blur-sm border-b border-gray-200/50">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-3">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-[#9CA3AF]" />
             <Input
@@ -248,7 +248,7 @@ export default function HomePage() {
       </div>
 
       {/* ============ MAIN CONTENT ============ */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-5">
         <div className="flex gap-8">
           {/* Filters Sidebar */}
           <aside className="hidden w-64 shrink-0 lg:block sticky top-20 z-40 space-y-4 lg:space-y-6">
@@ -337,7 +337,7 @@ export default function HomePage() {
             </div>
 
             {/* Company Cards */}
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               {filteredCompanies.map((company) => {
                 const isExpanded = expandedCards.has(company.slug)
                 return (
@@ -345,36 +345,60 @@ export default function HomePage() {
                     key={company.slug}
                     className="group bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden"
                   >
-                    <div className="p-3 sm:p-6 cursor-pointer" onClick={() => toggleCard(company.slug)}>
-                      <div className="flex items-center gap-3 sm:gap-5">
+                    <div className="p-4 sm:p-6 cursor-pointer" onClick={() => toggleCard(company.slug)}>
+                      {/* Mobile: stacked layout. Desktop: single row */}
+                      <div className="flex items-start sm:items-center gap-3 sm:gap-5">
                         {/* Company Logo */}
-                        <div className="flex size-12 sm:size-14 shrink-0 items-center justify-center rounded-xl bg-white border border-gray-200 overflow-hidden">
+                        <div className="flex size-10 sm:size-14 shrink-0 items-center justify-center rounded-lg sm:rounded-xl bg-white border border-gray-200 overflow-hidden">
                           <CompanyLogo company={company} />
                         </div>
 
-                        {/* Company Info */}
+                        {/* Company Info + Badges */}
                         <div className="flex-1 min-w-0">
-                          <a
-                            href={company.website}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="text-lg font-bold text-[#111827] hover:text-[#06634D] transition-colors"
-                          >
-                            {company.name}
-                          </a>
-                          <p className="mt-0.5 text-sm text-[#6B7280] truncate">
-                            {company.description}
-                          </p>
-                        </div>
+                          <div className="flex items-start sm:items-center justify-between gap-2">
+                            <div className="min-w-0">
+                              <a
+                                href={company.website}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={(e) => e.stopPropagation()}
+                                className="text-base sm:text-lg font-bold text-[#111827] hover:text-[#06634D] transition-colors line-clamp-1"
+                              >
+                                {company.name}
+                              </a>
+                              <p className="mt-0.5 text-xs sm:text-sm text-[#6B7280] line-clamp-1">
+                                {company.description}
+                              </p>
+                            </div>
 
-                        {/* Right Side: Sector + Stage + View Jobs */}
-                        <div className="flex-shrink-0 flex flex-col items-end gap-1 sm:gap-2">
-                          <span className="px-1 py-0.5 sm:px-2.5 sm:py-1 bg-gray-100 border border-gray-200 text-gray-700 text-[10px] sm:text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">
-                            {company.sector[0]}
-                          </span>
-                          <div className="flex items-center gap-1 sm:gap-2">
-                            <span className="px-1 py-0.5 sm:px-2.5 sm:py-1 bg-gray-100 border border-gray-200 text-gray-700 text-[10px] sm:text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">
+                            {/* Badges - desktop only inline */}
+                            <div className="hidden sm:flex flex-shrink-0 flex-col items-end gap-2">
+                              <span className="px-2.5 py-1 bg-gray-100 border border-gray-200 text-gray-700 text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">
+                                {company.sector[0]}
+                              </span>
+                              <div className="flex items-center gap-2">
+                                <span className="px-2.5 py-1 bg-gray-100 border border-gray-200 text-gray-700 text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">
+                                  {company.stage}
+                                </span>
+                                <a
+                                  href={company.careers_url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  onClick={(e) => e.stopPropagation()}
+                                  className="px-2.5 py-1 bg-[#06634D] text-white text-xs font-mono rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
+                                >
+                                  View Jobs
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Badges - mobile: row below name */}
+                          <div className="flex items-center gap-1.5 mt-2 sm:hidden flex-wrap">
+                            <span className="px-2 py-0.5 bg-gray-100 border border-gray-200 text-gray-700 text-[11px] font-mono uppercase tracking-wider rounded whitespace-nowrap">
+                              {company.sector[0]}
+                            </span>
+                            <span className="px-2 py-0.5 bg-gray-100 border border-gray-200 text-gray-700 text-[11px] font-mono uppercase tracking-wider rounded whitespace-nowrap">
                               {company.stage}
                             </span>
                             <a
@@ -382,7 +406,7 @@ export default function HomePage() {
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={(e) => e.stopPropagation()}
-                              className="px-1 py-0.5 sm:px-2.5 sm:py-1 bg-[#06634D] text-white text-[10px] sm:text-xs font-mono rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
+                              className="px-2 py-0.5 bg-[#06634D] text-white text-[11px] font-mono rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
                             >
                               View Jobs
                             </a>
@@ -399,51 +423,51 @@ export default function HomePage() {
                     {/* Expandable Details */}
                     <div
                       className="overflow-hidden transition-all duration-300 ease-out"
-                      style={{ maxHeight: isExpanded ? "300px" : "0", opacity: isExpanded ? 1 : 0 }}
+                      style={{ maxHeight: isExpanded ? "400px" : "0", opacity: isExpanded ? 1 : 0 }}
                     >
-                      <div className="border-t border-gray-200 bg-gray-50 px-4 sm:px-6 py-3 sm:py-4">
-                        <div className="grid grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-2 sm:gap-y-3">
-                          <div className="flex flex-col gap-0.5 sm:gap-1">
-                            <div className="font-mono text-[10px] sm:text-xs uppercase tracking-wider text-gray-500">Founders</div>
-                            <div className="text-[10px] sm:text-sm text-gray-900 break-words font-medium">{company.founders || "—"}</div>
+                      <div className="border-t border-gray-200 bg-gray-50 px-4 sm:px-6 py-4">
+                        <div className="grid grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-3">
+                          <div className="flex flex-col gap-0.5">
+                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-500">Founders</div>
+                            <div className="text-xs sm:text-sm text-gray-900 break-words font-medium">{company.founders || "—"}</div>
                           </div>
-                          <div className="flex flex-col gap-0.5 sm:gap-1">
-                            <div className="font-mono text-[10px] sm:text-xs uppercase tracking-wider text-gray-500">Total Raised</div>
-                            <div className="text-[10px] sm:text-sm text-gray-900 font-medium">{company.total_raised || "—"}</div>
+                          <div className="flex flex-col gap-0.5">
+                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-500">Total Raised</div>
+                            <div className="text-xs sm:text-sm text-gray-900 font-medium">{company.total_raised || "—"}</div>
                           </div>
-                          <div className="flex flex-col gap-0.5 sm:gap-1">
-                            <div className="font-mono text-[10px] sm:text-xs uppercase tracking-wider text-gray-500">HQ City</div>
-                            <div className="text-[10px] sm:text-sm text-gray-900 font-medium">{company.city}</div>
+                          <div className="flex flex-col gap-0.5">
+                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-500">HQ City</div>
+                            <div className="text-xs sm:text-sm text-gray-900 font-medium">{company.city}</div>
                           </div>
-                          <div className="flex flex-col gap-0.5 sm:gap-1">
-                            <div className="font-mono text-[10px] sm:text-xs uppercase tracking-wider text-gray-500">Employees</div>
-                            <div className="text-[10px] sm:text-sm text-gray-900 font-medium">{company.team_size || "—"}</div>
+                          <div className="flex flex-col gap-0.5">
+                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-500">Employees</div>
+                            <div className="text-xs sm:text-sm text-gray-900 font-medium">{company.team_size || "—"}</div>
                           </div>
-                          <div className="flex flex-col gap-0.5 sm:gap-1">
-                            <div className="font-mono text-[10px] sm:text-xs uppercase tracking-wider text-gray-500">Founded</div>
-                            <div className="text-[10px] sm:text-sm text-gray-900 font-medium">{company.founded_year || "—"}</div>
+                          <div className="flex flex-col gap-0.5">
+                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-500">Founded</div>
+                            <div className="text-xs sm:text-sm text-gray-900 font-medium">{company.founded_year || "—"}</div>
                           </div>
-                          <div className="flex flex-col gap-0.5 sm:gap-1">
-                            <div className="font-mono text-[10px] sm:text-xs uppercase tracking-wider text-gray-500">Last Round</div>
-                            <div className="text-[10px] sm:text-sm text-gray-900 font-medium">{company.last_round_date || "—"}</div>
+                          <div className="flex flex-col gap-0.5">
+                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-500">Last Round</div>
+                            <div className="text-xs sm:text-sm text-gray-900 font-medium">{company.last_round_date || "—"}</div>
                           </div>
                         </div>
                         {/* Socials row */}
-                        <div className="flex items-center gap-3 mt-3 pt-3 border-t border-gray-200">
+                        <div className="flex items-center gap-4 mt-3 pt-3 border-t border-gray-200">
                           {company.twitter_url && (
-                            <a href={company.twitter_url} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-gray-500 hover:text-gray-900 transition-colors">
-                              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
+                            <a href={company.twitter_url} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-gray-500 hover:text-gray-900 transition-colors p-1">
+                              <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor">
                                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                               </svg>
                             </a>
                           )}
-                          <a href={company.linkedin} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-gray-500 hover:text-gray-900 transition-colors">
-                            <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
+                          <a href={company.linkedin} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-gray-500 hover:text-gray-900 transition-colors p-1">
+                            <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor">
                               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                             </svg>
                           </a>
-                          <a href={company.website} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-gray-500 hover:text-gray-900 transition-colors">
-                            <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <a href={company.website} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-gray-500 hover:text-gray-900 transition-colors p-1">
+                            <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                               <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                             </svg>
                           </a>
