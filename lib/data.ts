@@ -108,7 +108,7 @@ export const companies: Company[] = [
 
   // ===== PROPTECH =====
   { slug: "rize", name: "Rize", website: "https://rize.sa", linkedin: "https://www.linkedin.com/company/rize-sa", stage: "Series A", sector: ["Proptech"], city: "Riyadh", description: "Rent-now-pay-later platform.", careers_url: "https://rize.sa" , founders: "Ibrahim Balilah, Mohamed Al-Frahi", total_raised: "$35M", founded_year: 2021, last_round_date: "Jan 2025"},
-  { slug: "mnzl", name: "Mnzl", website: "https://mnzil.com", linkedin: "https://www.linkedin.com/company/mnzl", stage: "Series A", sector: ["Proptech"], city: "Riyadh", description: "Workforce housing solutions.", careers_url: "https://mnzl.com", founders: "Abdulmajeed Al-Babtain, Abdulrahman Al-Shaya", total_raised: "$11.7M", founded_year: 2024, last_round_date: "Nov 2025" },
+  { slug: "mnzl", name: "Mnzil", website: "https://mnzil.com", linkedin: "https://www.linkedin.com/company/mnzl", stage: "Series A", sector: ["Proptech"], city: "Riyadh", description: "Workforce housing solutions.", careers_url: "https://mnzl.com", founders: "Abdulmajeed Al-Babtain, Abdulrahman Al-Shaya", total_raised: "$11.7M", founded_year: 2024, last_round_date: "Nov 2025" },
   { slug: "livedin", name: "Livedin", website: "https://livedin.sa", linkedin: "https://www.linkedin.com/company/livedinsa", stage: "Seed", sector: ["Proptech"], city: "Riyadh", description: "Property management and tenant experience.", careers_url: "https://livedin.sa" },
 
   // ===== ROBOTICS =====
