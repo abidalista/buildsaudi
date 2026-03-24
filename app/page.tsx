@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react"
 import Link from "next/link"
-import { Search, Building2, Mail, X } from "lucide-react"
+import { Search, Building2, Mail, X, ChevronDown } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import {
@@ -26,6 +26,16 @@ export default function HomePage() {
   })
   const [email, setEmail] = useState("")
   const [emailSubmitted, setEmailSubmitted] = useState(false)
+  const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set())
+
+  const toggleCard = (slug: string) => {
+    setExpandedCards(prev => {
+      const next = new Set(prev)
+      if (next.has(slug)) next.delete(slug)
+      else next.add(slug)
+      return next
+    })
+  }
 
   const filteredCompanies = useMemo(() => {
     return companies.filter((company) => {
@@ -329,6 +339,7 @@ export default function HomePage() {
             {/* Company Cards */}
             <div className="space-y-3">
               {filteredCompanies.map((company) => {
+                const isExpanded = expandedCards.has(company.slug)
                 return (
                   <div
                     key={company.slug}
@@ -342,18 +353,20 @@ export default function HomePage() {
 
                       {/* Company Info */}
                       <div className="flex-1 min-w-0">
-                        <Link
-                          href={`/company/${company.slug}`}
+                        <a
+                          href={company.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="text-lg font-bold text-[#111827] hover:text-[#06634D] transition-colors"
                         >
                           {company.name}
-                        </Link>
+                        </a>
                         <p className="mt-0.5 text-sm text-[#6B7280] truncate">
                           {company.description}
                         </p>
                       </div>
 
-                      {/* Right Side: Sector + Stage + View Jobs */}
+                      {/* Right Side: Sector + Stage + View Jobs + Chevron */}
                       <div className="flex-shrink-0 flex flex-col items-end gap-1 sm:gap-5">
                         <div className="flex items-center gap-1 sm:gap-2">
                           <span className="px-1 py-0.5 sm:px-2.5 sm:py-1 bg-gray-100 border border-gray-200 text-gray-700 text-[10px] sm:text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">
@@ -372,9 +385,75 @@ export default function HomePage() {
                           >
                             View Jobs
                           </a>
+                          <button
+                            onClick={() => toggleCard(company.slug)}
+                            className="p-1 text-gray-400 hover:text-gray-700 transition-colors"
+                            aria-label={isExpanded ? "Collapse details" : "Expand details"}
+                          >
+                            <ChevronDown className={`size-4 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`} />
+                          </button>
                         </div>
                       </div>
                     </div>
+
+                    {/* Expandable Details */}
+                    {isExpanded && (
+                      <div className="border-t border-gray-100 bg-gray-50 px-5 py-4">
+                        <div className="grid grid-cols-2 gap-x-8 gap-y-4">
+                          {company.founders && (
+                            <div>
+                              <p className="text-[10px] font-mono uppercase tracking-wider text-gray-500 mb-1">Founders</p>
+                              <p className="text-sm font-semibold text-gray-900">{company.founders}</p>
+                            </div>
+                          )}
+                          {company.total_raised && (
+                            <div>
+                              <p className="text-[10px] font-mono uppercase tracking-wider text-gray-500 mb-1">Total Raised</p>
+                              <p className="text-sm font-semibold text-gray-900">{company.total_raised}</p>
+                            </div>
+                          )}
+                          <div>
+                            <p className="text-[10px] font-mono uppercase tracking-wider text-gray-500 mb-1">HQ City</p>
+                            <p className="text-sm font-semibold text-gray-900">{company.city}</p>
+                          </div>
+                          {company.team_size && (
+                            <div>
+                              <p className="text-[10px] font-mono uppercase tracking-wider text-gray-500 mb-1">Employees</p>
+                              <span className="inline-block px-2 py-0.5 text-sm font-semibold text-gray-900 border border-gray-200 rounded">{company.team_size}</span>
+                            </div>
+                          )}
+                          {company.founded_year && (
+                            <div>
+                              <p className="text-[10px] font-mono uppercase tracking-wider text-gray-500 mb-1">Founded</p>
+                              <p className="text-sm font-semibold text-gray-900">{company.founded_year}</p>
+                            </div>
+                          )}
+                          {company.last_round_date && (
+                            <div>
+                              <p className="text-[10px] font-mono uppercase tracking-wider text-gray-500 mb-1">Last Round Date</p>
+                              <p className="text-sm font-semibold text-gray-900">{company.last_round_date}</p>
+                            </div>
+                          )}
+                          <div>
+                            <p className="text-[10px] font-mono uppercase tracking-wider text-gray-500 mb-1">Socials</p>
+                            <div className="flex items-center gap-3">
+                              {company.twitter_url && (
+                                <a href={company.twitter_url} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900">
+                                  <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                  </svg>
+                                </a>
+                              )}
+                              <a href={company.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900">
+                                <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
+                                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                </svg>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )
               })}

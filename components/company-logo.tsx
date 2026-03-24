@@ -37,6 +37,8 @@ const sectorColors: Record<string, string> = {
   IoT: "#0EA5E9",
   Media: "#EC4899",
   Healthtech: "#DC2626",
+  Gaming: "#EF4444",
+  Travel: "#0891B2",
 }
 
 function LetterAvatar({ name, sector }: { name: string; sector: string[] }) {
