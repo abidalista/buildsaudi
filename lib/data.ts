@@ -81,6 +81,7 @@ export const companies: Company[] = [
 
   // ===== HEALTHTECH =====
   { slug: "cura", name: "Cura", website: "https://cura.healthcare", linkedin: "https://www.linkedin.com/company/cura-healthcare", stage: "Series A", sector: ["Healthtech"], city: "Riyadh", description: "Telehealth and virtual care platform.", careers_url: "https://cura.healthcare" },
+  { slug: "sahl-ai", name: "Sahl.ai", website: "https://sahl.ai", linkedin: "https://www.linkedin.com/company/getsahl", stage: "Seed", sector: ["Healthtech"], city: "Riyadh", description: "AI medical copilot for Arabic-speaking clinicians.", careers_url: "https://sahl.ai" },
   { slug: "aumet", name: "Aumet", website: "https://aumet.com", linkedin: "https://www.linkedin.com/company/aumet", stage: "Series A", sector: ["Healthtech"], city: "Riyadh", description: "Pharma B2B marketplace.", careers_url: "https://aumet.com" },
   { slug: "reporty", name: "Reporty", website: "https://reporty.ai", linkedin: "https://www.linkedin.com/company/reportyai", stage: "Seed", sector: ["Healthtech"], city: "Riyadh", description: "AI radiology reporting.", careers_url: "https://reporty.ai" },
   { slug: "kilow", name: "Kilow", website: "https://kilow.sa", linkedin: "https://www.linkedin.com/company/kilow", stage: "Seed", sector: ["Healthtech"], city: "Riyadh", description: "Digital weight management program.", careers_url: "https://kilow.sa" },
