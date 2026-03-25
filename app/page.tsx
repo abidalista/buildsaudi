@@ -287,30 +287,6 @@ export default function HomePage() {
         <div className="flex gap-8">
           {/* Filters Sidebar */}
           <aside className="hidden w-64 shrink-0 lg:block sticky top-20 z-40 space-y-4 lg:space-y-6">
-            {/* Portrait Gallery */}
-            <div className="flex items-end justify-center gap-2">
-              {[
-                { src: "/portraits/crown-prince-mbs.jpg", label: "ولي العهد الأمير محمد بن سلمان" },
-                { src: "/portraits/vision-2030.png", label: "رؤية السعودية 2030" },
-                { src: "/portraits/king-salman.jpg", label: "الملك سلمان بن عبدالعزيز" },
-              ].map((p) => (
-                <div key={p.src} className="flex flex-col items-center">
-                  <div
-                    className="overflow-hidden w-[72px] h-[90px]"
-                    style={{
-                      border: "4px solid #3B2414",
-                      boxShadow: "inset 0 0 0 1.5px #C9A94E, 0 3px 8px rgba(0,0,0,0.15)",
-                      padding: "3px",
-                      backgroundColor: "#FDF8F0",
-                    }}
-                  >
-                    <img src={p.src} alt={p.label} className="w-full h-full object-cover" />
-                  </div>
-                  <span className="mt-1 text-[8px] text-[#6B7280] text-center leading-tight max-w-[72px]">{p.label}</span>
-                </div>
-              ))}
-            </div>
-
             {/* FILTERS heading */}
             <h2 className="text-sm font-mono uppercase tracking-wider text-[#06634D]">
               Filters

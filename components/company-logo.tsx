@@ -47,7 +47,7 @@ function LetterAvatar({ name, sector }: { name: string; sector: string[] }) {
 
 // no local logo file — show letter avatar instead.
 const GENERIC_LOGO_SLUGS = new Set([
-  "nayla", "sifi", "string-tech", "yamm"
+  "string-tech"
 ])
 
 export function CompanyLogo({
