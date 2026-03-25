@@ -47,15 +47,7 @@ function LetterAvatar({ name, sector }: { name: string; sector: string[] }) {
 
 // no local logo file — show letter avatar instead.
 const GENERIC_LOGO_SLUGS = new Set([
-  "aec", "alat", "atam", "ballurh", "bynow", "capify", "ceer",
-  "collecto", "edana", "ejar", "engagesoft", "firnas", "fitting",
-  "gbt", "glamera", "halo-media", "hazen", "intella-ai", "jahez",
-  "jazer", "judhur", "kashon", "kilow", "kliq", "leejak", "lite",
-  "livedin", "nayla", "noon-academy", "nuwayra", "omniful", "oqood",
-  "open-valley", "petroapp", "picship", "rased", "rawaa", "reporty",
-  "salesfine", "sayfi", "sdaia", "silq", "spore", "spoilz",
-  "stitch-money", "string-tech", "supplai", "tabsense", "torod",
-  "trubuild", "ummar", "xbites", "yamm"
+  "nayla", "sifi", "string-tech", "yamm"
 ])
 
 export function CompanyLogo({
