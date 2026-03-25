@@ -28,6 +28,34 @@ export default function HomePage() {
   const [emailSubmitted, setEmailSubmitted] = useState(false)
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set())
   const [showSuggest, setShowSuggest] = useState(false)
+  const [showJobSeeker, setShowJobSeeker] = useState(false)
+  const [jobSeekerForm, setJobSeekerForm] = useState({ name: "", title: "", email: "" })
+  const [jobSeekerStatus, setJobSeekerStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")
+
+  const handleJobSeekerSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!jobSeekerForm.name.trim() || !jobSeekerForm.title.trim() || !jobSeekerForm.email.trim()) return
+    setJobSeekerStatus("submitting")
+    try {
+      const res = await fetch("/api/job-seeker", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(jobSeekerForm),
+      })
+      if (res.ok) {
+        setJobSeekerStatus("success")
+        setTimeout(() => {
+          setShowJobSeeker(false)
+          setJobSeekerForm({ name: "", title: "", email: "" })
+          setJobSeekerStatus("idle")
+        }, 2000)
+      } else {
+        setJobSeekerStatus("error")
+      }
+    } catch {
+      setJobSeekerStatus("error")
+    }
+  }
   const [suggestForm, setSuggestForm] = useState({ companyName: "", website: "", details: "" })
   const [suggestStatus, setSuggestStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")
 
@@ -173,14 +201,13 @@ export default function HomePage() {
 
               {/* Mobile nav buttons */}
               <div className="flex items-center justify-center sm:justify-start gap-2 mt-2 lg:hidden flex-wrap">
-                <a
-                  href="#search-input"
-                  onClick={(e) => { e.preventDefault(); document.getElementById("search-input")?.focus() }}
+                <button
+                  onClick={() => setShowJobSeeker(true)}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-semibold bg-[#D73833] text-white border border-[#D73833] rounded hover:bg-[#D73833]/90 transition-all"
                 >
                   <svg className="size-3.5 h-3.5" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                   Search Jobs
-                </a>
+                </button>
                 <Link
                   href="/coming-soon"
                   className="px-3 py-1.5 text-xs font-mono font-medium bg-[#06634D] text-white border border-[#06634D] rounded hover:bg-transparent hover:text-[#06634D] transition-all"
@@ -201,14 +228,13 @@ export default function HomePage() {
             <div className="hidden lg:flex items-end gap-4 flex-shrink-0">
               {/* Nav buttons */}
               <div className="flex items-center gap-2">
-                <a
-                  href="#search-input"
-                  onClick={(e) => { e.preventDefault(); document.getElementById("search-input")?.focus() }}
+                <button
+                  onClick={() => setShowJobSeeker(true)}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-semibold bg-[#D73833] text-white border border-[#D73833] rounded hover:bg-[#D73833]/90 hover:shadow-md transition-all whitespace-nowrap"
                 >
                   <svg className="size-3.5 h-3.5" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                   Search Jobs
-                </a>
+                </button>
                 <Link
                   href="/coming-soon"
                   className="px-3 py-1.5 text-xs font-mono font-medium bg-[#06634D] text-white border border-[#06634D] rounded hover:bg-transparent hover:text-[#06634D] transition-all"
@@ -584,6 +610,86 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+
+      {/* ============ JOB SEEKER MODAL ============ */}
+      {showJobSeeker && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4" onClick={() => { setShowJobSeeker(false); setJobSeekerStatus("idle") }}>
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-md p-6 relative" onClick={(e) => e.stopPropagation()}>
+            <button onClick={() => { setShowJobSeeker(false); setJobSeekerStatus("idle") }} className="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+              <X className="size-5" />
+            </button>
+
+            <div className="flex flex-col items-center mb-5">
+              <div className="w-12 h-12 rounded-full bg-[#D73833]/10 flex items-center justify-center mb-3">
+                <Search className="size-6 text-[#D73833]" />
+              </div>
+              <h3 className="text-lg font-bold text-[#111827] font-mono">Search Jobs</h3>
+              <p className="text-sm text-gray-500 mt-1">Sign up to get notified about Saudi startup jobs</p>
+            </div>
+
+            {jobSeekerStatus === "success" ? (
+              <div className="text-center py-8">
+                <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-3">
+                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                </div>
+                <p className="text-sm font-medium text-green-700">You&apos;re in! We&apos;ll notify you when jobs drop.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleJobSeekerSubmit} className="space-y-4">
+                <div>
+                  <label className="block text-xs font-mono uppercase tracking-wider text-gray-500 mb-1.5">
+                    Name <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Your full name"
+                    value={jobSeekerForm.name}
+                    onChange={(e) => setJobSeekerForm(f => ({ ...f, name: e.target.value }))}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#D73833] focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-mono uppercase tracking-wider text-gray-500 mb-1.5">
+                    Job Title <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g., Software Engineer"
+                    value={jobSeekerForm.title}
+                    onChange={(e) => setJobSeekerForm(f => ({ ...f, title: e.target.value }))}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#D73833] focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-mono uppercase tracking-wider text-gray-500 mb-1.5">
+                    Email <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="you@email.com"
+                    value={jobSeekerForm.email}
+                    onChange={(e) => setJobSeekerForm(f => ({ ...f, email: e.target.value }))}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#D73833] focus:border-transparent"
+                  />
+                </div>
+                {jobSeekerStatus === "error" && (
+                  <p className="text-sm text-red-600">Something went wrong. Try again.</p>
+                )}
+                <button
+                  type="submit"
+                  disabled={jobSeekerStatus === "submitting"}
+                  className="w-full py-2.5 bg-[#D73833] text-white font-mono font-semibold text-sm rounded-lg hover:bg-[#B82E2A] disabled:opacity-50 transition-colors"
+                >
+                  {jobSeekerStatus === "submitting" ? "Submitting..." : "Sign Up"}
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* ============ SUGGEST COMPANY MODAL ============ */}
       {showSuggest && (
