@@ -350,6 +350,24 @@ export default function HomePage() {
 
           {/* Job Listings */}
           <div className="flex-1 min-w-0">
+            {/* Mobile Portraits */}
+            <div className="flex items-end justify-center gap-3 mb-4 lg:hidden">
+              {["/portraits/2.jpg", "/portraits/3.jpg", "/portraits/1.jpg"].map((src) => (
+                <div
+                  key={src}
+                  className="overflow-hidden w-[60px] h-[75px]"
+                  style={{
+                    border: "3px solid #3B2414",
+                    boxShadow: "inset 0 0 0 1px #C9A94E, 0 2px 6px rgba(0,0,0,0.15)",
+                    padding: "2px",
+                    backgroundColor: "#FDF8F0",
+                  }}
+                >
+                  <img src={src} alt="" className="w-full h-full object-cover" />
+                </div>
+              ))}
+            </div>
+
             {/* Mobile Filters */}
             <div className="flex flex-wrap gap-2 mb-4 lg:hidden">
               <FilterSelect
