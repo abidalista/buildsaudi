@@ -185,7 +185,7 @@ export const companies: Company[] = [
   { slug: "trubuild", name: "TruBuild", website: "https://trubuild.io", linkedin: "https://www.linkedin.com/company/trubuildco", stage: "Seed", sector: ["Construction"], city: "Riyadh", description: "Digital construction project management.", careers_url: "https://trubuild.io" , founders: "TruBuild team", total_raised: "Undisclosed", team_size: "1-10", founded_year: 2023 },
 
   // ===== TRAVEL =====
-  { slug: "firnas", name: "Firnas", website: "https://www.firnas.ai", linkedin: "https://www.linkedin.com/company/firnassa", stage: "Seed", sector: ["Travel"], city: "Riyadh", description: "AI-powered travel planning.", careers_url: "https://www.firnas.ai" , founders: "Firnas team", total_raised: "Undisclosed", team_size: "1-10", founded_year: 2023 },
+  { slug: "firnas", name: "Firnas", website: "https://www.firnas.ai", linkedin: "https://www.linkedin.com/company/firnassa", stage: "Seed", sector: ["Travel"], city: "Riyadh", description: "AI-powered travel planning.", careers_url: "https://www.firnas.ai" , founders: "Firnas team", total_raised: "Undisclosed", team_size: "1-10", founded_year: 2024 },
 
   // ===== SUSTAINABILITY =====
   { slug: "petroapp", name: "PetroApp", website: "https://petroapp.com", linkedin: "https://www.linkedin.com/company/petroapp", stage: "Seed", sector: ["Energy"], city: "Riyadh", description: "Fuel station management and analytics.", careers_url: "https://petroapp.com" , founders: "PetroApp team", total_raised: "Undisclosed", team_size: "1-10", founded_year: 2022 },
