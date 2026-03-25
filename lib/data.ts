@@ -186,7 +186,7 @@ export const companies: Company[] = [
   { slug: "spoilz", name: "SPOILZ", website: "https://www.spoilz.studio", linkedin: "https://www.linkedin.com/company/spoilz", stage: "Seed", sector: ["Gaming"], city: "Riyadh", description: "Gaming rewards and loyalty platform.", careers_url: "https://www.spoilz.studio" , founders: "SPOILZ team", total_raised: "Undisclosed", team_size: "1-10", founded_year: 2022 },
 
   // ===== CONSTRUCTION =====
-  { slug: "trubuild", name: "TruBuild", website: "https://trubuild.co", linkedin: "https://www.linkedin.com/company/trubuildco", stage: "Seed", sector: ["Construction"], city: "Riyadh", description: "Digital construction project management.", careers_url: "https://trubuild.co" , founders: "TruBuild team", total_raised: "Undisclosed", team_size: "1-10", founded_year: 2023 },
+  { slug: "trubuild", name: "TruBuild", website: "https://trubuild.io", linkedin: "https://www.linkedin.com/company/trubuildco", stage: "Seed", sector: ["Construction"], city: "Riyadh", description: "Digital construction project management.", careers_url: "https://trubuild.io" , founders: "TruBuild team", total_raised: "Undisclosed", team_size: "1-10", founded_year: 2023 },
 
   // ===== TRAVEL =====
   { slug: "firnas", name: "Firnas", website: "https://www.firnas.ai", linkedin: "https://www.linkedin.com/company/firnassa", stage: "Seed", sector: ["Travel"], city: "Riyadh", description: "AI-powered travel planning.", careers_url: "https://www.firnas.ai" , founders: "Firnas team", total_raised: "Undisclosed", team_size: "1-10", founded_year: 2023 },
