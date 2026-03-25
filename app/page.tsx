@@ -258,59 +258,6 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* ============ PORTRAIT GALLERY ============ */}
-      <div className="py-4 sm:py-6">
-        <div className="flex items-end justify-center gap-3 sm:gap-6 max-w-[500px] mx-auto px-4">
-          {/* MBS - Left (RTL reading order) */}
-          <div className="flex flex-col items-center">
-            <div
-              className="overflow-hidden"
-              style={{
-                border: "6px solid #3B2414",
-                boxShadow: "inset 0 0 0 2px #C9A94E, 0 4px 12px rgba(0,0,0,0.15)",
-                padding: "4px",
-                backgroundColor: "#FDF8F0",
-              }}
-            >
-              <img src="/portraits/crown-prince-mbs.jpg" alt="ولي العهد الأمير محمد بن سلمان" className="h-[80px] sm:h-[120px] w-auto object-cover" />
-            </div>
-            <span className="mt-1.5 text-[10px] sm:text-[11px] text-[#6B7280] text-center leading-tight">ولي العهد الأمير محمد بن سلمان</span>
-          </div>
-
-          {/* Vision 2030 - Center */}
-          <div className="flex flex-col items-center">
-            <div
-              className="overflow-hidden"
-              style={{
-                border: "6px solid #3B2414",
-                boxShadow: "inset 0 0 0 2px #C9A94E, 0 4px 12px rgba(0,0,0,0.15)",
-                padding: "4px",
-                backgroundColor: "#FDF8F0",
-              }}
-            >
-              <img src="/portraits/vision-2030.png" alt="رؤية السعودية 2030" className="h-[80px] sm:h-[120px] w-auto object-contain" />
-            </div>
-            <span className="mt-1.5 text-[10px] sm:text-[11px] text-[#6B7280] text-center leading-tight">رؤية السعودية 2030</span>
-          </div>
-
-          {/* King Salman - Right (RTL reading order) */}
-          <div className="flex flex-col items-center">
-            <div
-              className="overflow-hidden"
-              style={{
-                border: "6px solid #3B2414",
-                boxShadow: "inset 0 0 0 2px #C9A94E, 0 4px 12px rgba(0,0,0,0.15)",
-                padding: "4px",
-                backgroundColor: "#FDF8F0",
-              }}
-            >
-              <img src="/portraits/king-salman.jpg" alt="الملك سلمان بن عبدالعزيز" className="h-[80px] sm:h-[120px] w-auto object-cover" />
-            </div>
-            <span className="mt-1.5 text-[10px] sm:text-[11px] text-[#6B7280] text-center leading-tight">الملك سلمان بن عبدالعزيز</span>
-          </div>
-        </div>
-      </div>
-
       {/* ============ STICKY SEARCH BAR ============ */}
       <div className="sticky top-0 z-20 bg-[#F9F9F9]/95 backdrop-blur-sm border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-3">
@@ -340,6 +287,30 @@ export default function HomePage() {
         <div className="flex gap-8">
           {/* Filters Sidebar */}
           <aside className="hidden w-64 shrink-0 lg:block sticky top-20 z-40 space-y-4 lg:space-y-6">
+            {/* Portrait Gallery */}
+            <div className="flex items-end justify-center gap-2">
+              {[
+                { src: "/portraits/crown-prince-mbs.jpg", label: "ولي العهد الأمير محمد بن سلمان" },
+                { src: "/portraits/vision-2030.png", label: "رؤية السعودية 2030" },
+                { src: "/portraits/king-salman.jpg", label: "الملك سلمان بن عبدالعزيز" },
+              ].map((p) => (
+                <div key={p.src} className="flex flex-col items-center">
+                  <div
+                    className="overflow-hidden w-[72px] h-[90px]"
+                    style={{
+                      border: "4px solid #3B2414",
+                      boxShadow: "inset 0 0 0 1.5px #C9A94E, 0 3px 8px rgba(0,0,0,0.15)",
+                      padding: "3px",
+                      backgroundColor: "#FDF8F0",
+                    }}
+                  >
+                    <img src={p.src} alt={p.label} className="w-full h-full object-cover" />
+                  </div>
+                  <span className="mt-1 text-[8px] text-[#6B7280] text-center leading-tight max-w-[72px]">{p.label}</span>
+                </div>
+              ))}
+            </div>
+
             {/* FILTERS heading */}
             <h2 className="text-sm font-mono uppercase tracking-wider text-[#06634D]">
               Filters
