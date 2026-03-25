@@ -162,7 +162,7 @@ export const companies: Company[] = [
   { slug: "juthor", name: "Juthor", website: "http://juthor.sa", linkedin: "https://www.linkedin.com/company/judhur", stage: "Seed", sector: ["E-commerce"], city: "Riyadh", description: "Multi-channel e-commerce management.", careers_url: "http://juthor.sa" , founders: "Judhur team", total_raised: "Undisclosed", team_size: "1-10", founded_year: 2023 },
 
   // ===== EDUCATION =====
-  { slug: "noon-academy", name: "Noon Academy", website: "https://noon.academy", linkedin: "https://www.linkedin.com/company/noonacademy", stage: "Series B", sector: ["Edtech"], city: "Riyadh", description: "Social learning and AI tutoring.", careers_url: "https://noon.academy", founders: "Mohammed Aldhalaan, Abdulaziz AlSaeed", total_raised: "$52M", team_size: "51-200", founded_year: 2013 },
+  { slug: "noon-academy", name: "Noon Academy", website: "https://www.noonacademy.com", linkedin: "https://www.linkedin.com/company/noonacademy", stage: "Series B", sector: ["Edtech"], city: "Riyadh", description: "Social learning and AI tutoring.", careers_url: "https://www.noonacademy.com", founders: "Mohammed Aldhalaan, Abdulaziz AlSaeed", total_raised: "$52M", team_size: "51-200", founded_year: 2013 },
 
   // ===== PROPTECH =====
   { slug: "ummar", name: "Ummar", website: "https://ummar.sa", linkedin: "https://www.linkedin.com/company/ummar", stage: "Seed", sector: ["Proptech"], city: "Riyadh", description: "Automates rental and property management.", careers_url: "https://ummar.sa" , founders: "Ummar team", total_raised: "Undisclosed", team_size: "1-10", founded_year: 2022 },
