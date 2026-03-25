@@ -304,29 +304,20 @@ export default function HomePage() {
             {/* Filter dropdowns */}
             <div className="w-full">
               <FilterSelect
-                label="HQ Locations"
-                value={filters.city}
-                onChange={(v) => setFilters((f) => ({ ...f, city: v }))}
-                options={filterOptions.city}
-                placeholder="All HQ Locations"
-              />
-            </div>
-            <div className="w-full">
-              <FilterSelect
-                label="Stages"
-                value={filters.companyStage}
-                onChange={(v) => setFilters((f) => ({ ...f, companyStage: v }))}
-                options={filterOptions.companyStage}
-                placeholder="All Stages"
-              />
-            </div>
-            <div className="w-full">
-              <FilterSelect
-                label="Sectors"
+                label="Sector"
                 value={filters.sector}
                 onChange={(v) => setFilters((f) => ({ ...f, sector: v }))}
                 options={filterOptions.sector}
                 placeholder="All Sectors"
+              />
+            </div>
+            <div className="w-full">
+              <FilterSelect
+                label="Stage"
+                value={filters.companyStage}
+                onChange={(v) => setFilters((f) => ({ ...f, companyStage: v }))}
+                options={filterOptions.companyStage}
+                placeholder="All Stages"
               />
             </div>
 
@@ -343,12 +334,6 @@ export default function HomePage() {
           <div className="flex-1 min-w-0">
             {/* Mobile Filters */}
             <div className="flex flex-wrap gap-2 mb-4 lg:hidden">
-              <FilterSelect
-                value={filters.city}
-                onChange={(v) => setFilters((f) => ({ ...f, city: v }))}
-                options={filterOptions.city}
-                placeholder="Location"
-              />
               <FilterSelect
                 value={filters.sector}
                 onChange={(v) => setFilters((f) => ({ ...f, sector: v }))}
