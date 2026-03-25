@@ -119,7 +119,6 @@ export const companies: Company[] = [
   { slug: "falconviz", name: "FalconViz", website: "https://falconviz.com", linkedin: "https://www.linkedin.com/company/falconviz", stage: "Series A", sector: ["Deep Tech"], city: "Dammam", description: "Drone mapping and 3D modeling.", careers_url: "https://falconviz.com" , founders: "Mohamed Shalaby, Luca Passone, Neil Smith", total_raised: "$1.8M", team_size: "11-50", founded_year: 2015 },
 
   // ===== IOT =====
-  { slug: "glamera", name: "Glamera", website: "https://glamera.com", linkedin: "https://www.linkedin.com/company/glamera", stage: "Seed", sector: ["SaaS"], city: "Riyadh", description: "B2B SaaS for beauty salons, spas and gyms.", careers_url: "https://glamera.com", founders: "Mohamed Hassan, Omar Fathy", total_raised: "$1.6M", founded_year: 2020 , team_size: "11-50" },
 
   // ===== MEDIA =====
   { slug: "telfaz11", name: "Telfaz11", website: "https://telfaz11.com", linkedin: "https://www.linkedin.com/company/telfaz11", stage: "Series A", sector: ["Media"], city: "Riyadh", description: "Saudi digital content and entertainment studio.", careers_url: "https://telfaz11.com", founders: "Alaa Fadan, Ali Al Kalthami, Ibrahim Al Khairallah", total_raised: "$9.9M", team_size: "11-50", founded_year: 2011 },
