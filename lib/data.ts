@@ -154,7 +154,7 @@ export const companies: Company[] = [
   { slug: "rukiza", name: "Rukiza", website: "https://rukiza.com", linkedin: "https://www.linkedin.com/company/rukiza", stage: "Seed", sector: ["AI"], city: "Riyadh", description: "Scheduling and document verification.", careers_url: "https://rukiza.com" , total_raised: "$133K" },
 
   // ===== FINTECH (from Airtable) =====
-  { slug: "oqood", name: "Oqood", website: "https://oqood.ai", linkedin: "https://www.linkedin.com/company/oqood", stage: "Seed", sector: ["Fintech"], city: "Riyadh", description: "Automates legal workflows with AI.", careers_url: "https://oqood.ai" , founders: "Khaled Al Rasheed", total_raised: "$1M", founded_year: 2024 },
+  { slug: "oqood", name: "Oqood", website: "https://oqood.ai", linkedin: "https://www.linkedin.com/company/oqood", stage: "Seed", sector: ["Legaltech"], city: "Riyadh", description: "Automates legal workflows with AI.", careers_url: "https://oqood.ai" , founders: "Khaled Al Rasheed", total_raised: "$1M", founded_year: 2024 },
 
   // ===== E-COMMERCE (from Airtable) =====
   { slug: "rawaa", name: "Rawaa", website: "https://www.rawaa.cloud", linkedin: "https://www.linkedin.com/company/rawaa", stage: "Series A", sector: ["E-commerce"], city: "Riyadh", description: "Cloud POS with AI accounting for merchants.", careers_url: "https://www.rawaa.cloud" , founders: "Mohammed Alqasir, Abdullah Aljadhai", total_raised: "$27M", team_size: "11-50", founded_year: 2018 },
