@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react"
 import Link from "next/link"
-import { Search, Building2, Mail, X, ChevronDown } from "lucide-react"
+import { Search, Building2, Mail, X, ChevronDown, PlusCircle } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import {
@@ -27,6 +27,34 @@ export default function HomePage() {
   const [email, setEmail] = useState("")
   const [emailSubmitted, setEmailSubmitted] = useState(false)
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set())
+  const [showSuggest, setShowSuggest] = useState(false)
+  const [suggestForm, setSuggestForm] = useState({ companyName: "", website: "", details: "" })
+  const [suggestStatus, setSuggestStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")
+
+  const handleSuggestSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!suggestForm.companyName.trim()) return
+    setSuggestStatus("submitting")
+    try {
+      const res = await fetch("/api/suggest", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(suggestForm),
+      })
+      if (res.ok) {
+        setSuggestStatus("success")
+        setTimeout(() => {
+          setShowSuggest(false)
+          setSuggestForm({ companyName: "", website: "", details: "" })
+          setSuggestStatus("idle")
+        }, 2000)
+      } else {
+        setSuggestStatus("error")
+      }
+    } catch {
+      setSuggestStatus("error")
+    }
+  }
 
   const toggleCard = (slug: string) => {
     setExpandedCards(prev => {
@@ -159,6 +187,13 @@ export default function HomePage() {
                 >
                   Sectors
                 </Link>
+                <button
+                  onClick={() => setShowSuggest(true)}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium bg-[#FFBA0A]/10 border border-[#FFBA0A] text-[#4C4C4C] rounded hover:bg-[#FFBA0A]/20 transition-all"
+                >
+                  <PlusCircle className="w-3.5 h-3.5" />
+                  Suggest
+                </button>
               </div>
             </div>
 
@@ -257,14 +292,13 @@ export default function HomePage() {
               Filters
             </h2>
 
-            {/* Missing Info button */}
-            <button className="hidden lg:flex items-center justify-center gap-1.5 w-full px-3 py-1.5 bg-[#FFBA0A]/10 border border-[#FFBA0A] rounded text-xs font-mono text-[#4C4C4C] hover:bg-[#FFBA0A]/20 hover:shadow-sm transition-all">
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                <line x1="12" y1="9" x2="12" y2="13" />
-                <line x1="12" y1="17" x2="12.01" y2="17" />
-              </svg>
-              Missing Info?
+            {/* Suggest Company button */}
+            <button
+              onClick={() => setShowSuggest(true)}
+              className="hidden lg:flex items-center justify-center gap-1.5 w-full px-3 py-1.5 bg-[#FFBA0A]/10 border border-[#FFBA0A] rounded text-xs font-mono text-[#4C4C4C] hover:bg-[#FFBA0A]/20 hover:shadow-sm transition-all"
+            >
+              <PlusCircle className="w-3.5 h-3.5" />
+              Suggest a Company
             </button>
 
             {/* Filter dropdowns */}
@@ -529,6 +563,80 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+
+      {/* ============ SUGGEST COMPANY MODAL ============ */}
+      {showSuggest && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4" onClick={() => { setShowSuggest(false); setSuggestStatus("idle") }}>
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-md p-6 relative" onClick={(e) => e.stopPropagation()}>
+            <button onClick={() => { setShowSuggest(false); setSuggestStatus("idle") }} className="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+              <X className="size-5" />
+            </button>
+
+            <div className="flex flex-col items-center mb-5">
+              <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mb-3">
+                <PlusCircle className="size-6 text-[#06634D]" />
+              </div>
+              <h3 className="text-lg font-bold text-[#111827] font-mono">Suggest a Company</h3>
+              <p className="text-sm text-gray-500 mt-1">Know a company we should add?</p>
+            </div>
+
+            {suggestStatus === "success" ? (
+              <div className="text-center py-8">
+                <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-3">
+                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                </div>
+                <p className="text-sm font-medium text-green-700">Submitted! We&apos;ll review it soon.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSuggestSubmit} className="space-y-4">
+                <div>
+                  <label className="block text-xs font-mono uppercase tracking-wider text-gray-500 mb-1.5">
+                    Company Name <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g., Acme Robotics"
+                    value={suggestForm.companyName}
+                    onChange={(e) => setSuggestForm(f => ({ ...f, companyName: e.target.value }))}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#06634D] focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-mono uppercase tracking-wider text-gray-500 mb-1.5">Website</label>
+                  <input
+                    type="text"
+                    placeholder="https://..."
+                    value={suggestForm.website}
+                    onChange={(e) => setSuggestForm(f => ({ ...f, website: e.target.value }))}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#06634D] focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-mono uppercase tracking-wider text-gray-500 mb-1.5">Details</label>
+                  <textarea
+                    placeholder="Anything else we should know — sector, founders, funding, etc."
+                    rows={3}
+                    value={suggestForm.details}
+                    onChange={(e) => setSuggestForm(f => ({ ...f, details: e.target.value }))}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#06634D] focus:border-transparent"
+                  />
+                </div>
+                {suggestStatus === "error" && (
+                  <p className="text-sm text-red-600">Something went wrong. Try again.</p>
+                )}
+                <button
+                  type="submit"
+                  disabled={suggestStatus === "submitting"}
+                  className="w-full py-2.5 bg-[#06634D] text-white font-mono font-semibold text-sm rounded-lg hover:bg-[#044D3B] disabled:opacity-50 transition-colors"
+                >
+                  {suggestStatus === "submitting" ? "Submitting..." : "Submit Suggestion"}
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* ============ FOOTER ============ */}
       <footer className="mt-16 border-t border-[#E5E7EB] bg-white">
