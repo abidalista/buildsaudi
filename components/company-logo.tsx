@@ -50,7 +50,7 @@ const GENERIC_LOGO_SLUGS = new Set<string>([])
 
 export function CompanyLogo({
   company,
-  className = "w-full h-full object-cover p-1.5",
+  className = "w-full h-full object-contain p-2",
 }: {
   company: Company
   className?: string
