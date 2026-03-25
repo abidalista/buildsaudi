@@ -208,12 +208,6 @@ export default function HomePage() {
                   <svg className="size-3.5 h-3.5" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                   Search Jobs
                 </button>
-                <Link
-                  href="/coming-soon"
-                  className="px-3 py-1.5 text-xs font-mono font-medium bg-[#06634D] text-white border border-[#06634D] rounded hover:bg-transparent hover:text-[#06634D] transition-all"
-                >
-                  Sectors
-                </Link>
                 <button
                   onClick={() => setShowSuggest(true)}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium bg-[#FFBA0A]/10 border border-[#FFBA0A] text-[#4C4C4C] rounded hover:bg-[#FFBA0A]/20 transition-all"
@@ -235,24 +229,6 @@ export default function HomePage() {
                   <svg className="size-3.5 h-3.5" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                   Search Jobs
                 </button>
-                <Link
-                  href="/coming-soon"
-                  className="px-3 py-1.5 text-xs font-mono font-medium bg-[#06634D] text-white border border-[#06634D] rounded hover:bg-transparent hover:text-[#06634D] transition-all"
-                >
-                  News
-                </Link>
-                <Link
-                  href="/coming-soon"
-                  className="px-3 py-1.5 text-xs font-mono font-medium bg-[#06634D] text-white border border-[#06634D] rounded hover:bg-transparent hover:text-[#06634D] transition-all"
-                >
-                  Map
-                </Link>
-                <Link
-                  href="/coming-soon"
-                  className="px-3 py-1.5 text-xs font-mono font-medium bg-[#06634D] text-white border border-[#06634D] rounded hover:bg-transparent hover:text-[#06634D] transition-all"
-                >
-                  Sectors
-                </Link>
               </div>
 
               {/* Hot Companies box */}
