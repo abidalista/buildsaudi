@@ -345,15 +345,6 @@ export default function HomePage() {
               Filters
             </h2>
 
-            {/* Suggest Company button */}
-            <button
-              onClick={() => setShowSuggest(true)}
-              className="hidden lg:flex items-center justify-center gap-1.5 w-full px-3 py-1.5 bg-[#FFBA0A]/10 border border-[#FFBA0A] rounded text-xs font-mono text-[#4C4C4C] hover:bg-[#FFBA0A]/20 hover:shadow-sm transition-all"
-            >
-              <PlusCircle className="w-3.5 h-3.5" />
-              Suggest a Company
-            </button>
-
             {/* Filter dropdowns */}
             <div className="w-full">
               <FilterSelect
@@ -381,6 +372,15 @@ export default function HomePage() {
             <p className="text-sm font-mono text-[#6B7280]">
               {companies.length} companies
             </p>
+
+            {/* Suggest Company button */}
+            <button
+              onClick={() => setShowSuggest(true)}
+              className="hidden lg:flex items-center justify-center gap-1.5 w-full px-3 py-1.5 bg-[#FFBA0A]/10 border border-[#FFBA0A] rounded text-xs font-mono text-[#4C4C4C] hover:bg-[#FFBA0A]/20 hover:shadow-sm transition-all"
+            >
+              <PlusCircle className="w-3.5 h-3.5" />
+              Suggest a Company
+            </button>
           </aside>
 
           {/* Job Listings */}
