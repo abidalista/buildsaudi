@@ -287,6 +287,24 @@ export default function HomePage() {
         <div className="flex gap-8">
           {/* Filters Sidebar */}
           <aside className="hidden w-64 shrink-0 lg:block sticky top-20 z-40 space-y-4 lg:space-y-6">
+            {/* Portrait Gallery */}
+            <div className="flex items-end justify-center gap-2">
+              {["/portraits/2.jpg", "/portraits/3.jpg", "/portraits/1.jpg"].map((src) => (
+                <div
+                  key={src}
+                  className="overflow-hidden w-[72px] h-[90px]"
+                  style={{
+                    border: "4px solid #3B2414",
+                    boxShadow: "inset 0 0 0 1.5px #C9A94E, 0 3px 8px rgba(0,0,0,0.15)",
+                    padding: "3px",
+                    backgroundColor: "#FDF8F0",
+                  }}
+                >
+                  <img src={src} alt="" className="w-full h-full object-cover" />
+                </div>
+              ))}
+            </div>
+
             {/* FILTERS heading */}
             <h2 className="text-sm font-mono uppercase tracking-wider text-[#06634D]">
               Filters
