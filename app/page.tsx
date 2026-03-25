@@ -216,6 +216,31 @@ export default function HomePage() {
                   Suggest
                 </button>
               </div>
+
+              {/* Mobile Hot Companies */}
+              <div className="mt-3 w-full bg-[#D73833]/10 border-2 border-[#D73833] rounded-lg p-3 lg:hidden">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xl">🔥</span>
+                  <span className="text-sm font-bold uppercase tracking-wider text-[#D73833] font-mono">
+                    Hot Companies
+                  </span>
+                </div>
+                <div className="divide-y divide-[#D73833]/30">
+                  {companies.filter((c) => ["humain", "atam", "lucidya"].includes(c.slug)).map((c) => (
+                    <div key={c.slug} className="py-2 first:pt-0 last:pb-0 flex items-center justify-between gap-2">
+                      <a
+                        href={c.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-bold text-[#D73833] hover:underline font-mono"
+                      >
+                        {c.name}
+                      </a>
+                      <span className="text-sm text-[#111827] font-mono">{c.sector[0]}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* Right: Nav buttons + Hot Companies */}
