@@ -173,30 +173,15 @@ export default function HomePage() {
                   <span>Made by</span><span className="text-[#D73833] font-bold font-mono">Abdulla</span>
                 </a>
 
-                {/* Join BuildSaudi - golden */}
-                <button className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-1 sm:py-2 bg-[#FFBA0A] border-2 border-[#FFBA0A]/80 rounded-lg text-xs font-mono text-[#06634D] font-semibold hover:bg-[#FFBA0A]/90 hover:shadow-lg hover:scale-105 active:scale-100 transition-all cursor-pointer shadow-md whitespace-nowrap">
-                  <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                  </svg>
-                  <span className="hidden sm:inline">Join BuildSaudi</span>
-                  <span className="sm:hidden">Join</span>
-                </button>
-
-                {/* X / Twitter icon */}
-                <a
-                  href="https://x.com/abidalista"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-1 sm:p-1.5 text-[#06634D] hover:text-[#1DA1F2] transition-colors"
-                  aria-label="Follow BuildSaudi on Twitter"
+                {/* Search Jobs */}
+                <button
+                  onClick={() => setShowJobSeeker(true)}
+                  className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-1 sm:py-2 bg-[#D73833] border-2 border-[#D73833] rounded-lg text-xs font-mono text-white font-semibold hover:bg-[#D73833]/90 hover:shadow-lg hover:scale-105 active:scale-100 transition-all cursor-pointer shadow-md whitespace-nowrap"
                 >
-                  <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                  </svg>
-                </a>
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                  <span className="hidden sm:inline">Search Jobs</span>
+                  <span className="sm:hidden">Search Jobs</span>
+                </button>
               </div>
 
               {/* Mobile nav buttons */}
