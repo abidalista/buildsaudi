@@ -176,31 +176,13 @@ export default function HomePage() {
                 {/* Search Jobs */}
                 <button
                   onClick={() => setShowJobSeeker(true)}
-                  className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-1 sm:py-2 bg-[#D73833] border-2 border-[#D73833] rounded-lg text-xs font-mono text-white font-semibold hover:bg-[#D73833]/90 hover:shadow-lg hover:scale-105 active:scale-100 transition-all cursor-pointer shadow-md whitespace-nowrap"
-                >
-                  <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                  <span className="hidden sm:inline">Search Jobs</span>
-                  <span className="sm:hidden">Search Jobs</span>
-                </button>
-              </div>
-
-              {/* Mobile nav buttons */}
-              <div className="flex items-center justify-center sm:justify-start gap-2 mt-2 lg:hidden flex-wrap">
-                <button
-                  onClick={() => setShowJobSeeker(true)}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-semibold bg-[#D73833] text-white border border-[#D73833] rounded hover:bg-[#D73833]/90 transition-all"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-semibold bg-[#D73833] text-white border border-[#D73833] rounded hover:bg-[#D73833]/90 transition-all whitespace-nowrap"
                 >
                   <svg className="size-3.5 h-3.5" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                   Search Jobs
                 </button>
-                <button
-                  onClick={() => setShowSuggest(true)}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium bg-[#FFBA0A]/10 border border-[#FFBA0A] text-[#4C4C4C] rounded hover:bg-[#FFBA0A]/20 transition-all"
-                >
-                  <PlusCircle className="w-3.5 h-3.5" />
-                  Suggest
-                </button>
               </div>
+
 
               {/* Mobile Hot Companies */}
               <div className="mt-3 w-full bg-[#D73833]/10 border-2 border-[#D73833] rounded-lg p-3 lg:hidden">
@@ -230,17 +212,6 @@ export default function HomePage() {
 
             {/* Right: Nav buttons + Hot Companies */}
             <div className="hidden lg:flex items-end gap-4 flex-shrink-0">
-              {/* Nav buttons */}
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => setShowJobSeeker(true)}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-semibold bg-[#D73833] text-white border border-[#D73833] rounded hover:bg-[#D73833]/90 hover:shadow-md transition-all whitespace-nowrap"
-                >
-                  <svg className="size-3.5 h-3.5" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                  Search Jobs
-                </button>
-              </div>
-
               {/* Hot Companies box */}
               <div className="w-full max-w-96 bg-[#D73833]/10 border-2 border-[#D73833] rounded-lg p-3 shadow-lg">
                 <div className="flex items-center gap-2 mb-2">
