@@ -14,7 +14,6 @@ export interface Company {
   founders?: string
   total_raised?: string
   last_round_date?: string
-  twitter_url?: string
 }
 
 export interface Job {
