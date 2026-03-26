@@ -117,7 +117,7 @@ export const companies: Company[] = [
   { slug: "halo-media", name: "Halo", website: "https://haloai.app", linkedin: "https://www.linkedin.com/company/halosa", stage: "Seed", sector: ["Media"], city: "Riyadh", description: "Digital advertising platform.", careers_url: "https://haloai.app" , total_raised: "$6M" },
 
   // ===== DEFENSE & AEROSPACE =====
-  { slug: "atam", name: "ATAM", website: "https://atam.careers", linkedin: "https://www.linkedin.com/company/atam", stage: "Seed", sector: ["Defense"], city: "Riyadh", description: "Builds autonomous defense systems.", careers_url: "https://atam.careers" , founders: "Faisal Al-khamissi, Muteb Alqani", team_size: "11-50", founded_year: 2025 },
+  { slug: "atam", name: "ATAM", website: "https://atam.careers", linkedin: "https://www.linkedin.com/company/atam", stage: "Seed", sector: ["Defense"], city: "Riyadh", description: "Builds autonomous defense systems.", careers_url: "https://atam.careers" , founders: "Faisal Al-khamissi, Muteb Alqani", team_size: "11-50", founded_year: 2026 },
   { slug: "neo-space", name: "Neo Space Group", website: "https://neospacegroup.com", linkedin: "https://www.linkedin.com/company/neospacegroup", stage: "Seed", sector: ["Defense"], city: "Riyadh", description: "Builds satellite and space technology.", careers_url: "https://neospacegroup.com" , team_size: "11-50", founded_year: 2024 },
 
   // ===== CYBERSECURITY =====
