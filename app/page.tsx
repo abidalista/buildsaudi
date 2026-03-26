@@ -112,7 +112,7 @@ export default function HomePage() {
         !filters.companyStage || company.stage === filters.companyStage
 
       return matchesSearch && matchesSector && matchesCity && matchesStage
-    })
+    }).sort((a, b) => (b.founded_year || 0) - (a.founded_year || 0))
   }, [search, filters])
 
   const clearFilters = () => {
@@ -371,7 +371,7 @@ export default function HomePage() {
               <p className="text-sm text-[#6B7280]">
                 {filteredCompanies.length} {filteredCompanies.length === 1 ? "company" : "companies"}
               </p>
-              <p className="text-xs text-[#9CA3AF] font-mono">Sorted by upvotes</p>
+              <p className="text-xs text-[#9CA3AF] font-mono">Newest first</p>
             </div>
 
             {/* Company Cards */}
