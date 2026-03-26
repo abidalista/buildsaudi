@@ -9,17 +9,26 @@ const spaceMono = Space_Mono({ weight: ["400", "700"], subsets: ["latin"], varia
 export const metadata: Metadata = {
   title: 'BuildSaudi — Startup Jobs in Saudi Arabia',
   description: 'A curated directory of companies building the future of Saudi. Find startup jobs at the best companies in the Kingdom.',
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/icon-dark-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: '/apple-icon.png',
+  },
   openGraph: {
     title: 'BuildSaudi — Startup Jobs in Saudi Arabia',
     description: 'A curated directory of companies building the future of Saudi. Find startup jobs at the best companies in the Kingdom.',
     url: 'https://buildsaudi.co',
     siteName: 'BuildSaudi',
     type: 'website',
+    images: [{ url: 'https://buildsaudi.co/og-image.png', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'BuildSaudi — Startup Jobs in Saudi Arabia',
     description: 'Curated startup jobs. No noise, no spam.',
+    images: ['https://buildsaudi.co/og-image.png'],
   },
 }
 
