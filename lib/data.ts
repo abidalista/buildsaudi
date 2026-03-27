@@ -161,7 +161,7 @@ export const companies: Company[] = [
   { slug: "merit-incentives", name: "Merit Incentives", website: "https://meritincentives.com", linkedin: "https://www.linkedin.com/company/meritincentives", stage: "Growth", sector: ["HR Tech"], city: "Riyadh", description: "Employee engagement and incentives.", careers_url: "https://meritincentives.com" , founders: "Julie Barbier-Leblan", total_raised: "$45M", team_size: "51-200", founded_year: 2017 },
 
   // ===== AGRICULTURE =====
-  { slug: "edama", name: "Edama", website: "https://edama.com", linkedin: "https://www.linkedin.com/company/edama", stage: "Seed", sector: ["Agriculture"], city: "Riyadh", description: "Recycles organic waste into farm products.", careers_url: "https://edama.com" , total_raised: "$1M" },
+  { slug: "edama", name: "Edama", website: "https://www.edamasolutions.com", linkedin: "https://www.linkedin.com/company/edama", stage: "Seed", sector: ["Agriculture"], city: "Riyadh", description: "Recycles organic waste into farm products.", careers_url: "https://www.edamasolutions.com" , total_raised: "$1M" },
   { slug: "mustadem", name: "Mustadem", website: "https://mustadem.com", linkedin: "https://www.linkedin.com/company/mustadem", stage: "Seed", sector: ["Agriculture"], city: "Riyadh", description: "Smart aquaculture technology.", careers_url: "https://mustadem.com"  },
 
   // ===== GAMING =====
