@@ -1,0 +1,9 @@
+# BuildSaudi Cursor Rules
+
+## Pre-Deploy Testing (MANDATORY)
+Before pushing ANY code change to production:
+1. Run `npm run build` to catch TypeScript and build errors
+2. Run `npm run dev` and manually verify the change works on both desktop AND mobile viewports
+3. If the change involves UI, check it at 375px (mobile) and 1440px (desktop) widths
+4. Only push to `main` after confirming the build succeeds and the feature works as expected
+5. Never push broken or untested code — `main` auto-deploys to production via Vercel
