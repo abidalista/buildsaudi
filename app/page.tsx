@@ -370,7 +370,7 @@ export default function HomePage() {
                 className="inline-flex items-center gap-1 px-2 py-1 bg-[#FFBA0A]/10 border border-[#FFBA0A] rounded text-[11px] font-mono text-[#4C4C4C] hover:bg-[#FFBA0A]/20 transition-all"
               >
                 <PlusCircle className="w-3 h-3" />
-                Suggest
+                Suggest a Company
               </button>
             </div>
 
