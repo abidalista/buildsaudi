@@ -176,7 +176,6 @@ export const companies: Company[] = [
   { slug: "petroapp", name: "PetroApp", website: "https://petroapp.com", linkedin: "https://www.linkedin.com/company/petroapp", stage: "Series A", sector: ["Energy"], city: "Riyadh", description: "Fuel station management and analytics.", careers_url: "https://petroapp.com" , total_raised: "$50M" },
 
   // ===== TELECOM =====
-  { slug: "open-valley", name: "OpenValley", website: "https://openvalley.io", linkedin: "https://www.linkedin.com/company/openvalley", stage: "Seed", sector: ["Data & Infrastructure"], city: "Riyadh", description: "Open telecom infrastructure.", careers_url: "https://openvalley.io"  },
 
   // ===== FOODTECH (additional) =====
 ]
