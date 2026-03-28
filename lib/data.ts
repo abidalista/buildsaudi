@@ -139,7 +139,6 @@ export const companies: Company[] = [
 
   // ===== SAAS (from Airtable) =====
   { slug: "unifonic", name: "Unifonic", website: "https://unifonic.com", linkedin: "https://www.linkedin.com/company/unifonic", stage: "Series B", sector: ["AI"], city: "Riyadh", description: "AI-powered customer engagement platform (CPaaS).", careers_url: "https://jobs.unifonic.com" , founders: "Ahmed Hamdan, Hassan Hamdan", total_raised: "$146M", team_size: "201-500", founded_year: 2006, last_round_date: "Sep 2021"},
-  { slug: "rukiza", name: "Rukiza", website: "https://rukiza.com", linkedin: "https://www.linkedin.com/company/rukiza", stage: "Seed", sector: ["AI"], city: "Riyadh", description: "Scheduling and document verification.", careers_url: "https://rukiza.com" , total_raised: "$133K" },
 
   // ===== FINTECH (from Airtable) =====
   { slug: "oqood", name: "Oqood", website: "https://oqood.ai", linkedin: "https://www.linkedin.com/company/oqood", stage: "Seed", sector: ["Legaltech"], city: "Riyadh", description: "Automates legal workflows with AI.", careers_url: "https://oqood.ai" , founders: "Khaled Al Rasheed", total_raised: "$1M", founded_year: 2024 },
@@ -163,7 +162,6 @@ export const companies: Company[] = [
 
   // ===== AGRICULTURE =====
   { slug: "edama", name: "Edama", website: "https://www.edamasolutions.com", linkedin: "https://www.linkedin.com/company/edama", stage: "Seed", sector: ["Agriculture"], city: "Riyadh", description: "Recycles organic waste into farm products.", careers_url: "https://www.edamasolutions.com" , total_raised: "$1M" },
-  { slug: "mustadem", name: "Mustadem", website: "https://mustadem.com", linkedin: "https://www.linkedin.com/company/mustadem", stage: "Seed", sector: ["Agriculture"], city: "Riyadh", description: "Smart aquaculture technology.", careers_url: "https://mustadem.com"  },
 
   // ===== GAMING =====
   { slug: "spoilz", name: "SPOILZ", website: "https://www.spoilz.studio", linkedin: "https://www.linkedin.com/company/spoilz", stage: "Seed", sector: ["Gaming"], city: "Riyadh", description: "Gaming rewards and loyalty platform.", careers_url: "https://www.spoilz.studio" , total_raised: "$700K" },
