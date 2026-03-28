@@ -87,6 +87,9 @@ export const companies: Company[] = [
   { slug: "mnzl", name: "Mnzil", website: "https://mnzil.com", linkedin: "https://www.linkedin.com/company/mnzl", stage: "Series A", sector: ["Proptech"], city: "Riyadh", description: "Workforce housing solutions.", careers_url: "https://mnzl.com", founders: "Abdulmajeed Al-Babtain, Abdulrahman Al-Shaya", total_raised: "$11.7M", founded_year: 2024, last_round_date: "Nov 2025" , team_size: "11-50" },
   { slug: "livedin", name: "Livedin", website: "https://livedin.co", linkedin: "https://www.linkedin.com/company/livedinsa", stage: "Seed", sector: ["Proptech"], city: "Riyadh", description: "Property management and tenant experience.", careers_url: "https://livedin.co"  },
 
+  // ===== SAAS =====
+  { slug: "penny", name: "Penny", website: "https://penny.co", linkedin: "https://www.linkedin.com/company/pennysoftware", stage: "Pre-Series A", sector: ["SaaS"], city: "Riyadh", description: "B2B procurement and source-to-pay platform.", careers_url: "https://penny.co", founders: "Iyad Aldalooj", total_raised: "$5M+", team_size: "51-200", founded_year: 2022 },
+
   // ===== MEDIA =====
   { slug: "thmanyah", name: "Thmanyah", website: "https://thmanyah.com", linkedin: "https://www.linkedin.com/company/thmanyah", stage: "Growth", sector: ["Media"], city: "Riyadh", description: "Largest Arabic podcast and media-tech network.", careers_url: "https://thmanyah.com", founders: "Abdulrahman Abumalih", total_raised: "SAR 33.3M (SRMG acquired 51%)", team_size: "101-250", founded_year: 2016 },
 
