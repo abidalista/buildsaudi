@@ -324,7 +324,7 @@ export default function HomePage() {
             {/* Suggest Company button */}
             <button
               onClick={() => setShowSuggest(true)}
-              className="hidden lg:flex items-center justify-center gap-1.5 w-full px-3 py-1.5 bg-[#FFBA0A]/10 border border-[#FFBA0A] rounded text-xs font-mono text-[#4C4C4C] hover:bg-[#FFBA0A]/20 hover:shadow-sm transition-all"
+              className="flex items-center justify-center gap-1.5 w-full px-3 py-1.5 bg-[#FFBA0A]/10 border border-[#FFBA0A] rounded text-xs font-mono text-[#4C4C4C] hover:bg-[#FFBA0A]/20 hover:shadow-sm transition-all"
             >
               <PlusCircle className="w-3.5 h-3.5" />
               Suggest a Company
@@ -365,6 +365,13 @@ export default function HomePage() {
                 options={filterOptions.companyStage}
                 placeholder="Stage"
               />
+              <button
+                onClick={() => setShowSuggest(true)}
+                className="inline-flex items-center gap-1 px-2 py-1 bg-[#FFBA0A]/10 border border-[#FFBA0A] rounded text-[11px] font-mono text-[#4C4C4C] hover:bg-[#FFBA0A]/20 transition-all"
+              >
+                <PlusCircle className="w-3 h-3" />
+                Suggest
+              </button>
             </div>
 
             <div className="mb-4 flex items-center justify-between">
@@ -525,38 +532,6 @@ export default function HomePage() {
               )}
             </div>
 
-            {/* Mobile Email Capture */}
-            <div className="mt-8 rounded-lg border border-[#E5E7EB] bg-white p-5 lg:hidden">
-              <div className="flex items-center gap-2 mb-2">
-                <Mail className="size-4 text-[#06634D]" />
-                <h3 className="font-semibold text-[#111827]">get weekly startup jobs</h3>
-              </div>
-              <p className="text-sm text-[#6B7280] mb-3">
-                curated startup jobs delivered to your inbox. no spam.
-              </p>
-              {emailSubmitted ? (
-                <p className="text-sm text-green-600 font-medium">
-                  you&apos;re in. watch your inbox.
-                </p>
-              ) : (
-                <form onSubmit={handleEmailSubmit} className="flex gap-2">
-                  <Input
-                    type="email"
-                    placeholder="your@email.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    className="h-9"
-                  />
-                  <Button
-                    type="submit"
-                    className="h-9 bg-[#06634D] hover:bg-[#044D3B] shrink-0"
-                  >
-                    Subscribe
-                  </Button>
-                </form>
-              )}
-            </div>
           </div>
         </div>
       </div>

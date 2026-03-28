@@ -89,6 +89,12 @@ export const companies: Company[] = [
   { slug: "mnzl", name: "Mnzil", website: "https://mnzil.com", linkedin: "https://www.linkedin.com/company/mnzl", stage: "Series A", sector: ["Proptech"], city: "Riyadh", description: "Workforce housing solutions.", careers_url: "https://mnzl.com", founders: "Abdulmajeed Al-Babtain, Abdulrahman Al-Shaya", total_raised: "$11.7M", founded_year: 2024, last_round_date: "Nov 2025" , team_size: "11-50" },
   { slug: "livedin", name: "Livedin", website: "https://livedin.co", linkedin: "https://www.linkedin.com/company/livedinsa", stage: "Seed", sector: ["Proptech"], city: "Riyadh", description: "Property management and tenant experience.", careers_url: "https://livedin.co"  },
 
+  // ===== MEDIA =====
+  { slug: "thmanyah", name: "Thmanyah", website: "https://thmanyah.com", linkedin: "https://www.linkedin.com/company/thmanyah", stage: "Growth", sector: ["Media"], city: "Riyadh", description: "Largest Arabic podcast and media-tech network.", careers_url: "https://thmanyah.com", founders: "Abdulrahman Abumalih", total_raised: "SAR 33.3M (SRMG acquired 51%)", team_size: "101-250", founded_year: 2016 },
+
+  // ===== LOGISTICS =====
+  { slug: "telgani", name: "Telgani", website: "https://www.telgani.com", linkedin: "https://www.linkedin.com/company/telgani", stage: "Series A", sector: ["Logistics"], city: "Riyadh", description: "On-demand car rental aggregator across 44+ Saudi cities.", careers_url: "https://www.telgani.com", founders: "Abdulkader Almkinzy, Ali Alfehaid", total_raised: "$8.5M", team_size: "51-200", founded_year: 2018, last_round_date: "Feb 2023" },
+
   // ===== ROBOTICS =====
   { slug: "proven-robotics", name: "PROVEN Robotics", website: "https://provenrobotics.ai", linkedin: "https://www.linkedin.com/company/proven-robotics", stage: "Growth", sector: ["Robotics"], city: "Riyadh", description: "Robotics solutions for Saudi enterprises.", careers_url: "https://provenrobotics.ai" , founders: "PROVEN Group", team_size: "51-200", founded_year: 2018 },
 
