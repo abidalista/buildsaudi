@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import Link from "next/link"
 import { Search, Building2, Mail, X, ChevronDown, PlusCircle } from "lucide-react"
 import { Input } from "@/components/ui/input"
@@ -31,6 +31,36 @@ export default function HomePage() {
   const [showJobSeeker, setShowJobSeeker] = useState(false)
   const [jobSeekerForm, setJobSeekerForm] = useState({ name: "", title: "", email: "" })
   const [jobSeekerStatus, setJobSeekerStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")
+
+  // Auto-popup: 8 seconds OR 25% scroll, whichever first. Once per day.
+  useEffect(() => {
+    const STORAGE_KEY = "buildsaudi_popup_dismissed"
+    const dismissed = localStorage.getItem(STORAGE_KEY)
+    if (dismissed && Date.now() - parseInt(dismissed) < 86400000) return // 24 hours
+
+    let triggered = false
+    const trigger = () => {
+      if (triggered) return
+      triggered = true
+      setShowJobSeeker(true)
+      localStorage.setItem(STORAGE_KEY, Date.now().toString())
+      window.removeEventListener("scroll", onScroll)
+      clearTimeout(timer)
+    }
+
+    const timer = setTimeout(trigger, 8000)
+
+    const onScroll = () => {
+      const scrollPct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)
+      if (scrollPct >= 0.25) trigger()
+    }
+    window.addEventListener("scroll", onScroll)
+
+    return () => {
+      clearTimeout(timer)
+      window.removeEventListener("scroll", onScroll)
+    }
+  }, [])
 
   const handleJobSeekerSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
