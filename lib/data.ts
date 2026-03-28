@@ -133,7 +133,7 @@ export const companies: Company[] = [
   { slug: "takamul", name: "Takamul", website: "https://takamul.com.sa", linkedin: "https://www.linkedin.com/company/takamul", stage: "Growth", sector: ["Govtech"], city: "Riyadh", description: "Digital transformation for government.", careers_url: "https://takamul.com.sa" , founders: "Basil Al Dossary", team_size: "201-500" },
 
   // ===== AI (from Airtable) =====
-  { slug: "cranl", name: "Cranl", website: "https://cranl.com", linkedin: "https://www.linkedin.com/company/cranl", stage: "Seed", sector: ["AI"], city: "Riyadh", description: "AI research and intelligent products.", careers_url: "https://cranl.com"  },
+  { slug: "cranl", name: "Cranl", website: "https://cranl.com", linkedin: "https://www.linkedin.com/company/cranl", stage: "Seed", sector: ["AI"], city: "Riyadh", description: "Cloud platform (PaaS) to deploy applications.", careers_url: "https://cranl.com"  },
   { slug: "intelmatix", name: "Intelmatix", website: "https://intelmatix.ai", linkedin: "https://www.linkedin.com/company/intelmatix", stage: "Series A", sector: ["AI"], city: "Riyadh", description: "AI-powered decision intelligence for enterprise.", careers_url: "https://intelmatix.ai/company-careers.html" , founders: "Anas Alfaris, Ahmad Alabdulkareem", total_raised: "$20M", team_size: "51-200", founded_year: 2021, last_round_date: "Jul 2024"},
   { slug: "wittify", name: "Wittify.ai", website: "https://wittify.ai", linkedin: "https://www.linkedin.com/company/wittify", stage: "Seed", sector: ["AI"], city: "Riyadh", description: "AI agents for omnichannel customer touchpoints.", careers_url: "https://wittify.ai" , total_raised: "$2.5M", founded_year: 2024, team_size: "11-50" },
 
