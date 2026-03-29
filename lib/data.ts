@@ -181,6 +181,22 @@ export const companies: Company[] = [
   // ===== TELECOM =====
 
   // ===== FOODTECH (additional) =====
+
+  // ===== AI (from Suggestions) =====
+  { slug: "entropy", name: "Entropy", website: "https://entropy.sa", linkedin: "https://www.linkedin.com/company/entropy-sa", stage: "Seed", sector: ["AI"], city: "Riyadh", description: "Data & AI company helping public and private sectors become AI-enabled enterprises.", careers_url: "https://entropy.sa" },
+
+  // ===== DEEP TECH (from Suggestions) =====
+  { slug: "nasl-tech", name: "NASL Tech", website: "https://nasl-tech.com", linkedin: "https://www.linkedin.com/company/nasl-tech", stage: "Seed", sector: ["Deep Tech"], city: "Riyadh", description: "Builds drone, IoT, and autonomous robotics solutions for Saudi industries.", careers_url: "https://nasl-tech.com" },
+
+  // ===== MEDIA (from Suggestions) =====
+  { slug: "audiom", name: "Audiom", website: "https://audiom.sa", linkedin: "https://www.linkedin.com/company/audiomsoultions", stage: "Seed", sector: ["Media"], city: "Riyadh", description: "Creative music house for sonic branding, audio production, and sound design.", careers_url: "https://audiom.sa", founders: "Abdulaziz Saleem", founded_year: 2019, team_size: "11-50" },
+
+  // ===== FINTECH (from Suggestions) =====
+  { slug: "jaree", name: "Jaree", website: "https://jaree.sa", linkedin: "https://www.linkedin.com/company/jareeplatform", stage: "Seed", sector: ["Fintech"], city: "Riyadh", description: "VC matchmaking platform connecting Saudi startups with accredited investors.", careers_url: "https://jaree.sa", founders: "Faisal AlNaji, Noura AlNahedh", founded_year: 2025 },
+  { slug: "lendo", name: "Lendo", website: "https://lendo.sa", linkedin: "https://www.linkedin.com/company/lendosa", stage: "Series B", sector: ["Fintech"], city: "Riyadh", description: "Shariah-compliant SME invoice financing and debt crowdfunding marketplace.", careers_url: "https://lendo.sa", founders: "Osama AlRaee, Mohammad Jawabri", founded_year: 2019, total_raised: "$35.2M", last_round_date: "Dec 2023", team_size: "51-200" },
+
+  // ===== CYBERSECURITY (from Suggestions) =====
+  { slug: "nua-security", name: "Nua Security", website: "https://nuasecurity.com", linkedin: "https://www.linkedin.com/company/nuasecurity", stage: "Seed", sector: ["Cybersecurity"], city: "Riyadh", description: "AI-powered penetration testing platform with bug bounty and vulnerability discovery.", careers_url: "https://nuasecurity.com", founded_year: 2021 },
 ]
 
 // Jobs archived — linking directly to company career pages
