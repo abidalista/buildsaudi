@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Space_Grotesk, Space_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { PostHogProvider } from './posthog-provider'
 import './globals.css'
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" })
@@ -40,7 +41,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${spaceGrotesk.variable} ${spaceMono.variable} font-sans antialiased bg-[#F9F9F9] text-[#111827]`}>
-        {children}
+        <PostHogProvider>
+          {children}
+        </PostHogProvider>
         <Analytics />
       </body>
     </html>
