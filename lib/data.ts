@@ -189,7 +189,7 @@ export const companies: Company[] = [
   { slug: "nasl-tech", name: "NASL Tech", website: "https://nasl-tech.com", linkedin: "https://www.linkedin.com/company/nasl-tech", stage: "Seed", sector: ["Deep Tech"], city: "Riyadh", description: "Builds drone, IoT, and autonomous robotics solutions for Saudi industries.", careers_url: "https://nasl-tech.com" },
 
   // ===== MEDIA (from Suggestions) =====
-  { slug: "audiom", name: "Audiom", website: "https://audiom.sa", linkedin: "https://www.linkedin.com/company/audiomsoultions", stage: "Seed", sector: ["Media"], city: "Riyadh", description: "Creative music house for sonic branding, audio production, and sound design.", careers_url: "https://audiom.sa", founders: "Abdulaziz Saleem", founded_year: 2019, team_size: "11-50" },
+  { slug: "audiom", name: "Audiom", website: "https://audiom.sa", linkedin: "https://www.linkedin.com/company/audiomsoultions", stage: "Seed", sector: ["Media"], city: "Riyadh", description: "Creative music house for sonic branding, audio production, and sound design.", careers_url: "https://audiom.sa", founders: "Abdulaziz Saleem", founded_year: 2021, team_size: "1-10" },
 
   // ===== FINTECH (from Suggestions) =====
   { slug: "jaree", name: "Jaree", website: "https://jaree.sa", linkedin: "https://www.linkedin.com/company/jareeplatform", stage: "Seed", sector: ["Fintech"], city: "Riyadh", description: "VC matchmaking platform connecting Saudi startups with accredited investors.", careers_url: "https://jaree.sa", founders: "Faisal AlNaji, Noura AlNahedh", founded_year: 2025 },
