@@ -145,7 +145,7 @@ export const companies: Company[] = [
 
   // ===== FINTECH (from Airtable) =====
   { slug: "oqood", name: "Oqood", website: "https://oqood.ai", linkedin: "https://www.linkedin.com/company/oqood", stage: "Seed", sector: ["Legaltech"], city: "Riyadh", description: "Automates legal workflows with AI.", careers_url: "https://oqood.ai" , founders: "Khaled Al Rasheed", total_raised: "$1M", founded_year: 2024 },
-  { slug: "stamp", name: "STAMP", website: "https://www.stamp.sa", linkedin: "https://www.linkedin.com/company/stamp-platform", stage: "Pre-Seed", sector: ["Legaltech"], city: "Riyadh", description: "AI-powered compliance management platform for Saudi businesses.", careers_url: "https://www.stamp.sa", founders: "Muyasser Albar, Mohammed Zarei", total_raised: "$2M", team_size: "1-10", founded_year: 2021, last_round_date: "Nov 2025" },
+  { slug: "stamp", name: "STAMP", website: "https://www.stamp.sa", linkedin: "https://www.linkedin.com/company/stampcorporate", stage: "Pre-Seed", sector: ["Legaltech"], city: "Riyadh", description: "AI-powered compliance management platform for Saudi businesses.", careers_url: "https://www.stamp.sa", founders: "Muyasser Albar, Mohammed Zarei", total_raised: "$2M", team_size: "1-10", founded_year: 2021, last_round_date: "Nov 2025" },
 
   // ===== E-COMMERCE (from Airtable) =====
   { slug: "rawaa", name: "Rawaa", website: "https://www.rawaa.cloud", linkedin: "https://www.linkedin.com/company/rawaa", stage: "Series A", sector: ["E-commerce"], city: "Riyadh", description: "Cloud POS with AI accounting for merchants.", careers_url: "https://www.rawaa.cloud" , founders: "Mohammed Alqasir, Abdullah Aljadhai", total_raised: "$27M", team_size: "11-50", founded_year: 2018 },
