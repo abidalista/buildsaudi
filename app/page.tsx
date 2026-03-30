@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect } from "react"
 import Link from "next/link"
-import { Search, X, ChevronDown, PlusCircle } from "lucide-react"
+import { Search, Building2, X, ChevronDown, PlusCircle } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import {
