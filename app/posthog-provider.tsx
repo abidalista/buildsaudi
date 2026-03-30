@@ -12,7 +12,6 @@ if (typeof window !== "undefined") {
     capture_pageleave: true,
     capture_performance: true,
     capture_exceptions: true,
-    scroll_depth: true,
   })
 }
 

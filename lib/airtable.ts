@@ -45,6 +45,12 @@ export async function getCompanies(): Promise<Company[]> {
     city: r.fields.City || "Riyadh",
     description: r.fields.Description || "",
     careers_url: r.fields["Careers URL"] || r.fields.Website || "",
+    founded_year: r.fields["Founded Year"] ? parseInt(r.fields["Founded Year"]) : undefined,
+    team_size: r.fields["Team Size"] || undefined,
+    founders: r.fields.Founders || undefined,
+    total_raised: r.fields["Total Raised"] || undefined,
+    last_round_date: r.fields["Last Round Date"] || undefined,
+    logo_override: r.fields.LogoOverride || undefined,
   }))
 }
 
