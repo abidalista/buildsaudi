@@ -165,10 +165,18 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen relative" style={{ backgroundColor: "#E8D5B0" }}>
-      {/* Paper grain texture — static, like old parchment */}
+      {/* MAXIMUM sand grain — 3 layers stacked */}
       <div className="fixed inset-0 pointer-events-none z-[999]" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E")`,
-        backgroundSize: "512px 512px",
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.8' numOctaves='8' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)' opacity='0.35'/%3E%3C/svg%3E")`,
+        backgroundSize: "256px 256px",
+      }} />
+      <div className="fixed inset-0 pointer-events-none z-[998]" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 128 128' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='turbulence' baseFrequency='3' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23b)' opacity='0.2'/%3E%3C/svg%3E")`,
+        backgroundSize: "128px 128px",
+      }} />
+      <div className="fixed inset-0 pointer-events-none z-[997] mix-blend-multiply opacity-[0.06]" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='5' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)' opacity='1'/%3E%3C/svg%3E")`,
+        backgroundSize: "64px 64px",
       }} />
       {/* ============ HEADER ============ */}
       <header className="border-b border-[#C4A97D]/40 bg-[#E8D5B0]">
