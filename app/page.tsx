@@ -343,18 +343,10 @@ export default function HomePage() {
               />
             </div>
 
-            {/* Divider */}
-            <div className="border-t border-[#E5E7EB]" />
-
-            {/* Company count */}
-            <p className="text-sm font-mono text-[#6B7280]">
-              {companies.length} companies
-            </p>
-
             {/* Suggest Company button */}
             <button
               onClick={() => setShowSuggest(true)}
-              className="flex items-center justify-center gap-1.5 w-full px-3 py-1.5 bg-[#FFBA0A]/10 border border-[#FFBA0A] rounded text-xs font-mono text-[#4C4C4C] hover:bg-[#FFBA0A]/20 hover:shadow-sm transition-all"
+              className="flex items-center justify-center gap-1.5 w-full px-3 py-2 bg-[#D97706] border border-[#B45309] rounded text-xs font-mono text-white font-semibold hover:bg-[#B45309] hover:shadow-md transition-all"
             >
               <PlusCircle className="w-3.5 h-3.5" />
               Suggest a Company
