@@ -55,7 +55,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={`${spaceGrotesk.variable} ${spaceMono.variable} font-sans antialiased bg-[#F9F9F9] text-[#111827]`}>
+      <body className={`${spaceGrotesk.variable} ${spaceMono.variable} font-sans antialiased bg-[#F5F0E6] text-[#111827]`}>
         <PostHogProvider>
           {children}
         </PostHogProvider>
