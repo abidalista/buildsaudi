@@ -165,18 +165,14 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen relative" style={{ backgroundColor: "#E8D5B0" }}>
-      {/* MAXIMUM sand grain — 3 layers stacked */}
+      {/* Sand grain — big chunky pixels, visible brown/light contrast */}
       <div className="fixed inset-0 pointer-events-none z-[999]" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.8' numOctaves='8' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)' opacity='0.35'/%3E%3C/svg%3E")`,
-        backgroundSize: "256px 256px",
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.15' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)' opacity='0.4'/%3E%3C/svg%3E")`,
+        backgroundSize: "512px 512px",
       }} />
       <div className="fixed inset-0 pointer-events-none z-[998]" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 128 128' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='turbulence' baseFrequency='3' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23b)' opacity='0.2'/%3E%3C/svg%3E")`,
-        backgroundSize: "128px 128px",
-      }} />
-      <div className="fixed inset-0 pointer-events-none z-[997] mix-blend-multiply opacity-[0.06]" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='5' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)' opacity='1'/%3E%3C/svg%3E")`,
-        backgroundSize: "64px 64px",
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.4' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23b)' opacity='0.25'/%3E%3C/svg%3E")`,
+        backgroundSize: "256px 256px",
       }} />
       {/* ============ HEADER ============ */}
       <header className="border-b border-[#C4A97D]/40 bg-[#E8D5B0]">
