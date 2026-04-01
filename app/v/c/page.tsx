@@ -164,9 +164,9 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#E8E4DA", backgroundImage: "url(/speckle.png)", backgroundSize: "200px 200px" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "#EEEBE4", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat" }}>
       {/* ============ HEADER ============ */}
-      <header className="border-b border-[#06634D]/20 bg-[#E8E4DA]">
+      <header className="border-b border-[#06634D]/20 bg-[#EEEBE4]/90 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex items-start justify-between gap-4 sm:gap-6">
             {/* Left: Logo + tagline + action buttons */}
@@ -272,7 +272,7 @@ export default function HomePage() {
       </header>
 
       {/* ============ STICKY SEARCH BAR ============ */}
-      <div className="sticky top-0 z-20 bg-[#E8E4DA]/95 backdrop-blur-sm border-b border-gray-200/50">
+      <div className="sticky top-0 z-20 bg-[#EEEBE4]/90 backdrop-blur-sm border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-3">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-[#9CA3AF]" />
