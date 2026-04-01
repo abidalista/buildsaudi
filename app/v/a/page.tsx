@@ -164,10 +164,9 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F5ECD7] relative">
-      <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.04] mix-blend-multiply" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`, backgroundSize: "200px 200px" }} />
+    <div className="min-h-screen bg-[#D2B48C]">
       {/* ============ HEADER ============ */}
-      <header className="border-b border-[#06634D]/20 bg-[#F5ECD7]">
+      <header className="border-b border-[#06634D]/20 bg-[#D2B48C]">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex items-start justify-between gap-4 sm:gap-6">
             {/* Left: Logo + tagline + action buttons */}
@@ -273,7 +272,7 @@ export default function HomePage() {
       </header>
 
       {/* ============ STICKY SEARCH BAR ============ */}
-      <div className="sticky top-0 z-20 bg-[#F5ECD7]/95 backdrop-blur-sm border-b border-gray-200/50">
+      <div className="sticky top-0 z-20 bg-[#D2B48C]/95 backdrop-blur-sm border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-3">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-[#9CA3AF]" />
@@ -282,7 +281,7 @@ export default function HomePage() {
               placeholder="search keywords..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="h-11 rounded-lg border-[#D4C9A8] bg-[#FFFDF7] pl-11 text-sm shadow-sm placeholder:text-[#9CA3AF] focus-visible:border-[#06634D] focus-visible:ring-[#06634D]/20"
+              className="h-11 rounded-lg border-[#E5E7EB] bg-white pl-11 text-sm shadow-sm placeholder:text-[#9CA3AF] focus-visible:border-[#06634D] focus-visible:ring-[#06634D]/20"
             />
             {search && (
               <button
@@ -419,7 +418,7 @@ export default function HomePage() {
                 return (
                   <div
                     key={company.slug}
-                    className="group bg-[#FFFDF7] border border-[#D4C9A8] hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden"
+                    className="group bg-[#E8D5B7] border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden"
                   >
                     <div className="p-4 sm:p-6 cursor-pointer" onClick={() => toggleCard(company.slug)}>
                       {/* Mobile: stacked layout. Desktop: single row */}

@@ -164,9 +164,9 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FAF6F1]">
+    <div className="min-h-screen bg-[#C4B08B]">
       {/* ============ HEADER ============ */}
-      <header className="border-b border-[#06634D]/20 bg-[#FAF6F1]">
+      <header className="border-b border-[#06634D]/20 bg-[#C4B08B]">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex items-start justify-between gap-4 sm:gap-6">
             {/* Left: Logo + tagline + action buttons */}
@@ -183,7 +183,7 @@ export default function HomePage() {
                   {/* Bottom-right corner */}
                   <span className="absolute bottom-0 right-0 w-4 h-4 sm:w-5 sm:h-5 border-r-[3px] border-b-[3px] border-[#06634D]/30" />
                   <h1
-                    className="text-[clamp(2rem,5vw,3.5rem)] font-black leading-none text-[#06634D] tracking-tight"
+                    className="text-[clamp(1.8rem,4vw,3rem)] font-bold leading-none text-[#06634D] tracking-tight"
                     style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}
                   >
                     BUILDSAUDI
@@ -272,7 +272,7 @@ export default function HomePage() {
       </header>
 
       {/* ============ STICKY SEARCH BAR ============ */}
-      <div className="sticky top-0 z-20 bg-[#FAF6F1]/95 backdrop-blur-sm border-b border-gray-200/50">
+      <div className="sticky top-0 z-20 bg-[#C4B08B]/95 backdrop-blur-sm border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-3">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-[#9CA3AF]" />
@@ -281,7 +281,7 @@ export default function HomePage() {
               placeholder="search keywords..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="h-11 rounded-lg border-gray-300 bg-white pl-11 shadow-sm text-sm shadow-sm placeholder:text-[#9CA3AF] focus-visible:border-[#06634D] focus-visible:ring-[#06634D]/20"
+              className="h-11 rounded-lg border-[#E5E7EB] bg-white pl-11 text-sm shadow-sm placeholder:text-[#9CA3AF] focus-visible:border-[#06634D] focus-visible:ring-[#06634D]/20"
             />
             {search && (
               <button
@@ -418,7 +418,7 @@ export default function HomePage() {
                 return (
                   <div
                     key={company.slug}
-                    className="group bg-white border border-gray-200 shadow-sm hover:border-[#06634D]/30 hover:shadow-lg transition-all duration-300 rounded-lg overflow-hidden"
+                    className="group bg-[#D9CBAB] border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden"
                   >
                     <div className="p-4 sm:p-6 cursor-pointer" onClick={() => toggleCard(company.slug)}>
                       {/* Mobile: stacked layout. Desktop: single row */}
@@ -448,11 +448,11 @@ export default function HomePage() {
 
                             {/* Badges - desktop only inline */}
                             <div className="hidden sm:flex flex-shrink-0 flex-col items-end gap-2">
-                              <span className="px-2.5 py-1 bg-[#06634D]/10 border border-[#06634D]/20 text-[#06634D] text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">
+                              <span className="px-2.5 py-1 bg-gray-100 border border-gray-200 text-gray-700 text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">
                                 {company.sector[0]}
                               </span>
                               <div className="flex items-center gap-2">
-                                <span className="px-2.5 py-1 bg-[#06634D]/10 border border-[#06634D]/20 text-[#06634D] text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">
+                                <span className="px-2.5 py-1 bg-gray-100 border border-gray-200 text-gray-700 text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">
                                   {company.stage}
                                 </span>
                                 <a
@@ -470,10 +470,10 @@ export default function HomePage() {
 
                           {/* Badges - mobile: row below name */}
                           <div className="flex items-center gap-1.5 mt-2 sm:hidden flex-wrap">
-                            <span className="px-2 py-0.5 bg-[#06634D]/10 border border-[#06634D]/20 text-[#06634D] text-[11px] font-mono uppercase tracking-wider rounded whitespace-nowrap">
+                            <span className="px-2 py-0.5 bg-gray-100 border border-gray-200 text-gray-700 text-[11px] font-mono uppercase tracking-wider rounded whitespace-nowrap">
                               {company.sector[0]}
                             </span>
-                            <span className="px-2 py-0.5 bg-[#06634D]/10 border border-[#06634D]/20 text-[#06634D] text-[11px] font-mono uppercase tracking-wider rounded whitespace-nowrap">
+                            <span className="px-2 py-0.5 bg-gray-100 border border-gray-200 text-gray-700 text-[11px] font-mono uppercase tracking-wider rounded whitespace-nowrap">
                               {company.stage}
                             </span>
                             <a

@@ -164,9 +164,9 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F5ECD7]">
+    <div className="min-h-screen bg-[#8B8B6A]">
       {/* ============ HEADER ============ */}
-      <header className="border-b border-[#06634D]/20 bg-[#F5ECD7]">
+      <header className="border-b border-[#06634D]/20 bg-[#8B8B6A]">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex items-start justify-between gap-4 sm:gap-6">
             {/* Left: Logo + tagline + action buttons */}
@@ -233,7 +233,7 @@ export default function HomePage() {
                       >
                         {c.name}
                       </a>
-                      <span className="text-sm text-[#111827] font-mono">{c.sector[0]}</span>
+                      <span className="text-sm text-[#1a1a1a] font-mono">{c.sector[0]}</span>
                     </div>
                   ))}
                 </div>
@@ -261,7 +261,7 @@ export default function HomePage() {
                       >
                         {c.name}
                       </a>
-                      <span className="text-sm text-[#111827] font-mono">{c.sector[0]}</span>
+                      <span className="text-sm text-[#1a1a1a] font-mono">{c.sector[0]}</span>
                     </div>
                   ))}
                 </div>
@@ -271,23 +271,8 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* ============ STATS BANNER ============ */}
-      <div className="border-b border-[#06634D]/10 bg-[#06634D]/5">
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2">
-          <div className="flex items-center justify-center gap-4 sm:gap-8 text-xs font-mono text-[#06634D]">
-            <span className="flex items-center gap-1.5"><span className="font-bold text-sm">{companies.length}</span> companies</span>
-            <span className="text-[#06634D]/30">|</span>
-            <span className="flex items-center gap-1.5"><span className="font-bold text-sm">{companies.filter(c => c.stage === "Unicorn").length}</span> unicorns</span>
-            <span className="text-[#06634D]/30">|</span>
-            <span className="flex items-center gap-1.5"><span className="font-bold text-sm">{new Set(companies.flatMap(c => c.sector)).size}</span> sectors</span>
-            <span className="hidden sm:inline text-[#06634D]/30">|</span>
-            <span className="hidden sm:flex items-center gap-1.5">est. <span className="font-bold text-sm">2026</span></span>
-          </div>
-        </div>
-      </div>
-
       {/* ============ STICKY SEARCH BAR ============ */}
-      <div className="sticky top-0 z-20 bg-[#F5ECD7]/95 backdrop-blur-sm border-b border-gray-200/50">
+      <div className="sticky top-0 z-20 bg-[#8B8B6A]/95 backdrop-blur-sm border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-3">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-[#9CA3AF]" />
@@ -296,12 +281,12 @@ export default function HomePage() {
               placeholder="search keywords..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="h-11 rounded-lg border-[#D4C9A8] bg-[#FFFDF7] pl-11 text-sm shadow-sm placeholder:text-[#9CA3AF] focus-visible:border-[#06634D] focus-visible:ring-[#06634D]/20"
+              className="h-11 rounded-lg border-[#E5E7EB] bg-white pl-11 text-sm shadow-sm placeholder:text-[#9CA3AF] focus-visible:border-[#06634D] focus-visible:ring-[#06634D]/20"
             />
             {search && (
               <button
                 onClick={() => setSearch("")}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-[#9CA3AF] hover:text-[#111827]"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-[#9CA3AF] hover:text-[#1a1a1a]"
               >
                 <X className="size-4" />
               </button>
@@ -433,7 +418,7 @@ export default function HomePage() {
                 return (
                   <div
                     key={company.slug}
-                    className="group bg-[#FFFDF7] border border-[#D4C9A8] hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden"
+                    className="group bg-[#A3A37D] border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden"
                   >
                     <div className="p-4 sm:p-6 cursor-pointer" onClick={() => toggleCard(company.slug)}>
                       {/* Mobile: stacked layout. Desktop: single row */}
@@ -452,7 +437,7 @@ export default function HomePage() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={(e) => e.stopPropagation()}
-                                className="text-base sm:text-lg font-bold text-[#111827] hover:text-[#06634D] transition-colors line-clamp-1"
+                                className="text-base sm:text-lg font-bold text-[#1a1a1a] hover:text-[#06634D] transition-colors line-clamp-1"
                               >
                                 {company.name}
                               </a>
@@ -593,7 +578,7 @@ export default function HomePage() {
               <div className="w-12 h-12 rounded-full bg-[#D73833]/10 flex items-center justify-center mb-3">
                 <Search className="size-6 text-[#D73833]" />
               </div>
-              <h3 className="text-lg font-bold text-[#111827] font-mono">Search Jobs</h3>
+              <h3 className="text-lg font-bold text-[#1a1a1a] font-mono">Search Jobs</h3>
               <p className="text-sm text-gray-500 mt-1">Sign up to get notified about Saudi startup jobs</p>
             </div>
 
@@ -673,7 +658,7 @@ export default function HomePage() {
               <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mb-3">
                 <PlusCircle className="size-6 text-[#06634D]" />
               </div>
-              <h3 className="text-lg font-bold text-[#111827] font-mono">Suggest a Company</h3>
+              <h3 className="text-lg font-bold text-[#1a1a1a] font-mono">Suggest a Company</h3>
               <p className="text-sm text-gray-500 mt-1">Know a company we should add?</p>
             </div>
 
@@ -740,7 +725,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 text-xs text-[#6B7280]">
             <div>
-              <h4 className="font-bold text-[#111827] uppercase tracking-wider font-mono mb-3">Jobs by City</h4>
+              <h4 className="font-bold text-[#1a1a1a] uppercase tracking-wider font-mono mb-3">Jobs by City</h4>
               <div className="space-y-1.5">
                 <Link href="/jobs/riyadh" className="block hover:text-[#06634D]">Riyadh</Link>
                 <Link href="/jobs/jeddah" className="block hover:text-[#06634D]">Jeddah</Link>
@@ -749,7 +734,7 @@ export default function HomePage() {
               </div>
             </div>
             <div>
-              <h4 className="font-bold text-[#111827] uppercase tracking-wider font-mono mb-3">Jobs by Sector</h4>
+              <h4 className="font-bold text-[#1a1a1a] uppercase tracking-wider font-mono mb-3">Jobs by Sector</h4>
               <div className="space-y-1.5">
                 <Link href="/jobs/sector/fintech" className="block hover:text-[#06634D]">Fintech</Link>
                 <Link href="/jobs/sector/ai" className="block hover:text-[#06634D]">AI & ML</Link>
@@ -760,7 +745,7 @@ export default function HomePage() {
               </div>
             </div>
             <div>
-              <h4 className="font-bold text-[#111827] uppercase tracking-wider font-mono mb-3">By Stage</h4>
+              <h4 className="font-bold text-[#1a1a1a] uppercase tracking-wider font-mono mb-3">By Stage</h4>
               <div className="space-y-1.5">
                 <Link href="/jobs/stage/unicorn" className="block hover:text-[#06634D]">Unicorns</Link>
                 <Link href="/jobs/stage/series-b" className="block hover:text-[#06634D]">Series B</Link>
@@ -769,7 +754,7 @@ export default function HomePage() {
               </div>
             </div>
             <div>
-              <h4 className="font-bold text-[#111827] uppercase tracking-wider font-mono mb-3">Company</h4>
+              <h4 className="font-bold text-[#1a1a1a] uppercase tracking-wider font-mono mb-3">Company</h4>
               <div className="space-y-1.5">
                 <Link href="/submit" className="block hover:text-[#06634D]">Post a Job</Link>
                 <a href="https://x.com/abidalista" target="_blank" rel="noopener noreferrer" className="block hover:text-[#06634D]">Twitter / X</a>
