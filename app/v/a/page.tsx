@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect } from "react"
 import Link from "next/link"
 import { Search, Building2, X, ChevronDown, PlusCircle } from "lucide-react"
+import { LanguageToggle } from "@/components/language-toggle"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import {
@@ -164,9 +165,9 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#D2B48C]">
+    <div className="min-h-screen" style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat" }}>
       {/* ============ HEADER ============ */}
-      <header className="border-b border-[#06634D]/20 bg-[#D2B48C]">
+      <header className="border-b border-[#06634D]/20 bg-transparent">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex items-start justify-between gap-4 sm:gap-6">
             {/* Left: Logo + tagline + action buttons */}
@@ -211,6 +212,9 @@ export default function HomePage() {
                   <svg className="size-3.5 h-3.5" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                   Search Jobs
                 </button>
+
+                {/* Language Toggle - inline in header */}
+                <LanguageToggle defaultLang="en" onLanguageChange={(lang) => console.log("lang:", lang)} />
               </div>
 
 
@@ -272,7 +276,7 @@ export default function HomePage() {
       </header>
 
       {/* ============ STICKY SEARCH BAR ============ */}
-      <div className="sticky top-0 z-20 bg-[#D2B48C]/95 backdrop-blur-sm border-b border-gray-200/50">
+      <div className="sticky top-0 z-20 bg-transparent border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-3">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-[#9CA3AF]" />
@@ -343,18 +347,10 @@ export default function HomePage() {
               />
             </div>
 
-            {/* Divider */}
-            <div className="border-t border-[#E5E7EB]" />
-
-            {/* Company count */}
-            <p className="text-sm font-mono text-[#6B7280]">
-              {companies.length} companies
-            </p>
-
             {/* Suggest Company button */}
             <button
               onClick={() => setShowSuggest(true)}
-              className="flex items-center justify-center gap-1.5 w-full px-3 py-1.5 bg-[#FFBA0A]/10 border border-[#FFBA0A] rounded text-xs font-mono text-[#4C4C4C] hover:bg-[#FFBA0A]/20 hover:shadow-sm transition-all"
+              className="flex items-center justify-center gap-1.5 w-full px-3 py-2 bg-[#D97706] border border-[#B45309] rounded text-xs font-mono text-white font-semibold hover:bg-[#B45309] hover:shadow-md transition-all"
             >
               <PlusCircle className="w-3.5 h-3.5" />
               Suggest a Company
@@ -418,7 +414,7 @@ export default function HomePage() {
                 return (
                   <div
                     key={company.slug}
-                    className="group bg-[#E8D5B7] border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden"
+                    className="group bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden"
                   >
                     <div className="p-4 sm:p-6 cursor-pointer" onClick={() => toggleCard(company.slug)}>
                       {/* Mobile: stacked layout. Desktop: single row */}
