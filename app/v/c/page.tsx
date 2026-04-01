@@ -164,9 +164,29 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#C4B08B]">
+    <div className="min-h-screen bg-[#D6C9A8] relative">
+      {/* TV static grain overlay */}
+      <style>{`
+        @keyframes grain {
+          0%, 100% { transform: translate(0, 0) }
+          10% { transform: translate(-5%, -10%) }
+          20% { transform: translate(-15%, 5%) }
+          30% { transform: translate(7%, -25%) }
+          40% { transform: translate(-5%, 25%) }
+          50% { transform: translate(-15%, 10%) }
+          60% { transform: translate(15%, 0%) }
+          70% { transform: translate(0%, 15%) }
+          80% { transform: translate(3%, 35%) }
+          90% { transform: translate(-10%, 10%) }
+        }
+      `}</style>
+      <div className="fixed inset-0 pointer-events-none z-[999] opacity-[0.08]" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+        backgroundSize: "256px 256px",
+        animation: "grain 0.5s steps(8) infinite",
+      }} />
       {/* ============ HEADER ============ */}
-      <header className="border-b border-[#06634D]/20 bg-[#C4B08B]">
+      <header className="border-b border-[#06634D]/20 bg-[#D6C9A8]">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex items-start justify-between gap-4 sm:gap-6">
             {/* Left: Logo + tagline + action buttons */}
@@ -272,7 +292,7 @@ export default function HomePage() {
       </header>
 
       {/* ============ STICKY SEARCH BAR ============ */}
-      <div className="sticky top-0 z-20 bg-[#C4B08B]/95 backdrop-blur-sm border-b border-gray-200/50">
+      <div className="sticky top-0 z-20 bg-[#D6C9A8]/95 backdrop-blur-sm border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-3">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-[#9CA3AF]" />
@@ -418,7 +438,7 @@ export default function HomePage() {
                 return (
                   <div
                     key={company.slug}
-                    className="group bg-[#D9CBAB] border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden"
+                    className="group bg-[#E3D9C0] border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden"
                   >
                     <div className="p-4 sm:p-6 cursor-pointer" onClick={() => toggleCard(company.slug)}>
                       {/* Mobile: stacked layout. Desktop: single row */}
