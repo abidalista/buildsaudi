@@ -164,29 +164,14 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#EDE4D3] relative">
-      {/* TV static grain overlay */}
-      <style>{`
-        @keyframes grain {
-          0%, 100% { transform: translate(0, 0) }
-          10% { transform: translate(-5%, -10%) }
-          20% { transform: translate(-15%, 5%) }
-          30% { transform: translate(7%, -25%) }
-          40% { transform: translate(-5%, 25%) }
-          50% { transform: translate(-15%, 10%) }
-          60% { transform: translate(15%, 0%) }
-          70% { transform: translate(0%, 15%) }
-          80% { transform: translate(3%, 35%) }
-          90% { transform: translate(-10%, 10%) }
-        }
-      `}</style>
-      <div className="fixed inset-0 pointer-events-none z-[999] opacity-[0.25]" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='8' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-        backgroundSize: "128px 128px",
-        animation: "grain 0.3s steps(6) infinite",
+    <div className="min-h-screen relative" style={{ backgroundColor: "#E8D5B0" }}>
+      {/* Paper grain texture — static, like old parchment */}
+      <div className="fixed inset-0 pointer-events-none z-[999]" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E")`,
+        backgroundSize: "512px 512px",
       }} />
       {/* ============ HEADER ============ */}
-      <header className="border-b border-[#06634D]/20 bg-[#EDE4D3]">
+      <header className="border-b border-[#C4A97D]/40 bg-[#E8D5B0]">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex items-start justify-between gap-4 sm:gap-6">
             {/* Left: Logo + tagline + action buttons */}
@@ -292,7 +277,7 @@ export default function HomePage() {
       </header>
 
       {/* ============ STICKY SEARCH BAR ============ */}
-      <div className="sticky top-0 z-20 bg-[#EDE4D3]/95 backdrop-blur-sm border-b border-gray-200/50">
+      <div className="sticky top-0 z-20 bg-[#E8D5B0]/95 backdrop-blur-sm border-b border-[#C4A97D]/30">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-3">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-[#9CA3AF]" />
@@ -301,7 +286,7 @@ export default function HomePage() {
               placeholder="search keywords..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="h-11 rounded-lg border-[#E5E7EB] bg-white pl-11 text-sm shadow-sm placeholder:text-[#9CA3AF] focus-visible:border-[#06634D] focus-visible:ring-[#06634D]/20"
+              className="h-11 rounded-lg border-[#C4A97D]/50 bg-[#F5EFE0] pl-11 text-sm shadow-sm placeholder:text-[#9CA3AF] focus-visible:border-[#06634D] focus-visible:ring-[#06634D]/20"
             />
             {search && (
               <button
@@ -438,7 +423,7 @@ export default function HomePage() {
                 return (
                   <div
                     key={company.slug}
-                    className="group bg-[#F5F0E6] border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden"
+                    className="group bg-[#F5EFE0] border border-gray-200 hover:border-[#C4A97D] hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden"
                   >
                     <div className="p-4 sm:p-6 cursor-pointer" onClick={() => toggleCard(company.slug)}>
                       {/* Mobile: stacked layout. Desktop: single row */}
@@ -520,7 +505,7 @@ export default function HomePage() {
                       className="overflow-hidden transition-all duration-300 ease-out"
                       style={{ maxHeight: isExpanded ? "400px" : "0", opacity: isExpanded ? 1 : 0 }}
                     >
-                      <div className="border-t border-gray-200 bg-gray-50 px-4 sm:px-6 py-4">
+                      <div className="border-t border-gray-200 bg-[#EDE4D3] px-4 sm:px-6 py-4">
                         <div className="grid grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-3">
                           <div className="flex flex-col gap-0.5">
                             <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-500">Founders</div>
