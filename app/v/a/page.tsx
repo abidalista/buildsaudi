@@ -201,7 +201,7 @@ export default function HomePage() {
               </div>
 
               {/* Tagline */}
-              <p className="text-[#4C4C4C] text-xs font-mono mb-2 text-center sm:text-left">
+              <p className="text-[#333333] text-xs font-mono mb-2 text-center sm:text-left">
                 {t.tagline}
               </p>
 
@@ -286,18 +286,18 @@ export default function HomePage() {
       <div className="sticky top-0 z-20 bg-transparent border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-3">
           <div className="relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-[#9CA3AF]" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-[#4B5563]" />
             <Input
               id="search-input"
               placeholder={t.searchPlaceholder}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="h-11 rounded-lg border-[#E5E7EB] bg-white pl-11 text-sm shadow-sm placeholder:text-[#9CA3AF] focus-visible:border-[#06634D] focus-visible:ring-[#06634D]/20"
+              className="h-11 rounded-lg text-base sm:text-sm border-[#E5E7EB] bg-white pl-11 text-sm shadow-sm placeholder:text-[#4B5563] focus-visible:border-[#06634D] focus-visible:ring-[#06634D]/20"
             />
             {search && (
               <button
                 onClick={() => setSearch("")}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-[#9CA3AF] hover:text-[#111827]"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-[#4B5563] hover:text-[#111827]"
               >
                 <X className="size-4" />
               </button>
@@ -400,7 +400,7 @@ export default function HomePage() {
               />
               <button
                 onClick={() => setShowSuggest(true)}
-                className="inline-flex items-center gap-1 px-2 py-1 bg-[#FFBA0A]/10 border border-[#FFBA0A] rounded text-[11px] font-mono text-[#4C4C4C] hover:bg-[#FFBA0A]/20 transition-all"
+                className="inline-flex items-center gap-1 px-2 py-1 bg-[#FFBA0A]/10 border border-[#FFBA0A] rounded text-[11px] font-mono text-[#333333] hover:bg-[#FFBA0A]/20 transition-all"
               >
                 <PlusCircle className="w-3 h-3" />
                 {t.suggestCompany}
@@ -408,10 +408,10 @@ export default function HomePage() {
             </div>
 
             <div className="mb-4 flex items-center justify-between">
-              <p className="text-sm text-[#6B7280]">
+              <p className="text-sm text-[#4B5563]">
                 {filteredCompanies.length} {t.companies}
               </p>
-              <p className="text-xs text-[#9CA3AF] font-mono">{t.newestFirst}</p>
+              <p className="text-xs text-[#4B5563] font-mono">{t.newestFirst}</p>
             </div>
 
             {/* Company Cards */}
@@ -444,7 +444,7 @@ export default function HomePage() {
                               >
                                 {company.name}
                               </a>
-                              <p className="mt-0.5 text-xs sm:text-sm text-[#6B7280] line-clamp-1">
+                              <p className="mt-0.5 text-xs sm:text-sm text-[#4B5563] line-clamp-1">
                                 {company.description}
                               </p>
                             </div>
@@ -494,7 +494,7 @@ export default function HomePage() {
 
                       {/* Centered Chevron Toggle */}
                       <div className="flex justify-center mt-2">
-                        <ChevronDown className={`size-5 text-gray-400 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`} />
+                        <ChevronDown className={`size-5 text-gray-600 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`} />
                       </div>
                     </div>
 
@@ -506,38 +506,38 @@ export default function HomePage() {
                       <div className="border-t border-gray-200 bg-gray-50 px-4 sm:px-6 py-4">
                         <div className="grid grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-3">
                           <div className="flex flex-col gap-0.5">
-                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-500">{t.founders}</div>
+                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-600">{t.founders}</div>
                             <div className="text-xs sm:text-sm text-gray-900 break-words font-medium">{company.founders || "—"}</div>
                           </div>
                           <div className="flex flex-col gap-0.5">
-                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-500">{t.totalRaised}</div>
+                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-600">{t.totalRaised}</div>
                             <div className="text-xs sm:text-sm text-gray-900 font-medium">{company.total_raised || "—"}</div>
                           </div>
                           <div className="flex flex-col gap-0.5">
-                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-500">{t.hqCity}</div>
+                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-600">{t.hqCity}</div>
                             <div className="text-xs sm:text-sm text-gray-900 font-medium">{company.city}</div>
                           </div>
                           <div className="flex flex-col gap-0.5">
-                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-500">{t.employees}</div>
+                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-600">{t.employees}</div>
                             <div className="text-xs sm:text-sm text-gray-900 font-medium">{company.team_size || "—"}</div>
                           </div>
                           <div className="flex flex-col gap-0.5">
-                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-500">{t.founded}</div>
+                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-600">{t.founded}</div>
                             <div className="text-xs sm:text-sm text-gray-900 font-medium">{company.founded_year || "—"}</div>
                           </div>
                           <div className="flex flex-col gap-0.5">
-                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-500">Last Round</div>
+                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-600">Last Round</div>
                             <div className="text-xs sm:text-sm text-gray-900 font-medium">{company.last_round_date || "—"}</div>
                           </div>
                         </div>
                         {/* Socials row */}
                         <div className="flex items-center gap-4 mt-3 pt-3 border-t border-gray-200">
-                          <a href={company.linkedin} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-gray-500 hover:text-gray-900 transition-colors p-1">
+                          <a href={company.linkedin} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-gray-600 hover:text-gray-900 transition-colors p-1">
                             <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor">
                               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                             </svg>
                           </a>
-                          <a href={company.website} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-gray-500 hover:text-gray-900 transition-colors p-1">
+                          <a href={company.website} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-gray-600 hover:text-gray-900 transition-colors p-1">
                             <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                               <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                             </svg>
@@ -552,7 +552,7 @@ export default function HomePage() {
               {filteredCompanies.length === 0 && (
                 <div className="rounded-lg border border-[#E5E7EB] bg-white px-6 py-16 text-center">
                   <Building2 className="mx-auto size-8 text-[#D1D5DB] mb-3" />
-                  <p className="text-sm text-[#6B7280]">
+                  <p className="text-sm text-[#4B5563]">
                     no companies match your filters.{" "}
                     <button
                       onClick={clearFilters}
@@ -573,7 +573,7 @@ export default function HomePage() {
       {showJobSeeker && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4" onClick={() => { setShowJobSeeker(false); setJobSeekerStatus("idle") }}>
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-md p-6 relative" onClick={(e) => e.stopPropagation()}>
-            <button onClick={() => { setShowJobSeeker(false); setJobSeekerStatus("idle") }} className="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+            <button onClick={() => { setShowJobSeeker(false); setJobSeekerStatus("idle") }} className="absolute top-4 right-4 text-gray-600 hover:text-gray-600">
               <X className="size-5" />
             </button>
 
@@ -582,7 +582,7 @@ export default function HomePage() {
                 <Search className="size-6 text-[#D73833]" />
               </div>
               <h3 className="text-lg font-bold text-[#111827] font-mono">{t.searchJobs}</h3>
-              <p className="text-sm text-gray-500 mt-1">Sign up to get notified about Saudi startup jobs</p>
+              <p className="text-sm text-gray-600 mt-1">Sign up to get notified about Saudi startup jobs</p>
             </div>
 
             {jobSeekerStatus === "success" ? (
@@ -595,7 +595,7 @@ export default function HomePage() {
             ) : (
               <form onSubmit={handleJobSeekerSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-gray-500 mb-1.5">
+                  <label className="block text-xs font-mono uppercase tracking-wider text-gray-600 mb-1.5">
                     Name <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -608,7 +608,7 @@ export default function HomePage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-gray-500 mb-1.5">
+                  <label className="block text-xs font-mono uppercase tracking-wider text-gray-600 mb-1.5">
                     Job Title <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -621,7 +621,7 @@ export default function HomePage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-gray-500 mb-1.5">
+                  <label className="block text-xs font-mono uppercase tracking-wider text-gray-600 mb-1.5">
                     Email <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -653,7 +653,7 @@ export default function HomePage() {
       {showSuggest && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4" onClick={() => { setShowSuggest(false); setSuggestStatus("idle") }}>
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-md p-6 relative" onClick={(e) => e.stopPropagation()}>
-            <button onClick={() => { setShowSuggest(false); setSuggestStatus("idle") }} className="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+            <button onClick={() => { setShowSuggest(false); setSuggestStatus("idle") }} className="absolute top-4 right-4 text-gray-600 hover:text-gray-600">
               <X className="size-5" />
             </button>
 
@@ -662,7 +662,7 @@ export default function HomePage() {
                 <PlusCircle className="size-6 text-[#06634D]" />
               </div>
               <h3 className="text-lg font-bold text-[#111827] font-mono">{t.suggestCompany}</h3>
-              <p className="text-sm text-gray-500 mt-1">Know a company we should add?</p>
+              <p className="text-sm text-gray-600 mt-1">Know a company we should add?</p>
             </div>
 
             {suggestStatus === "success" ? (
@@ -675,7 +675,7 @@ export default function HomePage() {
             ) : (
               <form onSubmit={handleSuggestSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-gray-500 mb-1.5">
+                  <label className="block text-xs font-mono uppercase tracking-wider text-gray-600 mb-1.5">
                     Company Name <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -688,7 +688,7 @@ export default function HomePage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-gray-500 mb-1.5">Website</label>
+                  <label className="block text-xs font-mono uppercase tracking-wider text-gray-600 mb-1.5">Website</label>
                   <input
                     type="text"
                     placeholder="https://..."
@@ -698,7 +698,7 @@ export default function HomePage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-gray-500 mb-1.5">Details</label>
+                  <label className="block text-xs font-mono uppercase tracking-wider text-gray-600 mb-1.5">Details</label>
                   <textarea
                     placeholder="Anything else we should know — sector, founders, funding, etc."
                     rows={3}
@@ -726,7 +726,7 @@ export default function HomePage() {
       {/* ============ FOOTER ============ */}
       <footer className="mt-16 border-t border-[#E5E7EB] bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 text-xs text-[#6B7280]">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 text-xs text-[#4B5563]">
             <div>
               <h4 className="font-bold text-[#111827] uppercase tracking-wider font-mono mb-3">Jobs by City</h4>
               <div className="space-y-1.5">
@@ -764,7 +764,7 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className="mt-8 pt-6 border-t border-[#E5E7EB] text-xs text-[#9CA3AF]">
+          <div className="mt-8 pt-6 border-t border-[#E5E7EB] text-xs text-[#4B5563]">
             <p>buildsaudi.co</p>
           </div>
         </div>

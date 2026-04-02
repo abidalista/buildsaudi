@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     description: 'Curated startup jobs. No noise, no spam.',
     images: ['https://buildsaudi.co/og-image.png'],
   },
+  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
 }
 
 export default function RootLayout({
