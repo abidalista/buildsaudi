@@ -171,7 +171,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat", fontFamily: lang === "ar" ? "'IBM Plex Sans Arabic', sans-serif" : undefined }}>
+    <div className="min-h-screen" style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat", fontFamily: "'IBM Plex Sans Arabic', sans-serif" }}>
       {/* Arabic font */}
       <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
       {/* ============ HEADER ============ */}
@@ -254,7 +254,7 @@ export default function HomePage() {
               {/* Language Toggle */}
               <LanguageToggle defaultLang="ar" onLanguageChange={setLang} />
               {/* {t.hotCompanies} box */}
-              <div className="w-full max-w-96 bg-[#D73833]/10 border-2 border-[#D73833] rounded-lg p-3 shadow-lg">
+              <div className="w-[280px] bg-[#D73833]/10 border-2 border-[#D73833] rounded-lg p-3 shadow-lg">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-xl">🔥</span>
                   <span className="text-sm font-bold uppercase tracking-wider text-[#D73833] font-mono">
