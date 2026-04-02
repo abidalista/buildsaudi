@@ -169,7 +169,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen" dir={isRTL ? "rtl" : "ltr"} style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat" }}>
       {/* ============ HEADER ============ */}
       <header className="border-b border-[#06634D]/20 bg-transparent">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-4 sm:py-6">
