@@ -223,8 +223,13 @@ export default function HomePage() {
               </div>
 
 
+              {/* Mobile language toggle */}
+              <div className="mt-3 flex justify-end lg:hidden">
+                <LanguageToggle defaultLang="ar" onLanguageChange={setLang} />
+              </div>
+
               {/* Mobile {t.hotCompanies} */}
-              <div className="mt-3 w-full bg-[#D73833]/10 border-2 border-[#D73833] rounded-lg p-3 lg:hidden">
+              <div className="mt-2 w-full bg-[#D73833]/10 border-2 border-[#D73833] rounded-lg p-3 lg:hidden">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-xl">🔥</span>
                   <span className="text-sm font-bold uppercase tracking-wider text-[#D73833]">
@@ -410,6 +415,7 @@ export default function HomePage() {
                 <PlusCircle className="w-3 h-3" />
                 {t.suggestCompany}
               </button>
+              <span className="text-xs text-[#4B5563]">{filteredCompanies.length} {t.companies}</span>
             </div>
 
 
