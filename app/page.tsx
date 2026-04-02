@@ -209,7 +209,11 @@ export default function HomePage() {
               <div className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-3">
                 {/* Made by pill */}
                 <a href="https://x.com/abidalista" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-1.5 sm:px-3 py-0.5 sm:py-1.5 bg-[#06634D]/5 border border-[#06634D]/30 rounded text-xs text-[#06634D] whitespace-nowrap hover:bg-[#06634D]/10 transition-colors">
-                  <span>{t.madeBy}</span><span className="text-[#D73833] font-bold">Abdulla</span>
+                  {lang === "ar" ? (
+                    <span dir="ltr"><span className="text-[#D73833] font-bold">Abdulla</span> {t.madeBy}</span>
+                  ) : (
+                    <><span>{t.madeBy}</span> <span className="text-[#D73833] font-bold">Abdulla</span></>
+                  )}
                 </a>
 
                 {/* {t.searchJobs} */}
