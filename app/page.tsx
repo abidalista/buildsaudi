@@ -362,6 +362,11 @@ export default function HomePage() {
               <PlusCircle className="w-3.5 h-3.5" />
               {t.suggestCompany}
             </button>
+
+            {/* Company count */}
+            <p className="text-xs text-[#4B5563]">
+              {filteredCompanies.length} {t.companies}
+            </p>
           </aside>
 
           {/* Job Listings */}
@@ -407,12 +412,6 @@ export default function HomePage() {
               </button>
             </div>
 
-            <div className="mb-4 flex items-center justify-between">
-              <p className="text-sm text-[#4B5563]">
-                {filteredCompanies.length} {t.companies}
-              </p>
-              <p className="text-xs text-[#4B5563]">{t.newestFirst}</p>
-            </div>
 
             {/* Company Cards */}
             <div className="space-y-2 sm:space-y-3">
