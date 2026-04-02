@@ -1,8 +1,11 @@
 "use client"
 
+/* eslint-disable @next/next/no-page-custom-font */
 import { useState, useMemo, useEffect } from "react"
 import Link from "next/link"
 import { Search, Building2, X, ChevronDown, PlusCircle } from "lucide-react"
+import { LanguageToggle } from "@/components/language-toggle"
+import { strings, type Lang } from "@/lib/i18n"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import {
@@ -16,6 +19,9 @@ import { companies, getJobsByCompany, filterOptions } from "@/lib/data"
 import { CompanyLogo } from "@/components/company-logo"
 
 export default function HomePage() {
+  const [lang, setLang] = useState<Lang>("en")
+  const t = strings[lang]
+  const isRTL = lang === "ar"
   const [search, setSearch] = useState("")
   const [filters, setFilters] = useState({
     jobType: "",
@@ -146,6 +152,7 @@ export default function HomePage() {
   }, [search, filters])
 
   const clearFilters = () => {
+    setSearch("")
     setFilters({
       jobType: "",
       experienceLevel: "",
@@ -164,9 +171,11 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#EEEBE4", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "#FBF8F1", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat", fontFamily: "'IBM Plex Sans Arabic', sans-serif" }}>
+      {/* Arabic font */}
+      <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
       {/* ============ HEADER ============ */}
-      <header className="border-b border-[#06634D]/20 bg-[#EEEBE4]/90 backdrop-blur-sm">
+      <header className="border-b border-[#06634D]/20 bg-transparent">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex items-start justify-between gap-4 sm:gap-6">
             {/* Left: Logo + tagline + action buttons */}
@@ -184,7 +193,7 @@ export default function HomePage() {
                   <span className="absolute bottom-0 right-0 w-4 h-4 sm:w-5 sm:h-5 border-r-[3px] border-b-[3px] border-[#06634D]/30" />
                   <h1
                     className="text-[clamp(1.8rem,4vw,3rem)] font-bold leading-none text-[#06634D] tracking-tight"
-                    style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}
+                    
                   >
                     BUILDSAUDI
                   </h1>
@@ -192,34 +201,43 @@ export default function HomePage() {
               </div>
 
               {/* Tagline */}
-              <p className="text-[#4C4C4C] text-xs font-mono mb-2 text-center sm:text-left">
-                A curated directory of companies building the future of Saudi
+              <p className="text-[#333333] text-xs mb-2 text-center sm:text-left">
+                {t.tagline}
               </p>
 
               {/* Action buttons row */}
               <div className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-3">
                 {/* Made by pill */}
                 <a href="https://x.com/abidalista" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-1.5 sm:px-3 py-0.5 sm:py-1.5 bg-[#06634D]/5 border border-[#06634D]/30 rounded text-xs text-[#06634D] whitespace-nowrap hover:bg-[#06634D]/10 transition-colors">
-                  <span>Made by</span><span className="text-[#D73833] font-bold font-mono">Abdulla</span>
+                  {lang === "ar" ? (
+                    <span dir="ltr"><span className="text-[#D73833] font-bold">Abdulla</span> {t.madeBy}</span>
+                  ) : (
+                    <><span>{t.madeBy}</span> <span className="text-[#D73833] font-bold">Abdulla</span></>
+                  )}
                 </a>
 
-                {/* Search Jobs */}
+                {/* {t.searchJobs} */}
                 <button
                   onClick={() => setShowJobSeeker(true)}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-semibold bg-[#D73833] text-white border border-[#D73833] rounded hover:bg-[#D73833]/90 transition-all whitespace-nowrap"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold bg-[#D73833] text-white border border-[#D73833] rounded hover:bg-[#D73833]/90 transition-all whitespace-nowrap"
                 >
                   <svg className="size-3.5 h-3.5" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                  Search Jobs
+                  {t.searchJobs}
                 </button>
               </div>
 
 
-              {/* Mobile Hot Companies */}
-              <div className="mt-3 w-full bg-[#D73833]/10 border-2 border-[#D73833] rounded-lg p-3 lg:hidden">
+              {/* Mobile language toggle */}
+              <div className="mt-3 flex justify-end lg:hidden">
+                <LanguageToggle defaultLang="en" onLanguageChange={setLang} />
+              </div>
+
+              {/* Mobile {t.hotCompanies} */}
+              <div className="mt-2 w-full bg-[#D73833]/10 border-2 border-[#D73833] rounded-lg p-3 lg:hidden">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-xl">🔥</span>
-                  <span className="text-sm font-bold uppercase tracking-wider text-[#D73833] font-mono">
-                    Hot Companies
+                  <span className="text-sm font-bold uppercase tracking-wider text-[#D73833]">
+                    {t.hotCompanies}
                   </span>
                 </div>
                 <div className="divide-y divide-[#D73833]/30">
@@ -229,25 +247,27 @@ export default function HomePage() {
                         href={c.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm font-bold text-[#D73833] hover:underline font-mono"
+                        className="text-sm font-bold text-[#D73833] hover:underline"
                       >
                         {c.name}
                       </a>
-                      <span className="text-sm text-[#111827] font-mono">{c.sector[0]}</span>
+                      <span className="text-sm text-[#111827]">{c.sector[0]}</span>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
 
-            {/* Right: Nav buttons + Hot Companies */}
-            <div className="hidden lg:flex items-end gap-4 flex-shrink-0">
-              {/* Hot Companies box */}
-              <div className="w-full max-w-96 bg-[#D73833]/10 border-2 border-[#D73833] rounded-lg p-3 shadow-lg">
+            {/* Right: Toggle + {t.hotCompanies} */}
+            <div className="hidden lg:flex flex-col items-end gap-2 flex-shrink-0">
+              {/* Language Toggle */}
+              <LanguageToggle defaultLang="en" onLanguageChange={setLang} />
+              {/* {t.hotCompanies} box */}
+              <div className="w-[280px] bg-[#D73833]/10 border-2 border-[#D73833] rounded-lg p-3 shadow-lg">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-xl">🔥</span>
-                  <span className="text-sm font-bold uppercase tracking-wider text-[#D73833] font-mono">
-                    Hot Companies
+                  <span className="text-sm font-bold uppercase tracking-wider text-[#D73833]">
+                    {t.hotCompanies}
                   </span>
                 </div>
                 <div className="divide-y divide-[#D73833]/30">
@@ -257,11 +277,11 @@ export default function HomePage() {
                         href={c.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm font-bold text-[#D73833] hover:underline font-mono"
+                        className="text-sm font-bold text-[#D73833] hover:underline"
                       >
                         {c.name}
                       </a>
-                      <span className="text-sm text-[#111827] font-mono">{c.sector[0]}</span>
+                      <span className="text-sm text-[#111827]">{c.sector[0]}</span>
                     </div>
                   ))}
                 </div>
@@ -272,21 +292,21 @@ export default function HomePage() {
       </header>
 
       {/* ============ STICKY SEARCH BAR ============ */}
-      <div className="sticky top-0 z-20 bg-[#EEEBE4]/90 backdrop-blur-sm border-b border-gray-200/50">
+      <div className="sticky top-0 z-20 border-b border-gray-200/50" style={{ backgroundColor: "#FBF8F1", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px" }}>
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-3">
           <div className="relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-[#9CA3AF]" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-[#4B5563]" />
             <Input
               id="search-input"
-              placeholder="search keywords..."
+              placeholder={t.searchPlaceholder}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="h-11 rounded-lg border-[#E5E7EB] bg-white pl-11 text-sm shadow-sm placeholder:text-[#9CA3AF] focus-visible:border-[#06634D] focus-visible:ring-[#06634D]/20"
+              className="h-11 rounded-lg text-base sm:text-sm border-[#E5E7EB] bg-white pl-11 text-sm shadow-sm placeholder:text-[#4B5563] focus-visible:border-[#06634D] focus-visible:ring-[#06634D]/20"
             />
             {search && (
               <button
                 onClick={() => setSearch("")}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-[#9CA3AF] hover:text-[#111827]"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-[#4B5563] hover:text-[#111827]"
               >
                 <X className="size-4" />
               </button>
@@ -319,7 +339,7 @@ export default function HomePage() {
             </div>
 
             {/* FILTERS heading */}
-            <h2 className="text-sm font-mono uppercase tracking-wider text-[#06634D]">
+            <h2 className="text-sm uppercase tracking-wider text-[#06634D]">
               Filters
             </h2>
 
@@ -330,7 +350,7 @@ export default function HomePage() {
                 value={filters.sector}
                 onChange={(v) => setFilters((f) => ({ ...f, sector: v }))}
                 options={filterOptions.sector}
-                placeholder="All Sectors"
+                placeholder={t.allSectors}
               />
             </div>
             <div className="w-full">
@@ -339,26 +359,23 @@ export default function HomePage() {
                 value={filters.companyStage}
                 onChange={(v) => setFilters((f) => ({ ...f, companyStage: v }))}
                 options={filterOptions.companyStage}
-                placeholder="All Stages"
+                placeholder={t.allStages}
               />
             </div>
-
-            {/* Divider */}
-            <div className="border-t border-[#E5E7EB]" />
-
-            {/* Company count */}
-            <p className="text-sm font-mono text-[#6B7280]">
-              {companies.length} companies
-            </p>
 
             {/* Suggest Company button */}
             <button
               onClick={() => setShowSuggest(true)}
-              className="flex items-center justify-center gap-1.5 w-full px-3 py-1.5 bg-[#FFBA0A]/10 border border-[#FFBA0A] rounded text-xs font-mono text-[#4C4C4C] hover:bg-[#FFBA0A]/20 hover:shadow-sm transition-all"
+              className="flex items-center justify-center gap-1.5 w-full px-3 py-2 bg-[#D97706] border border-[#B45309] rounded text-xs text-white font-semibold hover:bg-[#B45309] hover:shadow-md transition-all"
             >
               <PlusCircle className="w-3.5 h-3.5" />
-              Suggest a Company
+              {t.suggestCompany}
             </button>
+
+            {/* Company count */}
+            <p className="text-xs text-[#4B5563]">
+              {filteredCompanies.length} {t.companies}
+            </p>
           </aside>
 
           {/* Job Listings */}
@@ -387,29 +404,23 @@ export default function HomePage() {
                 value={filters.sector}
                 onChange={(v) => setFilters((f) => ({ ...f, sector: v }))}
                 options={filterOptions.sector}
-                placeholder="Sector"
+                placeholder={t.sector}
               />
               <FilterSelect
                 value={filters.companyStage}
                 onChange={(v) => setFilters((f) => ({ ...f, companyStage: v }))}
                 options={filterOptions.companyStage}
-                placeholder="Stage"
+                placeholder={t.stage}
               />
               <button
                 onClick={() => setShowSuggest(true)}
-                className="inline-flex items-center gap-1 px-2 py-1 bg-[#FFBA0A]/10 border border-[#FFBA0A] rounded text-[11px] font-mono text-[#4C4C4C] hover:bg-[#FFBA0A]/20 transition-all"
+                className="inline-flex items-center gap-1 px-2 py-1 bg-[#FFBA0A]/10 border border-[#FFBA0A] rounded text-[11px] text-[#333333] hover:bg-[#FFBA0A]/20 transition-all"
               >
                 <PlusCircle className="w-3 h-3" />
-                Suggest a Company
+                {t.suggestCompany}
               </button>
             </div>
 
-            <div className="mb-4 flex items-center justify-between">
-              <p className="text-sm text-[#6B7280]">
-                {filteredCompanies.length} {filteredCompanies.length === 1 ? "company" : "companies"}
-              </p>
-              <p className="text-xs text-[#9CA3AF] font-mono">Newest first</p>
-            </div>
 
             {/* Company Cards */}
             <div className="space-y-2 sm:space-y-3">
@@ -441,18 +452,18 @@ export default function HomePage() {
                               >
                                 {company.name}
                               </a>
-                              <p className="mt-0.5 text-xs sm:text-sm text-[#6B7280] line-clamp-1">
+                              <p className="mt-0.5 text-xs sm:text-sm text-[#4B5563] line-clamp-1">
                                 {company.description}
                               </p>
                             </div>
 
                             {/* Badges - desktop only inline */}
                             <div className="hidden sm:flex flex-shrink-0 flex-col items-end gap-2">
-                              <span className="px-2.5 py-1 bg-gray-100 border border-gray-200 text-gray-700 text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">
+                              <span className="px-2.5 py-1 bg-gray-100 border border-gray-200 text-gray-700 text-xs uppercase tracking-wider rounded whitespace-nowrap">
                                 {company.sector[0]}
                               </span>
                               <div className="flex items-center gap-2">
-                                <span className="px-2.5 py-1 bg-gray-100 border border-gray-200 text-gray-700 text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">
+                                <span className="px-2.5 py-1 bg-gray-100 border border-gray-200 text-gray-700 text-xs uppercase tracking-wider rounded whitespace-nowrap">
                                   {company.stage}
                                 </span>
                                 <a
@@ -460,9 +471,9 @@ export default function HomePage() {
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   onClick={(e) => e.stopPropagation()}
-                                  className="px-2.5 py-1 bg-[#06634D] text-white text-xs font-mono rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
+                                  className="px-2.5 py-1 bg-[#06634D] text-white text-xs rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
                                 >
-                                  View Jobs
+                                  {t.viewJobs}
                                 </a>
                               </div>
                             </div>
@@ -470,10 +481,10 @@ export default function HomePage() {
 
                           {/* Badges - mobile: row below name */}
                           <div className="flex items-center gap-1.5 mt-2 sm:hidden flex-wrap">
-                            <span className="px-2 py-0.5 bg-gray-100 border border-gray-200 text-gray-700 text-[11px] font-mono uppercase tracking-wider rounded whitespace-nowrap">
+                            <span className="px-2 py-0.5 bg-gray-100 border border-gray-200 text-gray-700 text-[11px] uppercase tracking-wider rounded whitespace-nowrap">
                               {company.sector[0]}
                             </span>
-                            <span className="px-2 py-0.5 bg-gray-100 border border-gray-200 text-gray-700 text-[11px] font-mono uppercase tracking-wider rounded whitespace-nowrap">
+                            <span className="px-2 py-0.5 bg-gray-100 border border-gray-200 text-gray-700 text-[11px] uppercase tracking-wider rounded whitespace-nowrap">
                               {company.stage}
                             </span>
                             <a
@@ -481,9 +492,9 @@ export default function HomePage() {
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={(e) => e.stopPropagation()}
-                              className="px-2 py-0.5 bg-[#06634D] text-white text-[11px] font-mono rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
+                              className="px-2 py-0.5 bg-[#06634D] text-white text-[11px] rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
                             >
-                              View Jobs
+                              {t.viewJobs}
                             </a>
                           </div>
                         </div>
@@ -491,7 +502,7 @@ export default function HomePage() {
 
                       {/* Centered Chevron Toggle */}
                       <div className="flex justify-center mt-2">
-                        <ChevronDown className={`size-5 text-gray-400 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`} />
+                        <ChevronDown className={`size-5 text-gray-600 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`} />
                       </div>
                     </div>
 
@@ -503,38 +514,38 @@ export default function HomePage() {
                       <div className="border-t border-gray-200 bg-gray-50 px-4 sm:px-6 py-4">
                         <div className="grid grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-3">
                           <div className="flex flex-col gap-0.5">
-                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-500">Founders</div>
+                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-600">{t.founders}</div>
                             <div className="text-xs sm:text-sm text-gray-900 break-words font-medium">{company.founders || "—"}</div>
                           </div>
                           <div className="flex flex-col gap-0.5">
-                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-500">Total Raised</div>
+                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-600">{t.totalRaised}</div>
                             <div className="text-xs sm:text-sm text-gray-900 font-medium">{company.total_raised || "—"}</div>
                           </div>
                           <div className="flex flex-col gap-0.5">
-                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-500">HQ City</div>
+                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-600">{t.hqCity}</div>
                             <div className="text-xs sm:text-sm text-gray-900 font-medium">{company.city}</div>
                           </div>
                           <div className="flex flex-col gap-0.5">
-                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-500">Employees</div>
+                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-600">{t.employees}</div>
                             <div className="text-xs sm:text-sm text-gray-900 font-medium">{company.team_size || "—"}</div>
                           </div>
                           <div className="flex flex-col gap-0.5">
-                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-500">Founded</div>
+                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-600">{t.founded}</div>
                             <div className="text-xs sm:text-sm text-gray-900 font-medium">{company.founded_year || "—"}</div>
                           </div>
                           <div className="flex flex-col gap-0.5">
-                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-500">Last Round</div>
+                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-600">Last Round</div>
                             <div className="text-xs sm:text-sm text-gray-900 font-medium">{company.last_round_date || "—"}</div>
                           </div>
                         </div>
                         {/* Socials row */}
                         <div className="flex items-center gap-4 mt-3 pt-3 border-t border-gray-200">
-                          <a href={company.linkedin} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-gray-500 hover:text-gray-900 transition-colors p-1">
+                          <a href={company.linkedin} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-gray-600 hover:text-gray-900 transition-colors p-1">
                             <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor">
                               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                             </svg>
                           </a>
-                          <a href={company.website} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-gray-500 hover:text-gray-900 transition-colors p-1">
+                          <a href={company.website} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-gray-600 hover:text-gray-900 transition-colors p-1">
                             <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                               <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                             </svg>
@@ -549,7 +560,7 @@ export default function HomePage() {
               {filteredCompanies.length === 0 && (
                 <div className="rounded-lg border border-[#E5E7EB] bg-white px-6 py-16 text-center">
                   <Building2 className="mx-auto size-8 text-[#D1D5DB] mb-3" />
-                  <p className="text-sm text-[#6B7280]">
+                  <p className="text-sm text-[#4B5563]">
                     no companies match your filters.{" "}
                     <button
                       onClick={clearFilters}
@@ -570,7 +581,7 @@ export default function HomePage() {
       {showJobSeeker && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4" onClick={() => { setShowJobSeeker(false); setJobSeekerStatus("idle") }}>
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-md p-6 relative" onClick={(e) => e.stopPropagation()}>
-            <button onClick={() => { setShowJobSeeker(false); setJobSeekerStatus("idle") }} className="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+            <button onClick={() => { setShowJobSeeker(false); setJobSeekerStatus("idle") }} className="absolute top-4 right-4 text-gray-600 hover:text-gray-600">
               <X className="size-5" />
             </button>
 
@@ -578,8 +589,8 @@ export default function HomePage() {
               <div className="w-12 h-12 rounded-full bg-[#D73833]/10 flex items-center justify-center mb-3">
                 <Search className="size-6 text-[#D73833]" />
               </div>
-              <h3 className="text-lg font-bold text-[#111827] font-mono">Search Jobs</h3>
-              <p className="text-sm text-gray-500 mt-1">Sign up to get notified about Saudi startup jobs</p>
+              <h3 className="text-lg font-bold text-[#111827]">{t.searchJobs}</h3>
+              <p className="text-sm text-gray-600 mt-1">Sign up to get notified about Saudi startup jobs</p>
             </div>
 
             {jobSeekerStatus === "success" ? (
@@ -592,7 +603,7 @@ export default function HomePage() {
             ) : (
               <form onSubmit={handleJobSeekerSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-gray-500 mb-1.5">
+                  <label className="block text-xs uppercase tracking-wider text-gray-600 mb-1.5">
                     Name <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -605,7 +616,7 @@ export default function HomePage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-gray-500 mb-1.5">
+                  <label className="block text-xs uppercase tracking-wider text-gray-600 mb-1.5">
                     Job Title <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -618,7 +629,7 @@ export default function HomePage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-gray-500 mb-1.5">
+                  <label className="block text-xs uppercase tracking-wider text-gray-600 mb-1.5">
                     Email <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -636,7 +647,7 @@ export default function HomePage() {
                 <button
                   type="submit"
                   disabled={jobSeekerStatus === "submitting"}
-                  className="w-full py-2.5 bg-[#D73833] text-white font-mono font-semibold text-sm rounded-lg hover:bg-[#B82E2A] disabled:opacity-50 transition-colors"
+                  className="w-full py-2.5 bg-[#D73833] text-white font-semibold text-sm rounded-lg hover:bg-[#B82E2A] disabled:opacity-50 transition-colors"
                 >
                   {jobSeekerStatus === "submitting" ? "Submitting..." : "Sign Up"}
                 </button>
@@ -650,7 +661,7 @@ export default function HomePage() {
       {showSuggest && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4" onClick={() => { setShowSuggest(false); setSuggestStatus("idle") }}>
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-md p-6 relative" onClick={(e) => e.stopPropagation()}>
-            <button onClick={() => { setShowSuggest(false); setSuggestStatus("idle") }} className="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+            <button onClick={() => { setShowSuggest(false); setSuggestStatus("idle") }} className="absolute top-4 right-4 text-gray-600 hover:text-gray-600">
               <X className="size-5" />
             </button>
 
@@ -658,8 +669,8 @@ export default function HomePage() {
               <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mb-3">
                 <PlusCircle className="size-6 text-[#06634D]" />
               </div>
-              <h3 className="text-lg font-bold text-[#111827] font-mono">Suggest a Company</h3>
-              <p className="text-sm text-gray-500 mt-1">Know a company we should add?</p>
+              <h3 className="text-lg font-bold text-[#111827]">{t.suggestCompany}</h3>
+              <p className="text-sm text-gray-600 mt-1">Know a company we should add?</p>
             </div>
 
             {suggestStatus === "success" ? (
@@ -672,7 +683,7 @@ export default function HomePage() {
             ) : (
               <form onSubmit={handleSuggestSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-gray-500 mb-1.5">
+                  <label className="block text-xs uppercase tracking-wider text-gray-600 mb-1.5">
                     Company Name <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -685,7 +696,7 @@ export default function HomePage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-gray-500 mb-1.5">Website</label>
+                  <label className="block text-xs uppercase tracking-wider text-gray-600 mb-1.5">Website</label>
                   <input
                     type="text"
                     placeholder="https://..."
@@ -695,7 +706,7 @@ export default function HomePage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-gray-500 mb-1.5">Details</label>
+                  <label className="block text-xs uppercase tracking-wider text-gray-600 mb-1.5">Details</label>
                   <textarea
                     placeholder="Anything else we should know — sector, founders, funding, etc."
                     rows={3}
@@ -710,7 +721,7 @@ export default function HomePage() {
                 <button
                   type="submit"
                   disabled={suggestStatus === "submitting"}
-                  className="w-full py-2.5 bg-[#06634D] text-white font-mono font-semibold text-sm rounded-lg hover:bg-[#044D3B] disabled:opacity-50 transition-colors"
+                  className="w-full py-2.5 bg-[#06634D] text-white font-semibold text-sm rounded-lg hover:bg-[#044D3B] disabled:opacity-50 transition-colors"
                 >
                   {suggestStatus === "submitting" ? "Submitting..." : "Submit Suggestion"}
                 </button>
@@ -720,52 +731,6 @@ export default function HomePage() {
         </div>
       )}
 
-      {/* ============ FOOTER ============ */}
-      <footer className="mt-16 border-t border-[#E5E7EB] bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 text-xs text-[#6B7280]">
-            <div>
-              <h4 className="font-bold text-[#111827] uppercase tracking-wider font-mono mb-3">Jobs by City</h4>
-              <div className="space-y-1.5">
-                <Link href="/jobs/riyadh" className="block hover:text-[#06634D]">Riyadh</Link>
-                <Link href="/jobs/jeddah" className="block hover:text-[#06634D]">Jeddah</Link>
-                <Link href="/jobs/dammam" className="block hover:text-[#06634D]">Dammam</Link>
-                <Link href="/jobs/remote" className="block hover:text-[#06634D]">Remote</Link>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-bold text-[#111827] uppercase tracking-wider font-mono mb-3">Jobs by Sector</h4>
-              <div className="space-y-1.5">
-                <Link href="/jobs/sector/fintech" className="block hover:text-[#06634D]">Fintech</Link>
-                <Link href="/jobs/sector/ai" className="block hover:text-[#06634D]">AI & ML</Link>
-                <Link href="/jobs/sector/b2b-saas" className="block hover:text-[#06634D]">B2B SaaS</Link>
-                <Link href="/jobs/sector/ecommerce" className="block hover:text-[#06634D]">E-commerce</Link>
-                <Link href="/jobs/sector/logistics" className="block hover:text-[#06634D]">Logistics</Link>
-                <Link href="/jobs/sector/cybersecurity" className="block hover:text-[#06634D]">Cybersecurity</Link>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-bold text-[#111827] uppercase tracking-wider font-mono mb-3">By Stage</h4>
-              <div className="space-y-1.5">
-                <Link href="/jobs/stage/unicorn" className="block hover:text-[#06634D]">Unicorns</Link>
-                <Link href="/jobs/stage/series-b" className="block hover:text-[#06634D]">Series B</Link>
-                <Link href="/jobs/stage/series-a" className="block hover:text-[#06634D]">Series A</Link>
-                <Link href="/jobs/stage/seed" className="block hover:text-[#06634D]">Seed</Link>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-bold text-[#111827] uppercase tracking-wider font-mono mb-3">Company</h4>
-              <div className="space-y-1.5">
-                <Link href="/submit" className="block hover:text-[#06634D]">Post a Job</Link>
-                <a href="https://x.com/abidalista" target="_blank" rel="noopener noreferrer" className="block hover:text-[#06634D]">Twitter / X</a>
-              </div>
-            </div>
-          </div>
-          <div className="mt-8 pt-6 border-t border-[#E5E7EB] text-xs text-[#9CA3AF]">
-            <p>buildsaudi.co</p>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
@@ -786,7 +751,7 @@ function FilterSelect({
   return (
     <div>
       {label && (
-        <label className="block text-xs font-mono uppercase tracking-wider text-gray-600 mb-2">
+        <label className="block text-xs uppercase tracking-wider text-gray-600 mb-2">
           {label}
         </label>
       )}
