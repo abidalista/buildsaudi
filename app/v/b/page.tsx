@@ -1,5 +1,6 @@
 "use client"
 
+/* eslint-disable @next/next/no-page-custom-font */
 import { useState, useMemo, useEffect } from "react"
 import Link from "next/link"
 import { Search, Building2, X, ChevronDown, PlusCircle } from "lucide-react"
@@ -151,6 +152,7 @@ export default function HomePage() {
   }, [search, filters])
 
   const clearFilters = () => {
+    setSearch("")
     setFilters({
       jobType: "",
       experienceLevel: "",
@@ -169,7 +171,9 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen" dir={isRTL ? "rtl" : "ltr"} style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat", fontFamily: lang === "ar" ? "'Cairo', sans-serif" : undefined }}>
+      {/* Arabic font */}
+      <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet" />
       {/* ============ HEADER ============ */}
       <header className="border-b border-[#06634D]/20 bg-transparent">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-4 sm:py-6">
@@ -222,7 +226,6 @@ export default function HomePage() {
               {/* Mobile {t.hotCompanies} */}
               <div className="mt-3 w-full bg-[#D73833]/10 border-2 border-[#D73833] rounded-lg p-3 lg:hidden">
                 <div className="flex items-center gap-2 mb-2">
-                  <LanguageToggle defaultLang="ar" onLanguageChange={setLang} />
                   <span className="text-xl">🔥</span>
                   <span className="text-sm font-bold uppercase tracking-wider text-[#D73833] font-mono">
                     {t.hotCompanies}
@@ -248,12 +251,11 @@ export default function HomePage() {
 
             {/* Right: Toggle + {t.hotCompanies} */}
             <div className="hidden lg:flex flex-col items-end gap-2 flex-shrink-0">
-              {/* (toggle moved inside hot box) */}
-              
+              {/* Language Toggle */}
+              <LanguageToggle defaultLang="ar" onLanguageChange={setLang} />
               {/* {t.hotCompanies} box */}
               <div className="w-full max-w-96 bg-[#D73833]/10 border-2 border-[#D73833] rounded-lg p-3 shadow-lg">
                 <div className="flex items-center gap-2 mb-2">
-                  <LanguageToggle defaultLang="ar" onLanguageChange={setLang} />
                   <span className="text-xl">🔥</span>
                   <span className="text-sm font-bold uppercase tracking-wider text-[#D73833] font-mono">
                     {t.hotCompanies}

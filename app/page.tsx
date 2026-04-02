@@ -146,6 +146,7 @@ export default function HomePage() {
   }, [search, filters])
 
   const clearFilters = () => {
+    setSearch("")
     setFilters({
       jobType: "",
       experienceLevel: "",
@@ -278,7 +279,7 @@ export default function HomePage() {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-[#9CA3AF]" />
             <Input
               id="search-input"
-              placeholder="search keywords..."
+              placeholder="search companies..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="h-11 rounded-lg border-[#E5E7EB] bg-white pl-11 text-sm shadow-sm placeholder:text-[#9CA3AF] focus-visible:border-[#06634D] focus-visible:ring-[#06634D]/20"

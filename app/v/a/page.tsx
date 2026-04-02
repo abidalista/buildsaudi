@@ -1,5 +1,6 @@
 "use client"
 
+/* eslint-disable @next/next/no-page-custom-font */
 import { useState, useMemo, useEffect } from "react"
 import Link from "next/link"
 import { Search, Building2, X, ChevronDown, PlusCircle } from "lucide-react"
@@ -151,6 +152,7 @@ export default function HomePage() {
   }, [search, filters])
 
   const clearFilters = () => {
+    setSearch("")
     setFilters({
       jobType: "",
       experienceLevel: "",
@@ -169,7 +171,9 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat", fontFamily: lang === "ar" ? "'IBM Plex Sans Arabic', sans-serif" : undefined }}>
+      {/* Arabic font */}
+      <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
       {/* ============ HEADER ============ */}
       <header className="border-b border-[#06634D]/20 bg-transparent">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-4 sm:py-6">
