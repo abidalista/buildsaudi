@@ -419,7 +419,6 @@ export default function HomePage() {
                 <PlusCircle className="w-3 h-3" />
                 {t.suggestCompany}
               </button>
-              <span className="text-xs text-[#4B5563]">{filteredCompanies.length} {t.companies}</span>
             </div>
 
 

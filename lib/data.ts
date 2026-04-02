@@ -92,6 +92,14 @@ export const companies: Company[] = [
 
   // ===== MEDIA =====
   { slug: "thmanyah", name: "Thmanyah", website: "https://thmanyah.com", linkedin: "https://www.linkedin.com/company/thmanyah", stage: "Growth", sector: ["Media"], city: "Riyadh", description: "Largest Arabic podcast and media-tech network.", careers_url: "https://thmanyah.com", founders: "Abdulrahman Abumalih", total_raised: "SAR 33.3M (SRMG acquired 51%)", team_size: "101-250", founded_year: 2016 },
+  { slug: "audiom", name: "Audiom", website: "https://www.audiom.sa", linkedin: "https://www.linkedin.com/company/audiom", stage: "Seed", sector: ["Media"], city: "Riyadh", description: "Creative music house — audio branding, sound design, music production.", careers_url: "https://www.audiom.sa" },
+
+  // ===== FINTECH =====
+  { slug: "jaree", name: "Jaree", website: "https://jaree.sa", linkedin: "https://www.linkedin.com/company/jaree", stage: "Seed", sector: ["Fintech"], city: "Riyadh", description: "VC matchmaking platform connecting startups with accredited investors.", careers_url: "https://jaree.sa", founders: "Faisal AlNaji, Noura AlNahedh", founded_year: 2025 },
+  { slug: "lendo", name: "Lendo", website: "https://www.lendo.sa", linkedin: "https://www.linkedin.com/company/lendosa", stage: "Series A", sector: ["Fintech"], city: "Riyadh", description: "Shariah-compliant P2P lending marketplace for SMEs.", careers_url: "https://www.lendo.sa" },
+
+  // ===== CYBERSECURITY =====
+  { slug: "nuasecurity", name: "Nua Security", website: "https://www.nuasecurity.com", linkedin: "https://www.linkedin.com/company/nuasecurity", stage: "Seed", sector: ["Cybersecurity"], city: "Riyadh", description: "Autonomous AI-driven penetration testing and offensive security.", careers_url: "https://www.nuasecurity.com" },
 
   // ===== LOGISTICS =====
   { slug: "telgani", name: "Telgani", website: "https://www.telgani.com", linkedin: "https://www.linkedin.com/company/telgani", stage: "Series A", sector: ["Logistics"], city: "Riyadh", description: "On-demand car rental aggregator across 44+ Saudi cities.", careers_url: "https://www.telgani.com", founders: "Abdulkader Almkinzy, Ali Alfehaid", total_raised: "$8.5M", team_size: "51-200", founded_year: 2018, last_round_date: "Feb 2023" },
