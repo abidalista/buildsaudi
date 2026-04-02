@@ -96,7 +96,6 @@ export const companies: Company[] = [
   { slug: "jaree", name: "Jaree", website: "https://jaree.sa", linkedin: "https://www.linkedin.com/company/jaree", stage: "Seed", sector: ["Fintech"], city: "Riyadh", description: "VC matchmaking platform connecting startups with accredited investors.", careers_url: "https://jaree.sa", founders: "Faisal AlNaji, Noura AlNahedh", founded_year: 2025 },
 
   // ===== CYBERSECURITY =====
-  { slug: "nuasecurity", name: "Nua Security", website: "https://www.nuasecurity.com", linkedin: "https://www.linkedin.com/company/nuasecurity", stage: "Seed", sector: ["Cybersecurity"], city: "Riyadh", description: "Autonomous AI-driven penetration testing and offensive security.", careers_url: "https://www.nuasecurity.com" },
 
   // ===== LOGISTICS =====
   { slug: "telgani", name: "Telgani", website: "https://www.telgani.com", linkedin: "https://www.linkedin.com/company/telgani", stage: "Series A", sector: ["Logistics"], city: "Riyadh", description: "On-demand car rental aggregator across 44+ Saudi cities.", careers_url: "https://www.telgani.com", founders: "Abdulkader Almkinzy, Ali Alfehaid", total_raised: "$8.5M", team_size: "51-200", founded_year: 2018, last_round_date: "Feb 2023" },
