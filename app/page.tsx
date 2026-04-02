@@ -291,8 +291,8 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* ============ STICKY SEARCH BAR ============ */}
-      <div className="sticky top-0 z-20 border-b border-gray-200/50" style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px" }}>
+      {/* ============ SEARCH BAR ============ */}
+      <div className="border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-3">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-[#4B5563]" />
