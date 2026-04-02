@@ -729,7 +729,7 @@ export default function HomePage() {
       )}
 
       {/* ============ FOOTER ============ */}
-      <footer className="mt-16 border-t border-[#E5E7EB] bg-white">
+      <footer className="mt-16 border-t border-[#E5E7EB] bg-white hidden lg:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 text-xs text-[#4B5563]">
             <div>

@@ -1,7 +1,7 @@
 export const strings = {
   ar: {
     tagline: "دليل محدث للشركات السعودية اللي تبني مستقبل التقنية والذكاء الاصطناعي",
-    madeBy: "صنعه",
+    madeBy: "تصميم",
     searchJobs: "ابحث عن وظائف",
     searchPlaceholder: "ابحث عن شركات...",
     hotCompanies: "شركات مميزة",
