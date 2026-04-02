@@ -91,11 +91,9 @@ export const companies: Company[] = [
 
   // ===== MEDIA =====
   { slug: "thmanyah", name: "Thmanyah", website: "https://thmanyah.com", linkedin: "https://www.linkedin.com/company/thmanyah", stage: "Growth", sector: ["Media"], city: "Riyadh", description: "Largest Arabic podcast and media-tech network.", careers_url: "https://thmanyah.com", founders: "Abdulrahman Abumalih", total_raised: "SAR 33.3M (SRMG acquired 51%)", team_size: "101-250", founded_year: 2016 },
-  { slug: "audiom", name: "Audiom", website: "https://www.audiom.sa", linkedin: "https://www.linkedin.com/company/audiom", stage: "Seed", sector: ["Media"], city: "Riyadh", description: "Creative music house — audio branding, sound design, music production.", careers_url: "https://www.audiom.sa" },
 
   // ===== FINTECH =====
   { slug: "jaree", name: "Jaree", website: "https://jaree.sa", linkedin: "https://www.linkedin.com/company/jaree", stage: "Seed", sector: ["Fintech"], city: "Riyadh", description: "VC matchmaking platform connecting startups with accredited investors.", careers_url: "https://jaree.sa", founders: "Faisal AlNaji, Noura AlNahedh", founded_year: 2025 },
-  { slug: "lendo", name: "Lendo", website: "https://www.lendo.sa", linkedin: "https://www.linkedin.com/company/lendosa", stage: "Series A", sector: ["Fintech"], city: "Riyadh", description: "Shariah-compliant P2P lending marketplace for SMEs.", careers_url: "https://www.lendo.sa" },
 
   // ===== CYBERSECURITY =====
   { slug: "nuasecurity", name: "Nua Security", website: "https://www.nuasecurity.com", linkedin: "https://www.linkedin.com/company/nuasecurity", stage: "Seed", sector: ["Cybersecurity"], city: "Riyadh", description: "Autonomous AI-driven penetration testing and offensive security.", careers_url: "https://www.nuasecurity.com" },
@@ -200,7 +198,6 @@ export const companies: Company[] = [
   { slug: "audiom", name: "Audiom", website: "https://audiom.sa", linkedin: "https://www.linkedin.com/company/audiomsoultions", stage: "Seed", sector: ["Media"], city: "Riyadh", description: "Creative music house for sonic branding, audio production, and sound design.", careers_url: "https://audiom.sa", founders: "Abdulaziz Saleem", founded_year: 2021, team_size: "1-10" },
 
   // ===== FINTECH (from Suggestions) =====
-  { slug: "jaree", name: "Jaree", website: "https://jaree.sa", linkedin: "https://www.linkedin.com/company/jareeplatform", stage: "Seed", sector: ["Fintech"], city: "Riyadh", description: "VC matchmaking platform connecting Saudi startups with accredited investors.", careers_url: "https://jaree.sa", founders: "Faisal AlNaji, Noura AlNahedh", founded_year: 2025 },
   { slug: "lendo", name: "Lendo", website: "https://lendo.sa", linkedin: "https://www.linkedin.com/company/lendosa", stage: "Series B", sector: ["Fintech"], city: "Riyadh", description: "Shariah-compliant SME invoice financing and debt crowdfunding marketplace.", careers_url: "https://lendo.sa", founders: "Osama AlRaee, Mohammad Jawabri", founded_year: 2019, total_raised: "$35.2M", last_round_date: "Dec 2023", team_size: "51-200" },
 
   // ===== CYBERSECURITY (from Suggestions) =====
