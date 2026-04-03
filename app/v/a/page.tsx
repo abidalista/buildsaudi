@@ -34,6 +34,7 @@ export default function HomePage() {
   const [emailSubmitted, setEmailSubmitted] = useState(false)
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set())
   const [showSuggest, setShowSuggest] = useState(false)
+  const [showBannerDismissed, setShowBannerDismissed] = useState(false)
   const [showJobSeeker, setShowJobSeeker] = useState(false)
   const [jobSeekerForm, setJobSeekerForm] = useState({ name: "", title: "", email: "" })
   const [jobSeekerStatus, setJobSeekerStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")
@@ -171,9 +172,19 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#F7F3EB", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat", fontFamily: "'IBM Plex Sans Arabic', sans-serif" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat", fontFamily: "'IBM Plex Sans Arabic', sans-serif" }}>
       {/* Arabic font */}
       <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+      {/* Promo Banner — A: Minimal teal strip */}
+      {!showBannerDismissed && (
+        <div className="bg-[#06634D] text-white text-center py-2 px-4 text-sm relative" dir="rtl">
+          <a href="https://www.aiapply.co/?via=abdulla" target="_blank" rel="noopener noreferrer" className="hover:underline">
+            🎓 خصم ٤٠٪ للطلاب والخريجين — <span className="font-bold">AI Apply</span> يقدم لك وظائف اوتوماتيك ←
+          </a>
+          <button onClick={() => setShowBannerDismissed(true)} className="absolute right-3 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-lg">×</button>
+        </div>
+      )}
       {/* ============ HEADER ============ */}
       <header className="border-b border-[#06634D]/20 bg-transparent">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-4 sm:py-6">
@@ -201,7 +212,7 @@ export default function HomePage() {
               </div>
 
               {/* Tagline */}
-              <p className="text-[#333333] text-xs mb-2 text-center sm:text-left">
+              <p className="text-[#111827] text-base font-semibold mb-2 text-center sm:text-left">
                 {t.tagline}
               </p>
 
@@ -291,8 +302,8 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* ============ STICKY SEARCH BAR ============ */}
-      <div className="sticky top-0 z-20 border-b border-gray-200/50" style={{ backgroundColor: "#F7F3EB", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px" }}>
+      {/* ============ SEARCH BAR ============ */}
+      <div className="border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-3">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-[#4B5563]" />
