@@ -180,7 +180,7 @@ export default function HomePage() {
       {!showBannerDismissed && (
         <div className="bg-gradient-to-l from-[#06634D] to-[#0D8B6A] text-white py-2.5 px-4 relative" dir="rtl">
           <div className="max-w-7xl mx-auto flex items-center justify-center gap-3 text-sm">
-            <span>🎓 لسه تقدم على وظائف يدوي؟</span>
+            <span>🎓 لسا تقدم على وظائف بنفسك؟</span>
             <a href="https://www.aiapply.co/?via=abdulla" target="_blank" rel="noopener noreferrer" className="bg-white text-[#06634D] font-bold px-3 py-1 rounded text-xs hover:bg-gray-100 transition-colors whitespace-nowrap">
               خصم ٤٠٪ للطلاب — جرب AI Apply
             </a>
