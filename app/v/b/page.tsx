@@ -178,14 +178,14 @@ export default function HomePage() {
 
       {/* Promo Banner — B: Gradient with CTA button */}
       {!showBannerDismissed && (
-        <div className="bg-gradient-to-l from-[#06634D] to-[#0D8B6A] text-white py-2.5 px-4 relative" dir="rtl">
-          <div className="max-w-7xl mx-auto flex items-center justify-center gap-3 text-sm">
+        <div className="bg-gradient-to-l from-[#06634D] to-[#0D8B6A] text-white py-2 sm:py-2.5 px-4 pr-10 relative" dir="rtl">
+          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 text-xs sm:text-sm">
             <span>🎓 لسه تقدّم على وظايف بنفسك؟</span>
             <a href="https://www.aiapply.co/?via=abdulla" target="_blank" rel="noopener noreferrer" className="bg-white text-[#06634D] font-bold px-3 py-1 rounded text-xs hover:bg-gray-100 transition-colors whitespace-nowrap">
               خصم ٤٠٪ للطلاب — جرب AI Apply
             </a>
-            <button onClick={() => setShowBannerDismissed(true)} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-lg">×</button>
           </div>
+          <button onClick={() => setShowBannerDismissed(true)} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-lg">×</button>
         </div>
       )}
 
