@@ -3,6 +3,7 @@ import { Space_Grotesk, Space_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { PostHogProvider } from './posthog-provider'
 import Script from 'next/script'
+import { Suspense } from 'react'
 import './globals.css'
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" })
@@ -63,9 +64,11 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={`${spaceGrotesk.variable} ${spaceMono.variable} font-sans antialiased bg-[#F5F0E6] text-[#111827]`}>
-        <PostHogProvider>
-          {children}
-        </PostHogProvider>
+        <Suspense fallback={null}>
+          <PostHogProvider>
+            {children}
+          </PostHogProvider>
+        </Suspense>
         <Analytics />
       </body>
     </html>
