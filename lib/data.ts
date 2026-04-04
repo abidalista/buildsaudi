@@ -102,6 +102,7 @@ export const companies: Company[] = [
 
   // ===== ROBOTICS =====
   { slug: "proven-robotics", name: "PROVEN Robotics", website: "https://provenrobotics.ai", linkedin: "https://www.linkedin.com/company/proven-robotics", stage: "Growth", sector: ["Robotics"], city: "Riyadh", description: "Robotics solutions for Saudi enterprises.", careers_url: "https://provenrobotics.ai" , founders: "PROVEN Group", team_size: "51-200", founded_year: 2018 },
+  { slug: "riyadh-dynamics", name: "Riyadh Dynamics", website: "https://riyadhdynamics.com", linkedin: "https://www.linkedin.com/company/riyadh-dynamics", stage: "Growth", sector: ["Robotics"], city: "Riyadh", description: "Self-driving mobile robots for industrial applications.", careers_url: "https://riyadhdynamics.com", founders: "Mishari Al-Enezi", founded_year: 2022 },
 
   // ===== MEGA PROJECTS =====
   { slug: "alat", name: "Alat", website: "https://alat.com", linkedin: "https://www.linkedin.com/company/alat-saudi", stage: "Growth", sector: ["Deep Tech"], city: "Riyadh", description: "Saudi electronics and tech manufacturing hub.", careers_url: "https://alat.com", total_raised: "$100B (PIF-backed)", team_size: "1000+", founded_year: 2024 , founders: "Amit Midha (CEO)" },

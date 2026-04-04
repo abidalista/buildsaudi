@@ -218,7 +218,7 @@ export default function HomePage() {
               </div>
 
               {/* Tagline */}
-              <p className="text-[#111827] text-base font-semibold mb-2 text-center sm:text-left">
+              <p className="text-[#111827] text-base font-semibold mb-2 text-center sm:text-left" dir={lang === "ar" ? "rtl" : "ltr"}>
                 {t.tagline}
               </p>
 
