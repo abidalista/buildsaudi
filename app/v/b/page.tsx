@@ -30,11 +30,11 @@ export default function HomePage() {
     city: "",
     companyStage: "",
   })
+  const [showBannerDismissed, setShowBannerDismissed] = useState(false)
   const [email, setEmail] = useState("")
   const [emailSubmitted, setEmailSubmitted] = useState(false)
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set())
   const [showSuggest, setShowSuggest] = useState(false)
-  const [showBannerDismissed, setShowBannerDismissed] = useState(false)
   const [showJobSeeker, setShowJobSeeker] = useState(false)
   const [jobSeekerForm, setJobSeekerForm] = useState({ name: "", title: "", email: "" })
   const [jobSeekerStatus, setJobSeekerStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")
@@ -172,20 +172,22 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat", fontFamily: "'IBM Plex Sans Arabic', sans-serif" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat", fontFamily: "'IBM Plex Sans Arabic', sans-serif", textAlign: lang === "ar" ? "right" : "left" }}>
       {/* Arabic font */}
       <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-      {/* Promo Banner — B: Gradient with CTA button */}
+      {/* Promo Banner */}
       {!showBannerDismissed && (
         <div className="bg-gradient-to-l from-[#06634D] to-[#0D8B6A] text-white py-2 sm:py-2.5 px-4 pr-10 relative" dir="rtl">
-          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 text-xs sm:text-sm">
-            <span>🎓 لسه تقدّم على وظايف بنفسك؟</span>
-            <a href="https://www.aiapply.co/?via=abdulla" target="_blank" rel="noopener noreferrer" className="bg-white text-[#06634D] font-bold px-3 py-1 rounded text-xs hover:bg-gray-100 transition-colors whitespace-nowrap">
-              خصم ٤٠٪ للطلاب — جرب AI Apply
-            </a>
-          </div>
-          <button onClick={() => setShowBannerDismissed(true)} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-lg">×</button>
+          <a href="https://www.aiapply.co/?via=abdulla" target="_blank" rel="noopener noreferrer" className="block">
+            <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 text-xs sm:text-sm">
+              <span>🎓 لسه تقدّم على وظايف بنفسك؟</span>
+              <span className="bg-white text-[#06634D] font-bold px-3 py-1 rounded text-xs hover:bg-gray-100 transition-colors whitespace-nowrap">
+                جرب AI Apply — خصم ٤٠٪ للطلاب والمتخرجين
+              </span>
+            </div>
+          </a>
+          <button onClick={(e) => { e.stopPropagation(); setShowBannerDismissed(true) }} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-lg">×</button>
         </div>
       )}
 
@@ -216,7 +218,7 @@ export default function HomePage() {
               </div>
 
               {/* Tagline */}
-              <p className="text-[#111827] text-base font-semibold mb-2 text-center sm:text-left">
+              <p className="text-[#111827] text-base font-semibold mb-2 text-center sm:text-left" dir={lang === "ar" ? "rtl" : "ltr"}>
                 {t.tagline}
               </p>
 
@@ -354,7 +356,7 @@ export default function HomePage() {
             </div>
 
             {/* FILTERS heading */}
-            <h2 className="text-sm uppercase tracking-wider text-[#06634D]">
+            <h2 className="text-sm uppercase tracking-wider text-[#06634D]" dir={lang === "ar" ? "rtl" : "ltr"}>
               Filters
             </h2>
 
@@ -467,7 +469,7 @@ export default function HomePage() {
                               >
                                 {company.name}
                               </a>
-                              <p className="mt-0.5 text-xs sm:text-sm text-[#4B5563] line-clamp-1">
+                              <p className="mt-0.5 text-xs sm:text-sm text-[#4B5563] line-clamp-1" dir={lang === "ar" ? "rtl" : "ltr"}>
                                 {company.description}
                               </p>
                             </div>

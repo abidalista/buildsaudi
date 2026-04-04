@@ -30,11 +30,11 @@ export default function HomePage() {
     city: "",
     companyStage: "",
   })
+  const [showBannerDismissed, setShowBannerDismissed] = useState(false)
   const [email, setEmail] = useState("")
   const [emailSubmitted, setEmailSubmitted] = useState(false)
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set())
   const [showSuggest, setShowSuggest] = useState(false)
-  const [showBannerDismissed, setShowBannerDismissed] = useState(false)
   const [showJobSeeker, setShowJobSeeker] = useState(false)
   const [jobSeekerForm, setJobSeekerForm] = useState({ name: "", title: "", email: "" })
   const [jobSeekerStatus, setJobSeekerStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")
@@ -172,19 +172,25 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat", fontFamily: "'IBM Plex Sans Arabic', sans-serif" }}>
+    <div className="min-h-screen" dir={lang === "ar" ? "rtl" : "ltr"} style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat", fontFamily: "'IBM Plex Sans Arabic', sans-serif" }}>
       {/* Arabic font */}
       <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-      {/* Promo Banner — A: Minimal teal strip */}
+      {/* Promo Banner */}
       {!showBannerDismissed && (
-        <div className="bg-[#06634D] text-white text-center py-2 px-4 text-sm relative" dir="rtl">
-          <a href="https://www.aiapply.co/?via=abdulla" target="_blank" rel="noopener noreferrer" className="hover:underline">
-            🎓 خصم ٤٠٪ للطلاب والخريجين — <span className="font-bold">AI Apply</span> يقدم لك وظائف اوتوماتيك ←
+        <div className="bg-gradient-to-l from-[#06634D] to-[#0D8B6A] text-white py-2 sm:py-2.5 px-4 pr-10 relative" dir="rtl">
+          <a href="https://www.aiapply.co/?via=abdulla" target="_blank" rel="noopener noreferrer" className="block">
+            <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 text-xs sm:text-sm">
+              <span>🎓 لسه تقدّم على وظايف بنفسك؟</span>
+              <span className="bg-white text-[#06634D] font-bold px-3 py-1 rounded text-xs hover:bg-gray-100 transition-colors whitespace-nowrap">
+                جرب AI Apply — خصم ٤٠٪ للطلاب والمتخرجين
+              </span>
+            </div>
           </a>
-          <button onClick={() => setShowBannerDismissed(true)} className="absolute right-3 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-lg">×</button>
+          <button onClick={(e) => { e.stopPropagation(); setShowBannerDismissed(true) }} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-lg">×</button>
         </div>
       )}
+
       {/* ============ HEADER ============ */}
       <header className="border-b border-[#06634D]/20 bg-transparent">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-4 sm:py-6">
@@ -212,7 +218,7 @@ export default function HomePage() {
               </div>
 
               {/* Tagline */}
-              <p className="text-[#111827] text-base font-semibold mb-2 text-center sm:text-left">
+              <p className="text-[#111827] text-base font-semibold mb-2 text-center sm:text-left" dir={lang === "ar" ? "rtl" : "ltr"}>
                 {t.tagline}
               </p>
 
