@@ -183,7 +183,7 @@ export default function HomePage() {
             <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 text-xs sm:text-sm">
               <span>🎓 لسه تقدّم على وظايف بنفسك؟</span>
               <span className="bg-white text-[#06634D] font-bold px-3 py-1 rounded text-xs hover:bg-gray-100 transition-colors whitespace-nowrap">
-                خصم ٤٠٪ للطلاب والمتخرجين — جرب AI Apply
+                جرب AI Apply — خصم ٤٠٪ للطلاب والمتخرجين
               </span>
             </div>
           </a>
