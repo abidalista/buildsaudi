@@ -5,7 +5,7 @@ import { PostHogProvider as PHProvider, usePostHog } from "posthog-js/react"
 import { useEffect, useRef } from "react"
 import { usePathname, useSearchParams } from "next/navigation"
 
-const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN!
+const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN!.trim()
 const POSTHOG_HOST = "/ingest"
 
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
