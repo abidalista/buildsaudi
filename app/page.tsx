@@ -1,7 +1,8 @@
 "use client"
 
 /* eslint-disable @next/next/no-page-custom-font */
-import { useState, useMemo, useEffect } from "react"
+import { useState, useMemo, useEffect, useCallback } from "react"
+import posthog from "posthog-js"
 import Link from "next/link"
 import { Search, Building2, X, ChevronDown, PlusCircle } from "lucide-react"
 import { LanguageToggle } from "@/components/language-toggle"
@@ -80,6 +81,7 @@ export default function HomePage() {
         body: JSON.stringify(jobSeekerForm),
       })
       if (res.ok) {
+        posthog.capture("job_seeker_signup", { name: jobSeekerForm.name, title: jobSeekerForm.title })
         setJobSeekerStatus("success")
         setTimeout(() => {
           setShowJobSeeker(false)
@@ -107,6 +109,7 @@ export default function HomePage() {
         body: JSON.stringify(suggestForm),
       })
       if (res.ok) {
+        posthog.capture("company_suggested", { company_name: suggestForm.companyName })
         setSuggestStatus("success")
         setTimeout(() => {
           setShowSuggest(false)
@@ -124,8 +127,12 @@ export default function HomePage() {
   const toggleCard = (slug: string) => {
     setExpandedCards(prev => {
       const next = new Set(prev)
-      if (next.has(slug)) next.delete(slug)
-      else next.add(slug)
+      if (next.has(slug)) {
+        next.delete(slug)
+      } else {
+        next.add(slug)
+        posthog.capture("company_card_expanded", { company_slug: slug })
+      }
       return next
     })
   }
@@ -151,6 +158,25 @@ export default function HomePage() {
       return matchesSearch && matchesSector && matchesCity && matchesStage
     }).sort((a, b) => (b.founded_year || 0) - (a.founded_year || 0))
   }, [search, filters])
+
+  // track search with debounce
+  useEffect(() => {
+    if (!search) return
+    const t = setTimeout(() => {
+      posthog.capture("search_used", { query: search, results_count: filteredCompanies.length })
+    }, 1000)
+    return () => clearTimeout(t)
+  }, [search, filteredCompanies.length])
+
+  // track filter changes
+  const setFiltersTracked = useCallback((updater: typeof filters | ((prev: typeof filters) => typeof filters)) => {
+    setFilters(prev => {
+      const next = typeof updater === "function" ? updater(prev) : updater
+      const changed = Object.entries(next).find(([k, v]) => v && v !== (prev as Record<string, string>)[k])
+      if (changed) posthog.capture("filter_applied", { filter_type: changed[0], filter_value: changed[1] })
+      return next
+    })
+  }, [])
 
   const clearFilters = () => {
     setSearch("")
@@ -365,7 +391,7 @@ export default function HomePage() {
               <FilterSelect
                 label="Sector"
                 value={filters.sector}
-                onChange={(v) => setFilters((f) => ({ ...f, sector: v }))}
+                onChange={(v) => setFiltersTracked((f) => ({ ...f, sector: v }))}
                 options={filterOptions.sector}
                 placeholder={t.allSectors}
               />
@@ -374,7 +400,7 @@ export default function HomePage() {
               <FilterSelect
                 label="Stage"
                 value={filters.companyStage}
-                onChange={(v) => setFilters((f) => ({ ...f, companyStage: v }))}
+                onChange={(v) => setFiltersTracked((f) => ({ ...f, companyStage: v }))}
                 options={filterOptions.companyStage}
                 placeholder={t.allStages}
               />
@@ -419,13 +445,13 @@ export default function HomePage() {
             <div className="flex flex-wrap gap-2 mb-4 lg:hidden">
               <FilterSelect
                 value={filters.sector}
-                onChange={(v) => setFilters((f) => ({ ...f, sector: v }))}
+                onChange={(v) => setFiltersTracked((f) => ({ ...f, sector: v }))}
                 options={filterOptions.sector}
                 placeholder={t.sector}
               />
               <FilterSelect
                 value={filters.companyStage}
-                onChange={(v) => setFilters((f) => ({ ...f, companyStage: v }))}
+                onChange={(v) => setFiltersTracked((f) => ({ ...f, companyStage: v }))}
                 options={filterOptions.companyStage}
                 placeholder={t.stage}
               />
@@ -487,7 +513,7 @@ export default function HomePage() {
                                   href={company.careers_url}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  onClick={(e) => e.stopPropagation()}
+                                  onClick={(e) => { e.stopPropagation(); posthog.capture("job_apply_clicked", { company: company.name, company_slug: company.slug, url: company.careers_url }) }}
                                   className="px-2.5 py-1 bg-[#06634D] text-white text-xs rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
                                 >
                                   {t.viewJobs}
@@ -508,7 +534,7 @@ export default function HomePage() {
                               href={company.careers_url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              onClick={(e) => e.stopPropagation()}
+                              onClick={(e) => { e.stopPropagation(); posthog.capture("job_apply_clicked", { company: company.name, company_slug: company.slug, url: company.careers_url }) }}
                               className="px-2 py-0.5 bg-[#06634D] text-white text-[11px] rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
                             >
                               {t.viewJobs}
