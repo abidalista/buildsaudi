@@ -21,6 +21,20 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
         capture_pageleave: true,
         capture_performance: true,
         capture_exceptions: true,
+        disable_session_recording: false,
+        session_recording: {
+          maskAllInputs: false,
+          maskInputOptions: {
+            password: true,
+          },
+        },
+        autocapture: {
+          dom_event_allowlist: ["click", "change", "submit"],
+          element_allowlist: ["a", "button", "form", "input", "select", "textarea"],
+          css_selector_allowlist: ["[data-ph-capture]"],
+        },
+        capture_dead_clicks: true,
+        scroll_root_selector: ["#main-content", "body"],
       })
       initialized.current = true
     }
