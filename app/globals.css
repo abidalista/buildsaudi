@@ -63,9 +63,57 @@
   }
 }
 
+/* ===== iOS / Safari optimizations (81% of users) ===== */
+
 /* Prevent iOS zoom on input focus */
 @media screen and (max-width: 768px) {
   input, select, textarea {
     font-size: 16px !important;
   }
+}
+
+/* Safe area insets for notch/dynamic island */
+html {
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+/* Smooth scrolling on iOS */
+html, body {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent text size adjust on orientation change */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Minimum tap target for iOS (44x44) */
+button, a, [role="button"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Exception: inline text links and small badges don't need 44px */
+a.inline-flex, span a, p a,
+[class*="px-2"][class*="py-0.5"],
+[class*="px-2.5"][class*="py-1"] {
+  min-height: auto;
+  min-width: auto;
+}
+
+/* Fix momentum scrolling in modals on iOS */
+.overflow-y-auto, .overflow-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent pull-to-refresh in in-app browsers */
+body {
+  overscroll-behavior-y: none;
+}
+
+/* iOS font smoothing */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
