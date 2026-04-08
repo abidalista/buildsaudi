@@ -88,19 +88,7 @@ html {
   text-size-adjust: 100%;
 }
 
-/* Minimum tap target for iOS (44x44) */
-button, a, [role="button"] {
-  min-height: 44px;
-  min-width: 44px;
-}
-
-/* Exception: inline text links and small badges don't need 44px */
-a.inline-flex, span a, p a,
-[class*="px-2"][class*="py-0.5"],
-[class*="px-2.5"][class*="py-1"] {
-  min-height: auto;
-  min-width: auto;
-}
+/* Tap targets: handled via padding in components, not global min-size */
 
 /* Fix momentum scrolling in modals on iOS */
 .overflow-y-auto, .overflow-auto {
