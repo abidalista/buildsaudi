@@ -78,4 +78,3 @@ export const strings = {
 } as const
 
 export type Lang = "en" | "ar"
-export type Strings = typeof strings.en

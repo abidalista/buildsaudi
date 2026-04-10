@@ -215,10 +215,6 @@ export function getJobsByCompany(slug: string): Job[] {
   return jobs.filter((j) => j.company_slug === slug)
 }
 
-export function getUniqueValues(key: keyof Job): string[] {
-  return [...new Set(jobs.map((j) => j[key] as string))].filter(Boolean).sort()
-}
-
 export const filterOptions = {
   sector: [...new Set(companies.flatMap((c) => c.sector))].sort(),
   city: [...new Set(companies.map((c) => c.city))].sort(),
