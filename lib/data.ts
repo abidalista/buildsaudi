@@ -189,6 +189,7 @@ export const companies: Company[] = [
   // ===== FOODTECH (additional) =====
 
   // ===== AI (from Suggestions) =====
+  { slug: "newera-ai", name: "Newera.ai", website: "https://newera.ai", linkedin: "https://www.linkedin.com/company/newera-saudi/", stage: "Pre-Seed", sector: ["AI"], city: "Riyadh", description: "Enterprise generative AI and agentic systems platform.", careers_url: "https://newera.ai", founders: "Abdulrhman Alsuliman", total_raised: "$2.1M", team_size: "1-10", founded_year: 2023, last_round_date: "Dec 2025" },
   { slug: "entropy", name: "Entropy", website: "https://entropy.sa", linkedin: "https://www.linkedin.com/company/entropy-sa", stage: "Seed", sector: ["AI"], city: "Riyadh", description: "Data & AI company helping public and private sectors become AI-enabled enterprises.", careers_url: "https://entropy.sa" },
 
   // ===== DEEP TECH (from Suggestions) =====
