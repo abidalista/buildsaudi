@@ -168,6 +168,7 @@ export const companies: Company[] = [
 
   // ===== HR TECH =====
   { slug: "merit-incentives", name: "Merit Incentives", website: "https://meritincentives.com", linkedin: "https://www.linkedin.com/company/meritincentives", stage: "Growth", sector: ["HR Tech"], city: "Riyadh", description: "Employee engagement and incentives.", careers_url: "https://meritincentives.com" , founders: "Julie Barbier-Leblan", total_raised: "$45M", team_size: "51-200", founded_year: 2017 },
+  { slug: "shiftat", name: "Shiftat", website: "https://shiftat.sa", linkedin: "https://www.linkedin.com/company/shiftat-sa", stage: "Seed", sector: ["HR Tech"], city: "Riyadh", description: "Cloud-based HR management system for hourly and flexible workers.", careers_url: "https://shiftat.sa", founders: "Abdullah Abalkhail", founded_year: 2021 },
 
   // ===== AGRICULTURE =====
   { slug: "edama", name: "Edama", website: "https://www.edamasolutions.com", linkedin: "https://www.linkedin.com/company/edama", stage: "Seed", sector: ["Agriculture"], city: "Riyadh", description: "Recycles organic waste into farm products.", careers_url: "https://www.edamasolutions.com" , total_raised: "$1M" },
@@ -203,6 +204,9 @@ export const companies: Company[] = [
 
   // ===== CYBERSECURITY (from Suggestions) =====
   { slug: "nua-security", name: "Nua Security", website: "https://nuasecurity.com", linkedin: "https://www.linkedin.com/company/nuasecurity", stage: "Seed", sector: ["Cybersecurity"], city: "Riyadh", description: "AI-powered penetration testing platform with bug bounty and vulnerability discovery.", careers_url: "https://nuasecurity.com", founded_year: 2021 },
+
+  // ===== E-COMMERCE (from Suggestions) =====
+  { slug: "aya", name: "Aya", website: "https://www.aya.app", linkedin: "https://www.linkedin.com/company/ayaapp", stage: "Seed", sector: ["E-commerce"], city: "Riyadh", description: "Trend-driven modest fashion discovery marketplace for abayas and modest wear.", careers_url: "https://www.aya.app", founders: "Munira Al Kadi, Abdulrahman Al Ammar", total_raised: "$1.6M", team_size: "1-10", founded_year: 2024, last_round_date: "Mar 2025" },
 ]
 
 // Jobs archived — linking directly to company career pages
