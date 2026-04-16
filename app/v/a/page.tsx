@@ -1,13 +1,13 @@
 "use client"
 
 /* eslint-disable @next/next/no-page-custom-font */
-import { useState, useMemo, useEffect } from "react"
+import { useState, useMemo, useEffect, useCallback } from "react"
+import posthog from "posthog-js"
 import Link from "next/link"
 import { Search, Building2, X, ChevronDown, PlusCircle } from "lucide-react"
 import { LanguageToggle } from "@/components/language-toggle"
 import { strings, type Lang } from "@/lib/i18n"
 import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
 import {
   Select,
   SelectContent,
@@ -18,10 +18,11 @@ import {
 import { companies, getJobsByCompany, filterOptions } from "@/lib/data"
 import { CompanyLogo } from "@/components/company-logo"
 
-export default function HomePage() {
+export default function HomeClient() {
   const [lang, setLang] = useState<Lang>("en")
   const t = strings[lang]
   const isRTL = lang === "ar"
+  void isRTL
   const [search, setSearch] = useState("")
   const [filters, setFilters] = useState({
     jobType: "",
@@ -31,8 +32,6 @@ export default function HomePage() {
     companyStage: "",
   })
   const [showBannerDismissed, setShowBannerDismissed] = useState(false)
-  const [email, setEmail] = useState("")
-  const [emailSubmitted, setEmailSubmitted] = useState(false)
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set())
   const [showSuggest, setShowSuggest] = useState(false)
   const [showJobSeeker, setShowJobSeeker] = useState(false)
@@ -80,6 +79,7 @@ export default function HomePage() {
         body: JSON.stringify(jobSeekerForm),
       })
       if (res.ok) {
+        posthog.capture("job_seeker_signup", { name: jobSeekerForm.name, title: jobSeekerForm.title })
         setJobSeekerStatus("success")
         setTimeout(() => {
           setShowJobSeeker(false)
@@ -107,6 +107,7 @@ export default function HomePage() {
         body: JSON.stringify(suggestForm),
       })
       if (res.ok) {
+        posthog.capture("company_suggested", { company_name: suggestForm.companyName })
         setSuggestStatus("success")
         setTimeout(() => {
           setShowSuggest(false)
@@ -124,8 +125,12 @@ export default function HomePage() {
   const toggleCard = (slug: string) => {
     setExpandedCards(prev => {
       const next = new Set(prev)
-      if (next.has(slug)) next.delete(slug)
-      else next.add(slug)
+      if (next.has(slug)) {
+        next.delete(slug)
+      } else {
+        next.add(slug)
+        posthog.capture("company_card_expanded", { company_slug: slug })
+      }
       return next
     })
   }
@@ -152,6 +157,25 @@ export default function HomePage() {
     }).sort((a, b) => (b.founded_year || 0) - (a.founded_year || 0))
   }, [search, filters])
 
+  // track search with debounce
+  useEffect(() => {
+    if (!search) return
+    const t = setTimeout(() => {
+      posthog.capture("search_used", { query: search, results_count: filteredCompanies.length })
+    }, 1000)
+    return () => clearTimeout(t)
+  }, [search, filteredCompanies.length])
+
+  // track filter changes
+  const setFiltersTracked = useCallback((updater: typeof filters | ((prev: typeof filters) => typeof filters)) => {
+    setFilters(prev => {
+      const next = typeof updater === "function" ? updater(prev) : updater
+      const changed = Object.entries(next).find(([k, v]) => v && v !== (prev as Record<string, string>)[k])
+      if (changed) posthog.capture("filter_applied", { filter_type: changed[0], filter_value: changed[1] })
+      return next
+    })
+  }, [])
+
   const clearFilters = () => {
     setSearch("")
     setFilters({
@@ -163,16 +187,8 @@ export default function HomePage() {
     })
   }
 
-  const handleEmailSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (email) {
-      setEmailSubmitted(true)
-      setEmail("")
-    }
-  }
-
   return (
-    <div className="min-h-screen" dir={lang === "ar" ? "rtl" : "ltr"} style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat", fontFamily: "'IBM Plex Sans Arabic', sans-serif" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat", fontFamily: lang === 'ar' ? "'Fatimah Arabic', 'IBM Plex Sans Arabic', sans-serif" : "'IBM Plex Sans Arabic', sans-serif" }}>
       {/* Arabic font */}
       <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
@@ -210,7 +226,6 @@ export default function HomePage() {
                   <span className="absolute bottom-0 right-0 w-4 h-4 sm:w-5 sm:h-5 border-r-[3px] border-b-[3px] border-[#06634D]/30" />
                   <h1
                     className="text-[clamp(1.8rem,4vw,3rem)] font-bold leading-none text-[#06634D] tracking-tight"
-                    
                   >
                     BUILDSAUDI
                   </h1>
@@ -233,7 +248,6 @@ export default function HomePage() {
                   )}
                 </a>
 
-                {/* {t.searchJobs} */}
                 <button
                   onClick={() => setShowJobSeeker(true)}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold bg-[#D73833] text-white border border-[#D73833] rounded hover:bg-[#D73833]/90 transition-all whitespace-nowrap"
@@ -243,13 +257,12 @@ export default function HomePage() {
                 </button>
               </div>
 
-
               {/* Mobile language toggle */}
               <div className="mt-3 flex justify-end lg:hidden">
                 <LanguageToggle defaultLang="en" onLanguageChange={setLang} />
               </div>
 
-              {/* Mobile {t.hotCompanies} */}
+              {/* Mobile hot companies */}
               <div className="mt-2 w-full bg-[#D73833]/10 border-2 border-[#D73833] rounded-lg p-3 lg:hidden">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-xl">🔥</span>
@@ -275,11 +288,9 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right: Toggle + {t.hotCompanies} */}
+            {/* Right: Toggle + hot companies */}
             <div className="hidden lg:flex flex-col items-end gap-2 flex-shrink-0">
-              {/* Language Toggle */}
               <LanguageToggle defaultLang="en" onLanguageChange={setLang} />
-              {/* {t.hotCompanies} box */}
               <div className="w-[280px] bg-[#D73833]/10 border-2 border-[#D73833] rounded-lg p-3 shadow-lg">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-xl">🔥</span>
@@ -365,7 +376,7 @@ export default function HomePage() {
               <FilterSelect
                 label="Sector"
                 value={filters.sector}
-                onChange={(v) => setFilters((f) => ({ ...f, sector: v }))}
+                onChange={(v) => setFiltersTracked((f) => ({ ...f, sector: v }))}
                 options={filterOptions.sector}
                 placeholder={t.allSectors}
               />
@@ -374,7 +385,7 @@ export default function HomePage() {
               <FilterSelect
                 label="Stage"
                 value={filters.companyStage}
-                onChange={(v) => setFilters((f) => ({ ...f, companyStage: v }))}
+                onChange={(v) => setFiltersTracked((f) => ({ ...f, companyStage: v }))}
                 options={filterOptions.companyStage}
                 placeholder={t.allStages}
               />
@@ -419,13 +430,13 @@ export default function HomePage() {
             <div className="flex flex-wrap gap-2 mb-4 lg:hidden">
               <FilterSelect
                 value={filters.sector}
-                onChange={(v) => setFilters((f) => ({ ...f, sector: v }))}
+                onChange={(v) => setFiltersTracked((f) => ({ ...f, sector: v }))}
                 options={filterOptions.sector}
                 placeholder={t.sector}
               />
               <FilterSelect
                 value={filters.companyStage}
-                onChange={(v) => setFilters((f) => ({ ...f, companyStage: v }))}
+                onChange={(v) => setFiltersTracked((f) => ({ ...f, companyStage: v }))}
                 options={filterOptions.companyStage}
                 placeholder={t.stage}
               />
@@ -438,7 +449,6 @@ export default function HomePage() {
               </button>
             </div>
 
-
             {/* Company Cards */}
             <div className="space-y-2 sm:space-y-3">
               {filteredCompanies.map((company) => {
@@ -449,7 +459,6 @@ export default function HomePage() {
                     className="group bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden"
                   >
                     <div className="p-4 sm:p-6 cursor-pointer" onClick={() => toggleCard(company.slug)}>
-                      {/* Mobile: stacked layout. Desktop: single row */}
                       <div className="flex items-start sm:items-center gap-3 sm:gap-5">
                         {/* Company Logo */}
                         <div className="flex size-10 sm:size-14 shrink-0 items-center justify-center rounded-lg sm:rounded-xl bg-white border border-gray-200 overflow-hidden">
@@ -487,7 +496,7 @@ export default function HomePage() {
                                   href={company.careers_url}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  onClick={(e) => e.stopPropagation()}
+                                  onClick={(e) => { e.stopPropagation(); posthog.capture("job_apply_clicked", { company: company.name, company_slug: company.slug, url: company.careers_url }) }}
                                   className="px-2.5 py-1 bg-[#06634D] text-white text-xs rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
                                 >
                                   {t.viewJobs}
@@ -496,7 +505,7 @@ export default function HomePage() {
                             </div>
                           </div>
 
-                          {/* Badges - mobile: row below name */}
+                          {/* Badges - mobile */}
                           <div className="flex items-center gap-1.5 mt-2 sm:hidden flex-wrap">
                             <span className="px-2 py-0.5 bg-gray-100 border border-gray-200 text-gray-700 text-[11px] uppercase tracking-wider rounded whitespace-nowrap">
                               {company.sector[0]}
@@ -508,7 +517,7 @@ export default function HomePage() {
                               href={company.careers_url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              onClick={(e) => e.stopPropagation()}
+                              onClick={(e) => { e.stopPropagation(); posthog.capture("job_apply_clicked", { company: company.name, company_slug: company.slug, url: company.careers_url }) }}
                               className="px-2 py-0.5 bg-[#06634D] text-white text-[11px] rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
                             >
                               {t.viewJobs}
@@ -517,7 +526,7 @@ export default function HomePage() {
                         </div>
                       </div>
 
-                      {/* Centered Chevron Toggle */}
+                      {/* Chevron Toggle */}
                       <div className="flex justify-center mt-2">
                         <ChevronDown className={`size-5 text-gray-600 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`} />
                       </div>
@@ -589,7 +598,6 @@ export default function HomePage() {
                 </div>
               )}
             </div>
-
           </div>
         </div>
       </div>
