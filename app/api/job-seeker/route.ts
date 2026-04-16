@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from "next/server"
 
 const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY!
 const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID!
-const BEEHIIV_API_KEY = process.env.BEEHIIV_API_KEY!
-const BEEHIIV_PUBLICATION_ID = process.env.BEEHIIV_PUBLICATION_ID!
 
 function getTagFromTitle(title: string): string {
   const t = title.toLowerCase()
@@ -54,37 +52,29 @@ function getTagFromTitle(title: string): string {
   return ""
 }
 
-async function addToBeehiiv(email: string, title: string) {
+async function addToSubstack(email: string) {
   try {
-    const tag = getTagFromTitle(title)
-    const body: Record<string, unknown> = {
-      email: email.trim(),
-      send_welcome_email: true,
-      utm_source: "buildsaudi.co",
-      utm_medium: "website",
-    }
-    if (tag) {
-      body.tags = [tag]
-    }
-
     const res = await fetch(
-      `https://api.beehiiv.com/v2/publications/${BEEHIIV_PUBLICATION_ID}/subscriptions`,
+      "https://averageabidall.substack.com/api/v1/free",
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${BEEHIIV_API_KEY}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(body),
+        body: JSON.stringify({
+          email: email.trim(),
+          first_url: "https://buildsaudi.co",
+          first_referrer: "",
+        }),
       }
     )
 
     if (!res.ok) {
       const err = await res.text()
-      console.error("Beehiiv error:", err)
+      console.error("Substack error:", err)
     }
   } catch (err) {
-    console.error("Beehiiv request failed:", err)
+    console.error("Substack request failed:", err)
   }
 }
 
@@ -126,8 +116,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Failed to submit" }, { status: 500 })
     }
 
-    // add to beehiiv newsletter with auto-tag (non-blocking)
-    addToBeehiiv(email, title)
+    // add to substack newsletter (non-blocking)
+    addToSubstack(email)
 
     return NextResponse.json({ success: true })
   } catch {

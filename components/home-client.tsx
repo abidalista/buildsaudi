@@ -22,7 +22,16 @@ export default function HomeClient() {
   const [lang, setLang] = useState<Lang>("en")
   const t = strings[lang]
   const isRTL = lang === "ar"
-  void isRTL
+
+  // Sync dir on <html> so the browser layout engine handles RTL properly
+  useEffect(() => {
+    document.documentElement.dir = isRTL ? "rtl" : "ltr"
+    document.documentElement.lang = isRTL ? "ar" : "en"
+    return () => {
+      document.documentElement.dir = "ltr"
+      document.documentElement.lang = "en"
+    }
+  }, [isRTL])
   const [search, setSearch] = useState("")
   const [filters, setFilters] = useState({
     jobType: "",
@@ -188,7 +197,7 @@ export default function HomeClient() {
   }
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat", fontFamily: lang === 'ar' ? "'Fatimah Arabic', 'IBM Plex Sans Arabic', sans-serif" : "'IBM Plex Sans Arabic', sans-serif" }}>
+    <div dir={isRTL ? "rtl" : "ltr"} className="min-h-screen" style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat", fontFamily: "'IBM Plex Sans Arabic', sans-serif" }}>
       {/* Arabic font */}
       <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
@@ -203,7 +212,7 @@ export default function HomeClient() {
               </span>
             </div>
           </a>
-          <button onClick={(e) => { e.stopPropagation(); setShowBannerDismissed(true) }} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-lg">×</button>
+          <button onClick={(e) => { e.stopPropagation(); setShowBannerDismissed(true) }} className="absolute start-3 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-lg">×</button>
         </div>
       )}
 
@@ -233,7 +242,7 @@ export default function HomeClient() {
               </div>
 
               {/* Tagline */}
-              <p className="text-[#111827] text-base font-semibold mb-2 text-center sm:text-left" dir={lang === "ar" ? "rtl" : "ltr"}>
+              <p className="text-[#111827] text-base font-semibold mb-2 text-center sm:text-start">
                 {t.tagline}
               </p>
 
@@ -323,18 +332,18 @@ export default function HomeClient() {
       <div className="border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-3">
           <div className="relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-[#4B5563]" />
+            <Search className="absolute start-4 top-1/2 -translate-y-1/2 size-4 text-[#4B5563]" />
             <Input
               id="search-input"
               placeholder={t.searchPlaceholder}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="h-11 rounded-lg text-base sm:text-sm border-[#E5E7EB] bg-white pl-11 text-sm shadow-sm placeholder:text-[#4B5563] focus-visible:border-[#06634D] focus-visible:ring-[#06634D]/20"
+              className="h-11 rounded-lg text-base sm:text-sm border-[#E5E7EB] bg-white ps-11 text-sm shadow-sm placeholder:text-[#4B5563] focus-visible:border-[#06634D] focus-visible:ring-[#06634D]/20"
             />
             {search && (
               <button
                 onClick={() => setSearch("")}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-[#4B5563] hover:text-[#111827]"
+                className="absolute end-4 top-1/2 -translate-y-1/2 text-[#4B5563] hover:text-[#111827]"
               >
                 <X className="size-4" />
               </button>
@@ -784,7 +793,7 @@ function FilterSelect({
         value={value || undefined}
         onValueChange={(v) => onChange(v === "__all__" ? "" : v)}
       >
-        <SelectTrigger className="w-full bg-white border border-gray-300 text-gray-900 px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#06634D] rounded text-left text-xs">
+        <SelectTrigger className="w-full bg-white border border-gray-300 text-gray-900 px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#06634D] rounded text-start text-xs">
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
