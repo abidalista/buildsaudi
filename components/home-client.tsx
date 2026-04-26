@@ -280,7 +280,7 @@ export default function HomeClient() {
                   </span>
                 </div>
                 <div className="divide-y divide-[#D73833]/30">
-                  {companies.filter((c) => ["humain", "atam", "lucidya"].includes(c.slug)).map((c) => (
+                  {companies.filter((c) => ["humain", "signit", "lucidya"].includes(c.slug)).map((c) => (
                     <div key={c.slug} className="py-2 first:pt-0 last:pb-0 flex items-center justify-between gap-2">
                       <a
                         href={c.website}
@@ -308,7 +308,7 @@ export default function HomeClient() {
                   </span>
                 </div>
                 <div className="divide-y divide-[#D73833]/30">
-                  {companies.filter((c) => ["humain", "atam", "lucidya"].includes(c.slug)).map((c) => (
+                  {companies.filter((c) => ["humain", "signit", "lucidya"].includes(c.slug)).map((c) => (
                     <div key={c.slug} className="py-2 first:pt-0 last:pb-0 flex items-center justify-between gap-2">
                       <a
                         href={c.website}
