@@ -6,6 +6,7 @@ import posthog from "posthog-js"
 import Link from "next/link"
 import { Search, Building2, X, ChevronDown, PlusCircle } from "lucide-react"
 import { LanguageToggle } from "@/components/language-toggle"
+import MentorCruiseBadge from "@/components/mentorcruise-badge"
 import { strings, type Lang } from "@/lib/i18n"
 import { Input } from "@/components/ui/input"
 import {
@@ -765,6 +766,7 @@ export default function HomeClient() {
         </div>
       )}
 
+      <MentorCruiseBadge />
     </div>
   )
 }
