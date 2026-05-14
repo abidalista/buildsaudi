@@ -1,7 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(curl -sI https://buildsaudi.vercel.app)"
-    ]
-  }
-}

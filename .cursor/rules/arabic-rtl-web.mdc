@@ -1,0 +1,292 @@
+---
+description: Use when building or fixing Arabic web pages with RTL layout. Covers HTML/CSS, Tailwind CSS, Next.js, React, Vue. Trigger whenever Arabic text appears left-aligned instead of right, layouts don't mirror for RTL, directional icons point wrong, navigation feels backwards, or any Arabic/RTL web layout work.
+globs:
+alwaysApply: false
+---
+
+# Arabic RTL Web
+
+Use this rule when building or fixing Arabic web interfaces that should feel natively RTL. Covers everything from plain HTML/CSS to Tailwind, React, Next.js, Vue, Nuxt, and static sites.
+
+## Supported Stacks
+
+- plain HTML/CSS
+- Tailwind CSS (v3 and v4)
+- React and Next.js (App Router and Pages Router)
+- Vue and Nuxt
+- any CSS-in-JS library (styled-components, emotion, etc.)
+
+## Core Rule
+
+Before fixing individual components, determine whether the page already has a working RTL context.
+
+Check for `dir="rtl"` on `<html>` or a parent container. If the root is already RTL, the browser's layout engine will handle most mirroring automatically. Do not add redundant direction overrides on child elements.
+
+Before fixing rows, icons, or controls, run a visual sentinel check.
+
+### Visual Sentinel Check
+
+Place a full-width Arabic text block on the page:
+
+```html
+<p style="width: 100%; text-align: start;">اختبار الاتجاه</p>
+```
+
+Inspect visually:
+- if the text sits on the visual right edge, the page is behaving as RTL. continue.
+- if it sits on the visual left edge, fix the root direction first.
+
+Do not begin component-level fixes until this passes.
+
+## Setting Root Direction
+
+### HTML
+
+```html
+<html lang="ar" dir="rtl">
+```
+
+This is the single most important line. Most CSS logical properties, flexbox, and grid will automatically respect this.
+
+### Next.js App Router
+
+In `layout.tsx`:
+
+```tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="ar" dir="rtl">
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+For bilingual sites that toggle language, make `dir` dynamic:
+
+```tsx
+<html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+```
+
+### Next.js Pages Router
+
+In `_document.tsx`, set `dir` on `<Html>`. Or set it dynamically in `_app.tsx` via `useEffect` on `document.documentElement`.
+
+### Vue / Nuxt
+
+In Nuxt, use `useHead()` to set `htmlAttrs: { dir: 'rtl', lang: 'ar' }`.
+
+## CSS Logical Properties
+
+The most common RTL mistake on the web is using physical direction properties (`left`, `right`, `margin-left`, `padding-right`) instead of logical ones.
+
+Logical properties automatically flip in RTL context:
+
+| physical (avoid)     | logical (prefer)         |
+|---------------------|--------------------------|
+| `margin-left`       | `margin-inline-start`    |
+| `margin-right`      | `margin-inline-end`      |
+| `padding-left`      | `padding-inline-start`   |
+| `padding-right`     | `padding-inline-end`     |
+| `left`              | `inset-inline-start`     |
+| `right`             | `inset-inline-end`       |
+| `text-align: left`  | `text-align: start`      |
+| `text-align: right` | `text-align: end`        |
+| `border-left`       | `border-inline-start`    |
+| `border-right`      | `border-inline-end`      |
+| `float: left`       | `float: inline-start`    |
+| `float: right`      | `float: inline-end`      |
+
+Use logical properties everywhere. Physical properties should only appear when you intentionally want something pinned to a specific visual side regardless of text direction.
+
+## Tailwind CSS
+
+Tailwind v3+ supports RTL with `rtl:` and `ltr:` variants and logical properties.
+
+### Logical spacing and positioning
+
+Use `ms-` (margin-start) and `me-` (margin-end) instead of `ml-` and `mr-`:
+
+```html
+<!-- avoid -->
+<div class="ml-4 pr-2">
+
+<!-- prefer -->
+<div class="ms-4 pe-2">
+```
+
+Full mapping:
+- `ms-*` = margin-inline-start (replaces `ml-*` in LTR)
+- `me-*` = margin-inline-end (replaces `mr-*` in LTR)
+- `ps-*` = padding-inline-start
+- `pe-*` = padding-inline-end
+- `start-*` = inset-inline-start (replaces `left-*`)
+- `end-*` = inset-inline-end (replaces `right-*`)
+
+### Directional variants
+
+For cases where you need different behavior per direction:
+
+```html
+<div class="ltr:ml-4 rtl:mr-4">
+```
+
+But prefer logical properties (`ms-4`) over directional variants when possible. Variants are for edge cases.
+
+## Flexbox and Grid
+
+Flexbox and CSS Grid automatically respect `dir="rtl"`. A `flex-row` container will place its first child on the right in RTL.
+
+Do not use `flex-row-reverse` to "fix" RTL layout if the root already has `dir="rtl"`. The browser handles it.
+
+Exception: if you are building a component that must always render in a specific visual order regardless of language (like a media player's controls), use explicit ordering or a local `dir="ltr"` override.
+
+## Arabic Text Blocks
+
+For Arabic headings, descriptions, and body copy:
+
+- give the text block full available width
+- use `text-align: start` (not `text-align: right`)
+- do not let Arabic text shrink to intrinsic width if the design expects it to fill a row or card
+
+```html
+<div class="w-full text-start">
+  <h2>عنوان الصفحة</h2>
+  <p>وصف تفصيلي للمحتوى</p>
+</div>
+```
+
+## Arabic Row Composition
+
+An Arabic row has two zones:
+
+- main text content on the visual right
+- secondary control or accessory on the visual left
+
+With `dir="rtl"` on the root, a simple `flex` row handles this naturally:
+
+```html
+<div class="flex items-center justify-between gap-4">
+  <div class="flex-1 min-w-0">
+    <h3>عنوان العنصر</h3>
+    <p>وصف مختصر</p>
+  </div>
+  <span class="shrink-0">badge or control</span>
+</div>
+```
+
+Because the root is RTL, the text block lands on the right and the accessory on the left. No `flex-row-reverse` needed.
+
+## Arabic Typography
+
+### Font Loading
+
+Common Arabic web fonts: IBM Plex Sans Arabic, Noto Sans Arabic, Cairo, Tajawal, Almarai (all on Google Fonts).
+
+For Next.js with `next/font`:
+
+```tsx
+import { IBM_Plex_Sans_Arabic } from 'next/font/google'
+
+const arabic = IBM_Plex_Sans_Arabic({
+  subsets: ['arabic'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-arabic',
+})
+```
+
+### Line Height and Spacing
+
+Arabic script is taller than Latin. Use `line-height` 1.7 to 1.8 for body text. Arabic words are often longer than English. Allow text wrapping and avoid fixed widths on text containers.
+
+### Bilingual Font Stacks
+
+```css
+font-family: 'IBM Plex Sans Arabic', 'Space Grotesk', system-ui, sans-serif;
+```
+
+The browser picks the Arabic font for Arabic characters and falls through to Latin fonts for English.
+
+## Navigation and Icons
+
+### Back/Forward Arrows
+
+In Arabic contexts: back arrow points right, forward arrow points left.
+
+```html
+<ChevronRight class="rtl:rotate-180" />
+```
+
+Or use CSS:
+
+```css
+[dir="rtl"] .icon-back {
+  transform: scaleX(-1);
+}
+```
+
+### Navigation Menus
+
+Horizontal navs automatically reorder in RTL with flexbox. Verify logo is on visual right, nav links flow right to left, dropdowns open correctly.
+
+## Forms
+
+Form labels should appear above or to the right of inputs in RTL. Placeholder text should be right-aligned. Position validation messages using `inset-inline-end` not `right`.
+
+## Tables
+
+Tables automatically respect RTL. First column appears on the right. For numeric columns that should stay LTR (phone numbers, currency codes), wrap in `<span dir="ltr">`.
+
+## Animations and Transitions
+
+Slide-in animations should come from the correct direction. Use logical properties or swap animation direction:
+
+```css
+[dir="rtl"] .slide-in { animation-name: slide-in-right; }
+[dir="ltr"] .slide-in { animation-name: slide-in-left; }
+```
+
+## Bilingual Site Patterns
+
+- store locale in cookie or URL path, toggle `dir` on `<html>`
+- keep content in separate locale files or CMS
+- build components with logical properties only (should work in both directions without changes)
+- use `hreflang` tags, set `lang` correctly, Arabic pages need Arabic meta descriptions
+
+## Common Failure Modes
+
+- `ml-*` / `mr-*` in Tailwind instead of `ms-*` / `me-*`
+- `left` / `right` in CSS instead of logical properties
+- `text-align: right` instead of `text-align: start`
+- `flex-row-reverse` when root is already RTL
+- `dir="rtl"` on every element instead of just root
+- Arabic text shrinking to intrinsic width
+- directional icons not flipping
+- hardcoded `left: 0` / `right: 0` instead of `inset-inline-start` / `inset-inline-end`
+- mixed content where numbers or English break visual flow (use `<span dir="ltr">` or `unicode-bidi: isolate`)
+
+## Visual QA Checklist
+
+After implementing RTL, verify on every page:
+- `<html>` has `dir="rtl"` and `lang="ar"`
+- sentinel text lands on visual right
+- navigation flows right to left
+- back arrows point right, disclosure chevrons point left
+- form labels and placeholder text are right-aligned
+- cards have text on visual right, accessories on visual left
+- no physical `left/right` CSS remains (except intentional)
+- icons with directional meaning are flipped
+- animations slide from correct side
+- numbers and English text wrapped with `dir="ltr"` where needed
+- fonts support Arabic glyphs
+- line height is comfortable for Arabic text
+
+## Working Style
+
+1. identify the stack
+2. check if root direction is already set
+3. run visual sentinel check
+4. fix text block width and logical alignment first
+5. fix row composition second
+6. fix icons, arrows, and directional elements third
+7. run visual QA checklist on every affected page

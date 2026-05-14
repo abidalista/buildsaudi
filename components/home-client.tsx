@@ -202,6 +202,45 @@ export default function HomeClient() {
       {/* Arabic font */}
       <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
+      {/* Funding News Ticker */}
+      <div className="bg-[#1a1a1a] text-white overflow-hidden" style={{ height: "32px" }}>
+        <div className="flex items-center h-full">
+          <div className="flex-shrink-0 bg-[#D4A017] text-black text-[10px] font-bold px-3 h-full flex items-center uppercase tracking-wider">
+            🔥 آخر الجولات
+          </div>
+          <div className="overflow-hidden flex-1">
+            <div className="flex whitespace-nowrap gap-8 text-xs text-gray-200" style={{ animation: "ticker 30s linear infinite" }}>
+              {[
+                { name: "Aya", amount: "٢٦ مليون ريال", round: "Series A", lead: "RAED Ventures" },
+                { name: "Erad", amount: "$51.5M", round: "Series B", lead: "STV" },
+                { name: "WakeCap", amount: "$28M", round: "Series A", lead: "Almajdouie" },
+                { name: "Mnzil", amount: "$11.7M", round: "Series A", lead: "موجة" },
+                { name: "HALA", amount: "$157M", round: "Series B", lead: "STV" },
+                { name: "Aya", amount: "٢٦ مليون ريال", round: "Series A", lead: "RAED Ventures" },
+                { name: "Erad", amount: "$51.5M", round: "Series B", lead: "STV" },
+                { name: "WakeCap", amount: "$28M", round: "Series A", lead: "Almajdouie" },
+                { name: "Mnzil", amount: "$11.7M", round: "Series A", lead: "موجة" },
+                { name: "HALA", amount: "$157M", round: "Series B", lead: "STV" },
+              ].map((item, i) => (
+                <span key={i} className="inline-flex items-center gap-2 px-4">
+                  <span className="text-[#D4A017] font-semibold">{item.name}</span>
+                  <span>رفعت</span>
+                  <span className="text-white font-bold">{item.amount}</span>
+                  <span className="text-gray-400">({item.round})</span>
+                  <span className="text-gray-600 ml-4">•</span>
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      <style>{`
+        @keyframes ticker {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
+
       {/* Promo Banner */}
       {!showBannerDismissed && (
         <div className="bg-gradient-to-l from-[#06634D] to-[#0D8B6A] text-white py-2 sm:py-2.5 px-4 pr-10 relative" dir="rtl">
@@ -495,9 +534,30 @@ export default function HomeClient() {
 
                             {/* Badges - desktop only inline */}
                             <div className="hidden sm:flex flex-shrink-0 flex-col items-end gap-2">
-                              <span className="px-2.5 py-1 bg-gray-100 border border-gray-200 text-gray-700 text-xs uppercase tracking-wider rounded whitespace-nowrap">
-                                {company.sector[0]}
-                              </span>
+                              <div className="flex items-center gap-2">
+                                {company.last_round_date && (() => {
+                                  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+                                  const parts = company.last_round_date.split(" ")
+                                  if (parts.length === 2) {
+                                    const m = months.indexOf(parts[0])
+                                    const y = parseInt(parts[1])
+                                    if (m !== -1 && !isNaN(y)) {
+                                      const roundDate = new Date(y, m, 1)
+                                      const monthsAgo = (new Date().getFullYear() * 12 + new Date().getMonth()) - (y * 12 + m)
+                                      if (monthsAgo <= 12) return (
+                                        <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-emerald-50 border border-emerald-300 text-emerald-700 text-[10px] font-semibold rounded-full whitespace-nowrap">
+                                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse inline-block" />
+                                          Recently Funded
+                                        </span>
+                                      )
+                                    }
+                                  }
+                                  return null
+                                })()}
+                                <span className="px-2.5 py-1 bg-gray-100 border border-gray-200 text-gray-700 text-xs uppercase tracking-wider rounded whitespace-nowrap">
+                                  {company.sector[0]}
+                                </span>
+                              </div>
                               <div className="flex items-center gap-2">
                                 <span className="px-2.5 py-1 bg-gray-100 border border-gray-200 text-gray-700 text-xs uppercase tracking-wider rounded whitespace-nowrap">
                                   {company.stage}

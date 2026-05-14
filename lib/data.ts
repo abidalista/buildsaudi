@@ -209,7 +209,7 @@ export const companies: Company[] = [
   { slug: "nua-security", name: "Nua Security", website: "https://nuasecurity.com", linkedin: "https://www.linkedin.com/company/nuasecurity", stage: "Seed", sector: ["Cybersecurity"], city: "Riyadh", description: "AI-powered penetration testing platform with bug bounty and vulnerability discovery.", careers_url: "https://www.linkedin.com/company/nuasecurity/jobs/", founded_year: 2021 },
 
   // ===== E-COMMERCE (from Suggestions) =====
-  { slug: "aya", name: "Aya", website: "https://www.aya.app", linkedin: "https://www.linkedin.com/company/ayaapp", stage: "Seed", sector: ["E-commerce"], city: "Riyadh", description: "Trend-driven modest fashion discovery marketplace for abayas and modest wear.", careers_url: "https://www.linkedin.com/company/ayaapp/jobs/", founders: "Munira Al Kadi, Abdulrahman Al Ammar", total_raised: "$1.6M", team_size: "1-10", founded_year: 2024, last_round_date: "Mar 2025" },
+  { slug: "aya", name: "Aya", website: "https://www.aya.app", linkedin: "https://www.linkedin.com/company/ayaapp", stage: "Series A", sector: ["E-commerce"], city: "Riyadh", description: "Modest fashion discovery marketplace for abayas — 100K+ customers, 9x YoY growth.", careers_url: "https://www.linkedin.com/company/ayaapp/jobs/", founders: "Munira Al Kadi, Abdulrahman Al Ammar", total_raised: "SAR 26M", team_size: "11-50", founded_year: 2024, last_round_date: "May 2025" },
 ]
 
 // Jobs archived — linking directly to company career pages
