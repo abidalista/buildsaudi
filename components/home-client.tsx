@@ -6,7 +6,6 @@ import posthog from "posthog-js"
 import Link from "next/link"
 import { Search, Building2, X, ChevronDown, PlusCircle } from "lucide-react"
 import { LanguageToggle } from "@/components/language-toggle"
-import MentorCruiseBadge from "@/components/mentorcruise-badge"
 import { strings, type Lang } from "@/lib/i18n"
 import { Input } from "@/components/ui/input"
 import {
@@ -41,7 +40,6 @@ export default function HomeClient() {
     city: "",
     companyStage: "",
   })
-  const [showBannerDismissed, setShowBannerDismissed] = useState(false)
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set())
   const [showSuggest, setShowSuggest] = useState(false)
   const [showJobSeeker, setShowJobSeeker] = useState(false)
@@ -203,31 +201,32 @@ export default function HomeClient() {
       <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
       {/* Funding News Ticker */}
-      <div className="bg-[#1a1a1a] text-white overflow-hidden" style={{ height: "32px" }}>
+      <div className="border-b border-[#06634D]/20 overflow-hidden" style={{ height: "34px", backgroundColor: "#F0EAD8" }}>
         <div className="flex items-center h-full">
-          <div className="flex-shrink-0 bg-[#D4A017] text-black text-[10px] font-bold px-3 h-full flex items-center uppercase tracking-wider">
-            🔥 آخر الجولات
+          <div className="flex-shrink-0 bg-[#06634D] text-white text-[10px] font-bold px-4 h-full flex items-center tracking-widest uppercase">
+            جولات
           </div>
           <div className="overflow-hidden flex-1">
-            <div className="flex whitespace-nowrap gap-8 text-xs text-gray-200" style={{ animation: "ticker 30s linear infinite" }}>
+            <div className="flex whitespace-nowrap text-[11px]" style={{ animation: "ticker 18s linear infinite" }}>
               {[
-                { name: "Aya", amount: "٢٦ مليون ريال", round: "Series A", lead: "RAED Ventures" },
-                { name: "Erad", amount: "$51.5M", round: "Series B", lead: "STV" },
-                { name: "WakeCap", amount: "$28M", round: "Series A", lead: "Almajdouie" },
-                { name: "Mnzil", amount: "$11.7M", round: "Series A", lead: "موجة" },
-                { name: "HALA", amount: "$157M", round: "Series B", lead: "STV" },
-                { name: "Aya", amount: "٢٦ مليون ريال", round: "Series A", lead: "RAED Ventures" },
-                { name: "Erad", amount: "$51.5M", round: "Series B", lead: "STV" },
-                { name: "WakeCap", amount: "$28M", round: "Series A", lead: "Almajdouie" },
-                { name: "Mnzil", amount: "$11.7M", round: "Series A", lead: "موجة" },
-                { name: "HALA", amount: "$157M", round: "Series B", lead: "STV" },
+                { name: "Stitch", amount: "$25M", round: "Series A" },
+                { name: "Aya", amount: "SAR 26M", round: "Series A" },
+                { name: "Erad", amount: "$51.5M", round: "Series B" },
+                { name: "WakeCap", amount: "$28M", round: "Series A" },
+                { name: "Mnzil", amount: "$11.7M", round: "Series A" },
+                { name: "HALA", amount: "$157M", round: "Series B" },
+                { name: "Stitch", amount: "$25M", round: "Series A" },
+                { name: "Aya", amount: "SAR 26M", round: "Series A" },
+                { name: "Erad", amount: "$51.5M", round: "Series B" },
+                { name: "WakeCap", amount: "$28M", round: "Series A" },
+                { name: "Mnzil", amount: "$11.7M", round: "Series A" },
+                { name: "HALA", amount: "$157M", round: "Series B" },
               ].map((item, i) => (
-                <span key={i} className="inline-flex items-center gap-2 px-4">
-                  <span className="text-[#D4A017] font-semibold">{item.name}</span>
-                  <span>رفعت</span>
-                  <span className="text-white font-bold">{item.amount}</span>
-                  <span className="text-gray-400">({item.round})</span>
-                  <span className="text-gray-600 ml-4">•</span>
+                <span key={i} className="inline-flex items-center" dir="ltr">
+                  <span className="px-5 text-[#06634D]/40">◆</span>
+                  <span className="font-bold text-[#111827]">{item.name}</span>
+                  <span className="mx-2 text-[#06634D] font-semibold">{item.amount}</span>
+                  <span className="text-[#4B5563]">{item.round}</span>
                 </span>
               ))}
             </div>
@@ -240,21 +239,6 @@ export default function HomeClient() {
           100% { transform: translateX(-50%); }
         }
       `}</style>
-
-      {/* Promo Banner */}
-      {!showBannerDismissed && (
-        <div className="bg-gradient-to-l from-[#06634D] to-[#0D8B6A] text-white py-2 sm:py-2.5 px-4 pr-10 relative" dir="rtl">
-          <a href="https://www.aiapply.co/?via=abdulla" target="_blank" rel="noopener noreferrer" className="block">
-            <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 text-xs sm:text-sm">
-              <span>🎓 لسه تقدّم على وظايف بنفسك؟</span>
-              <span className="bg-white text-[#06634D] font-bold px-3 py-1 rounded text-xs hover:bg-gray-100 transition-colors whitespace-nowrap">
-                جرب AI Apply — خصم ٤٠٪ للطلاب والمتخرجين
-              </span>
-            </div>
-          </a>
-          <button onClick={(e) => { e.stopPropagation(); setShowBannerDismissed(true) }} className="absolute start-3 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-lg">×</button>
-        </div>
-      )}
 
       {/* ============ HEADER ============ */}
       <header className="border-b border-[#06634D]/20 bg-transparent">
@@ -826,7 +810,6 @@ export default function HomeClient() {
         </div>
       )}
 
-      <MentorCruiseBadge />
     </div>
   )
 }
