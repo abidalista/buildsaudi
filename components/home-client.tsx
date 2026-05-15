@@ -203,9 +203,9 @@ export default function HomeClient() {
 
       {/* Funding News Ticker */}
       <div className="border-b border-[#06634D]/20 overflow-hidden" style={{ height: "34px", backgroundColor: "#F0EAD8" }}>
-        <div className="flex items-center h-full">
-          <div className="flex-shrink-0 bg-[#06634D] text-white text-[10px] font-bold px-4 h-full flex items-center tracking-widest uppercase">
-            جولات
+        <div className="flex items-center h-full flex-row-reverse">
+          <div className="flex-shrink-0 bg-[#06634D] text-white text-[10px] font-bold px-4 h-full flex items-center tracking-widest">
+            جولات استثمارية
           </div>
           <div className="overflow-hidden flex-1">
             <div className="flex whitespace-nowrap text-[11px]" style={{ animation: "ticker 18s linear infinite" }}>
