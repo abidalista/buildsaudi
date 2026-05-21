@@ -64,3 +64,11 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 ---
 
 **These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
+
+## 5. Web Research
+
+**Always use the Firecrawl MCP tool proactively for any web research. Never answer questions about current information from memory alone.**
+
+- Any question about current data (prices, APIs, company info, docs, live stats) → use Firecrawl first.
+- Do not rely on training knowledge for anything that could have changed.
+- If Firecrawl is unavailable, say so explicitly rather than answering from memory.
