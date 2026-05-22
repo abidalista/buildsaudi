@@ -43,15 +43,31 @@ const STEPS = [
   },
 ] as const
 
+function useIsMobile(): boolean {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 1023px)")
+    const update = () => setIsMobile(mq.matches)
+    update()
+    mq.addEventListener("change", update)
+    return () => mq.removeEventListener("change", update)
+  }, [])
+
+  return isMobile
+}
+
 export function InstallPrompt() {
+  const isMobile = useIsMobile()
   const [hidden, setHidden] = useState(true)
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
+    if (!isMobile) return
     if (isStandalone()) return
     if (localStorage.getItem(DISMISS_KEY)) return
     setHidden(false)
-  }, [])
+  }, [isMobile])
 
   const dismissForever = useCallback(() => {
     localStorage.setItem(DISMISS_KEY, "1")
@@ -59,7 +75,7 @@ export function InstallPrompt() {
     setOpen(false)
   }, [])
 
-  if (hidden) return null
+  if (!isMobile || hidden) return null
 
   return (
     <>

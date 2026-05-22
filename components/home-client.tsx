@@ -339,12 +339,9 @@ export default function HomeClient() {
               </div>
             </div>
 
-            {/* Right: Install + toggle + hot companies */}
+            {/* Right: Toggle + hot companies (desktop) */}
             <div className="hidden lg:flex flex-col items-end gap-2 flex-shrink-0">
-              <div className="flex items-center gap-2">
-                <InstallPrompt />
-                <LanguageToggle defaultLang="en" onLanguageChange={setLang} />
-              </div>
+              <LanguageToggle defaultLang="en" onLanguageChange={setLang} />
               <div className="w-[280px] bg-[#D73833]/10 border-2 border-[#D73833] rounded-lg p-3 shadow-lg">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-xl">🔥</span>
