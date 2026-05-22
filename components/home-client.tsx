@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/select"
 import { companies, getJobsByCompany, filterOptions } from "@/lib/data"
 import { CompanyLogo } from "@/components/company-logo"
+import { InstallPrompt } from "@/components/install-prompt"
 
 export default function HomeClient() {
   const [lang, setLang] = useState<Lang>("en")
@@ -306,8 +307,9 @@ export default function HomeClient() {
                 </button>
               </div>
 
-              {/* Mobile language toggle */}
-              <div className="mt-3 flex justify-end lg:hidden">
+              {/* Mobile install + language toggle */}
+              <div className="mt-3 flex justify-end items-center gap-2 lg:hidden">
+                <InstallPrompt />
                 <LanguageToggle defaultLang="en" onLanguageChange={setLang} />
               </div>
 
@@ -337,9 +339,12 @@ export default function HomeClient() {
               </div>
             </div>
 
-            {/* Right: Toggle + hot companies */}
+            {/* Right: Install + toggle + hot companies */}
             <div className="hidden lg:flex flex-col items-end gap-2 flex-shrink-0">
-              <LanguageToggle defaultLang="en" onLanguageChange={setLang} />
+              <div className="flex items-center gap-2">
+                <InstallPrompt />
+                <LanguageToggle defaultLang="en" onLanguageChange={setLang} />
+              </div>
               <div className="w-[280px] bg-[#D73833]/10 border-2 border-[#D73833] rounded-lg p-3 shadow-lg">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-xl">🔥</span>
