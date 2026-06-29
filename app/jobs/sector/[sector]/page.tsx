@@ -4,7 +4,13 @@ import { ArrowLeft } from "lucide-react"
 import { companies } from "@/lib/data"
 import { CompanyLogo } from "@/components/company-logo"
 import { sectors } from "@/lib/seo"
+import { getSectorFaq } from "@/lib/aeo-landing"
+import { buildFaqJsonLd, buildBreadcrumbJsonLd, buildItemListJsonLd } from "@/lib/aeo-jsonld"
+import LandingAeoSection, { AeoCitationStrip } from "@/components/landing-aeo-section"
+import { SectorAeoAbout } from "@/components/landing-aeo-about"
 import type { Metadata } from "next"
+
+const site = "https://buildsaudi.co"
 
 export function generateStaticParams() {
   return sectors.map((s) => ({ sector: s.slug }))
@@ -18,6 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ sector: s
   return {
     title: `${sector.name} Startup Jobs in Saudi Arabia — ${filtered.length} Companies | BuildSaudi`,
     description: `Find jobs at Saudi Arabia's top ${sector.name.toLowerCase()} startups. ${sector.companies.slice(0, 3).join(", ")}. Browse open roles. Apply directly.`,
+    alternates: { canonical: `${site}/jobs/sector/${slug}` },
   }
 }
 
@@ -30,8 +37,29 @@ export default async function SectorPage({ params }: { params: Promise<{ sector:
     c.sector.some((s) => s.toLowerCase().includes(sector.name.split(" ")[0].toLowerCase()))
   )
 
+  const faq = getSectorFaq(sector.name, slug, sectorCompanies.length, sector.companies)
+  const pageUrl = `${site}/jobs/sector/${slug}`
+
+  const faqLd = buildFaqJsonLd(faq)
+  const breadcrumbLd = buildBreadcrumbJsonLd([
+    { name: "BuildSaudi", url: site },
+    { name: `${sector.name} Startup Jobs`, url: pageUrl },
+  ])
+  const itemListLd = buildItemListJsonLd(
+    `${sector.name} Startup Jobs in Saudi Arabia`,
+    `Funded ${sector.name.toLowerCase()} startups hiring in Saudi Arabia`,
+    sectorCompanies.slice(0, 20).map((c) => ({
+      name: c.name,
+      url: `${site}/company/${c.slug}`,
+    })),
+  )
+
   return (
     <div className="min-h-screen bg-[#F9F9F9]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
+
       <header className="border-b border-[#06634D]/20 bg-[#F9F9F9]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
           <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-[#6B7280] hover:text-[#111827] mb-4">
@@ -42,7 +70,10 @@ export default async function SectorPage({ params }: { params: Promise<{ sector:
           <p className="mt-2 text-sm font-mono text-[#06634D]">{sectorCompanies.length} companies</p>
         </div>
       </header>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <AeoCitationStrip />
+
         <div className="space-y-3">
           {sectorCompanies.map((company) => (
             <div key={company.slug} className="group bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden">
@@ -71,6 +102,25 @@ export default async function SectorPage({ params }: { params: Promise<{ sector:
           )}
         </div>
       </div>
+
+      <footer className="mt-16 border-t border-[#06634D]/15 bg-white/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+          <LandingAeoSection
+            heading={`About ${sector.name.toLowerCase()} startup jobs`}
+            aboutTitle={`Guide to ${sector.name} hiring in Saudi Arabia`}
+            aboutContent={
+              <SectorAeoAbout
+                sectorName={sector.name}
+                slug={slug}
+                companyCount={sectorCompanies.length}
+                examples={sectorCompanies.slice(0, 4).map((c) => c.name)}
+              />
+            }
+            faq={faq}
+            ariaLabel={`About ${sector.name} startup jobs`}
+          />
+        </div>
+      </footer>
     </div>
   )
 }

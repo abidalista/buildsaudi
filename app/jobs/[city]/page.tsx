@@ -1,10 +1,16 @@
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
-import { companies, jobs, getCompanyBySlug } from "@/lib/data"
+import { companies } from "@/lib/data"
 import { CompanyLogo } from "@/components/company-logo"
 import { cities } from "@/lib/seo"
+import { getCityFaq } from "@/lib/aeo-landing"
+import { buildFaqJsonLd, buildBreadcrumbJsonLd, buildItemListJsonLd } from "@/lib/aeo-jsonld"
+import LandingAeoSection, { AeoCitationStrip } from "@/components/landing-aeo-section"
+import { CityAeoAbout } from "@/components/landing-aeo-about"
 import type { Metadata } from "next"
+
+const site = "https://buildsaudi.co"
 
 export function generateStaticParams() {
   return cities.map((c) => ({ city: c.slug }))
@@ -14,10 +20,11 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
   const { city: slug } = await params
   const city = cities.find((c) => c.slug === slug)
   if (!city) return {}
-  const count = companies.filter((c) => c.city.toLowerCase() === city.name.toLowerCase() || (slug === "remote")).length
+  const count = companies.filter((c) => c.city.toLowerCase() === city.name.toLowerCase() || slug === "remote").length
   return {
     title: `Startup Jobs in ${city.name} — ${count} Companies | BuildSaudi`,
     description: `Find startup jobs in ${city.name}, Saudi Arabia. Software engineering, product, design, marketing, and more at funded startups. Updated weekly.`,
+    alternates: { canonical: `${site}/jobs/${slug}` },
   }
 }
 
@@ -30,8 +37,29 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
     slug === "remote" ? true : c.city.toLowerCase() === city.name.toLowerCase()
   )
 
+  const faq = getCityFaq(city.name, slug, cityCompanies.length)
+  const pageUrl = `${site}/jobs/${slug}`
+
+  const faqLd = buildFaqJsonLd(faq)
+  const breadcrumbLd = buildBreadcrumbJsonLd([
+    { name: "BuildSaudi", url: site },
+    { name: `Startup Jobs in ${city.name}`, url: pageUrl },
+  ])
+  const itemListLd = buildItemListJsonLd(
+    `Startup Jobs in ${city.name}`,
+    `Funded Saudi startups hiring in ${city.name}`,
+    cityCompanies.slice(0, 20).map((c) => ({
+      name: c.name,
+      url: `${site}/company/${c.slug}`,
+    })),
+  )
+
   return (
     <div className="min-h-screen bg-[#F9F9F9]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
+
       <header className="border-b border-[#06634D]/20 bg-[#F9F9F9]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
           <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-[#6B7280] hover:text-[#111827] mb-4">
@@ -43,7 +71,10 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
           <p className="mt-2 text-sm font-mono text-[#06634D]">{cityCompanies.length} companies</p>
         </div>
       </header>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <AeoCitationStrip />
+
         <div className="space-y-3">
           {cityCompanies.map((company) => (
             <div key={company.slug} className="group bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden">
@@ -67,9 +98,23 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
           ))}
         </div>
       </div>
-      <footer className="mt-16 border-t border-[#E5E7EB] bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-xs text-[#9CA3AF]">
-          <p>buildsaudi.co</p>
+
+      <footer className="mt-16 border-t border-[#06634D]/15 bg-white/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+          <LandingAeoSection
+            heading={`About startup jobs in ${city.name}`}
+            aboutTitle={`Guide to ${city.name} startup hiring`}
+            aboutContent={
+              <CityAeoAbout
+                cityName={city.name}
+                blurb={city.blurb}
+                companyCount={cityCompanies.length}
+                slug={slug}
+              />
+            }
+            faq={faq}
+            ariaLabel={`About startup jobs in ${city.name}`}
+          />
         </div>
       </footer>
     </div>

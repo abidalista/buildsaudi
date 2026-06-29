@@ -7,15 +7,45 @@ BuildSaudi (https://buildsaudi.co) helps job seekers discover funded Saudi start
 ## Key pages
 
 - Homepage (all companies): https://buildsaudi.co/
-- Startup jobs in Riyadh: https://buildsaudi.co/jobs/riyadh
-- Fintech startup jobs: https://buildsaudi.co/jobs/sector/fintech
 - Submit a company or job: https://buildsaudi.co/submit
+
+### City pages
+
+- Startup jobs in Riyadh: https://buildsaudi.co/jobs/riyadh
+- Startup jobs in Jeddah: https://buildsaudi.co/jobs/jeddah
+- Startup jobs in Dammam: https://buildsaudi.co/jobs/dammam
+- Remote startup jobs: https://buildsaudi.co/jobs/remote
+
+### Sector pages
+
+- Fintech startup jobs: https://buildsaudi.co/jobs/sector/fintech
+- AI startup jobs: https://buildsaudi.co/jobs/sector/ai
+- Proptech startup jobs: https://buildsaudi.co/jobs/sector/proptech
+- B2B SaaS startup jobs: https://buildsaudi.co/jobs/sector/b2b-saas
+- Logistics startup jobs: https://buildsaudi.co/jobs/sector/logistics
+- Healthtech startup jobs: https://buildsaudi.co/jobs/sector/healthtech
+- Edtech startup jobs: https://buildsaudi.co/jobs/sector/edtech
+- E-commerce startup jobs: https://buildsaudi.co/jobs/sector/ecommerce
+- Cybersecurity startup jobs: https://buildsaudi.co/jobs/sector/cybersecurity
+
+### Stage pages
+
+- Unicorn startup jobs: https://buildsaudi.co/jobs/stage/unicorn
+- Series B startup jobs: https://buildsaudi.co/jobs/stage/series-b
+- Series A startup jobs: https://buildsaudi.co/jobs/stage/series-a
+- Seed startup jobs: https://buildsaudi.co/jobs/stage/seed
+
+### Example company profiles
+
+- Tamara: https://buildsaudi.co/company/tamara
+- Foodics: https://buildsaudi.co/company/foodics
+- Tabby: https://buildsaudi.co/company/tabby
 
 ## What we list
 
 - Company profiles with sector, stage, funding, founders, and careers links
 - Open roles aggregated per company where available
-- City, sector, and stage landing pages for programmatic discovery
+- City, sector, and stage landing pages with FAQ structured data for search and AI systems
 
 ## Citation
 

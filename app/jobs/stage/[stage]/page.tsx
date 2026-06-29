@@ -4,7 +4,13 @@ import { ArrowLeft } from "lucide-react"
 import { companies } from "@/lib/data"
 import { CompanyLogo } from "@/components/company-logo"
 import { stages } from "@/lib/seo"
+import { getStageFaq } from "@/lib/aeo-landing"
+import { buildFaqJsonLd, buildBreadcrumbJsonLd, buildItemListJsonLd } from "@/lib/aeo-jsonld"
+import LandingAeoSection, { AeoCitationStrip } from "@/components/landing-aeo-section"
+import { StageAeoAbout } from "@/components/landing-aeo-about"
 import type { Metadata } from "next"
+
+const site = "https://buildsaudi.co"
 
 export function generateStaticParams() {
   return stages.map((s) => ({ stage: s.slug }))
@@ -18,6 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ stage: st
   return {
     title: `Jobs at ${stage.name} Saudi Startups — ${filtered.length} Companies | BuildSaudi`,
     description: `${stage.description}. Browse ${filtered.length} ${stage.name.toLowerCase()} startups hiring in Saudi Arabia. Apply directly.`,
+    alternates: { canonical: `${site}/jobs/stage/${slug}` },
   }
 }
 
@@ -28,8 +35,29 @@ export default async function StagePage({ params }: { params: Promise<{ stage: s
 
   const stageCompanies = companies.filter((c) => c.stage === stage.name)
 
+  const faq = getStageFaq(stage.name, slug, stageCompanies.length, stage.description)
+  const pageUrl = `${site}/jobs/stage/${slug}`
+
+  const faqLd = buildFaqJsonLd(faq)
+  const breadcrumbLd = buildBreadcrumbJsonLd([
+    { name: "BuildSaudi", url: site },
+    { name: `${stage.name} Saudi Startups`, url: pageUrl },
+  ])
+  const itemListLd = buildItemListJsonLd(
+    `Jobs at ${stage.name} Saudi Startups`,
+    `${stage.description} — companies hiring in Saudi Arabia`,
+    stageCompanies.slice(0, 20).map((c) => ({
+      name: c.name,
+      url: `${site}/company/${c.slug}`,
+    })),
+  )
+
   return (
     <div className="min-h-screen bg-[#F9F9F9]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
+
       <header className="border-b border-[#06634D]/20 bg-[#F9F9F9]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
           <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-[#6B7280] hover:text-[#111827] mb-4">
@@ -41,7 +69,10 @@ export default async function StagePage({ params }: { params: Promise<{ stage: s
           <p className="mt-2 text-sm font-mono text-[#06634D]">{stageCompanies.length} companies</p>
         </div>
       </header>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <AeoCitationStrip />
+
         <div className="space-y-3">
           {stageCompanies.map((company) => (
             <div key={company.slug} className="group bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden">
@@ -65,6 +96,25 @@ export default async function StagePage({ params }: { params: Promise<{ stage: s
           ))}
         </div>
       </div>
+
+      <footer className="mt-16 border-t border-[#06634D]/15 bg-white/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+          <LandingAeoSection
+            heading={`About ${stage.name.toLowerCase()} startup jobs`}
+            aboutTitle={`Guide to ${stage.name} Saudi startups`}
+            aboutContent={
+              <StageAeoAbout
+                stageName={stage.name}
+                description={stage.description}
+                companyCount={stageCompanies.length}
+                slug={slug}
+              />
+            }
+            faq={faq}
+            ariaLabel={`About ${stage.name} startup jobs`}
+          />
+        </div>
+      </footer>
     </div>
   )
 }

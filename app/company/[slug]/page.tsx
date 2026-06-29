@@ -5,7 +5,13 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { companies, getCompanyBySlug, getJobsByCompany } from "@/lib/data"
 import { CompanyLogo } from "@/components/company-logo"
+import { getCompanyFaq } from "@/lib/aeo-landing"
+import { buildFaqJsonLd, buildBreadcrumbJsonLd } from "@/lib/aeo-jsonld"
+import LandingAeoSection from "@/components/landing-aeo-section"
+import { CompanyAeoAbout } from "@/components/landing-aeo-about"
 import type { Metadata } from "next"
+
+const site = "https://buildsaudi.co"
 
 export function generateStaticParams() {
   return companies.map((company) => ({ slug: company.slug }))
@@ -16,9 +22,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const company = getCompanyBySlug(slug)
   if (!company) return {}
   const jobCount = getJobsByCompany(slug).length
+  const title =
+    jobCount > 0
+      ? `${company.name} Jobs & Careers — ${jobCount} Open Roles | BuildSaudi`
+      : `${company.name} Careers — ${company.stage} ${company.sector[0]} Startup | BuildSaudi`
+  const description =
+    jobCount > 0
+      ? `Browse ${jobCount} open jobs at ${company.name}. ${company.description.slice(0, 100)} Apply directly on BuildSaudi.`
+      : `${company.description.slice(0, 120)} Explore ${company.name}'s BuildSaudi profile — ${company.stage} ${company.sector[0]} startup in ${company.city}. Careers link included.`
   return {
-    title: `${company.name} Jobs & Careers — ${jobCount} Open Roles | BuildSaudi`,
-    description: `Browse ${jobCount} open jobs at ${company.name}. ${company.description.slice(0, 100)} Apply directly on BuildSaudi.`,
+    title,
+    description,
+    alternates: { canonical: `${site}/company/${slug}` },
   }
 }
 
@@ -35,6 +50,9 @@ export default async function CompanyPage({
   }
 
   const companyJobs = getJobsByCompany(slug)
+  const pageUrl = `${site}/company/${slug}`
+  const primarySector = company.sector[0]
+  const faq = getCompanyFaq(company.name, primarySector, company.city, company.stage, company.careers_url)
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -57,20 +75,28 @@ export default async function CompanyPage({
     directApply: true,
   }))
 
+  const faqLd = buildFaqJsonLd(faq)
+  const breadcrumbLd = buildBreadcrumbJsonLd([
+    { name: "BuildSaudi", url: site },
+    { name: company.name, url: pageUrl },
+  ])
+
   return (
     <div className="min-h-screen">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       {jobPostingsLd.map((ld, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
       ))}
-      {/* Header */}
+
       <header className="border-b border-[#e5e5e5] bg-white">
         <div className="mx-auto max-w-[1200px] px-6 py-6">
           <div className="flex items-center justify-between">
             <Link href="/" className="block">
-              <h1 className="text-3xl font-bold tracking-tight text-[#06634D]" style={{ fontFamily: "var(--font-space-mono), monospace" }}>
+              <div className="text-3xl font-bold tracking-tight text-[#06634D]" style={{ fontFamily: "var(--font-space-mono), monospace" }} aria-label="BuildSaudi">
                 {"["} BUILDSAUDI {"]"}
-              </h1>
+              </div>
             </Link>
             <Link href="/submit">
               <Button
@@ -86,7 +112,6 @@ export default async function CompanyPage({
       </header>
 
       <main className="mx-auto max-w-[1200px] px-6 py-8">
-        {/* Back Link */}
         <Link
           href="/"
           className="inline-flex items-center gap-1.5 text-sm text-[#6b7280] hover:text-[#1a1a1a] mb-6"
@@ -95,17 +120,15 @@ export default async function CompanyPage({
           Back to all jobs
         </Link>
 
-        {/* Company Header */}
         <div className="rounded-lg border border-[#e5e5e5] bg-white p-6 mb-6">
           <div className="flex items-start gap-5">
-            {/* Company Logo */}
             <div className="flex size-16 shrink-0 items-center justify-center rounded-xl bg-white border border-gray-200 overflow-hidden">
               <CompanyLogo company={company} className="size-10 object-contain" />
             </div>
 
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-3 flex-wrap">
-                <h2 className="text-2xl font-bold">{company.name}</h2>
+                <h1 className="text-2xl font-bold">{company.name} Careers</h1>
                 <Badge variant="outline" className="text-xs font-medium text-[#06634D] border-[#06634D]">
                   {company.stage}
                 </Badge>
@@ -160,10 +183,9 @@ export default async function CompanyPage({
           </div>
         </div>
 
-        {/* CTA to careers page */}
         <div className="rounded-lg border border-[#e5e5e5] bg-white px-6 py-8 text-center">
           <p className="text-sm text-[#6b7280] mb-4">
-            view all open positions directly on {company.name}&apos;s careers page
+            View all open positions directly on {company.name}&apos;s careers page
           </p>
           <a
             href={company.careers_url}
@@ -177,15 +199,24 @@ export default async function CompanyPage({
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="mt-16 border-t border-[#e5e5e5] bg-white">
-        <div className="mx-auto max-w-[1200px] px-6 py-6 flex items-center justify-between text-xs text-[#9ca3af]">
-          <p>buildsaudi.co</p>
-          <div className="flex items-center gap-4">
-            <Link href="/submit" className="hover:text-[#1a1a1a]">
-              Post a Job
-            </Link>
-          </div>
+      <footer className="mt-16 border-t border-[#06634D]/15 bg-white/60">
+        <div className="mx-auto max-w-[1200px] px-6 py-8 sm:py-10">
+          <LandingAeoSection
+            heading={`About ${company.name}`}
+            aboutTitle={`${company.name} company profile`}
+            aboutContent={
+              <CompanyAeoAbout
+                companyName={company.name}
+                description={company.description}
+                sector={primarySector}
+                city={company.city}
+                stage={company.stage}
+                slug={slug}
+              />
+            }
+            faq={faq}
+            ariaLabel={`About ${company.name}`}
+          />
         </div>
       </footer>
     </div>
