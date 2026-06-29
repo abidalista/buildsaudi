@@ -1,6 +1,9 @@
 import type { Metadata } from "next"
 import { companies } from "@/lib/data"
+import { aeoFaq } from "@/lib/aeo-content"
 import HomeClient from "@/components/home-client"
+import HomeAeoContent from "@/components/home-aeo-content"
+import HomeAeoCitations from "@/components/home-aeo-citations"
 
 export const metadata: Metadata = {
   title: "BuildSaudi — Startup Jobs in Saudi Arabia",
@@ -47,6 +50,19 @@ export default function HomePage() {
     })),
   }
 
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: aeoFaq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  }
+
   return (
     <>
       <script
@@ -57,7 +73,14 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }}
       />
-      <HomeClient />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+      />
+      <HomeClient
+        citationsSlot={<HomeAeoCitations />}
+        aeoSlot={<HomeAeoContent />}
+      />
     </>
   )
 }

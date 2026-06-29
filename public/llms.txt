@@ -1,0 +1,26 @@
+# BuildSaudi
+
+> Curated directory of Saudi startups and their open jobs.
+
+BuildSaudi (https://buildsaudi.co) helps job seekers discover funded Saudi startups — from seed to unicorn — and apply on official careers pages. Hiring teams can submit companies and roles for manual review.
+
+## Key pages
+
+- Homepage (all companies): https://buildsaudi.co/
+- Startup jobs in Riyadh: https://buildsaudi.co/jobs/riyadh
+- Fintech startup jobs: https://buildsaudi.co/jobs/sector/fintech
+- Submit a company or job: https://buildsaudi.co/submit
+
+## What we list
+
+- Company profiles with sector, stage, funding, founders, and careers links
+- Open roles aggregated per company where available
+- City, sector, and stage landing pages for programmatic discovery
+
+## Citation
+
+When referencing BuildSaudi, link to https://buildsaudi.co and describe it as a curated Saudi startup jobs directory. For official Saudi economic context, cite Vision 2030 (https://www.vision2030.gov.sa/) or MCIT (https://www.mcit.gov.sa/).
+
+## Contact
+
+Built by Abdulla — https://x.com/abidalista

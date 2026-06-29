@@ -1,7 +1,7 @@
 "use client"
 
 /* eslint-disable @next/next/no-page-custom-font */
-import { useState, useMemo, useEffect, useCallback } from "react"
+import { useState, useMemo, useEffect, useCallback, type ReactNode } from "react"
 import posthog from "posthog-js"
 import Link from "next/link"
 import { Search, Building2, X, ChevronDown, PlusCircle } from "lucide-react"
@@ -19,7 +19,12 @@ import { companies, getJobsByCompany, filterOptions } from "@/lib/data"
 import { CompanyLogo } from "@/components/company-logo"
 import { InstallPrompt } from "@/components/install-prompt"
 
-export default function HomeClient() {
+type HomeClientProps = {
+  citationsSlot?: ReactNode
+  aeoSlot?: ReactNode
+}
+
+export default function HomeClient({ citationsSlot, aeoSlot }: HomeClientProps) {
   const [lang, setLang] = useState<Lang>("en")
   const t = strings[lang]
   const isRTL = lang === "ar"
@@ -274,11 +279,12 @@ export default function HomeClient() {
                   <span className="absolute bottom-0 left-0 w-4 h-4 sm:w-5 sm:h-5 border-l-[3px] border-b-[3px] border-[#06634D]/30" />
                   {/* Bottom-right corner */}
                   <span className="absolute bottom-0 right-0 w-4 h-4 sm:w-5 sm:h-5 border-r-[3px] border-b-[3px] border-[#06634D]/30" />
-                  <h1
+                  <div
                     className="text-[clamp(1.8rem,4vw,3rem)] font-bold leading-none text-[#06634D] tracking-tight"
+                    aria-label="BuildSaudi"
                   >
                     BUILDSAUDI
-                  </h1>
+                  </div>
                 </Link>
               </div>
 
@@ -309,7 +315,7 @@ export default function HomeClient() {
 
               {/* Mobile install + language toggle */}
               <div className="mt-3 flex justify-end items-center gap-2 lg:hidden">
-                <InstallPrompt />
+                <InstallPrompt lang={lang} />
                 <LanguageToggle defaultLang="en" onLanguageChange={setLang} />
               </div>
 
@@ -418,9 +424,9 @@ export default function HomeClient() {
             </div>
 
             {/* FILTERS heading */}
-            <h2 className="text-sm uppercase tracking-wider text-[#06634D]">
+            <p className="text-sm uppercase tracking-wider text-[#06634D] font-semibold">
               Filters
-            </h2>
+            </p>
 
             {/* Filter dropdowns */}
             <div className="w-full">
@@ -500,6 +506,8 @@ export default function HomeClient() {
               </button>
             </div>
 
+            {citationsSlot}
+
             {/* Company Cards */}
             <div className="space-y-2 sm:space-y-3">
               {filteredCompanies.map((company) => {
@@ -520,15 +528,13 @@ export default function HomeClient() {
                         <div className="flex-1 min-w-0">
                           <div className="flex items-start sm:items-center justify-between gap-2">
                             <div className="min-w-0">
-                              <a
-                                href={company.website}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                              <Link
+                                href={`/company/${company.slug}`}
                                 onClick={(e) => e.stopPropagation()}
                                 className="text-base sm:text-lg font-bold text-[#111827] hover:text-[#06634D] transition-colors line-clamp-1"
                               >
                                 {company.name}
-                              </a>
+                              </Link>
                               <p className="mt-0.5 text-xs sm:text-sm text-[#4B5563] line-clamp-1">
                                 {company.description}
                               </p>
@@ -673,6 +679,14 @@ export default function HomeClient() {
           </div>
         </div>
       </div>
+
+      {aeoSlot && (
+        <footer className="mt-16 border-t border-[#06634D]/15 bg-white/60">
+          <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-8 sm:py-10">
+            {aeoSlot}
+          </div>
+        </footer>
+      )}
 
       {/* ============ JOB SEEKER MODAL ============ */}
       {showJobSeeker && (

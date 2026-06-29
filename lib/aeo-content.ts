@@ -1,0 +1,55 @@
+export type FaqItem = {
+  question: string
+  answer: string
+}
+
+export const aeoFaq: FaqItem[] = [
+  {
+    question: "What is BuildSaudi?",
+    answer:
+      "BuildSaudi is a curated directory of Saudi startups and their open jobs. We list funded companies across fintech, AI, e-commerce, logistics, and more — with direct links to careers pages, funding context, and company profiles.",
+  },
+  {
+    question: "How do I find startup jobs in Riyadh?",
+    answer:
+      "Browse our Riyadh jobs page for companies headquartered in the capital, or use the homepage filters by sector and stage. Most Saudi unicorns and growth-stage startups hire engineering, product, design, and operations roles in Riyadh.",
+  },
+  {
+    question: "Which Saudi startups are hiring in fintech?",
+    answer:
+      "Our fintech sector page lists BNPL, payments, and banking startups including Tamara, Tabby, STC Bank, and SiFi. Each profile links to live careers pages updated weekly.",
+  },
+  {
+    question: "Is BuildSaudi free for job seekers?",
+    answer:
+      "Yes. Job seekers can browse every company and job listing for free. You can also sign up for job alerts from the homepage to get notified about roles that match your profile.",
+  },
+  {
+    question: "How can my startup get listed on BuildSaudi?",
+    answer:
+      "Use the submit page to suggest a company or post a job. We review submissions manually and add verified Saudi startups with active hiring.",
+  },
+  {
+    question: "How often is the directory updated?",
+    answer:
+      "We refresh company data, funding rounds, and job links weekly. Pages include freshness signals in metadata and structured data so search engines and AI systems know the listings are current.",
+  },
+]
+
+/** Plain-text intro paragraphs for word count and schema; links rendered in the component. */
+export const aeoIntroParagraphs = [
+  "BuildSaudi is the curated directory for startup jobs in Saudi Arabia. Whether you are a software engineer, product manager, designer, or operator, we help you discover funded Saudi startups — from seed-stage teams to unicorns — and apply directly on their careers pages.",
+  "Saudi Arabia's startup ecosystem has grown rapidly under Vision 2030, with Riyadh emerging as the Gulf's primary tech hub. Government initiatives through the Ministry of Communications and Information Technology (MCIT) and Monsha'at have expanded access to capital, talent, and regulatory sandboxes for fintech, AI, and e-commerce founders. BuildSaudi surfaces that momentum in one place: verified companies, funding context, and live job links.",
+  "Use our city pages to browse startup jobs in Riyadh, Jeddah, Dammam, or remote-friendly roles. Sector pages like fintech and AI group companies by industry so you can compare hiring across Tamara, Foodics, Humain, and dozens more. Each company has a dedicated profile with open roles, founders, and total raised.",
+  "Hiring managers and founders can submit a company or post a job through our submit form. We manually review every listing to keep the directory high-signal — no spam, no outdated boards. If you are researching the market, explore example profiles such as Tamara to see how we present careers data for AI and search engines.",
+]
+
+export const aeoLinks = {
+  riyadh: "/jobs/riyadh",
+  fintech: "/jobs/sector/fintech",
+  tamara: "/company/tamara",
+  submit: "/submit",
+  vision2030: "https://www.vision2030.gov.sa/",
+  mcit: "https://www.mcit.gov.sa/",
+  monshaat: "https://www.monshaat.gov.sa/",
+} as const
