@@ -6,8 +6,7 @@ import { CompanyLogo } from "@/components/company-logo"
 import { sectors } from "@/lib/seo"
 import { getSectorFaq } from "@/lib/aeo-landing"
 import { buildFaqJsonLd, buildBreadcrumbJsonLd, buildItemListJsonLd } from "@/lib/aeo-jsonld"
-import LandingAeoSection, { AeoCitationStrip } from "@/components/landing-aeo-section"
-import { SectorAeoAbout } from "@/components/landing-aeo-about"
+import { SiteFooter } from "@/components/site-footer"
 import type { Metadata } from "next"
 
 const site = "https://buildsaudi.co"
@@ -72,8 +71,6 @@ export default async function SectorPage({ params }: { params: Promise<{ sector:
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <AeoCitationStrip />
-
         <div className="space-y-3">
           {sectorCompanies.map((company) => (
             <div key={company.slug} className="group bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden">
@@ -103,24 +100,7 @@ export default async function SectorPage({ params }: { params: Promise<{ sector:
         </div>
       </div>
 
-      <footer className="mt-16 border-t border-[#06634D]/15 bg-white/60">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
-          <LandingAeoSection
-            heading={`About ${sector.name.toLowerCase()} startup jobs`}
-            aboutTitle={`Guide to ${sector.name} hiring in Saudi Arabia`}
-            aboutContent={
-              <SectorAeoAbout
-                sectorName={sector.name}
-                slug={slug}
-                companyCount={sectorCompanies.length}
-                examples={sectorCompanies.slice(0, 4).map((c) => c.name)}
-              />
-            }
-            faq={faq}
-            ariaLabel={`About ${sector.name} startup jobs`}
-          />
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

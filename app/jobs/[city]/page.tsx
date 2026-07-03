@@ -6,8 +6,7 @@ import { CompanyLogo } from "@/components/company-logo"
 import { cities } from "@/lib/seo"
 import { getCityFaq } from "@/lib/aeo-landing"
 import { buildFaqJsonLd, buildBreadcrumbJsonLd, buildItemListJsonLd } from "@/lib/aeo-jsonld"
-import LandingAeoSection, { AeoCitationStrip } from "@/components/landing-aeo-section"
-import { CityAeoAbout } from "@/components/landing-aeo-about"
+import { SiteFooter } from "@/components/site-footer"
 import type { Metadata } from "next"
 
 const site = "https://buildsaudi.co"
@@ -73,8 +72,6 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <AeoCitationStrip />
-
         <div className="space-y-3">
           {cityCompanies.map((company) => (
             <div key={company.slug} className="group bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden">
@@ -99,24 +96,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
         </div>
       </div>
 
-      <footer className="mt-16 border-t border-[#06634D]/15 bg-white/60">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
-          <LandingAeoSection
-            heading={`About startup jobs in ${city.name}`}
-            aboutTitle={`Guide to ${city.name} startup hiring`}
-            aboutContent={
-              <CityAeoAbout
-                cityName={city.name}
-                blurb={city.blurb}
-                companyCount={cityCompanies.length}
-                slug={slug}
-              />
-            }
-            faq={faq}
-            ariaLabel={`About startup jobs in ${city.name}`}
-          />
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

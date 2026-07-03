@@ -7,8 +7,7 @@ import { companies, getCompanyBySlug, getJobsByCompany } from "@/lib/data"
 import { CompanyLogo } from "@/components/company-logo"
 import { getCompanyFaq } from "@/lib/aeo-landing"
 import { buildFaqJsonLd, buildBreadcrumbJsonLd } from "@/lib/aeo-jsonld"
-import LandingAeoSection from "@/components/landing-aeo-section"
-import { CompanyAeoAbout } from "@/components/landing-aeo-about"
+import { SiteFooter } from "@/components/site-footer"
 import type { Metadata } from "next"
 
 const site = "https://buildsaudi.co"
@@ -199,26 +198,7 @@ export default async function CompanyPage({
         </div>
       </main>
 
-      <footer className="mt-16 border-t border-[#06634D]/15 bg-white/60">
-        <div className="mx-auto max-w-[1200px] px-6 py-8 sm:py-10">
-          <LandingAeoSection
-            heading={`About ${company.name}`}
-            aboutTitle={`${company.name} company profile`}
-            aboutContent={
-              <CompanyAeoAbout
-                companyName={company.name}
-                description={company.description}
-                sector={primarySector}
-                city={company.city}
-                stage={company.stage}
-                slug={slug}
-              />
-            }
-            faq={faq}
-            ariaLabel={`About ${company.name}`}
-          />
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

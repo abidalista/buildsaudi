@@ -144,7 +144,6 @@ export const companies: Company[] = [
 
   // ===== GOVTECH =====
   { slug: "governata", name: "Governata", website: "https://governata.com", linkedin: "https://www.linkedin.com/company/governata", stage: "Seed", sector: ["Govtech"], city: "Riyadh", description: "AI governance and compliance platform.", careers_url: "https://www.linkedin.com/company/governata/jobs/" , total_raised: "$4M" },
-  { slug: "takamul", name: "Takamul", website: "https://takamul.com.sa", linkedin: "https://www.linkedin.com/company/takamul", stage: "Growth", sector: ["Govtech"], city: "Riyadh", description: "Digital transformation for government.", careers_url: "https://www.linkedin.com/company/takamul/jobs/" , founders: "Basil Al Dossary", team_size: "201-500" },
 
   // ===== AI (from Airtable) =====
   { slug: "cranl", name: "Cranl", website: "https://cranl.com", linkedin: "https://www.linkedin.com/company/cranl", stage: "Seed", sector: ["AI"], city: "Riyadh", description: "Cloud platform (PaaS) to deploy applications.", careers_url: "https://www.linkedin.com/company/cranl/jobs/"  },
@@ -159,7 +158,6 @@ export const companies: Company[] = [
   { slug: "stamp", name: "STAMP", website: "https://www.stamp.sa", linkedin: "https://www.linkedin.com/company/stampcorporate", stage: "Pre-Seed", sector: ["Legaltech"], city: "Riyadh", description: "AI-powered compliance management platform for Saudi businesses.", careers_url: "https://www.linkedin.com/company/stampcorporate/jobs/", founders: "Muyasser Albar, Mohammed Zarei", total_raised: "$2M", team_size: "1-10", founded_year: 2021, last_round_date: "Nov 2025" },
 
   // ===== E-COMMERCE (from Airtable) =====
-  { slug: "rawaa", name: "Rawaa", website: "https://www.rawaa.cloud", linkedin: "https://www.linkedin.com/company/rawaa", stage: "Series A", sector: ["E-commerce"], city: "Riyadh", description: "Cloud POS with AI accounting for merchants.", careers_url: "https://www.linkedin.com/company/rawaa/jobs/" , founders: "Mohammed Alqasir, Abdullah Aljadhai", total_raised: "$27M", team_size: "11-50", founded_year: 2018 },
   { slug: "juthor", name: "Juthor", website: "http://juthor.sa", linkedin: "https://www.linkedin.com/company/judhur", stage: "Seed", sector: ["E-commerce"], city: "Riyadh", description: "Multi-channel e-commerce management.", careers_url: "https://www.linkedin.com/company/judhur/jobs/" , total_raised: "$500K" },
 
   // ===== EDUCATION =====
@@ -199,9 +197,6 @@ export const companies: Company[] = [
   // ===== AI (from Suggestions) =====
   { slug: "newera-ai", name: "Newera.ai", website: "https://newera.ai", linkedin: "https://www.linkedin.com/company/newera-saudi/", stage: "Pre-Seed", sector: ["AI"], city: "Riyadh", description: "Enterprise generative AI and agentic systems platform.", careers_url: "https://www.linkedin.com/company/newera-saudi/jobs/", founders: "Abdulrhman Alsuliman", total_raised: "$2.1M", team_size: "1-10", founded_year: 2023, last_round_date: "Dec 2025" },
   { slug: "entropy", name: "Entropy", website: "https://entropy.sa", linkedin: "https://www.linkedin.com/company/entropy-sa", stage: "Seed", sector: ["AI"], city: "Riyadh", description: "Data & AI company helping public and private sectors become AI-enabled enterprises.", careers_url: "https://www.linkedin.com/company/entropy-sa/jobs/" },
-
-  // ===== DEEP TECH (from Suggestions) =====
-  { slug: "nasl-tech", name: "NASL Tech", website: "https://nasl-tech.com", linkedin: "https://www.linkedin.com/company/nasl-tech", stage: "Seed", sector: ["Deep Tech"], city: "Riyadh", description: "Builds drone, IoT, and autonomous robotics solutions for Saudi industries.", careers_url: "https://www.linkedin.com/company/nasl-tech/jobs/" },
 
   // ===== MEDIA (from Suggestions) =====
   { slug: "audiom", name: "Audiom", website: "https://audiom.sa", linkedin: "https://www.linkedin.com/company/audiomsoultions", stage: "Seed", sector: ["Media"], city: "Riyadh", description: "Creative music house for sonic branding, audio production, and sound design.", careers_url: "https://www.linkedin.com/company/audiomsoultions/jobs/", founders: "Abdulaziz Saleem", founded_year: 2021, team_size: "1-10" },

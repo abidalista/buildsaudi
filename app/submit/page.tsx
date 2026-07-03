@@ -14,6 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { filterOptions } from "@/lib/data"
+import { SiteFooter } from "@/components/site-footer"
 
 export default function SubmitPage() {
   const [submitted, setSubmitted] = useState(false)
@@ -211,15 +212,7 @@ export default function SubmitPage() {
         )}
       </main>
 
-      {/* Footer */}
-      <footer className="mt-16 border-t border-[#e5e5e5] bg-white">
-        <div className="mx-auto max-w-[1200px] px-6 py-6 flex items-center justify-between text-xs text-[#9ca3af]">
-          <p>buildsaudi.co</p>
-          <Link href="/" className="hover:text-[#1a1a1a]">
-            Browse Jobs
-          </Link>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

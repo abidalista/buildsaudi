@@ -6,8 +6,7 @@ import { CompanyLogo } from "@/components/company-logo"
 import { stages } from "@/lib/seo"
 import { getStageFaq } from "@/lib/aeo-landing"
 import { buildFaqJsonLd, buildBreadcrumbJsonLd, buildItemListJsonLd } from "@/lib/aeo-jsonld"
-import LandingAeoSection, { AeoCitationStrip } from "@/components/landing-aeo-section"
-import { StageAeoAbout } from "@/components/landing-aeo-about"
+import { SiteFooter } from "@/components/site-footer"
 import type { Metadata } from "next"
 
 const site = "https://buildsaudi.co"
@@ -71,8 +70,6 @@ export default async function StagePage({ params }: { params: Promise<{ stage: s
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <AeoCitationStrip />
-
         <div className="space-y-3">
           {stageCompanies.map((company) => (
             <div key={company.slug} className="group bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden">
@@ -97,24 +94,7 @@ export default async function StagePage({ params }: { params: Promise<{ stage: s
         </div>
       </div>
 
-      <footer className="mt-16 border-t border-[#06634D]/15 bg-white/60">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
-          <LandingAeoSection
-            heading={`About ${stage.name.toLowerCase()} startup jobs`}
-            aboutTitle={`Guide to ${stage.name} Saudi startups`}
-            aboutContent={
-              <StageAeoAbout
-                stageName={stage.name}
-                description={stage.description}
-                companyCount={stageCompanies.length}
-                slug={slug}
-              />
-            }
-            faq={faq}
-            ariaLabel={`About ${stage.name} startup jobs`}
-          />
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

@@ -1,7 +1,7 @@
 "use client"
 
 /* eslint-disable @next/next/no-page-custom-font */
-import { useState, useMemo, useEffect, useCallback, type ReactNode } from "react"
+import { useState, useMemo, useEffect, useCallback } from "react"
 import posthog from "posthog-js"
 import Link from "next/link"
 import { Search, Building2, X, ChevronDown, PlusCircle } from "lucide-react"
@@ -18,13 +18,9 @@ import {
 import { companies, getJobsByCompany, filterOptions } from "@/lib/data"
 import { CompanyLogo } from "@/components/company-logo"
 import { InstallPrompt } from "@/components/install-prompt"
+import { SiteFooter } from "@/components/site-footer"
 
-type HomeClientProps = {
-  citationsSlot?: ReactNode
-  aeoSlot?: ReactNode
-}
-
-export default function HomeClient({ citationsSlot, aeoSlot }: HomeClientProps) {
+export default function HomeClient() {
   const [lang, setLang] = useState<Lang>("en")
   const t = strings[lang]
   const isRTL = lang === "ar"
@@ -506,8 +502,6 @@ export default function HomeClient({ citationsSlot, aeoSlot }: HomeClientProps) 
               </button>
             </div>
 
-            {citationsSlot}
-
             {/* Company Cards */}
             <div className="space-y-2 sm:space-y-3">
               {filteredCompanies.map((company) => {
@@ -680,13 +674,7 @@ export default function HomeClient({ citationsSlot, aeoSlot }: HomeClientProps) 
         </div>
       </div>
 
-      {aeoSlot && (
-        <footer className="mt-16 border-t border-[#06634D]/15 bg-white/60">
-          <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-8 sm:py-10">
-            {aeoSlot}
-          </div>
-        </footer>
-      )}
+      <SiteFooter />
 
       {/* ============ JOB SEEKER MODAL ============ */}
       {showJobSeeker && (
