@@ -59,7 +59,7 @@ companies = [
     ('nayla', 'https://nayla.com.sa'),
     ('yamm', 'https://yamm.finance'),
     ('spore', 'https://spore.sa'),
-    ('silq', 'https://silq.sa'),
+    ('silq', 'https://silq.net'),
     ('torod', 'https://torod.com'),
     ('spoilz', 'https://spoilz.co'),
     ('ballurh', 'https://ballurh.com'),
