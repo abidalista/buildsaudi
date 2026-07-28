@@ -4,8 +4,8 @@ import { aeoFaq } from "@/lib/aeo-content"
 import HomeClient from "@/components/home-client"
 
 export const metadata: Metadata = {
-  title: "BuildSaudi — Startup Jobs in Saudi Arabia",
-  description: `Find jobs at ${companies.length}+ Saudi startups. Curated directory of the best companies building the future of the Kingdom — tech, fintech, healthtech, and more.`,
+  title: `Startup Jobs in Saudi Arabia — ${companies.length}+ Companies | BuildSaudi`,
+  description: `Browse ${companies.length}+ funded Saudi startups hiring in Riyadh and across the Kingdom. Filter by sector and stage — apply direct. وظائف شركات ناشئة في السعودية.`,
   alternates: {
     canonical: "https://buildsaudi.co",
   },

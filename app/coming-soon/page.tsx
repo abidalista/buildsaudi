@@ -1,4 +1,10 @@
+import type { Metadata } from "next"
 import Link from "next/link"
+
+export const metadata: Metadata = {
+  title: "Coming Soon — BuildSaudi",
+  robots: { index: false, follow: false },
+}
 
 export default function ComingSoonPage() {
   return (
@@ -9,14 +15,14 @@ export default function ComingSoonPage() {
           <span className="absolute top-0 right-0 w-4 h-4 border-r-[3px] border-t-[3px] border-[#06634D]/30" />
           <span className="absolute bottom-0 left-0 w-4 h-4 border-l-[3px] border-b-[3px] border-[#06634D]/30" />
           <span className="absolute bottom-0 right-0 w-4 h-4 border-r-[3px] border-b-[3px] border-[#06634D]/30" />
-          <h1
+          <p
             className="text-2xl font-bold text-[#06634D] tracking-tight"
             style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}
           >
             BUILDSAUDI
-          </h1>
+          </p>
         </div>
-        <h2 className="text-xl font-semibold text-[#111827] mb-2 font-mono">Coming Soon</h2>
+        <h1 className="text-xl font-semibold text-[#111827] mb-2 font-mono">Coming Soon</h1>
         <p className="text-sm text-[#6B7280] mb-6 font-mono">this page is under construction</p>
         <Link
           href="/"

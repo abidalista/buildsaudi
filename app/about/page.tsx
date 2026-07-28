@@ -4,9 +4,9 @@ import { ArrowLeft } from "lucide-react"
 import { SiteFooter } from "@/components/site-footer"
 
 export const metadata: Metadata = {
-  title: "About — BuildSaudi",
+  title: "About BuildSaudi — Saudi Startup Jobs Directory",
   description:
-    "BuildSaudi is a curated directory of Saudi startups and their open jobs — funded companies with direct careers links.",
+    "BuildSaudi is a curated directory of Saudi startups and their open jobs — funded companies in the Kingdom with direct careers links.",
   alternates: { canonical: "https://buildsaudi.co/about" },
 }
 

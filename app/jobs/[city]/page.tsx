@@ -21,7 +21,10 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
   if (!city) return {}
   const count = companies.filter((c) => c.city.toLowerCase() === city.name.toLowerCase() || slug === "remote").length
   return {
-    title: `Startup Jobs in ${city.name} — ${count} Companies | BuildSaudi`,
+    title:
+      slug === "riyadh"
+        ? `Riyadh Startup Jobs — ${count} Companies Hiring | BuildSaudi`
+        : `Startup Jobs in ${city.name} — ${count} Companies | BuildSaudi`,
     description: `Find startup jobs in ${city.name}, Saudi Arabia. Software engineering, product, design, marketing, and more at funded startups. Updated weekly.`,
     alternates: { canonical: `${site}/jobs/${slug}` },
   }

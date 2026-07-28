@@ -275,12 +275,11 @@ export default function HomeClient() {
                   <span className="absolute bottom-0 left-0 w-4 h-4 sm:w-5 sm:h-5 border-l-[3px] border-b-[3px] border-[#06634D]/30" />
                   {/* Bottom-right corner */}
                   <span className="absolute bottom-0 right-0 w-4 h-4 sm:w-5 sm:h-5 border-r-[3px] border-b-[3px] border-[#06634D]/30" />
-                  <div
+                  <h1
                     className="text-[clamp(1.8rem,4vw,3rem)] font-bold leading-none text-[#06634D] tracking-tight"
-                    aria-label="BuildSaudi"
                   >
                     BUILDSAUDI
-                  </div>
+                  </h1>
                 </Link>
               </div>
 
@@ -326,14 +325,12 @@ export default function HomeClient() {
                 <div className="divide-y divide-[#D73833]/30">
                   {companies.filter((c) => ["humain", "signit", "lucidya"].includes(c.slug)).map((c) => (
                     <div key={c.slug} className="py-2 first:pt-0 last:pb-0 flex items-center justify-between gap-2">
-                      <a
-                        href={c.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <Link
+                        href={`/company/${c.slug}`}
                         className="text-sm font-bold text-[#D73833] hover:underline"
                       >
                         {c.name}
-                      </a>
+                      </Link>
                       <span className="text-sm text-[#111827]">{c.sector[0]}</span>
                     </div>
                   ))}
@@ -354,14 +351,12 @@ export default function HomeClient() {
                 <div className="divide-y divide-[#D73833]/30">
                   {companies.filter((c) => ["humain", "signit", "lucidya"].includes(c.slug)).map((c) => (
                     <div key={c.slug} className="py-2 first:pt-0 last:pb-0 flex items-center justify-between gap-2">
-                      <a
-                        href={c.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <Link
+                        href={`/company/${c.slug}`}
                         className="text-sm font-bold text-[#D73833] hover:underline"
                       >
                         {c.name}
-                      </a>
+                      </Link>
                       <span className="text-sm text-[#111827]">{c.sector[0]}</span>
                     </div>
                   ))}

@@ -4,22 +4,25 @@ import { Analytics } from '@vercel/analytics/next'
 import { PostHogProvider } from './posthog-provider'
 import Script from 'next/script'
 import { Suspense } from 'react'
+import { companies } from '@/lib/data'
 import './globals.css'
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" })
 const spaceMono = Space_Mono({ weight: ["400", "700"], subsets: ["latin"], variable: "--font-space-mono" })
 
+const siteTitle = `Startup Jobs in Saudi Arabia — ${companies.length}+ Companies | BuildSaudi`
+const siteDescription =
+  `Browse ${companies.length}+ funded Saudi startups hiring in Riyadh and across the Kingdom. Filter by sector and stage — apply direct. وظائف شركات ناشئة في السعودية.`
+
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
   viewportFit: 'cover',
 }
 
 export const metadata: Metadata = {
-  title: 'BuildSaudi — Startup Jobs in Saudi Arabia',
-  description: 'A curated directory of companies building the future of Saudi. Find startup jobs at the best companies in the Kingdom.',
+  title: siteTitle,
+  description: siteDescription,
   icons: {
     icon: [
       { url: '/icon.svg', type: 'image/svg+xml' },
@@ -32,8 +35,9 @@ export const metadata: Metadata = {
     title: 'BuildSaudi',
   },
   openGraph: {
-    title: 'BuildSaudi — Startup Jobs in Saudi Arabia',
-    description: 'A curated directory of companies building the future of Saudi. Find startup jobs at the best companies in the Kingdom.',
+    title: siteTitle,
+    description:
+      `Browse ${companies.length}+ funded Saudi startups hiring in Riyadh and across the Kingdom. Filter by sector and stage — apply direct.`,
     url: 'https://buildsaudi.co',
     siteName: 'BuildSaudi',
     type: 'website',
@@ -41,8 +45,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BuildSaudi — Startup Jobs in Saudi Arabia',
-    description: 'Curated startup jobs. No noise, no spam.',
+    title: siteTitle,
+    description: 'Funded Saudi startups hiring now. Apply direct.',
     images: ['https://buildsaudi.co/og-image.png'],
   },
 }
