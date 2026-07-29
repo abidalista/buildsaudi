@@ -56,7 +56,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="ar">
       <head>
         <meta name="google-site-verification" content="f96-OwBtXCDY0hDPUNnhEfGWOfPUpOB5i0dNZvC_Pzw" />
         <Script

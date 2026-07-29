@@ -4,13 +4,12 @@
 
 Each entry links to the BuildSaudi profile. Applications go to the employer careers URL listed on that page.
 
-## Companies (144)
+## Companies (140)
 
 - Abwab.ai (Seed, Fintech, Riyadh): https://buildsaudi.co/company/abwab-ai
 - Advanced Electronics Company (Growth, Data & Infrastructure, Riyadh): https://buildsaudi.co/company/aec
 - Alat (Growth, Deep Tech, Riyadh): https://buildsaudi.co/company/alat
 - AlGooru (Series A, Edtech, Riyadh): https://buildsaudi.co/company/algooru
-- Aqarz (Seed, Proptech, Riyadh): https://buildsaudi.co/company/aqarz
 - Aramco Digital (Growth, Data & Infrastructure, Dhahran): https://buildsaudi.co/company/aramco-digital
 - Arat Capital (Seed, Fintech, Riyadh): https://buildsaudi.co/company/arat
 - ATAM (Seed, Defense, Riyadh): https://buildsaudi.co/company/atam
@@ -60,7 +59,6 @@ Each entry links to the BuildSaudi profile. Applications go to the employer care
 - Jdar (Pre-Seed, Healthtech, Riyadh): https://buildsaudi.co/company/jdar
 - Jisr (Series A, HR Tech, Riyadh): https://buildsaudi.co/company/jisr
 - Juthor (Seed, E-commerce, Riyadh): https://buildsaudi.co/company/juthor
-- Kilow (Seed, Healthtech, Riyadh): https://buildsaudi.co/company/kilow
 - KLIQ (Seed, Media, Riyadh): https://buildsaudi.co/company/kliq
 - Labayh (Series A, Healthtech, Riyadh): https://buildsaudi.co/company/labayh
 - Lean Technologies (Series B, Fintech, Riyadh): https://buildsaudi.co/company/lean-technologies
@@ -68,7 +66,6 @@ Each entry links to the BuildSaudi profile. Applications go to the employer care
 - Lendo (Series B, Fintech, Riyadh): https://buildsaudi.co/company/lendo
 - Livedin (Seed, Proptech, Riyadh): https://buildsaudi.co/company/livedin
 - Lucidya (Series B, AI, Riyadh): https://buildsaudi.co/company/lucidya
-- Madkhol (Seed, Fintech, Riyadh): https://buildsaudi.co/company/madkhol
 - Mawj.ai (Seed, AI, Riyadh): https://buildsaudi.co/company/mawj-ai
 - Merit Incentives (Growth, HR Tech, Riyadh): https://buildsaudi.co/company/merit-incentives
 - MisMar (Series A, Logistics, Riyadh): https://buildsaudi.co/company/mismar
@@ -119,7 +116,6 @@ Each entry links to the BuildSaudi profile. Applications go to the employer care
 - Sirdab (Seed, Logistics, Riyadh): https://buildsaudi.co/company/sirdab
 - Solidrange (Seed, Cybersecurity, Riyadh): https://buildsaudi.co/company/solidrange
 - Soum (Series A, E-commerce, Riyadh): https://buildsaudi.co/company/soum
-- SPLYD (Pre-Seed, Fintech, Riyadh): https://buildsaudi.co/company/splyd
 - SPOILZ (Seed, Gaming, Riyadh): https://buildsaudi.co/company/spoilz
 - STAMP (Pre-Seed, Legaltech, Riyadh): https://buildsaudi.co/company/stamp
 - STC Bank (Unicorn, Fintech, Riyadh): https://buildsaudi.co/company/stc-pay

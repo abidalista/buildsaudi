@@ -259,7 +259,7 @@ export default function HomeClient() {
 
               {/* Mobile language toggle */}
               <div className="mt-3 flex justify-end lg:hidden">
-                <LanguageToggle defaultLang="en" onLanguageChange={setLang} />
+                <LanguageToggle lang={lang} onLanguageChange={setLang} />
               </div>
 
               {/* Mobile hot companies */}
@@ -290,7 +290,7 @@ export default function HomeClient() {
 
             {/* Right: Toggle + hot companies */}
             <div className="hidden lg:flex flex-col items-end gap-2 flex-shrink-0">
-              <LanguageToggle defaultLang="en" onLanguageChange={setLang} />
+              <LanguageToggle lang={lang} onLanguageChange={setLang} />
               <div className="w-[280px] bg-[#D73833]/10 border-2 border-[#D73833] rounded-lg p-3 shadow-lg">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-xl">🔥</span>

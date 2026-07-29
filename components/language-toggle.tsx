@@ -1,22 +1,33 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { DEFAULT_LANG, getStoredLang, setStoredLang } from "@/lib/lang"
+import type { Lang } from "@/lib/i18n"
 
 interface LanguageToggleProps {
-  defaultLang?: "en" | "ar"
-  onLanguageChange?: (lang: "en" | "ar") => void
+  /** Controlled language. If omitted, toggle manages its own state + localStorage. */
+  lang?: Lang
+  onLanguageChange?: (lang: Lang) => void
 }
 
-export function LanguageToggle({ defaultLang = "ar", onLanguageChange }: LanguageToggleProps) {
-  const [lang, setLang] = useState<"en" | "ar">(defaultLang)
+export function LanguageToggle({ lang: controlledLang, onLanguageChange }: LanguageToggleProps) {
+  const [internal, setInternal] = useState<Lang>(DEFAULT_LANG)
+
+  useEffect(() => {
+    if (controlledLang === undefined) {
+      setInternal(getStoredLang())
+    }
+  }, [controlledLang])
+
+  const lang = controlledLang ?? internal
+  const isArabic = lang === "ar"
 
   const toggle = () => {
-    const next = lang === "ar" ? "en" : "ar"
-    setLang(next)
+    const next: Lang = lang === "ar" ? "en" : "ar"
+    setStoredLang(next)
+    if (controlledLang === undefined) setInternal(next)
     onLanguageChange?.(next)
   }
-
-  const isArabic = lang === "ar"
 
   return (
     <button

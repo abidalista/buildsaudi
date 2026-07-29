@@ -7,6 +7,7 @@ import Link from "next/link"
 import { Search, Building2, X, ChevronDown, PlusCircle } from "lucide-react"
 import { LanguageToggle } from "@/components/language-toggle"
 import { strings, type Lang } from "@/lib/i18n"
+import { DEFAULT_LANG, getStoredLang, setStoredLang } from "@/lib/lang"
 import { Input } from "@/components/ui/input"
 import {
   Select,
@@ -24,9 +25,14 @@ const AI_APPLY_URL = "https://www.aiapply.co/?via=abdulla"
 const AI_APPLY_UPSELL_KEY = "buildsaudi_ai_apply_upsell_shown"
 
 export default function HomeClient() {
-  const [lang, setLang] = useState<Lang>("en")
+  const [lang, setLang] = useState<Lang>(DEFAULT_LANG)
   const t = strings[lang]
   const isRTL = lang === "ar"
+
+  // Restore saved language (home remounts after company → back)
+  useEffect(() => {
+    setLang(getStoredLang())
+  }, [])
 
   // Sync dir on <html> so the browser layout engine handles RTL properly
   useEffect(() => {
@@ -37,6 +43,12 @@ export default function HomeClient() {
       document.documentElement.lang = "en"
     }
   }, [isRTL])
+
+  const handleLangChange = useCallback((next: Lang) => {
+    posthog.capture("language_toggled", { from: lang, to: next })
+    setStoredLang(next)
+    setLang(next)
+  }, [lang])
   const [search, setSearch] = useState("")
   const [filters, setFilters] = useState({
     jobType: "",
@@ -324,13 +336,7 @@ export default function HomeClient() {
               {/* Mobile install + language toggle */}
               <div className="mt-3 flex justify-end items-center gap-2 lg:hidden">
                 <InstallPrompt lang={lang} />
-                <LanguageToggle
-                  defaultLang="en"
-                  onLanguageChange={(next) => {
-                    posthog.capture("language_toggled", { from: lang, to: next })
-                    setLang(next)
-                  }}
-                />
+                <LanguageToggle lang={lang} onLanguageChange={handleLangChange} />
               </div>
 
               {/* Mobile hot companies */}
@@ -359,13 +365,7 @@ export default function HomeClient() {
 
             {/* Right: Toggle + hot companies (desktop) */}
             <div className="hidden lg:flex flex-col items-end gap-2 flex-shrink-0">
-              <LanguageToggle
-                defaultLang="en"
-                onLanguageChange={(next) => {
-                  posthog.capture("language_toggled", { from: lang, to: next })
-                  setLang(next)
-                }}
-              />
+              <LanguageToggle lang={lang} onLanguageChange={handleLangChange} />
               <div className="w-[280px] bg-[#D73833]/10 border-2 border-[#D73833] rounded-lg p-3 shadow-lg">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-xl">🔥</span>
