@@ -591,15 +591,6 @@ export default function HomeClient() {
                                   {company.stage}
                                 </span>
                                 <a
-                                  href={company.careers_url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  onClick={(e) => handleJobApplyClick(e, company, "card_desktop")}
-                                  className="px-3 py-1.5 bg-[#06634D] text-white text-xs font-semibold rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
-                                >
-                                  {t.viewJobs}
-                                </a>
-                                <a
                                   href={AI_APPLY_URL}
                                   target="_blank"
                                   rel="noopener noreferrer"
@@ -610,6 +601,15 @@ export default function HomeClient() {
                                   className="px-3 py-1.5 bg-[#FFBA0A] text-[#111827] text-xs font-bold rounded hover:bg-[#FFD060] transition-colors whitespace-nowrap"
                                 >
                                   {t.aiApplyCta}
+                                </a>
+                                <a
+                                  href={company.careers_url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  onClick={(e) => handleJobApplyClick(e, company, "card_desktop")}
+                                  className="px-3 py-1.5 border border-[#06634D] text-[#06634D] text-xs font-semibold rounded hover:bg-[#06634D]/5 transition-colors whitespace-nowrap"
+                                >
+                                  {t.viewJobs}
                                 </a>
                               </div>
                             </div>
@@ -624,15 +624,6 @@ export default function HomeClient() {
                               {company.stage}
                             </span>
                             <a
-                              href={company.careers_url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={(e) => handleJobApplyClick(e, company, "card_mobile")}
-                              className="px-2.5 py-1 bg-[#06634D] text-white text-[11px] font-semibold rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
-                            >
-                              {t.viewJobs}
-                            </a>
-                            <a
                               href={AI_APPLY_URL}
                               target="_blank"
                               rel="noopener noreferrer"
@@ -643,6 +634,15 @@ export default function HomeClient() {
                               className="px-2.5 py-1 bg-[#FFBA0A] text-[#111827] text-[11px] font-bold rounded hover:bg-[#FFD060] transition-colors whitespace-nowrap"
                             >
                               {t.aiApplyCta}
+                            </a>
+                            <a
+                              href={company.careers_url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => handleJobApplyClick(e, company, "card_mobile")}
+                              className="px-2.5 py-1 border border-[#06634D] text-[#06634D] text-[11px] font-semibold rounded hover:bg-[#06634D]/5 transition-colors whitespace-nowrap"
+                            >
+                              {t.viewJobs}
                             </a>
                           </div>
                         </div>
@@ -688,15 +688,6 @@ export default function HomeClient() {
                         </div>
                         <div className="mt-4 flex flex-col sm:flex-row gap-2">
                           <a
-                            href={company.careers_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(e) => handleJobApplyClick(e, company, "expanded")}
-                            className="inline-flex items-center justify-center gap-1.5 rounded bg-[#06634D] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#06634D]/90 transition-colors"
-                          >
-                            {t.viewJobs}
-                          </a>
-                          <a
                             href={AI_APPLY_URL}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -704,6 +695,15 @@ export default function HomeClient() {
                             className="inline-flex items-center justify-center rounded bg-[#FFBA0A] px-4 py-2.5 text-sm font-bold text-[#111827] hover:bg-[#FFD060] transition-colors"
                           >
                             {t.aiApplyCta}
+                          </a>
+                          <a
+                            href={company.careers_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => handleJobApplyClick(e, company, "expanded")}
+                            className="inline-flex items-center justify-center gap-1.5 rounded border border-[#06634D] px-4 py-2.5 text-sm font-semibold text-[#06634D] hover:bg-[#06634D]/5 transition-colors"
+                          >
+                            {t.viewJobs}
                           </a>
                           <Link
                             href={`/company/${company.slug}`}
