@@ -49,6 +49,20 @@ export default function HomeClient() {
   const [jobSeekerForm, setJobSeekerForm] = useState({ name: "", title: "", email: "" })
   const [jobSeekerStatus, setJobSeekerStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")
 
+  const openJobSeeker = useCallback((source: "header" | "auto_timeout" | "auto_scroll") => {
+    setShowJobSeeker(true)
+    posthog.capture("job_alert_popup_opened", { source })
+    if (source === "header") {
+      posthog.capture("job_alert_cta_clicked", { source: "header" })
+    }
+  }, [])
+
+  const closeJobSeeker = useCallback((dismiss_method: "close" | "backdrop") => {
+    posthog.capture("job_alert_popup_dismissed", { dismiss_method })
+    setShowJobSeeker(false)
+    setJobSeekerStatus("idle")
+  }, [])
+
   // Auto-popup: 8 seconds OR 25% scroll, whichever first. Once per day.
   useEffect(() => {
     const STORAGE_KEY = "buildsaudi_popup_dismissed"
@@ -56,20 +70,20 @@ export default function HomeClient() {
     if (dismissed && Date.now() - parseInt(dismissed) < 86400000) return // 24 hours
 
     let triggered = false
-    const trigger = () => {
+    const trigger = (source: "auto_timeout" | "auto_scroll") => {
       if (triggered) return
       triggered = true
-      setShowJobSeeker(true)
+      openJobSeeker(source)
       localStorage.setItem(STORAGE_KEY, Date.now().toString())
       window.removeEventListener("scroll", onScroll)
       clearTimeout(timer)
     }
 
-    const timer = setTimeout(trigger, 8000)
+    const timer = setTimeout(() => trigger("auto_timeout"), 8000)
 
     const onScroll = () => {
       const scrollPct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)
-      if (scrollPct >= 0.25) trigger()
+      if (scrollPct >= 0.25) trigger("auto_scroll")
     }
     window.addEventListener("scroll", onScroll)
 
@@ -77,7 +91,7 @@ export default function HomeClient() {
       clearTimeout(timer)
       window.removeEventListener("scroll", onScroll)
     }
-  }, [])
+  }, [openJobSeeker])
 
   const handleJobSeekerSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -225,7 +239,13 @@ export default function HomeClient() {
                 { name: "Mnzil", slug: "mnzl", amount: "$11.7M", round: "Series A" },
                 { name: "HALA", slug: "hala", amount: "$157M", round: "Series B" },
               ].map((item, i) => (
-                <Link key={i} href={`/company/${item.slug}`} className="inline-flex items-center hover:opacity-80" dir="ltr">
+                <Link
+                  key={i}
+                  href={`/company/${item.slug}`}
+                  className="inline-flex items-center hover:opacity-80"
+                  dir="ltr"
+                  onClick={() => posthog.capture("ticker_company_clicked", { company_slug: item.slug, company_name: item.name })}
+                >
                   <span className="px-5 text-[#06634D]/40">◆</span>
                   <span className="font-bold text-[#111827]">{item.name}</span>
                   <span className="mx-2 text-[#06634D] font-semibold">{item.amount}</span>
@@ -246,7 +266,13 @@ export default function HomeClient() {
       {/* Promo Banner */}
       {!showBannerDismissed && (
         <div className="bg-gradient-to-l from-[#06634D] to-[#0D8B6A] text-white py-2 sm:py-2.5 px-4 pr-10 relative" dir="rtl">
-          <a href="https://www.aiapply.co/?via=abdulla" target="_blank" rel="noopener noreferrer" className="block">
+          <a
+            href="https://www.aiapply.co/?via=abdulla"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+            onClick={() => posthog.capture("ai_apply_banner_clicked")}
+          >
             <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 text-xs sm:text-sm">
               <span>🎓 لسه تقدّم على وظايف بنفسك؟</span>
               <span className="bg-white text-[#06634D] font-bold px-3 py-1 rounded text-xs hover:bg-gray-100 transition-colors whitespace-nowrap">
@@ -254,7 +280,14 @@ export default function HomeClient() {
               </span>
             </div>
           </a>
-          <button onClick={(e) => { e.stopPropagation(); setShowBannerDismissed(true) }} className="absolute start-3 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-lg">×</button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              posthog.capture("ai_apply_banner_dismissed")
+              setShowBannerDismissed(true)
+            }}
+            className="absolute start-3 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-lg"
+          >×</button>
         </div>
       )}
 
@@ -294,7 +327,7 @@ export default function HomeClient() {
                 </a>
 
                 <button
-                  onClick={() => setShowJobSeeker(true)}
+                  onClick={() => openJobSeeker("header")}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold bg-[#D73833] text-white border border-[#D73833] rounded hover:bg-[#D73833]/90 transition-all whitespace-nowrap cursor-pointer"
                 >
                   <svg className="size-3.5 h-3.5" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
@@ -305,7 +338,13 @@ export default function HomeClient() {
               {/* Mobile install + language toggle */}
               <div className="mt-3 flex justify-end items-center gap-2 lg:hidden">
                 <InstallPrompt lang={lang} />
-                <LanguageToggle defaultLang="en" onLanguageChange={setLang} />
+                <LanguageToggle
+                  defaultLang="en"
+                  onLanguageChange={(next) => {
+                    posthog.capture("language_toggled", { from: lang, to: next })
+                    setLang(next)
+                  }}
+                />
               </div>
 
               {/* Mobile hot companies */}
@@ -322,6 +361,7 @@ export default function HomeClient() {
                       key={c.slug}
                       href={`/company/${c.slug}`}
                       className="py-2 first:pt-0 last:pb-0 flex items-center justify-between gap-2 hover:opacity-80"
+                      onClick={() => posthog.capture("hot_company_clicked", { company_slug: c.slug, placement: "mobile" })}
                     >
                       <span className="text-sm font-bold text-[#D73833]">{c.name}</span>
                       <span className="text-sm text-[#111827]">{c.sector[0]}</span>
@@ -333,7 +373,13 @@ export default function HomeClient() {
 
             {/* Right: Toggle + hot companies (desktop) */}
             <div className="hidden lg:flex flex-col items-end gap-2 flex-shrink-0">
-              <LanguageToggle defaultLang="en" onLanguageChange={setLang} />
+              <LanguageToggle
+                defaultLang="en"
+                onLanguageChange={(next) => {
+                  posthog.capture("language_toggled", { from: lang, to: next })
+                  setLang(next)
+                }}
+              />
               <div className="w-[280px] bg-[#D73833]/10 border-2 border-[#D73833] rounded-lg p-3 shadow-lg">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-xl">🔥</span>
@@ -347,6 +393,7 @@ export default function HomeClient() {
                       key={c.slug}
                       href={`/company/${c.slug}`}
                       className="py-2 first:pt-0 last:pb-0 flex items-center justify-between gap-2 hover:opacity-80"
+                      onClick={() => posthog.capture("hot_company_clicked", { company_slug: c.slug, placement: "desktop" })}
                     >
                       <span className="text-sm font-bold text-[#D73833]">{c.name}</span>
                       <span className="text-sm text-[#111827]">{c.sector[0]}</span>
@@ -433,7 +480,10 @@ export default function HomeClient() {
 
             {/* Suggest Company button */}
             <button
-              onClick={() => setShowSuggest(true)}
+              onClick={() => {
+                posthog.capture("suggest_company_opened", { placement: "filters" })
+                setShowSuggest(true)
+              }}
               className="flex items-center justify-center gap-1.5 w-full px-3 py-2 bg-[#D97706] border border-[#B45309] rounded text-xs text-white font-semibold hover:bg-[#B45309] hover:shadow-md transition-all"
             >
               <PlusCircle className="w-3.5 h-3.5" />
@@ -481,7 +531,10 @@ export default function HomeClient() {
                 placeholder={t.stage}
               />
               <button
-                onClick={() => setShowSuggest(true)}
+                onClick={() => {
+                  posthog.capture("suggest_company_opened", { placement: "mobile_filters" })
+                  setShowSuggest(true)
+                }}
                 className="inline-flex items-center gap-1 px-2 py-1 bg-[#FFBA0A]/10 border border-[#FFBA0A] rounded text-[11px] text-[#333333] hover:bg-[#FFBA0A]/20 transition-all"
               >
                 <PlusCircle className="w-3 h-3" />
@@ -625,12 +678,12 @@ export default function HomeClient() {
                         </div>
                         {/* Socials row */}
                         <div className="flex items-center gap-4 mt-3 pt-3 border-t border-gray-200">
-                          <a href={company.linkedin} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-gray-600 hover:text-gray-900 transition-colors p-1">
+                          <a href={company.linkedin} target="_blank" rel="noopener noreferrer" onClick={(e) => { e.stopPropagation(); posthog.capture("company_linkedin_clicked", { company_slug: company.slug }) }} className="text-gray-600 hover:text-gray-900 transition-colors p-1">
                             <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor">
                               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                             </svg>
                           </a>
-                          <a href={company.website} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-gray-600 hover:text-gray-900 transition-colors p-1">
+                          <a href={company.website} target="_blank" rel="noopener noreferrer" onClick={(e) => { e.stopPropagation(); posthog.capture("company_website_clicked", { company_slug: company.slug }) }} className="text-gray-600 hover:text-gray-900 transition-colors p-1">
                             <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                               <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                             </svg>
@@ -665,9 +718,9 @@ export default function HomeClient() {
 
       {/* ============ JOB SEEKER MODAL ============ */}
       {showJobSeeker && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4" onClick={() => { setShowJobSeeker(false); setJobSeekerStatus("idle") }}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4" onClick={() => closeJobSeeker("backdrop")}>
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-md p-6 relative" onClick={(e) => e.stopPropagation()}>
-            <button onClick={() => { setShowJobSeeker(false); setJobSeekerStatus("idle") }} className="absolute top-4 right-4 text-gray-600 hover:text-gray-600">
+            <button onClick={() => closeJobSeeker("close")} className="absolute top-4 right-4 text-gray-600 hover:text-gray-600">
               <X className="size-5" />
             </button>
 
@@ -675,8 +728,8 @@ export default function HomeClient() {
               <div className="w-12 h-12 rounded-full bg-[#D73833]/10 flex items-center justify-center mb-3">
                 <Search className="size-6 text-[#D73833]" />
               </div>
-              <h3 className="text-lg font-bold text-[#111827]">{t.searchJobs}</h3>
-              <p className="text-sm text-gray-600 mt-1">Sign up to get notified about Saudi startup jobs</p>
+              <h3 className="text-lg font-bold text-[#111827] text-center px-4">{t.searchJobsTitle}</h3>
+              <p className="text-sm text-gray-600 mt-1 text-center px-2">{t.searchJobsDesc}</p>
             </div>
 
             {jobSeekerStatus === "success" ? (
@@ -684,18 +737,18 @@ export default function HomeClient() {
                 <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-3">
                   <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                 </div>
-                <p className="text-sm font-medium text-green-700">You&apos;re in! We&apos;ll notify you when jobs drop.</p>
+                <p className="text-sm font-medium text-green-700">{t.jobAlertSuccess}</p>
               </div>
             ) : (
               <form onSubmit={handleJobSeekerSubmit} className="space-y-4">
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-600 mb-1.5">
-                    Name <span className="text-red-500">*</span>
+                    {t.name} <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
                     required
-                    placeholder="Your full name"
+                    placeholder={lang === "ar" ? "اسمك الكامل" : "Your full name"}
                     value={jobSeekerForm.name}
                     onChange={(e) => setJobSeekerForm(f => ({ ...f, name: e.target.value }))}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#D73833] focus:border-transparent"
@@ -703,12 +756,12 @@ export default function HomeClient() {
                 </div>
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-600 mb-1.5">
-                    Job Title <span className="text-red-500">*</span>
+                    {t.title} <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
                     required
-                    placeholder="e.g., Software Engineer"
+                    placeholder={lang === "ar" ? "مثال: مهندس برمجيات" : "e.g., Software Engineer"}
                     value={jobSeekerForm.title}
                     onChange={(e) => setJobSeekerForm(f => ({ ...f, title: e.target.value }))}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#D73833] focus:border-transparent"
@@ -716,7 +769,7 @@ export default function HomeClient() {
                 </div>
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-600 mb-1.5">
-                    Email <span className="text-red-500">*</span>
+                    {t.email} <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="email"
@@ -728,14 +781,14 @@ export default function HomeClient() {
                   />
                 </div>
                 {jobSeekerStatus === "error" && (
-                  <p className="text-sm text-red-600">Something went wrong. Try again.</p>
+                  <p className="text-sm text-red-600">{t.jobAlertError}</p>
                 )}
                 <button
                   type="submit"
                   disabled={jobSeekerStatus === "submitting"}
                   className="w-full py-2.5 bg-[#D73833] text-white font-semibold text-sm rounded-lg hover:bg-[#B82E2A] disabled:opacity-50 transition-colors"
                 >
-                  {jobSeekerStatus === "submitting" ? "Submitting..." : "Sign Up"}
+                  {jobSeekerStatus === "submitting" ? t.submitting : t.jobAlertSubmit}
                 </button>
               </form>
             )}

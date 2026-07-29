@@ -91,7 +91,10 @@ export function InstallPrompt({ lang }: { lang: Lang }) {
       {open && (
         <div
           className="fixed inset-0 z-[60] flex items-end justify-center bg-black/50"
-          onClick={() => setOpen(false)}
+          onClick={() => {
+            posthog.capture("install_prompt_closed")
+            setOpen(false)
+          }}
         >
           <div
             role="dialog"
@@ -105,7 +108,10 @@ export function InstallPrompt({ lang }: { lang: Lang }) {
 
             <button
               type="button"
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                posthog.capture("install_prompt_closed")
+                setOpen(false)
+              }}
               className="absolute top-4 end-4 text-gray-500 hover:text-gray-800 p-1"
               aria-label={t.installClose}
             >
