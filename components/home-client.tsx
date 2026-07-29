@@ -20,6 +20,9 @@ import { CompanyLogo } from "@/components/company-logo"
 import { InstallPrompt } from "@/components/install-prompt"
 import { SiteFooter } from "@/components/site-footer"
 
+const AI_APPLY_URL = "https://www.aiapply.co/?via=abdulla"
+const AI_APPLY_UPSELL_KEY = "buildsaudi_ai_apply_upsell_shown"
+
 export default function HomeClient() {
   const [lang, setLang] = useState<Lang>("en")
   const t = strings[lang]
@@ -42,12 +45,43 @@ export default function HomeClient() {
     city: "",
     companyStage: "",
   })
-  const [showBannerDismissed, setShowBannerDismissed] = useState(false)
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set())
   const [showSuggest, setShowSuggest] = useState(false)
   const [showJobSeeker, setShowJobSeeker] = useState(false)
+  const [showAiApplyUpsell, setShowAiApplyUpsell] = useState(false)
+  const [upsellCompany, setUpsellCompany] = useState<{ name: string; slug: string } | null>(null)
   const [jobSeekerForm, setJobSeekerForm] = useState({ name: "", title: "", email: "" })
   const [jobSeekerStatus, setJobSeekerStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")
+
+  const trackAiApply = useCallback((placement: string, company_slug?: string) => {
+    posthog.capture("ai_apply_clicked", { placement, company_slug })
+  }, [])
+
+  const maybeShowAiApplyUpsell = useCallback((company: { name: string; slug: string }) => {
+    try {
+      if (sessionStorage.getItem(AI_APPLY_UPSELL_KEY)) return
+      sessionStorage.setItem(AI_APPLY_UPSELL_KEY, "1")
+    } catch {
+      /* private mode */
+    }
+    setUpsellCompany(company)
+    setShowAiApplyUpsell(true)
+    posthog.capture("ai_apply_upsell_shown", { company: company.name, company_slug: company.slug })
+  }, [])
+
+  const handleJobApplyClick = useCallback(
+    (e: React.MouseEvent, company: { name: string; slug: string; careers_url: string }, placement: string) => {
+      e.stopPropagation()
+      posthog.capture("job_apply_clicked", {
+        company: company.name,
+        company_slug: company.slug,
+        url: company.careers_url,
+        placement,
+      })
+      maybeShowAiApplyUpsell({ name: company.name, slug: company.slug })
+    },
+    [maybeShowAiApplyUpsell],
+  )
 
   const openJobSeeker = useCallback((source: "header" | "auto_timeout" | "auto_scroll" | "deep_link") => {
     setShowJobSeeker(true)
@@ -228,79 +262,21 @@ export default function HomeClient() {
       {/* Arabic font */}
       <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-      {/* Funding News Ticker */}
-      <div className="border-b border-[#06634D]/20 overflow-hidden" style={{ height: "34px", backgroundColor: "#F0EAD8" }}>
-        <div className="flex items-center h-full flex-row-reverse">
-          <div className="flex-shrink-0 bg-[#06634D] text-white text-[10px] font-bold px-4 h-full flex items-center tracking-widest">
-            جولات استثمارية
-          </div>
-          <div className="overflow-hidden flex-1">
-            <div className="flex whitespace-nowrap text-[11px]" style={{ animation: "ticker 18s linear infinite" }}>
-              {[
-                { name: "Stitch", slug: "stitch-sa", amount: "$25M", round: "Series A" },
-                { name: "Aya", slug: "aya", amount: "SAR 26M", round: "Series A" },
-                { name: "Erad", slug: "erad", amount: "$51.5M", round: "Series B" },
-                { name: "WakeCap", slug: "wakecap", amount: "$28M", round: "Series A" },
-                { name: "Mnzil", slug: "mnzl", amount: "$11.7M", round: "Series A" },
-                { name: "HALA", slug: "hala", amount: "$157M", round: "Series B" },
-                { name: "Stitch", slug: "stitch-sa", amount: "$25M", round: "Series A" },
-                { name: "Aya", slug: "aya", amount: "SAR 26M", round: "Series A" },
-                { name: "Erad", slug: "erad", amount: "$51.5M", round: "Series B" },
-                { name: "WakeCap", slug: "wakecap", amount: "$28M", round: "Series A" },
-                { name: "Mnzil", slug: "mnzl", amount: "$11.7M", round: "Series A" },
-                { name: "HALA", slug: "hala", amount: "$157M", round: "Series B" },
-              ].map((item, i) => (
-                <Link
-                  key={i}
-                  href={`/company/${item.slug}`}
-                  className="inline-flex items-center hover:opacity-80"
-                  dir="ltr"
-                  onClick={() => posthog.capture("ticker_company_clicked", { company_slug: item.slug, company_name: item.name })}
-                >
-                  <span className="px-5 text-[#06634D]/40">◆</span>
-                  <span className="font-bold text-[#111827]">{item.name}</span>
-                  <span className="mx-2 text-[#06634D] font-semibold">{item.amount}</span>
-                  <span className="text-[#4B5563]">{item.round}</span>
-                </Link>
-              ))}
-            </div>
-          </div>
+      {/* AI Apply — proven money path; no dismiss (eyes + permanence) */}
+      <a
+        href={AI_APPLY_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => trackAiApply("banner")}
+        className="block bg-[#06634D] text-white px-4 py-3 sm:py-3.5 hover:bg-[#044D3B] transition-colors"
+      >
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-center">
+          <span className="text-sm sm:text-base font-semibold">{t.aiApplyBannerLine}</span>
+          <span className="inline-flex items-center bg-[#FFBA0A] text-[#111827] font-bold px-4 py-1.5 rounded text-sm whitespace-nowrap">
+            {t.aiApplyBannerOffer}
+          </span>
         </div>
-      </div>
-      <style>{`
-        @keyframes ticker {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-      `}</style>
-
-      {/* Promo Banner */}
-      {!showBannerDismissed && (
-        <div className="bg-gradient-to-l from-[#06634D] to-[#0D8B6A] text-white py-2 sm:py-2.5 px-4 pr-10 relative" dir="rtl">
-          <a
-            href="https://www.aiapply.co/?via=abdulla"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block"
-            onClick={() => posthog.capture("ai_apply_banner_clicked")}
-          >
-            <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 text-xs sm:text-sm">
-              <span>🎓 لسه تقدّم على وظايف بنفسك؟</span>
-              <span className="bg-white text-[#06634D] font-bold px-3 py-1 rounded text-xs hover:bg-gray-100 transition-colors whitespace-nowrap">
-                جرب AI Apply — خصم ٤٠٪ للطلاب والمتخرجين
-              </span>
-            </div>
-          </a>
-          <button
-            onClick={(e) => {
-              e.stopPropagation()
-              posthog.capture("ai_apply_banner_dismissed")
-              setShowBannerDismissed(true)
-            }}
-            className="absolute start-3 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-lg"
-          >×</button>
-        </div>
-      )}
+      </a>
 
       {/* ============ HEADER ============ */}
       <header className="border-b border-[#06634D]/20 bg-transparent">
@@ -339,9 +315,8 @@ export default function HomeClient() {
 
                 <button
                   onClick={() => openJobSeeker("header")}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold bg-[#D73833] text-white border border-[#D73833] rounded hover:bg-[#D73833]/90 transition-all whitespace-nowrap cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-transparent text-[#06634D] border border-[#06634D]/40 rounded hover:bg-[#06634D]/5 transition-all whitespace-nowrap cursor-pointer"
                 >
-                  <svg className="size-3.5 h-3.5" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                   {t.searchJobs}
                 </button>
               </div>
@@ -619,10 +594,22 @@ export default function HomeClient() {
                                   href={company.careers_url}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  onClick={(e) => { e.stopPropagation(); posthog.capture("job_apply_clicked", { company: company.name, company_slug: company.slug, url: company.careers_url }) }}
+                                  onClick={(e) => handleJobApplyClick(e, company, "card_desktop")}
                                   className="px-3 py-1.5 bg-[#06634D] text-white text-xs font-semibold rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
                                 >
                                   {t.viewJobs}
+                                </a>
+                                <a
+                                  href={AI_APPLY_URL}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  onClick={(e) => {
+                                    e.stopPropagation()
+                                    trackAiApply("card_desktop", company.slug)
+                                  }}
+                                  className="px-3 py-1.5 bg-[#FFBA0A] text-[#111827] text-xs font-bold rounded hover:bg-[#FFD060] transition-colors whitespace-nowrap"
+                                >
+                                  {t.aiApplyCta}
                                 </a>
                               </div>
                             </div>
@@ -640,10 +627,22 @@ export default function HomeClient() {
                               href={company.careers_url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              onClick={(e) => { e.stopPropagation(); posthog.capture("job_apply_clicked", { company: company.name, company_slug: company.slug, url: company.careers_url }) }}
+                              onClick={(e) => handleJobApplyClick(e, company, "card_mobile")}
                               className="px-2.5 py-1 bg-[#06634D] text-white text-[11px] font-semibold rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
                             >
                               {t.viewJobs}
+                            </a>
+                            <a
+                              href={AI_APPLY_URL}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                trackAiApply("card_mobile", company.slug)
+                              }}
+                              className="px-2.5 py-1 bg-[#FFBA0A] text-[#111827] text-[11px] font-bold rounded hover:bg-[#FFD060] transition-colors whitespace-nowrap"
+                            >
+                              {t.aiApplyCta}
                             </a>
                           </div>
                         </div>
@@ -692,10 +691,19 @@ export default function HomeClient() {
                             href={company.careers_url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            onClick={() => posthog.capture("job_apply_clicked", { company: company.name, company_slug: company.slug, url: company.careers_url, placement: "expanded" })}
+                            onClick={(e) => handleJobApplyClick(e, company, "expanded")}
                             className="inline-flex items-center justify-center gap-1.5 rounded bg-[#06634D] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#06634D]/90 transition-colors"
                           >
                             {t.viewJobs}
+                          </a>
+                          <a
+                            href={AI_APPLY_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => trackAiApply("expanded", company.slug)}
+                            className="inline-flex items-center justify-center rounded bg-[#FFBA0A] px-4 py-2.5 text-sm font-bold text-[#111827] hover:bg-[#FFD060] transition-colors"
+                          >
+                            {t.aiApplyCta}
                           </a>
                           <Link
                             href={`/company/${company.slug}`}
@@ -743,6 +751,66 @@ export default function HomeClient() {
       </div>
 
       <SiteFooter />
+
+      {/* ============ AI APPLY UPSELL (once/session after Apply) ============ */}
+      {showAiApplyUpsell && (
+        <div
+          className="fixed inset-0 z-[60] flex items-end sm:items-center justify-center bg-black/50 px-4 pb-6 sm:pb-4"
+          onClick={() => {
+            posthog.capture("ai_apply_upsell_dismissed", { method: "backdrop" })
+            setShowAiApplyUpsell(false)
+          }}
+        >
+          <div
+            className="bg-white rounded-xl shadow-2xl w-full max-w-md p-6 relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => {
+                posthog.capture("ai_apply_upsell_dismissed", { method: "close" })
+                setShowAiApplyUpsell(false)
+              }}
+              className="absolute top-4 end-4 text-gray-500 hover:text-gray-800"
+              aria-label="Close"
+            >
+              <X className="size-5" />
+            </button>
+            <h3 className="text-lg font-bold text-[#111827] pe-8">{t.aiApplyUpsellTitle}</h3>
+            <p className="text-sm text-gray-600 mt-2 leading-relaxed">
+              {upsellCompany
+                ? lang === "ar"
+                  ? `فتحت صفحة ${upsellCompany.name}. ${t.aiApplyUpsellDesc}`
+                  : `You opened ${upsellCompany.name}. ${t.aiApplyUpsellDesc}`
+                : t.aiApplyUpsellDesc}
+            </p>
+            <div className="mt-5 flex flex-col gap-2">
+              <a
+                href={AI_APPLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  trackAiApply("upsell", upsellCompany?.slug)
+                  setShowAiApplyUpsell(false)
+                }}
+                className="inline-flex items-center justify-center rounded bg-[#FFBA0A] px-4 py-3 text-sm font-bold text-[#111827] hover:bg-[#FFD060] transition-colors"
+              >
+                {t.aiApplyUpsellCta}
+              </a>
+              <button
+                type="button"
+                onClick={() => {
+                  posthog.capture("ai_apply_upsell_dismissed", { method: "skip" })
+                  setShowAiApplyUpsell(false)
+                }}
+                className="text-sm text-gray-500 hover:text-gray-800 py-2"
+              >
+                {t.aiApplyUpsellSkip}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ============ JOB SEEKER MODAL ============ */}
       {showJobSeeker && (

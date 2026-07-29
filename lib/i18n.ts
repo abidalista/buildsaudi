@@ -48,6 +48,13 @@ export const strings = {
     installFooterNote: "استخدم خيارات المشاركة أو القائمة في المتصفح لإضافة هذه الصفحة إلى شاشتك الرئيسية.",
     installNeverAgain: "لا تُظهر مرة أخرى",
     installClose: "إغلاق",
+    aiApplyCta: "AI Apply",
+    aiApplyBannerLine: "لسه تقدّم على وظايف بنفسك؟",
+    aiApplyBannerOffer: "جرب AI Apply — خصم ٤٠٪ للطلاب والمتخرجين",
+    aiApplyUpsellTitle: "تبي تقدّم أسرع؟",
+    aiApplyUpsellDesc: "AI Apply يكتب سيرتك ويقدّم عنك على مئات الوظائف — خصم ٤٠٪ للطلاب والمتخرجين.",
+    aiApplyUpsellCta: "جرّب AI Apply",
+    aiApplyUpsellSkip: "كمّل بدون",
   },
   en: {
     tagline: "A curated directory of companies building the future of Saudi",
@@ -98,6 +105,13 @@ export const strings = {
     installFooterNote: "Use your browser's share or menu options to add this page to your home screen.",
     installNeverAgain: "Never show again",
     installClose: "Close",
+    aiApplyCta: "AI Apply",
+    aiApplyBannerLine: "Still applying one-by-one?",
+    aiApplyBannerOffer: "Try AI Apply — 40% off for students & grads",
+    aiApplyUpsellTitle: "Apply faster?",
+    aiApplyUpsellDesc: "AI Apply writes your CV and applies for you across hundreds of roles — 40% off for students & grads.",
+    aiApplyUpsellCta: "Try AI Apply",
+    aiApplyUpsellSkip: "Skip",
   },
 } as const
 
