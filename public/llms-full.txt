@@ -1,0 +1,157 @@
+# BuildSaudi — full company index
+
+> Complete list of company profiles on https://buildsaudi.co
+
+Each entry links to the BuildSaudi profile. Applications go to the employer careers URL listed on that page.
+
+## Companies (144)
+
+- Abwab.ai (Seed, Fintech, Riyadh): https://buildsaudi.co/company/abwab-ai
+- Advanced Electronics Company (Growth, Data & Infrastructure, Riyadh): https://buildsaudi.co/company/aec
+- Alat (Growth, Deep Tech, Riyadh): https://buildsaudi.co/company/alat
+- AlGooru (Series A, Edtech, Riyadh): https://buildsaudi.co/company/algooru
+- Aqarz (Seed, Proptech, Riyadh): https://buildsaudi.co/company/aqarz
+- Aramco Digital (Growth, Data & Infrastructure, Dhahran): https://buildsaudi.co/company/aramco-digital
+- Arat Capital (Seed, Fintech, Riyadh): https://buildsaudi.co/company/arat
+- ATAM (Seed, Defense, Riyadh): https://buildsaudi.co/company/atam
+- Audiom (Seed, Media, Riyadh): https://buildsaudi.co/company/audiom
+- Aumet (Series A, Healthtech, Riyadh): https://buildsaudi.co/company/aumet
+- Aya (Series A, E-commerce, Riyadh): https://buildsaudi.co/company/aya
+- AYEN (Series A, Construction, Riyadh): https://buildsaudi.co/company/ayen
+- Ballurh (Seed, Foodtech, Riyadh): https://buildsaudi.co/company/ballurh
+- BRKZ (Series A, Construction, Riyadh): https://buildsaudi.co/company/brkz
+- Bynow (Seed, Fintech, Riyadh): https://buildsaudi.co/company/bynow
+- Caly (Seed, Construction, Riyadh): https://buildsaudi.co/company/caly
+- CARWAH (Seed, Logistics, Riyadh): https://buildsaudi.co/company/carwah
+- Ceer Motors (Growth, Deep Tech, Riyadh): https://buildsaudi.co/company/ceer
+- Center3 (Growth, Data & Infrastructure, Riyadh): https://buildsaudi.co/company/center3
+- Classera (Series A, Edtech, Riyadh): https://buildsaudi.co/company/classera
+- Cognna (Series A, Cybersecurity, Riyadh): https://buildsaudi.co/company/cognna
+- Cranl (Seed, AI, Riyadh): https://buildsaudi.co/company/cranl
+- Cura (Series A, Healthtech, Riyadh): https://buildsaudi.co/company/cura
+- D360 Bank (Growth, Fintech, Riyadh): https://buildsaudi.co/company/d360
+- DEEP.SA (Seed, AI, Riyadh): https://buildsaudi.co/company/deep-sa
+- Doos (Seed, E-commerce, Riyadh): https://buildsaudi.co/company/doos
+- dPhish (Seed, Cybersecurity, Riyadh): https://buildsaudi.co/company/dphish
+- Edama (Seed, Agriculture, Riyadh): https://buildsaudi.co/company/edama
+- Ejari (Series A, Proptech, Riyadh): https://buildsaudi.co/company/ejari
+- Elements (Seed, Fintech, Riyadh): https://buildsaudi.co/company/runelements
+- Entropy (Seed, AI, Riyadh): https://buildsaudi.co/company/entropy
+- Erad (Seed, Fintech, Riyadh): https://buildsaudi.co/company/erad
+- Ertikaz Solutions (Seed, Logistics, Riyadh): https://buildsaudi.co/company/ertikaz-solutions
+- Fahes (Seed, Govtech, Riyadh): https://buildsaudi.co/company/fahes
+- FalconViz (Series A, Deep Tech, Dammam): https://buildsaudi.co/company/falconviz
+- Firnas (Seed, Travel, Riyadh): https://buildsaudi.co/company/firnas
+- Foodics (Series C, Foodtech, Riyadh): https://buildsaudi.co/company/foodics
+- Gathern (Series B, E-commerce, Riyadh): https://buildsaudi.co/company/gathern
+- GBT (GulfBoost) (Seed, Geospatial, Riyadh): https://buildsaudi.co/company/gbt
+- Glamera (Seed, Healthtech, Riyadh): https://buildsaudi.co/company/glamera
+- Governata (Seed, Govtech, Riyadh): https://buildsaudi.co/company/governata
+- HALA (Series B, Fintech, Riyadh): https://buildsaudi.co/company/hala
+- Halo (Seed, Media, Riyadh): https://buildsaudi.co/company/halo-media
+- Hazen.ai (Seed, AI, Jeddah): https://buildsaudi.co/company/hazen
+- Hudhud AI (Seed, AI, Riyadh): https://buildsaudi.co/company/hudhud-ai
+- Humain (Growth, AI, Riyadh): https://buildsaudi.co/company/humain
+- Intella (Series A, AI, Riyadh): https://buildsaudi.co/company/intella-ai
+- Intelmatix (Series A, AI, Riyadh): https://buildsaudi.co/company/intelmatix
+- ISNAAD (Series A, Logistics, Riyadh): https://buildsaudi.co/company/isnaad
+- Jahez (Growth, Foodtech, Riyadh): https://buildsaudi.co/company/jahez
+- Jaree (Seed, Fintech, Riyadh): https://buildsaudi.co/company/jaree
+- Jdar (Pre-Seed, Healthtech, Riyadh): https://buildsaudi.co/company/jdar
+- Jisr (Series A, HR Tech, Riyadh): https://buildsaudi.co/company/jisr
+- Juthor (Seed, E-commerce, Riyadh): https://buildsaudi.co/company/juthor
+- Kilow (Seed, Healthtech, Riyadh): https://buildsaudi.co/company/kilow
+- KLIQ (Seed, Media, Riyadh): https://buildsaudi.co/company/kliq
+- Labayh (Series A, Healthtech, Riyadh): https://buildsaudi.co/company/labayh
+- Lean Technologies (Series B, Fintech, Riyadh): https://buildsaudi.co/company/lean-technologies
+- Leejak (Seed, Logistics, Riyadh): https://buildsaudi.co/company/leejak
+- Lendo (Series B, Fintech, Riyadh): https://buildsaudi.co/company/lendo
+- Livedin (Seed, Proptech, Riyadh): https://buildsaudi.co/company/livedin
+- Lucidya (Series B, AI, Riyadh): https://buildsaudi.co/company/lucidya
+- Madkhol (Seed, Fintech, Riyadh): https://buildsaudi.co/company/madkhol
+- Mawj.ai (Seed, AI, Riyadh): https://buildsaudi.co/company/mawj-ai
+- Merit Incentives (Growth, HR Tech, Riyadh): https://buildsaudi.co/company/merit-incentives
+- MisMar (Series A, Logistics, Riyadh): https://buildsaudi.co/company/mismar
+- Mnzil (Series A, Proptech, Riyadh): https://buildsaudi.co/company/mnzl
+- Motory (Growth, E-commerce, Riyadh): https://buildsaudi.co/company/motery
+- Mozn (Series A, AI, Riyadh): https://buildsaudi.co/company/mozn
+- Mrsool (Series B, Logistics, Riyadh): https://buildsaudi.co/company/mrsool
+- Nabt (Seed, Agriculture, Riyadh): https://buildsaudi.co/company/nabt
+- NANA (Series C, E-commerce, Riyadh): https://buildsaudi.co/company/nana
+- NAYLA (Series A, Fintech, Riyadh): https://buildsaudi.co/company/nayla
+- Neo Space Group (Seed, Defense, Riyadh): https://buildsaudi.co/company/neo-space
+- Newera.ai (Pre-Seed, AI, Riyadh): https://buildsaudi.co/company/newera-ai
+- Ninja (Unicorn, Logistics, Riyadh): https://buildsaudi.co/company/ninja
+- Nitx (Seed, Media, Riyadh): https://buildsaudi.co/company/nitx
+- Noon Academy (Series B, Edtech, Riyadh): https://buildsaudi.co/company/noon-academy
+- Nqoodlet (Seed, Fintech, Riyadh): https://buildsaudi.co/company/nqoodlet
+- Nua Security (Seed, Cybersecurity, Riyadh): https://buildsaudi.co/company/nua-security
+- Nugttah (Seed, Foodtech, Riyadh): https://buildsaudi.co/company/nugttah
+- Nuzul (Pre-Seed, Proptech, Riyadh): https://buildsaudi.co/company/nuzul
+- Omniful (Seed, E-commerce, Riyadh): https://buildsaudi.co/company/omniful
+- Oqood (Seed, Legaltech, Riyadh): https://buildsaudi.co/company/oqood
+- OTO (Series A, Logistics, Riyadh): https://buildsaudi.co/company/oto
+- Oumla (Seed, Fintech, Riyadh): https://buildsaudi.co/company/oumla
+- Penny (Pre-Series A, SaaS, Riyadh): https://buildsaudi.co/company/penny
+- PetroApp (Series A, Energy, Riyadh): https://buildsaudi.co/company/petroapp
+- Picship (Seed, Logistics, Riyadh): https://buildsaudi.co/company/picship
+- PROVEN Robotics (Growth, Robotics, Riyadh): https://buildsaudi.co/company/proven-robotics
+- Qawafel (Seed, E-commerce, Riyadh): https://buildsaudi.co/company/qawafel
+- Rasan (Growth, Fintech, Riyadh): https://buildsaudi.co/company/rasan
+- Rased (Seed, AI, Riyadh): https://buildsaudi.co/company/rased
+- RasMal (Seed, Fintech, Riyadh): https://buildsaudi.co/company/rasmal
+- Rewaa (Series B, E-commerce, Riyadh): https://buildsaudi.co/company/rewaa
+- Riyadh Air (Growth, Logistics, Riyadh): https://buildsaudi.co/company/riyadh-air
+- Riyadh Dynamics (Growth, Robotics, Riyadh): https://buildsaudi.co/company/riyadh-dynamics
+- Rize (Series A, Proptech, Riyadh): https://buildsaudi.co/company/rize
+- Robonito (Seed, AI, Riyadh): https://buildsaudi.co/company/robonito
+- Safqah Capital (Seed, Fintech, Riyadh): https://buildsaudi.co/company/safqah
+- Sahl.ai (Seed, Healthtech, Riyadh): https://buildsaudi.co/company/sahl-ai
+- Salla (Unicorn, E-commerce, Riyadh): https://buildsaudi.co/company/salla
+- Sarj AI (Seed, AI, Riyadh): https://buildsaudi.co/company/sarj-ai
+- Sary (Series C, E-commerce, Riyadh): https://buildsaudi.co/company/sary
+- Shaffra (Series A, AI, Riyadh): https://buildsaudi.co/company/shaffra
+- Shiftat (Seed, HR Tech, Riyadh): https://buildsaudi.co/company/shiftat
+- SiFi (Series A, Fintech, Riyadh): https://buildsaudi.co/company/sifi
+- Sighti.ai (Seed, AI, Riyadh): https://buildsaudi.co/company/sighti
+- Signit (Series A, AI, Riyadh): https://buildsaudi.co/company/signit
+- Sindbad.Tech (Seed, Fintech, Riyadh): https://buildsaudi.co/company/sindbad-tech
+- Sirdab (Seed, Logistics, Riyadh): https://buildsaudi.co/company/sirdab
+- Solidrange (Seed, Cybersecurity, Riyadh): https://buildsaudi.co/company/solidrange
+- Soum (Series A, E-commerce, Riyadh): https://buildsaudi.co/company/soum
+- SPLYD (Pre-Seed, Fintech, Riyadh): https://buildsaudi.co/company/splyd
+- SPOILZ (Seed, Gaming, Riyadh): https://buildsaudi.co/company/spoilz
+- STAMP (Pre-Seed, Legaltech, Riyadh): https://buildsaudi.co/company/stamp
+- STC Bank (Unicorn, Fintech, Riyadh): https://buildsaudi.co/company/stc-pay
+- STC Solutions (Growth, Data & Infrastructure, Riyadh): https://buildsaudi.co/company/stc-solutions
+- Stitch (Series A, Fintech, Riyadh): https://buildsaudi.co/company/stitch-sa
+- String (Seed, Construction, Riyadh): https://buildsaudi.co/company/string-tech
+- Suplift (Seed, Media, Riyadh): https://buildsaudi.co/company/suplift
+- Supplai (Seed, Logistics, Riyadh): https://buildsaudi.co/company/supplai
+- Sweater (Growth, Logistics, Riyadh): https://buildsaudi.co/company/sweater
+- Syarah (Series C, E-commerce, Riyadh): https://buildsaudi.co/company/syarah
+- TABsense (Seed, Fintech, Riyadh): https://buildsaudi.co/company/tabsense
+- Tamam (Growth, Fintech, Riyadh): https://buildsaudi.co/company/tamam
+- Tamara (Unicorn, Fintech, Riyadh): https://buildsaudi.co/company/tamara
+- Telfaz11 (Series A, Media, Riyadh): https://buildsaudi.co/company/telfaz11
+- Telgani (Series A, Logistics, Riyadh): https://buildsaudi.co/company/telgani
+- Thmanyah (Growth, Media, Riyadh): https://buildsaudi.co/company/thmanyah
+- Throughput (Seed, Logistics, Riyadh): https://buildsaudi.co/company/throughput
+- Torod (Seed, Logistics, Riyadh): https://buildsaudi.co/company/torod
+- TruBuild (Seed, Construction, Riyadh): https://buildsaudi.co/company/trubuild
+- Tweeq (Growth, Fintech, Riyadh): https://buildsaudi.co/company/tweeq
+- UMX Studio (Growth, Gaming, Riyadh): https://buildsaudi.co/company/umx-studio
+- Unifonic (Series B, AI, Riyadh): https://buildsaudi.co/company/unifonic
+- Velents.ai (Seed, AI, Riyadh): https://buildsaudi.co/company/velents
+- Vuz (Series B, Media, Riyadh): https://buildsaudi.co/company/vuz
+- WakeCap (Series A, AI, Riyadh): https://buildsaudi.co/company/wakecap
+- WhiteHelmet (Seed, Construction, Riyadh): https://buildsaudi.co/company/whitehelmet
+- WHJ (Seed, AI, Riyadh): https://buildsaudi.co/company/whj
+- Wittify.ai (Seed, AI, Riyadh): https://buildsaudi.co/company/wittify
+- Yamm (Seed, Fintech, Riyadh): https://buildsaudi.co/company/yamm
+- Zid (Series B, E-commerce, Riyadh): https://buildsaudi.co/company/zid
+
+## Related
+
+- Directory home: https://buildsaudi.co/
+- Compact AI index: https://buildsaudi.co/llms.txt

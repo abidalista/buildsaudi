@@ -49,7 +49,7 @@ export default function HomeClient() {
   const [jobSeekerForm, setJobSeekerForm] = useState({ name: "", title: "", email: "" })
   const [jobSeekerStatus, setJobSeekerStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")
 
-  const openJobSeeker = useCallback((source: "header" | "auto_timeout" | "auto_scroll") => {
+  const openJobSeeker = useCallback((source: "header" | "auto_timeout" | "auto_scroll" | "deep_link") => {
     setShowJobSeeker(true)
     posthog.capture("job_alert_popup_opened", { source })
     if (source === "header") {
@@ -63,11 +63,22 @@ export default function HomeClient() {
     setJobSeekerStatus("idle")
   }, [])
 
+  // Deep link from company pages: /?open_alerts=1
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get("open_alerts") !== "1") return
+    openJobSeeker("deep_link")
+    params.delete("open_alerts")
+    const next = params.toString()
+    window.history.replaceState({}, "", next ? `/?${next}` : "/")
+  }, [openJobSeeker])
+
   // Auto-popup: 8 seconds OR 25% scroll, whichever first. Once per day.
   useEffect(() => {
     const STORAGE_KEY = "buildsaudi_popup_dismissed"
     const dismissed = localStorage.getItem(STORAGE_KEY)
     if (dismissed && Date.now() - parseInt(dismissed) < 86400000) return // 24 hours
+    if (new URLSearchParams(window.location.search).get("open_alerts") === "1") return
 
     let triggered = false
     const trigger = (source: "auto_timeout" | "auto_scroll") => {
@@ -609,7 +620,7 @@ export default function HomeClient() {
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   onClick={(e) => { e.stopPropagation(); posthog.capture("job_apply_clicked", { company: company.name, company_slug: company.slug, url: company.careers_url }) }}
-                                  className="px-2.5 py-1 bg-[#06634D] text-white text-xs rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
+                                  className="px-3 py-1.5 bg-[#06634D] text-white text-xs font-semibold rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
                                 >
                                   {t.viewJobs}
                                 </a>
@@ -630,7 +641,7 @@ export default function HomeClient() {
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={(e) => { e.stopPropagation(); posthog.capture("job_apply_clicked", { company: company.name, company_slug: company.slug, url: company.careers_url }) }}
-                              className="px-2 py-0.5 bg-[#06634D] text-white text-[11px] rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
+                              className="px-2.5 py-1 bg-[#06634D] text-white text-[11px] font-semibold rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
                             >
                               {t.viewJobs}
                             </a>
@@ -647,7 +658,7 @@ export default function HomeClient() {
                     {/* Expandable Details */}
                     <div
                       className="overflow-hidden transition-all duration-300 ease-out"
-                      style={{ maxHeight: isExpanded ? "400px" : "0", opacity: isExpanded ? 1 : 0 }}
+                      style={{ maxHeight: isExpanded ? "480px" : "0", opacity: isExpanded ? 1 : 0 }}
                     >
                       <div className="border-t border-gray-200 bg-gray-50 px-4 sm:px-6 py-4">
                         <div className="grid grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-3">
@@ -675,6 +686,23 @@ export default function HomeClient() {
                             <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-600">Last Round</div>
                             <div className="text-xs sm:text-sm text-gray-900 font-medium">{company.last_round_date || "—"}</div>
                           </div>
+                        </div>
+                        <div className="mt-4 flex flex-col sm:flex-row gap-2">
+                          <a
+                            href={company.careers_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => posthog.capture("job_apply_clicked", { company: company.name, company_slug: company.slug, url: company.careers_url, placement: "expanded" })}
+                            className="inline-flex items-center justify-center gap-1.5 rounded bg-[#06634D] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#06634D]/90 transition-colors"
+                          >
+                            {t.viewJobs}
+                          </a>
+                          <Link
+                            href={`/company/${company.slug}`}
+                            className="inline-flex items-center justify-center rounded border border-gray-300 px-4 py-2.5 text-sm font-medium text-gray-800 hover:bg-white transition-colors"
+                          >
+                            {company.name} profile
+                          </Link>
                         </div>
                         {/* Socials row */}
                         <div className="flex items-center gap-4 mt-3 pt-3 border-t border-gray-200">

@@ -75,18 +75,25 @@ export default async function SectorPage({ params }: { params: Promise<{ sector:
           {sectorCompanies.map((company) => (
             <div key={company.slug} className="group bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden">
               <div className="flex items-center gap-3 sm:gap-5 px-5 py-4">
-                <div className="flex size-12 sm:size-14 shrink-0 items-center justify-center rounded-xl bg-white border border-gray-200 overflow-hidden">
+                <Link href={`/company/${company.slug}`} className="flex size-12 sm:size-14 shrink-0 items-center justify-center rounded-xl bg-white border border-gray-200 overflow-hidden">
                   <CompanyLogo company={company} />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <Link href={`/company/${company.slug}`} className="text-lg font-bold text-[#111827] hover:text-[#06634D] transition-colors">{company.name}</Link>
+                </Link>
+                <Link href={`/company/${company.slug}`} className="flex-1 min-w-0 block">
+                  <span className="text-lg font-bold text-[#111827] group-hover:text-[#06634D] transition-colors">{company.name}</span>
                   <p className="mt-0.5 text-sm text-[#6B7280] truncate">{company.description}</p>
-                </div>
+                </Link>
                 <div className="flex-shrink-0 flex flex-col items-end gap-1 sm:gap-2">
                   <span className="px-1 py-0.5 sm:px-2.5 sm:py-1 bg-gray-100 border border-gray-200 text-gray-700 text-[10px] sm:text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">{company.sector[0]}</span>
                   <div className="flex items-center gap-1 sm:gap-2">
                     <span className="px-1 py-0.5 sm:px-2.5 sm:py-1 bg-gray-100 border border-gray-200 text-gray-700 text-[10px] sm:text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">{company.stage}</span>
-                    <Link href={`/company/${company.slug}`} className="px-1 py-0.5 sm:px-2.5 sm:py-1 bg-[#06634D] text-white text-[10px] sm:text-xs font-mono rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap">View Jobs</Link>
+                    <a
+                      href={company.careers_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-2 py-1 sm:px-2.5 sm:py-1.5 bg-[#06634D] text-white text-[10px] sm:text-xs font-semibold rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
+                    >
+                      Apply
+                    </a>
                   </div>
                 </div>
               </div>
