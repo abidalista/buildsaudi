@@ -2,47 +2,15 @@
 
 import posthog from "posthog-js"
 import { PostHogProvider as PHProvider, usePostHog } from "posthog-js/react"
-import { useEffect, useRef } from "react"
+import { Suspense, useEffect } from "react"
 import { usePathname, useSearchParams } from "next/navigation"
 
-const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN!.trim()
-const POSTHOG_HOST = "/ingest"
-
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
-  const initialized = useRef(false)
-
-  useEffect(() => {
-    if (!initialized.current && typeof window !== "undefined") {
-      posthog.init(POSTHOG_KEY, {
-        api_host: POSTHOG_HOST,
-        ui_host: "https://eu.posthog.com",
-        person_profiles: "always",
-        capture_pageview: false,
-        capture_pageleave: true,
-        capture_performance: true,
-        capture_exceptions: true,
-        disable_session_recording: false,
-        session_recording: {
-          maskAllInputs: false,
-          maskInputOptions: {
-            password: true,
-          },
-        },
-        autocapture: {
-          dom_event_allowlist: ["click", "change", "submit"],
-          element_allowlist: ["a", "button", "form", "input", "select", "textarea"],
-          css_selector_allowlist: ["[data-ph-capture]"],
-        },
-        capture_dead_clicks: true,
-        scroll_root_selector: ["#main-content", "body"],
-      })
-      initialized.current = true
-    }
-  }, [])
-
   return (
     <PHProvider client={posthog}>
-      <PostHogPageview />
+      <Suspense fallback={null}>
+        <PostHogPageview />
+      </Suspense>
       {children}
     </PHProvider>
   )

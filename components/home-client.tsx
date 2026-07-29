@@ -212,25 +212,25 @@ export default function HomeClient() {
           <div className="overflow-hidden flex-1">
             <div className="flex whitespace-nowrap text-[11px]" style={{ animation: "ticker 18s linear infinite" }}>
               {[
-                { name: "Stitch", amount: "$25M", round: "Series A" },
-                { name: "Aya", amount: "SAR 26M", round: "Series A" },
-                { name: "Erad", amount: "$51.5M", round: "Series B" },
-                { name: "WakeCap", amount: "$28M", round: "Series A" },
-                { name: "Mnzil", amount: "$11.7M", round: "Series A" },
-                { name: "HALA", amount: "$157M", round: "Series B" },
-                { name: "Stitch", amount: "$25M", round: "Series A" },
-                { name: "Aya", amount: "SAR 26M", round: "Series A" },
-                { name: "Erad", amount: "$51.5M", round: "Series B" },
-                { name: "WakeCap", amount: "$28M", round: "Series A" },
-                { name: "Mnzil", amount: "$11.7M", round: "Series A" },
-                { name: "HALA", amount: "$157M", round: "Series B" },
+                { name: "Stitch", slug: "stitch-sa", amount: "$25M", round: "Series A" },
+                { name: "Aya", slug: "aya", amount: "SAR 26M", round: "Series A" },
+                { name: "Erad", slug: "erad", amount: "$51.5M", round: "Series B" },
+                { name: "WakeCap", slug: "wakecap", amount: "$28M", round: "Series A" },
+                { name: "Mnzil", slug: "mnzl", amount: "$11.7M", round: "Series A" },
+                { name: "HALA", slug: "hala", amount: "$157M", round: "Series B" },
+                { name: "Stitch", slug: "stitch-sa", amount: "$25M", round: "Series A" },
+                { name: "Aya", slug: "aya", amount: "SAR 26M", round: "Series A" },
+                { name: "Erad", slug: "erad", amount: "$51.5M", round: "Series B" },
+                { name: "WakeCap", slug: "wakecap", amount: "$28M", round: "Series A" },
+                { name: "Mnzil", slug: "mnzl", amount: "$11.7M", round: "Series A" },
+                { name: "HALA", slug: "hala", amount: "$157M", round: "Series B" },
               ].map((item, i) => (
-                <span key={i} className="inline-flex items-center" dir="ltr">
+                <Link key={i} href={`/company/${item.slug}`} className="inline-flex items-center hover:opacity-80" dir="ltr">
                   <span className="px-5 text-[#06634D]/40">◆</span>
                   <span className="font-bold text-[#111827]">{item.name}</span>
                   <span className="mx-2 text-[#06634D] font-semibold">{item.amount}</span>
                   <span className="text-[#4B5563]">{item.round}</span>
-                </span>
+                </Link>
               ))}
             </div>
           </div>
@@ -264,23 +264,17 @@ export default function HomeClient() {
           <div className="flex items-start justify-between gap-4 sm:gap-6">
             {/* Left: Logo + tagline + action buttons */}
             <div className="flex-1">
-              {/* Logo */}
+              {/* Logo — span on homepage to avoid self-link dead clicks */}
               <div className="flex justify-center sm:justify-start mb-3">
-                <Link href="/" className="relative inline-block px-5 py-3">
-                  {/* Top-left corner */}
+                <div className="relative inline-block px-5 py-3">
                   <span className="absolute top-0 left-0 w-4 h-4 sm:w-5 sm:h-5 border-l-[3px] border-t-[3px] border-[#06634D]/30" />
-                  {/* Top-right corner */}
                   <span className="absolute top-0 right-0 w-4 h-4 sm:w-5 sm:h-5 border-r-[3px] border-t-[3px] border-[#06634D]/30" />
-                  {/* Bottom-left corner */}
                   <span className="absolute bottom-0 left-0 w-4 h-4 sm:w-5 sm:h-5 border-l-[3px] border-b-[3px] border-[#06634D]/30" />
-                  {/* Bottom-right corner */}
                   <span className="absolute bottom-0 right-0 w-4 h-4 sm:w-5 sm:h-5 border-r-[3px] border-b-[3px] border-[#06634D]/30" />
-                  <h1
-                    className="text-[clamp(1.8rem,4vw,3rem)] font-bold leading-none text-[#06634D] tracking-tight"
-                  >
+                  <h1 className="text-[clamp(1.8rem,4vw,3rem)] font-bold leading-none text-[#06634D] tracking-tight">
                     BUILDSAUDI
                   </h1>
-                </Link>
+                </div>
               </div>
 
               {/* Tagline */}
@@ -324,15 +318,14 @@ export default function HomeClient() {
                 </div>
                 <div className="divide-y divide-[#D73833]/30">
                   {companies.filter((c) => ["humain", "signit", "lucidya"].includes(c.slug)).map((c) => (
-                    <div key={c.slug} className="py-2 first:pt-0 last:pb-0 flex items-center justify-between gap-2">
-                      <Link
-                        href={`/company/${c.slug}`}
-                        className="text-sm font-bold text-[#D73833] hover:underline"
-                      >
-                        {c.name}
-                      </Link>
+                    <Link
+                      key={c.slug}
+                      href={`/company/${c.slug}`}
+                      className="py-2 first:pt-0 last:pb-0 flex items-center justify-between gap-2 hover:opacity-80"
+                    >
+                      <span className="text-sm font-bold text-[#D73833]">{c.name}</span>
                       <span className="text-sm text-[#111827]">{c.sector[0]}</span>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -350,15 +343,14 @@ export default function HomeClient() {
                 </div>
                 <div className="divide-y divide-[#D73833]/30">
                   {companies.filter((c) => ["humain", "signit", "lucidya"].includes(c.slug)).map((c) => (
-                    <div key={c.slug} className="py-2 first:pt-0 last:pb-0 flex items-center justify-between gap-2">
-                      <Link
-                        href={`/company/${c.slug}`}
-                        className="text-sm font-bold text-[#D73833] hover:underline"
-                      >
-                        {c.name}
-                      </Link>
+                    <Link
+                      key={c.slug}
+                      href={`/company/${c.slug}`}
+                      className="py-2 first:pt-0 last:pb-0 flex items-center justify-between gap-2 hover:opacity-80"
+                    >
+                      <span className="text-sm font-bold text-[#D73833]">{c.name}</span>
                       <span className="text-sm text-[#111827]">{c.sector[0]}</span>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -392,12 +384,12 @@ export default function HomeClient() {
       </div>
 
       {/* ============ MAIN CONTENT ============ */}
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-5">
+      <div id="main-content" className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-5">
         <div className="flex gap-8">
           {/* Filters Sidebar */}
           <aside className="hidden w-64 shrink-0 lg:block sticky top-20 z-40 space-y-4 lg:space-y-6">
             {/* Portrait Gallery */}
-            <div className="flex items-end justify-center gap-2">
+            <div className="flex items-end justify-center gap-2 pointer-events-none" aria-hidden="true">
               {["/portraits/2.jpg", "/portraits/3.jpg", "/portraits/1.jpg"].map((src) => (
                 <div
                   key={src}
@@ -457,7 +449,7 @@ export default function HomeClient() {
           {/* Job Listings */}
           <div className="flex-1 min-w-0">
             {/* Mobile Portraits */}
-            <div className="flex items-end justify-center gap-3 mb-4 lg:hidden">
+            <div className="flex items-end justify-center gap-3 mb-4 lg:hidden pointer-events-none" aria-hidden="true">
               {["/portraits/2.jpg", "/portraits/3.jpg", "/portraits/1.jpg"].map((src) => (
                 <div
                   key={src}
