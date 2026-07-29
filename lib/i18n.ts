@@ -54,7 +54,7 @@ export const strings = {
     aiApplyUpsellTitle: "تبي تقدّم أسرع؟",
     aiApplyUpsellDesc: "أداة التقديم التلقائي بالـ AI تكتب سيرتك وتقدّم عنك على مئات الوظائف — خصم ٤٠٪ للطلاب والمتخرجين.",
     aiApplyUpsellCta: "تقديم تلقائي بالـ AI",
-    aiApplyUpsellSkip: "كمّل بدون",
+    aiApplyUpsellSkip: "تخطّي",
   },
   en: {
     tagline: "A curated directory of companies building the future of Saudi",
