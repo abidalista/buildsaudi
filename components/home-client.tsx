@@ -825,7 +825,9 @@ export default function HomeClient() {
                 <Search className="size-6 text-[#D73833]" />
               </div>
               <h3 className="text-lg font-bold text-[#111827] text-center px-4">{t.searchJobsTitle}</h3>
-              <p className="text-sm text-gray-600 mt-1 text-center px-2">{t.searchJobsDesc}</p>
+              {t.searchJobsDesc ? (
+                <p className="text-sm text-gray-600 mt-1 text-center px-2">{t.searchJobsDesc}</p>
+              ) : null}
             </div>
 
             {jobSeekerStatus === "success" ? (

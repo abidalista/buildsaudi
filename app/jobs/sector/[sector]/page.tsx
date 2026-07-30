@@ -105,6 +105,24 @@ export default async function SectorPage({ params }: { params: Promise<{ sector:
             </div>
           )}
         </div>
+
+        <section className="mt-12 border-t border-[#06634D]/15 pt-8" aria-labelledby="sector-faq-heading">
+          <h2 id="sector-faq-heading" className="text-lg font-bold text-[#111827]">
+            FAQ — {sector.name}
+          </h2>
+          <div className="mt-6 space-y-6">
+            {faq.map((item) => (
+              <div key={item.question}>
+                <h3 className="text-base font-semibold text-[#111827]" dir="auto">
+                  {item.question}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#4B5563] sm:text-base" dir="auto">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
 
       <SiteFooter />

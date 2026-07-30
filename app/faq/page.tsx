@@ -5,8 +5,9 @@ import { aeoFaq } from "@/lib/aeo-content"
 import { SiteFooter } from "@/components/site-footer"
 
 export const metadata: Metadata = {
-  title: "FAQ — BuildSaudi",
-  description: "Frequently asked questions about finding startup jobs in Saudi Arabia on BuildSaudi.",
+  title: "FAQ — BuildSaudi | أسئلة شائعة عن وظائف الشركات الناشئة",
+  description:
+    "أسئلة شائعة: وين ألاقي وظائف شركات ناشئة في الرياض؟ هل فيه دليل للشركات الناشئة السعودية مع الوظائف؟ Find startup jobs in Saudi Arabia on BuildSaudi.",
   alternates: { canonical: "https://buildsaudi.co/faq" },
 }
 
@@ -48,11 +49,18 @@ export default function FaqPage() {
 
       <main className="mx-auto max-w-2xl px-4 py-10 sm:px-6 sm:py-14">
         <h1 className="text-2xl font-bold text-[#111827] sm:text-3xl">FAQ</h1>
+        <p className="mt-2 text-sm text-[#6B7280]" dir="rtl">
+          أسئلة شائعة عن وظائف الشركات الناشئة في السعودية
+        </p>
         <div className="mt-8 space-y-8">
           {aeoFaq.map((item) => (
             <div key={item.question}>
-              <h2 className="text-base font-semibold text-[#111827]">{item.question}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-[#4B5563] sm:text-base">{item.answer}</p>
+              <h2 className="text-base font-semibold text-[#111827]" dir="auto">
+                {item.question}
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-[#4B5563] sm:text-base" dir="auto">
+                {item.answer}
+              </p>
             </div>
           ))}
         </div>

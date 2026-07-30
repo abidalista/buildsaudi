@@ -20,12 +20,14 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
   const city = cities.find((c) => c.slug === slug)
   if (!city) return {}
   const count = companies.filter((c) => c.city.toLowerCase() === city.name.toLowerCase() || slug === "remote").length
+  const arCity =
+    slug === "riyadh" ? "الرياض" : slug === "jeddah" ? "جدة" : slug === "dammam" ? "الدمام" : city.name
   return {
     title:
       slug === "riyadh"
         ? `Riyadh Startup Jobs — ${count} Companies Hiring | BuildSaudi`
         : `Startup Jobs in ${city.name} — ${count} Companies | BuildSaudi`,
-    description: `Find startup jobs in ${city.name}, Saudi Arabia. Software engineering, product, design, marketing, and more at funded startups. Updated weekly.`,
+    description: `Find startup jobs in ${city.name}, Saudi Arabia. Software engineering, product, design, marketing, and more at funded startups. Updated weekly. وظائف شركات ناشئة في ${arCity}.`,
     alternates: { canonical: `${site}/jobs/${slug}` },
   }
 }
@@ -39,8 +41,10 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
     slug === "remote" ? true : c.city.toLowerCase() === city.name.toLowerCase()
   )
 
-  const faq = getCityFaq(city.name, slug, cityCompanies.length)
+  const examples = cityCompanies.slice(0, 4).map((c) => c.name)
+  const faq = getCityFaq(city.name, slug, cityCompanies.length, examples)
   const pageUrl = `${site}/jobs/${slug}`
+  const updatedLabel = new Date().toISOString().slice(0, 10)
 
   const faqLd = buildFaqJsonLd(faq)
   const breadcrumbLd = buildBreadcrumbJsonLd([
@@ -70,7 +74,9 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
           </Link>
           <h1 className="text-2xl font-bold text-[#111827]">Startup Jobs in {city.name}</h1>
           <p className="mt-1 text-sm text-[#6B7280]">{city.blurb}</p>
-          <p className="mt-2 text-sm font-mono text-[#06634D]">{cityCompanies.length} companies</p>
+          <p className="mt-2 text-sm font-mono text-[#06634D]">
+            {cityCompanies.length} companies · updated {updatedLabel}
+          </p>
         </div>
       </header>
 
@@ -104,6 +110,24 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
             </div>
           ))}
         </div>
+
+        <section className="mt-12 border-t border-[#06634D]/15 pt-8" aria-labelledby="city-faq-heading">
+          <h2 id="city-faq-heading" className="text-lg font-bold text-[#111827]">
+            FAQ — {city.name}
+          </h2>
+          <div className="mt-6 space-y-6">
+            {faq.map((item) => (
+              <div key={item.question}>
+                <h3 className="text-base font-semibold text-[#111827]" dir="auto">
+                  {item.question}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#4B5563] sm:text-base" dir="auto">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
 
       <SiteFooter />

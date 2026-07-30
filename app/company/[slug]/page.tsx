@@ -52,6 +52,8 @@ export default async function CompanyPage({
   const pageUrl = `${site}/company/${slug}`
   const primarySector = company.sector[0]
   const faq = getCompanyFaq(company.name, primarySector, company.city, company.stage, company.careers_url)
+  const careersSameAsWebsite =
+    company.website.replace(/\/$/, "") === company.careers_url.replace(/\/$/, "")
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -113,13 +115,13 @@ export default async function CompanyPage({
         </div>
       </header>
 
-      <main className="mx-auto max-w-[1200px] px-6 py-8 pb-28 sm:pb-8">
+      <main className="mx-auto max-w-[1200px] px-6 py-8 pb-24 sm:pb-8">
         <Link
           href="/"
           className="inline-flex items-center gap-1.5 text-sm text-[#6b7280] hover:text-[#1a1a1a] mb-6"
         >
           <ArrowLeft className="size-3.5" />
-          Back to all jobs
+          Back
         </Link>
 
         <div className="rounded-lg border border-[#e5e5e5] bg-white p-6 mb-6">
@@ -130,7 +132,7 @@ export default async function CompanyPage({
 
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-3 flex-wrap">
-                <h1 className="text-2xl font-bold">{company.name} Careers</h1>
+                <h1 className="text-2xl font-bold">{company.name}</h1>
                 <Badge variant="outline" className="text-xs font-medium text-[#06634D] border-[#06634D]">
                   {company.stage}
                 </Badge>
@@ -152,58 +154,43 @@ export default async function CompanyPage({
                 {company.description}
               </p>
 
-              <div className="mt-4 flex flex-wrap items-center gap-3">
+              <div className="mt-5 flex flex-col sm:flex-row sm:items-center gap-3">
                 <a
                   href={company.careers_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded bg-[#06634D] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#044D3B] transition-colors"
+                  className="inline-flex items-center justify-center gap-1.5 rounded bg-[#06634D] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#044D3B] transition-colors"
                 >
                   <ExternalLink className="size-3.5" />
-                  Apply on careers page
+                  Apply at {company.name}
                 </a>
-                <a
-                  href="/?open_alerts=1"
-                  className="inline-flex items-center gap-1.5 rounded border border-[#D73833] px-3 py-2 text-sm font-semibold text-[#D73833] hover:bg-[#D73833]/5 transition-colors"
-                >
-                  Get job alerts
-                </a>
-                <a
-                  href={company.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm text-[#06634D] hover:underline"
-                >
-                  <Globe className="size-3.5" />
-                  Website
-                </a>
-                <a
-                  href={company.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm text-[#06634D] hover:underline"
-                >
-                  <Linkedin className="size-3.5" />
-                  LinkedIn
-                </a>
+                <div className="flex items-center gap-4 text-sm text-[#6b7280]">
+                  {!careersSameAsWebsite ? (
+                    <a
+                      href={company.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 hover:text-[#06634D]"
+                    >
+                      <Globe className="size-3.5" />
+                      Website
+                    </a>
+                  ) : null}
+                  {company.linkedin ? (
+                    <a
+                      href={company.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 hover:text-[#06634D]"
+                    >
+                      <Linkedin className="size-3.5" />
+                      LinkedIn
+                    </a>
+                  ) : null}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="rounded-lg border border-[#e5e5e5] bg-white px-6 py-8 text-center mb-6">
-          <p className="text-sm text-[#6b7280] mb-4">
-            Applications are on {company.name}&apos;s official careers page — BuildSaudi does not process applications.
-          </p>
-          <a
-            href={company.careers_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-md bg-[#06634D] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#044D3B] transition-colors"
-          >
-            <ExternalLink className="size-3.5" />
-            Apply at {company.name}
-          </a>
         </div>
 
         <section className="rounded-lg border border-[#e5e5e5] bg-white p-6 mb-6" aria-labelledby="company-faq-heading">
@@ -213,33 +200,28 @@ export default async function CompanyPage({
           <dl className="space-y-4">
             {faq.map((item) => (
               <div key={item.question}>
-                <dt className="text-sm font-semibold text-[#111827]">{item.question}</dt>
-                <dd className="mt-1 text-sm text-[#4b5563] leading-relaxed">{item.answer}</dd>
+                <dt className="text-sm font-semibold text-[#111827]" dir="auto">
+                  {item.question}
+                </dt>
+                <dd className="mt-1 text-sm text-[#4b5563] leading-relaxed" dir="auto">
+                  {item.answer}
+                </dd>
               </div>
             ))}
           </dl>
         </section>
       </main>
 
-      {/* Sticky mobile apply bar — ChatGPT landers often stall without a clear next step */}
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[#e5e5e5] bg-white/95 backdrop-blur px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:hidden">
-        <div className="flex gap-2 max-w-[1200px] mx-auto">
-          <a
-            href={company.careers_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 inline-flex items-center justify-center gap-1.5 rounded bg-[#06634D] px-3 py-3 text-sm font-semibold text-white"
-          >
-            <ExternalLink className="size-3.5" />
-            Apply
-          </a>
-          <a
-            href="/?open_alerts=1"
-            className="inline-flex items-center justify-center rounded border border-[#D73833] px-3 py-3 text-sm font-semibold text-[#D73833]"
-          >
-            Alerts
-          </a>
-        </div>
+        <a
+          href={company.careers_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex w-full items-center justify-center gap-1.5 rounded bg-[#06634D] px-3 py-3 text-sm font-semibold text-white"
+        >
+          <ExternalLink className="size-3.5" />
+          Apply at {company.name}
+        </a>
       </div>
 
       <SiteFooter />

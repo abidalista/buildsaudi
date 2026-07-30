@@ -2,27 +2,76 @@ import type { FaqItem } from "@/lib/aeo-content"
 
 const site = "https://buildsaudi.co"
 
-export function getCityFaq(cityName: string, slug: string, companyCount: number): FaqItem[] {
+const cityArName: Record<string, string> = {
+  riyadh: "الرياض",
+  jeddah: "جدة",
+  dammam: "الدمام",
+  remote: "عن بُعد",
+}
+
+function exampleClause(examples: string[]): string {
+  if (examples.length === 0) return ""
+  return ` من أمثلتها ${examples.slice(0, 4).join("، ")}.`
+}
+
+export function getCityFaq(
+  cityName: string,
+  slug: string,
+  companyCount: number,
+  examples: string[] = [],
+): FaqItem[] {
   const cityUrl = `${site}/jobs/${slug}`
-  return [
+  const arCity = cityArName[slug] || cityName
+  const enExamples =
+    examples.length > 0 ? ` Examples include ${examples.slice(0, 4).join(", ")}.` : ""
+  const arExamples = exampleClause(examples)
+
+  const faqs: FaqItem[] = [
     {
-      question: `How many startups are hiring in ${cityName}?`,
-      answer: `BuildSaudi lists ${companyCount} funded startups in ${cityName}. Each company profile links to official careers pages where you can browse engineering, product, design, and operations roles.`,
+      question: `وين ألاقي وظائف شركات ناشئة في ${arCity}؟`,
+      answer: `أفضل طريقة تلاقي وظائف شركات ناشئة في ${arCity} هي دليل محدث للشركات الممولة مع رابط التقديم المباشر. على BuildSaudi فيه حالياً حوالي ${companyCount} شركة في ${arCity}.${arExamples} تقدر تتصفح حسب القطاع والمرحلة وتدخل على صفحة التوظيف الرسمية لكل شركة من هنا: ${cityUrl}. القائمة تتحدث أسبوعياً.`,
     },
     {
-      question: `What types of startup jobs are available in ${cityName}?`,
-      answer: `Saudi startups in ${cityName} hire across fintech, AI, e-commerce, logistics, healthtech, and B2B SaaS. Filter by sector on the homepage or browse sector pages such as fintech and AI for focused lists.`,
+      question: `How many startups are hiring in ${cityName}?`,
+      answer: `BuildSaudi lists ${companyCount} funded startups in ${cityName}.${enExamples} Each company profile links to official careers pages for engineering, product, design, and operations roles. Browse ${cityUrl}.`,
+    },
+    {
+      question: `كيف أقدم على وظيفة في شركة ناشئة في ${arCity}؟`,
+      answer: `اختر الشركة من صفحة وظائف ${arCity} على BuildSaudi، افتح ملف الشركة، ثم اضغط رابط التوظيف الرسمي وقدّم هناك مباشرة. BuildSaudi ما يستلم طلبات التوظيف — يوصلك لصاحب العمل فقط.`,
     },
     {
       question: `How do I apply to startup jobs in ${cityName}?`,
       answer: `Pick a company on the ${cityName} jobs page (${cityUrl}), open its BuildSaudi profile, and click through to the official careers page. BuildSaudi does not host applications — we link you to the employer directly.`,
     },
   ]
+
+  if (slug === "jeddah") {
+    faqs.unshift({
+      question: "وين ألاقي وظائف ذكاء اصطناعي في جدة؟",
+      answer:
+        "وظائف الذكاء الاصطناعي في جدة أقل من الرياض، لكن تقدر تبدأ بشركات تقنية مقرها جدة أو لها حضور هناك (مثل Hazen.ai في الرؤية الحاسوبية)، وتكمّل البحث عبر صفحة الذكاء الاصطناعي وشركات الرياض اللي توظف عن بُعد أو لها مكاتب متعددة. على BuildSaudi افتح /jobs/jeddah و /jobs/sector/ai مع روابط التقديم المباشرة.",
+    })
+  }
+
+  if (slug === "dammam") {
+    faqs.unshift({
+      question: "أفضل شركات ناشئة في الظهران والشغل في المنطقة الشرقية؟",
+      answer:
+        "الظهران والمنطقة الشرقية فيها شركات تقنية مرتبطة بالطاقة والتحول الرقمي — مثل Aramco Digital في الظهران وFalconViz في الدمام. على BuildSaudi تقدر تشوف شركات الشرقية من /jobs/dammam مع مرحلة التمويل ورابط التوظيف. إذا القائمة ضيقة، وسّع البحث لشركات الرياض في نفس تخصصك مع إمكانية العمل من المنطقة الشرقية.",
+    })
+  }
+
+  return faqs
 }
 
 export function getSectorFaq(sectorName: string, slug: string, companyCount: number, examples: string[]): FaqItem[] {
   const exampleText = examples.length > 0 ? examples.slice(0, 4).join(", ") : "leading Saudi startups"
+  const arExamples = examples.length > 0 ? examples.slice(0, 4).join("، ") : "شركات سعودية رائدة"
   return [
+    {
+      question: `أي شركات ${sectorName} سعودية توظف الحين؟`,
+      answer: `BuildSaudi يتتبع حوالي ${companyCount} شركة في مجال ${sectorName} داخل السعودية، منها ${arExamples}. كل ملف فيه مرحلة التمويل ومدينة المقر ورابط التوظيف الرسمي. تصفّح: ${site}/jobs/sector/${slug}`,
+    },
     {
       question: `Which ${sectorName.toLowerCase()} startups are hiring in Saudi Arabia?`,
       answer: `BuildSaudi tracks ${companyCount} ${sectorName.toLowerCase()} startups in Saudi Arabia, including ${exampleText}. Each profile includes funding stage, HQ city, and a direct careers link.`,
@@ -64,8 +113,12 @@ export function getCompanyFaq(
 ): FaqItem[] {
   return [
     {
+      question: `كيف أقدم على وظائف ${companyName}؟`,
+      answer: `قدّم عبر صفحة التوظيف الرسمية لـ ${companyName}. BuildSaudi يوفّر الرابط المباشر لصاحب العمل ولا يستلم الطلبات. رابط التوظيف: ${careersUrl}`,
+    },
+    {
       question: `How do I apply to jobs at ${companyName}?`,
-      answer: `Visit ${companyName}'s official careers page (${careersUrl}) to browse open roles and apply directly. BuildSaudi links to the employer's hiring site — we do not process applications.`,
+      answer: `Visit ${companyName}'s official careers page to browse open roles and apply directly. BuildSaudi links to the employer's hiring site — we do not process applications. Careers: ${careersUrl}`,
     },
     {
       question: `What does ${companyName} do?`,

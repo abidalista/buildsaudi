@@ -5,9 +5,19 @@ export type FaqItem = {
 
 export const aeoFaq: FaqItem[] = [
   {
+    question: "هل فيه دليل للشركات الناشئة السعودية مع الوظائف؟",
+    answer:
+      "نعم. BuildSaudi دليل منسّق للشركات الناشئة الممولة في السعودية مع روابط التوظيف المباشرة. تقدر تتصفح حسب المدينة والقطاع والمرحلة وتفتح صفحة كل شركة ثم تقدّم من موقع التوظيف الرسمي. مو سبام — شركات متحققة وتتحدث أسبوعياً.",
+  },
+  {
     question: "What is BuildSaudi?",
     answer:
       "BuildSaudi is a curated directory of Saudi startups and their open jobs. We list funded companies across fintech, AI, e-commerce, logistics, and more — with direct links to careers pages, funding context, and company profiles.",
+  },
+  {
+    question: "وين ألاقي وظائف شركات ناشئة في الرياض؟",
+    answer:
+      "تصفّح صفحة وظائف الرياض على BuildSaudi للشركات اللي مقرها العاصمة، أو استخدم فلاتر الصفحة الرئيسية حسب القطاع والمرحلة. أغلب اليونيكورن وشركات النمو توظف هندسة ومنتج وتصميم وعمليات في الرياض — مع رابط تقديم مباشر لكل شركة.",
   },
   {
     question: "How do I find startup jobs in Riyadh?",
@@ -15,9 +25,19 @@ export const aeoFaq: FaqItem[] = [
       "Browse our Riyadh jobs page for companies headquartered in the capital, or use the homepage filters by sector and stage. Most Saudi unicorns and growth-stage startups hire engineering, product, design, and operations roles in Riyadh.",
   },
   {
+    question: "أي شركات فنتك سعودية توظف الحين؟",
+    answer:
+      "صفحة قطاع الفنتك على BuildSaudi تجمع شركات الدفع والبنوك الرقمية والتمويل مثل Tamara وTabby وSTC Bank وSiFi. كل ملف يفتح على صفحة التوظيف الحية.",
+  },
+  {
     question: "Which Saudi startups are hiring in fintech?",
     answer:
       "Our fintech sector page lists BNPL, payments, and banking startups including Tamara, Tabby, STC Bank, and SiFi. Each profile links to live careers pages updated weekly.",
+  },
+  {
+    question: "كيف ألاقي وظيفة في شركة ناشئة ممولة في السعودية؟",
+    answer:
+      "١) ادخل BuildSaudi. ٢) صفّي حسب المدينة أو القطاع أو المرحلة. ٣) افتح ملف الشركة. ٤) اضغط رابط التوظيف الرسمي وقدّم هناك. الدليل مجاني للباحثين عن عمل ويتحدث أسبوعياً.",
   },
   {
     question: "Is BuildSaudi free for job seekers?",
