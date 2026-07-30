@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "indexnow": "npx --yes tsx scripts/submit-indexnow.ts"
   },
   "dependencies": {
     "@radix-ui/react-select": "2.2.6",
