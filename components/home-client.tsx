@@ -17,6 +17,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { companies, getJobsByCompany, filterOptions } from "@/lib/data"
+import { getCompanyDescription, descriptionsAr } from "@/lib/descriptions-ar"
 import { CompanyLogo } from "@/components/company-logo"
 import { InstallPrompt } from "@/components/install-prompt"
 import { SiteFooter } from "@/components/site-footer"
@@ -225,6 +226,7 @@ export default function HomeClient() {
         !q ||
         company.name.toLowerCase().includes(q) ||
         company.description.toLowerCase().includes(q) ||
+        (descriptionsAr[company.slug] || "").includes(search) ||
         company.sector.some((s) => s.toLowerCase().includes(q)) ||
         companyJobs.some((j) => j.title.toLowerCase().includes(q))
 
@@ -556,7 +558,7 @@ export default function HomeClient() {
                                 {company.name}
                               </Link>
                               <p className="mt-0.5 text-xs sm:text-sm text-[#4B5563] line-clamp-1">
-                                {company.description}
+                                {getCompanyDescription(company, lang)}
                               </p>
                             </div>
 

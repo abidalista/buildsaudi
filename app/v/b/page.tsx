@@ -16,6 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { companies, getJobsByCompany, filterOptions } from "@/lib/data"
+import { getCompanyDescription } from "@/lib/descriptions-ar"
 import { CompanyLogo } from "@/components/company-logo"
 
 export default function HomePage() {
@@ -469,8 +470,8 @@ export default function HomePage() {
                               >
                                 {company.name}
                               </a>
-                              <p className="mt-0.5 text-xs sm:text-sm text-[#4B5563] line-clamp-1" dir={lang === "ar" ? "rtl" : "ltr"}>
-                                {company.description}
+                              <p className="mt-0.5 text-xs sm:text-sm text-[#4B5563] line-clamp-1">
+                                {getCompanyDescription(company, lang)}
                               </p>
                             </div>
 
