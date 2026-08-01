@@ -59,6 +59,7 @@ export default async function AdminPage() {
   const totalPageviews = getTotalValue(metrics?.pageviews)
   const totalSessions = getTotalValue(metrics?.sessions)
   const totalErrors = getTotalValue(metrics?.errors)
+  const totalSubscribers = getTotalValue(metrics?.subscribers)
 
   return (
     <div className="min-h-screen bg-black text-white p-8">
@@ -68,7 +69,13 @@ export default async function AdminPage() {
           <p className="text-gray-400">Last 30 days</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
+          <MetricCard
+            title="Subscribers"
+            value={totalSubscribers.toLocaleString()}
+            subtitle="Job seeker signups"
+            color="yellow"
+          />
           <MetricCard
             title="Daily Active Users"
             value={todayDAU.toLocaleString()}
@@ -140,7 +147,7 @@ function MetricCard({
   title: string
   value: string
   subtitle: string
-  color: "blue" | "green" | "purple" | "red" | "gray"
+  color: "blue" | "green" | "purple" | "red" | "gray" | "yellow"
 }) {
   const colorClasses = {
     blue: "from-blue-500/20 to-blue-600/20 border-blue-500/30",
@@ -148,6 +155,7 @@ function MetricCard({
     purple: "from-purple-500/20 to-purple-600/20 border-purple-500/30",
     red: "from-red-500/20 to-red-600/20 border-red-500/30",
     gray: "from-gray-500/20 to-gray-600/20 border-gray-500/30",
+    yellow: "from-yellow-500/20 to-yellow-600/20 border-yellow-500/30",
   }
 
   return (

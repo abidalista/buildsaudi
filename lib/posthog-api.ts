@@ -14,11 +14,12 @@ export async function fetchPostHogMetrics() {
 
   try {
     // Fetch insights from PostHog
-    const [dailyActiveUsers, pageviews, sessions, errors] = await Promise.all([
+    const [dailyActiveUsers, pageviews, sessions, errors, subscribers] = await Promise.all([
       fetchInsight("daily_active_users", headers),
       fetchInsight("pageviews", headers),
       fetchInsight("sessions", headers),
       fetchInsight("errors", headers),
+      fetchInsight("subscribers", headers),
     ])
 
     return {
@@ -26,6 +27,7 @@ export async function fetchPostHogMetrics() {
       pageviews,
       sessions,
       errors,
+      subscribers,
     }
   } catch (error) {
     console.error("Failed to fetch PostHog metrics:", error)
@@ -104,6 +106,25 @@ async function fetchInsight(metric: string, headers: HeadersInit) {
             {
               kind: "EventsNode",
               event: "$exception",
+            },
+          ],
+          dateRange: {
+            date_from: thirtyDaysAgo,
+            date_to: today,
+          },
+        },
+      }
+      break
+    case "subscribers":
+      query = {
+        kind: "InsightVizNode",
+        source: {
+          kind: "TrendsQuery",
+          series: [
+            {
+              kind: "EventsNode",
+              event: "job_seeker_signup",
+              math: "total",
             },
           ],
           dateRange: {
