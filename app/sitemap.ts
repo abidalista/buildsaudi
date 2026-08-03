@@ -10,6 +10,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/about`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.4 },
     { url: `${base}/faq`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.4 },
     { url: `${base}/submit`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.5 },
+    { url: `${base}/privacy`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.2 },
+    { url: `${base}/terms`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.2 },
   ]
 
   const companyPages = companies.map((c) => ({

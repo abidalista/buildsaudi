@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { companies } from "@/lib/data"
 import { aeoFaq } from "@/lib/aeo-content"
+import { buildOrganizationJsonLd } from "@/lib/aeo-jsonld"
 import HomeClient from "@/components/home-client"
 
 export const metadata: Metadata = {
@@ -12,12 +13,15 @@ export const metadata: Metadata = {
 }
 
 export default function HomePage() {
+  const organizationLd = buildOrganizationJsonLd()
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "BuildSaudi",
     url: "https://buildsaudi.co",
     description: "A curated directory of Saudi startups and their open jobs.",
+    publisher: { "@id": "https://buildsaudi.co/#organization" },
     potentialAction: {
       "@type": "SearchAction",
       target: "https://buildsaudi.co/?q={search_term_string}",
@@ -63,6 +67,10 @@ export default function HomePage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationLd) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

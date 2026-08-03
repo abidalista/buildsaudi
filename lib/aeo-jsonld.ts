@@ -1,5 +1,24 @@
 import type { FaqItem } from "@/lib/aeo-content"
 
+export function buildOrganizationJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://buildsaudi.co/#organization",
+    name: "BuildSaudi",
+    url: "https://buildsaudi.co",
+    logo: "https://buildsaudi.co/apple-touch-icon.png",
+    description:
+      "Curated directory of funded Saudi startups and their official careers pages.",
+    foundingDate: "2026",
+    areaServed: {
+      "@type": "Country",
+      name: "Saudi Arabia",
+    },
+    sameAs: ["https://x.com/abidalista"],
+  }
+}
+
 export function buildFaqJsonLd(faq: FaqItem[]) {
   return {
     "@context": "https://schema.org",
