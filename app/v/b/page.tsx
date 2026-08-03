@@ -1,6 +1,5 @@
 "use client"
 
-/* eslint-disable @next/next/no-page-custom-font */
 import { useState, useMemo, useEffect } from "react"
 import Link from "next/link"
 import { Search, Building2, X, ChevronDown, PlusCircle } from "lucide-react"
@@ -173,9 +172,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat", fontFamily: "'IBM Plex Sans Arabic', sans-serif", textAlign: lang === "ar" ? "right" : "left" }}>
-      {/* Arabic font */}
-      <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <div className="min-h-screen" style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat", textAlign: lang === "ar" ? "right" : "left" }}>
 
       {/* Promo Banner */}
       {!showBannerDismissed && (

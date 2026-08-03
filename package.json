@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "indexnow": "npx --yes tsx scripts/submit-indexnow.ts"
+    "indexnow": "npx --yes tsx scripts/submit-indexnow.ts",
+    "upload-sourcemaps": "npx -y @posthog/cli sourcemap upload --directory .next"
   },
   "dependencies": {
     "@radix-ui/react-select": "2.2.6",

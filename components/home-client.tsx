@@ -1,6 +1,5 @@
 "use client"
 
-/* eslint-disable @next/next/no-page-custom-font */
 import { useState, useMemo, useEffect, useCallback } from "react"
 import posthog from "posthog-js"
 import Link from "next/link"
@@ -272,10 +271,7 @@ export default function HomeClient() {
   }
 
   return (
-    <div dir={isRTL ? "rtl" : "ltr"} className="min-h-screen" style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat", fontFamily: "'IBM Plex Sans Arabic', sans-serif" }}>
-      {/* Arabic font */}
-      <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
+    <div dir={isRTL ? "rtl" : "ltr"} className="min-h-screen" style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat" }}>
       {/* AI Apply — proven money path; no dismiss (eyes + permanence) */}
       <a
         href={AI_APPLY_URL}
@@ -572,8 +568,10 @@ export default function HomeClient() {
                                     const m = months.indexOf(parts[0])
                                     const y = parseInt(parts[1])
                                     if (m !== -1 && !isNaN(y)) {
-                                      const roundDate = new Date(y, m, 1)
-                                      const monthsAgo = (new Date().getFullYear() * 12 + new Date().getMonth()) - (y * 12 + m)
+                                      // UTC so server/client agree (avoids React #418 hydration mismatch)
+                                      const now = new Date()
+                                      const monthsAgo =
+                                        (now.getUTCFullYear() * 12 + now.getUTCMonth()) - (y * 12 + m)
                                       if (monthsAgo <= 12) return (
                                         <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-emerald-50 border border-emerald-300 text-emerald-700 text-[10px] font-semibold rounded-full whitespace-nowrap">
                                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse inline-block" />

@@ -19,7 +19,7 @@ export default function AboutPage() {
         backgroundImage: "url(/texture-light.png)",
         backgroundSize: "100px 100px",
         backgroundRepeat: "repeat",
-        fontFamily: "'IBM Plex Sans Arabic', sans-serif",
+        fontFamily: "var(--font-ibm-plex-arabic), sans-serif",
       }}
     >
       <header className="border-b border-[#06634D]/20">

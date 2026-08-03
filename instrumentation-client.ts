@@ -12,6 +12,9 @@ function shouldDropException(event: { event?: string; properties?: Record<string
   // Safari-style noise from browser extensions / injected scripts — not our app
   if (/can't find variable:\s*CONFIG/i.test(value)) return true
   if (type === "ReferenceError" && /\bCONFIG\b/.test(value)) return true
+  if (/ResizeObserver loop/i.test(value)) return true
+  if (value === "Script error.") return true
+  if (/currentInset/i.test(value)) return true
   return false
 }
 

@@ -3,6 +3,8 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
+  // Needed so PostHog can resolve minified stacks (upload via `npm run upload-sourcemaps`)
+  productionBrowserSourceMaps: true,
   images: {
     unoptimized: true,
   },

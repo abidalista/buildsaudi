@@ -1,11 +1,16 @@
 import type { Metadata, Viewport } from 'next'
-import { Space_Grotesk, Space_Mono } from 'next/font/google'
+import { IBM_Plex_Sans_Arabic, Space_Grotesk, Space_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { PostHogProvider } from './posthog-provider'
 import Script from 'next/script'
 import { companies } from '@/lib/data'
 import './globals.css'
 
+const ibmPlexArabic = IBM_Plex_Sans_Arabic({
+  subsets: ["arabic", "latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-ibm-plex-arabic",
+})
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" })
 const spaceMono = Space_Mono({ weight: ["400", "700"], subsets: ["latin"], variable: "--font-space-mono" })
 
@@ -24,6 +29,7 @@ export const metadata: Metadata = {
   description: siteDescription,
   icons: {
     icon: [
+      { url: '/favicon.ico', sizes: 'any' },
       { url: '/icon.svg', type: 'image/svg+xml' },
       { url: '/icon-dark-32x32.png', sizes: '32x32', type: 'image/png' },
     ],
@@ -47,6 +53,7 @@ export const metadata: Metadata = {
     title: siteTitle,
     description: 'Funded Saudi startups hiring now. Apply direct.',
     images: ['https://buildsaudi.co/og-image.png'],
+    creator: '@abidalista',
   },
 }
 
@@ -72,7 +79,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={`${spaceGrotesk.variable} ${spaceMono.variable} font-sans antialiased bg-[#F5F0E6] text-[#111827]`}>
+      <body className={`${ibmPlexArabic.variable} ${ibmPlexArabic.className} ${spaceGrotesk.variable} ${spaceMono.variable} font-sans antialiased bg-[#F5F0E6] text-[#111827]`}>
         <PostHogProvider>
           {children}
         </PostHogProvider>

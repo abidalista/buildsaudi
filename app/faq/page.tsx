@@ -30,7 +30,7 @@ export default function FaqPage() {
         backgroundImage: "url(/texture-light.png)",
         backgroundSize: "100px 100px",
         backgroundRepeat: "repeat",
-        fontFamily: "'IBM Plex Sans Arabic', sans-serif",
+        fontFamily: "var(--font-ibm-plex-arabic), sans-serif",
       }}
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />

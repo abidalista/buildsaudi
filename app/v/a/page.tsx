@@ -1,6 +1,5 @@
 "use client"
 
-/* eslint-disable @next/next/no-page-custom-font */
 import { useState, useMemo, useEffect, useCallback } from "react"
 import posthog from "posthog-js"
 import Link from "next/link"
@@ -189,10 +188,7 @@ export default function HomeClient() {
   }
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat", fontFamily: lang === 'ar' ? "'Fatimah Arabic', 'IBM Plex Sans Arabic', sans-serif" : "'IBM Plex Sans Arabic', sans-serif" }}>
-      {/* Arabic font */}
-      <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
+    <div className="min-h-screen" style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat", fontFamily: lang === "ar" ? "'Fatimah Arabic', var(--font-ibm-plex-arabic), sans-serif" : undefined }}>
       {/* Promo Banner */}
       {!showBannerDismissed && (
         <div className="bg-gradient-to-l from-[#06634D] to-[#0D8B6A] text-white py-2 sm:py-2.5 px-4 pr-10 relative" dir="rtl">
