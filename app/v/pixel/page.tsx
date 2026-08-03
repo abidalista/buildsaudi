@@ -47,15 +47,12 @@ export default function PixelSaudiPage() {
         minHeight: "100vh",
         backgroundColor: "#1a1a2e",
         color: "#e0e0e0",
-        fontFamily: "'Press Start 2P', 'Courier New', monospace",
+        fontFamily: "var(--font-press-start), 'Courier New', monospace",
         position: "relative",
         backgroundImage: "linear-gradient(rgba(0,255,65,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,65,0.03) 1px, transparent 1px)",
         backgroundSize: "32px 32px",
       }}
     >
-      {/* Google Font */}
-      <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
-
       {/* CRT scanline + glitch CSS */}
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes scanlines {

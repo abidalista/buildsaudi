@@ -79,7 +79,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={`${ibmPlexArabic.variable} ${ibmPlexArabic.className} ${spaceGrotesk.variable} ${spaceMono.variable} font-sans antialiased bg-[#F5F0E6] text-[#111827]`}>
+      <body className={`${ibmPlexArabic.variable} ${spaceGrotesk.variable} ${spaceMono.variable} font-sans antialiased bg-[#F5F0E6] text-[#111827]`}>
         <PostHogProvider>
           {children}
         </PostHogProvider>
