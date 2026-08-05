@@ -67,24 +67,44 @@ export function getCityFaq(
 export function getSectorFaq(sectorName: string, slug: string, companyCount: number, examples: string[]): FaqItem[] {
   const exampleText = examples.length > 0 ? examples.slice(0, 4).join(", ") : "leading Saudi startups"
   const arExamples = examples.length > 0 ? examples.slice(0, 4).join("، ") : "شركات سعودية رائدة"
-  return [
+  const faqs: FaqItem[] = [
     {
       question: `أي شركات ${sectorName} سعودية توظف الحين؟`,
       answer: `BuildSaudi يتتبع حوالي ${companyCount} شركة في مجال ${sectorName} داخل السعودية، منها ${arExamples}. كل ملف فيه مرحلة التمويل ومدينة المقر ورابط التوظيف الرسمي. تصفّح: ${site}/jobs/sector/${slug}`,
     },
     {
       question: `Which ${sectorName.toLowerCase()} startups are hiring in Saudi Arabia?`,
-      answer: `BuildSaudi tracks ${companyCount} ${sectorName.toLowerCase()} startups in Saudi Arabia, including ${exampleText}. Each profile includes funding stage, HQ city, and a direct careers link.`,
+      answer: `BuildSaudi tracks ${companyCount} ${sectorName.toLowerCase()} startups in Saudi Arabia, including ${exampleText}. Each profile includes funding stage, HQ city, and a direct careers link. Hiring now — browse and apply on official careers pages.`,
     },
     {
       question: `How do I find ${sectorName.toLowerCase()} jobs in Riyadh?`,
-      answer: `Use this sector page to shortlist ${sectorName.toLowerCase()} companies, then filter by Riyadh on the homepage or visit the Riyadh city page for location-specific hiring.`,
+      answer: `Use this BuildSaudi sector page to shortlist ${sectorName.toLowerCase()} companies, then filter by Riyadh on the homepage or visit ${site}/jobs/riyadh for location-specific hiring.`,
     },
     {
       question: `Is BuildSaudi free for ${sectorName.toLowerCase()} job seekers?`,
       answer: `Yes. Browse every ${sectorName.toLowerCase()} startup and careers link for free at ${site}/jobs/sector/${slug}. Founders can submit missing companies on the submit page.`,
     },
   ]
+
+  if (slug === "ai") {
+    faqs.unshift({
+      question: "قائمة شركات ناشئة سعودية توظف مهندسين برمجيات وAI",
+      answer: `على BuildSaudi تلقى حوالي ${companyCount} شركة في الذكاء الاصطناعي والتعلم الآلي توظف مهندسين — منها ${arExamples}. صفّح قطاع AI، افتح ملف الشركة، وقدّم من رابط التوظيف الرسمي: ${site}/jobs/sector/ai`,
+    })
+    faqs.push({
+      question: "Which Saudi AI startups hire software engineers?",
+      answer: `BuildSaudi lists ${companyCount} AI startups in Saudi Arabia hiring engineers and ML talent, including ${exampleText}. Open each profile for stage, city, and a direct careers link — updated weekly on ${site}/jobs/sector/ai.`,
+    })
+  }
+
+  if (slug === "fintech") {
+    faqs.push({
+      question: "Where do I find Saudi fintech careers links in one place?",
+      answer: `BuildSaudi's fintech hub at ${site}/jobs/sector/fintech lists ${companyCount} funded companies — including ${exampleText} — with brand context, funding stage, and official Apply links. Not a spam board: curated startups only.`,
+    })
+  }
+
+  return faqs
 }
 
 export function getStageFaq(stageName: string, slug: string, companyCount: number, description: string): FaqItem[] {

@@ -72,11 +72,17 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
             <ArrowLeft className="size-3.5" />
             Back to all companies
           </Link>
-          <h1 className="text-2xl font-bold text-[#111827]">Startup Jobs in {city.name}</h1>
+          <h1 className="text-2xl font-bold text-[#111827]">BuildSaudi — Startup Jobs in {city.name}</h1>
           <p className="mt-1 text-sm text-[#6B7280]">{city.blurb}</p>
           <p className="mt-2 text-sm font-mono text-[#06634D]">
-            {cityCompanies.length} companies · updated {updatedLabel}
+            {cityCompanies.length} companies · Hiring Now · updated {updatedLabel}
           </p>
+          {slug === "riyadh" && examples.length > 0 && (
+            <p className="mt-1 text-sm text-[#4B5563]">
+              Riyadh startups hiring on BuildSaudi include {examples.join(", ")}
+              {cityCompanies.length > examples.length ? ", and more" : ""}. Apply on each company&apos;s official careers page — not a Telegram list dump.
+            </p>
+          )}
         </div>
       </header>
 

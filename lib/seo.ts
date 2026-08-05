@@ -1,5 +1,10 @@
 export const cities = [
-  { slug: "riyadh", name: "Riyadh", blurb: "Saudi Arabia's capital and tech hub. Home to most of the kingdom's startups, VCs, and accelerators." },
+  {
+    slug: "riyadh",
+    name: "Riyadh",
+    blurb:
+      "Saudi Arabia's capital and tech hub — home to most funded startups. Hiring now across engineering and product at companies like Tamara, Humain, Salla, Foodics, Lucidya, and STC Bank. Apply via official careers links on BuildSaudi.",
+  },
   { slug: "jeddah", name: "Jeddah", blurb: "Saudi's commercial capital on the Red Sea. Growing startup scene with a focus on commerce and logistics." },
   { slug: "dammam", name: "Dammam", blurb: "Eastern Province hub with strong ties to energy, industrial tech, and B2B startups." },
   { slug: "remote", name: "Remote", blurb: "Work from anywhere. Saudi startups increasingly offer remote roles across engineering, product, and design." },
@@ -19,8 +24,8 @@ export const roles = [
 ]
 
 export const sectors = [
-  { slug: "fintech", name: "Fintech", companies: ["Tamara", "Tabby", "SiFi", "Madfu", "Lean Technologies", "Moyasar", "Hala", "Lendo"] },
-  { slug: "ai", name: "AI & Machine Learning", companies: ["Cognna", "Lucidya"] },
+  { slug: "fintech", name: "Fintech", companies: ["Tamara", "STC Bank", "HALA", "Lean Technologies", "SiFi", "Lendo", "D360 Bank", "Erad"] },
+  { slug: "ai", name: "AI & Machine Learning", companies: ["Humain", "Lucidya", "Mozn", "Signit", "WakeCap", "Unifonic", "Intelmatix", "Hazen.ai"] },
   { slug: "proptech", name: "Proptech", companies: ["Ejaro"] },
   { slug: "b2b-saas", name: "B2B SaaS", companies: ["Foodics", "Sary", "Rewaa"] },
   { slug: "logistics", name: "Logistics", companies: ["Trukker", "Mrsool"] },

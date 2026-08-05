@@ -78,17 +78,6 @@ export default function RootLayout({
             gtag('config', 'G-47HW0RF47B');
           `}
         </Script>
-        {/* PromptWatch visitor analytics — trial only; remove when trial ends */}
-        <Script id="promptwatch-analytics" strategy="afterInteractive">
-          {`
-            (function() {
-              var script = document.createElement('script');
-              script.setAttribute('data-project-id', 'b4d7b002-4477-450a-aa67-f1e96a1a2bff');
-              script.src = 'https://ingest.promptwatch.com/js/client.min.js';
-              document.head.appendChild(script);
-            })();
-          `}
-        </Script>
       </head>
       <body className={`${ibmPlexArabic.variable} ${spaceGrotesk.variable} ${spaceMono.variable} font-sans antialiased bg-[#F5F0E6] text-[#111827]`}>
         <PostHogProvider>

@@ -4,7 +4,7 @@ import { ArrowLeft } from "lucide-react"
 import { companies } from "@/lib/data"
 import { CompanyLogo } from "@/components/company-logo"
 import { sectors } from "@/lib/seo"
-import { getSectorFaq } from "@/lib/aeo-landing"
+import { getSectorFaq, sectorBlurbs } from "@/lib/aeo-landing"
 import { buildFaqJsonLd, buildBreadcrumbJsonLd, buildItemListJsonLd } from "@/lib/aeo-jsonld"
 import { SiteFooter } from "@/components/site-footer"
 import type { Metadata } from "next"
@@ -36,8 +36,17 @@ export default async function SectorPage({ params }: { params: Promise<{ sector:
     c.sector.some((s) => s.toLowerCase().includes(sector.name.split(" ")[0].toLowerCase()))
   )
 
-  const faq = getSectorFaq(sector.name, slug, sectorCompanies.length, sector.companies)
+  const liveExamples = sectorCompanies.slice(0, 6).map((c) => c.name)
+  const faq = getSectorFaq(
+    sector.name,
+    slug,
+    sectorCompanies.length,
+    liveExamples.length > 0 ? liveExamples : sector.companies,
+  )
   const pageUrl = `${site}/jobs/sector/${slug}`
+  const updatedLabel = new Date().toISOString().slice(0, 10)
+  const blurb = sectorBlurbs[slug]
+  const hiringNow = liveExamples.slice(0, 4).join(", ")
 
   const faqLd = buildFaqJsonLd(faq)
   const breadcrumbLd = buildBreadcrumbJsonLd([
@@ -65,8 +74,19 @@ export default async function SectorPage({ params }: { params: Promise<{ sector:
             <ArrowLeft className="size-3.5" />
             Back to all companies
           </Link>
-          <h1 className="text-2xl font-bold text-[#111827]">{sector.name} Startup Jobs in Saudi Arabia</h1>
-          <p className="mt-2 text-sm font-mono text-[#06634D]">{sectorCompanies.length} companies</p>
+          <h1 className="text-2xl font-bold text-[#111827]">
+            BuildSaudi — {sector.name} Startup Jobs in Saudi Arabia
+          </h1>
+          {blurb && <p className="mt-1 text-sm text-[#6B7280] max-w-3xl">{blurb}</p>}
+          <p className="mt-2 text-sm font-mono text-[#06634D]">
+            {sectorCompanies.length} companies · Hiring Now · updated {updatedLabel}
+          </p>
+          {hiringNow && (
+            <p className="mt-1 text-sm text-[#4B5563]">
+              Hiring now includes {hiringNow}
+              {sectorCompanies.length > 4 ? ", and more" : ""}.
+            </p>
+          )}
         </div>
       </header>
 
