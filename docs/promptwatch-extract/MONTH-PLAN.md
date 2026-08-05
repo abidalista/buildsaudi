@@ -1,116 +1,87 @@
-# BuildSaudi AEO — 30-day plan (from PromptWatch dump)
+# BuildSaudi AEO — 30-day plan (FINAL from trial)
 
-**Built:** Aug 5, 2026 · Source: trial extraction (cancel after tomorrow)  
-**North star:** Raise Arabic citation rate on *winnable* prompts — not beat LinkedIn SOV  
-**Baseline:** ~3% visibility · 70% coverage · 7% on “directory” prompt · 0% on most others  
+**Locked:** Aug 5, 2026 · PromptWatch trial ends ~tomorrow · Cancel after last exports  
+**North star:** Get cited by name on Arabic (then EN) “Saudi startup jobs” prompts — not LinkedIn SOV  
+**Baseline:** 3.18 vis · 2/9 prompts · ChatGPT 0 · EcosystemSA = #1 real rival  
 
----
-
-## Kill list (do not do)
-- Chase LinkedIn / Bayt overall share of voice  
-- Keep PromptWatch paid (unless you change your mind after day 2)  
-- New `/ar` site duplicate  
-- Fake “best of” listicles that lie  
-- Telegram channel week 1 (note it for month 2)  
-- Rewrite all 156 “thin” pages at once  
+Full raw dump: `exports/agent-chat-FULL.md`
 
 ---
 
-## P0 — Week 1 (site)
+## Do before PromptWatch dies (today/tomorrow)
 
-| # | Task | Why | URL |
-|---|------|-----|-----|
-| 1 | Done: SWE list + أفضل مواقع FAQs | Worst gaps | `/faq` (`8b9cb65`) |
-| 2 | Deepen Riyadh FAQ (coverage 50%) | High-intent city | `/jobs/riyadh` |
-| 3 | Fix year signals ٢٠٢٦ (not ٢٠٢٤) | Only double-digit vis prompt was ٢٠٢٤ | `/faq` + prompts |
-| 4 | GSC: request index `/faq`, `/jobs/riyadh`, `/jobs/sector/ai`, `/company/tamara` | New answers need crawl | GSC |
-| 5 | Remove PromptWatch analytics script after cancel | No orphan JS | `app/layout.tsx` |
-
----
-
-## P0 — Week 1 (PromptWatch remaining hours)
-
-| # | Task |
-|---|------|
-| 1 | **Track** Prompt Explorer top 5 niche prompts (AI job seeker, funded hiring, Riyadh grads, backend, multi-apply) |
-| 2 | Add **brand** prompts: `ما هي منصة Build Saudi؟` · `BuildSaudi دليل شركات ناشئة` |
-| 3 | Add **comparison** prompts: `Build Saudi vs Bayt للشركات الناشئة` · `BuildSaudi ولا LinkedIn لوظائف الستارت أب` |
-| 4 | Run Agent Chat A1–A7 → paste into `exports/agent-chat.md` |
-| 5 | Export Citations + Content Gap PDFs/screens into `exports/` |
-| 6 | Cancel subscription before charge |
-
----
-
-## P1 — Week 2–3 (content that wins cites)
-
-AI cites **listicles + how-tos** off-site. On-site we do **honest quotable FAQs + hub depth** (not spam lists).
-
-| # | Task | Prompt target |
-|---|------|----------------|
-| 1 | Fintech hub FAQ: name Tamara, Tabby, SiFi, STC Bank + apply path | فنتك توظف الحين |
-| 2 | AI hub FAQ: Humain, Lucidya, Mozn, Signit | شغل AI شركة ناشئة |
-| 3 | `/company/tamara` Arabic “كيف تقدم / هل فيه وظائف” block | وظائف تمارا |
-| 4 | `/faq` how-to: apply to multiple startups (step list) | كيف أقدم على أكثر من شركة |
-| 5 | Fresh grads Riyadh FAQ (honest: funded companies hiring juniors) | حديثي التخرج الرياض |
-| 6 | Enrich **top 20** company pages (1 AR + 1 EN FAQ already pattern) | thin-content signal |
-
----
-
-## P1 — Week 2–3 (offsite — external citations)
-
-Zero external brand mentions = ceiling. PromptWatch shows Telegram + listicle blogs + Reddit in the citation graph.
-
-| # | Action | Notes |
+| # | Action | Status |
 |---|--------|--------|
-| 1 | Reddit warm-up 5 comments/day (no links) | Low karma account |
-| 2 | Week 3: 1 soft value post (Riyadh / fintech map) | Link only if natural |
-| 3 | Pitch 3 Arabic “أفضل مواقع” / startup list authors to list BuildSaudi | Sabbar-style pages dominate — get *on* their lists |
-| 4 | One founder LinkedIn post (AR+EN) linking `/faq` | Owned distribution |
-| 5 | Align with `docs/DISTRIBUTION.md` digest CTA | Don’t fork marketing |
+| 1 | Add + track **8 brand/comparison prompts** (A6 table) | YOU — in PW UI |
+| 2 | Classify **ecosystemsa.com** as DIRECT_COMPETITOR | YOU |
+| 3 | Fix year prompt **٢٠٢٦** (not ٢٠٢٤) if still wrong | YOU |
+| 4 | Track Prompt Explorer niches (AI seeker, funded hiring, grads, backend, multi-apply) | YOU |
+| 5 | Export PDF/CSV: Prompts, Citations, Content Gap if available | YOU → `exports/` |
+| 6 | Cancel subscription | YOU |
+| 7 | Remove PromptWatch script from `app/layout.tsx` | ME after cancel |
 
 ---
 
-## P2 — Week 4
+## P0 — Week 1 (after trial)
+
+| # | Task | Notes |
+|---|------|--------|
+| 1 | Homepage: Arabic+EN block answering “أفضل مواقع…” naming BuildSaudi vs Bayt/LinkedIn/Sabbar | Quotable, not full redesign |
+| 2 | Enrich `/jobs/sector/fintech` — brand in H1, Hiring Now, last-updated, named cos | Domain cited / brand missing |
+| 3 | Enrich `/jobs/riyadh` — counts + FAQ already started; strengthen | Beat Telegram for geo |
+| 4 | Enrich `/jobs/sector/ai` toward SWE list prompt | Highest citation volume gap |
+| 5 | Manual AEO re-check (free) in 14 days | `docs/aeo/` |
+
+**Already shipped:** FAQ answers for SWE list + أفضل مواقع (`8b9cb65`)
+
+---
+
+## P1 — Weeks 2–3
 
 | # | Task |
 |---|------|
-| 1 | Re-run manual Arabic AEO scorecard (`docs/aeo/`) — free forever |
-| 2 | Dhahran/Eastern: only if company inventory grows — else leave thin FAQ |
-| 3 | Consider Telegram later (t.me is cited) — not before Reddit warm-up works |
-| 4 | Core Web Vitals pass if PostHog shows bounce issues |
-| 5 | Decide: Linear tickets from this plan (only after you approve) |
+| 1 | FAQ how-to expansion (funded startup job seeker steps) |
+| 2 | Company pages: tamara, foodics, lean-technologies (roles, funding, investors, updated) |
+| 3 | Reddit warm-up → answer sprint (r/SaudiProfessionals) |
+| 4 | Pitch @itcjobs weekly digest credit |
+| 5 | Pitch EcosystemSA / ThinkIN inclusion |
 
 ---
 
-## Success metrics (end of 30 days)
+## P2 — Weeks 3–4
 
-| Metric | Baseline | Target |
-|--------|----------|--------|
-| Manual AR prompt cite rate (ChatGPT+Perplexity, 10 prompts) | ~0–1/10 | **3+/10** |
-| Prompt “دليل…مع الوظائف” style | 7% PW | **Mention in answer text** (not URL-only) |
-| External mentions | 0 | **≥1** real offsite (Reddit or blog) |
-| GSC SA clicks | (your GSC) | Up vs prior 28d |
-
----
-
-## Competitor stance
-
-| Treat as | Who |
-|----------|-----|
-| Ocean | LinkedIn, Bayt, Indeed |
-| Cite-stealers for “أفضل مواقع” | Sabbar listicles, Naukrigulf, Wazzuf |
-| Niche peers | Wellfound, Qureos, EcosystemSA, profile.sa |
-| Branded SERP | Company career pages (Tamara, Humain) |
-
-Win by being the **only curated Saudi startup jobs answer**, not another Bayt.
+| # | Task |
+|---|------|
+| 1 | Reddit definitive 30+ companies post |
+| 2 | Inc Arabia / Arabisk London outreach |
+| 3 | EN page/FAQ surface for ChatGPT ("best Saudi startup job sites 2026") |
+| 4 | Batch enrich next 17 company pages (top 20 total) |
+| 5 | Approve MONTH-PLAN vs PostHog SA traffic |
 
 ---
 
-## Immediate (you, remaining trial)
+## Kill list
 
-1. Track the 5 explorer prompts + brand/comparison  
-2. Paste Agent Chat A7 answer into the repo thread  
-3. Screenshot Content Gap + Citations → `docs/promptwatch-extract/exports/`  
-4. Tomorrow: cancel PromptWatch · tell me to rip analytics script  
+- Keep PromptWatch paid (default)  
+- Listicle spam "Top 10 startups"  
+- Fight LinkedIn SOV  
+- Claim native AI auto-apply (affiliate only)  
+- Reddit link spam  
+- Fake Dhahran directory without inventory  
 
-I'll turn Agent Chat paste + any more screens into an update of this file.
+---
+
+## Success @ day 30
+
+| Metric | Target |
+|--------|--------|
+| Manual AR cite rate (10 prompts × ChatGPT+Perplexity) | ≥3/10 |
+| Brand named (not URL-only) on directory prompt | Yes on ≥1 model |
+| External mention | ≥1 (Reddit or Telegram credit or blog) |
+| ChatGPT | Any non-zero mention |
+
+---
+
+## Approve later → Linear
+
+Only after you say yes: ticket the P0/P1 rows. Not before.

@@ -133,5 +133,7 @@ exports/agent-chat.md
 
 | Time | Done |
 |------|------|
-| | Extraction pack created |
-| | … |
+| Aug 5 | Extraction pack created |
+| Aug 5 | Screenshots → DUMP-2026-08-05.md + MONTH-PLAN.md |
+| Aug 5 | Agent Chat A1–A3 saved → `exports/agent-chat-A1-A3.md` |
+| | Waiting A4–A7 |
