@@ -45,6 +45,44 @@ BROWSER_UA = (
     "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
 )
 
+# Substack blocks GitHub Actions IPs (403) but not Vercel's. When
+# SUBSTACK_PROXY_URL is set, Substack calls are routed through the proxy route
+# on buildsaudi.co instead of being made directly. Unset locally = direct calls.
+PROXY_URL = os.environ.get("SUBSTACK_PROXY_URL", "")
+PROXY_SECRET = os.environ.get("PROXY_SECRET", "")
+
+
+def substack_request(method: str, host: str, path: str, payload=None):
+    """Call Substack directly, or via the Vercel proxy when configured.
+
+    Returns (status_code, text).
+    """
+    if PROXY_URL:
+        r = requests.post(
+            PROXY_URL,
+            json={"host": host, "path": path, "method": method, "body": payload},
+            headers={"x-proxy-secret": PROXY_SECRET, "Content-Type": "application/json"},
+            timeout=45,
+        )
+        if not r.ok:
+            raise RuntimeError(f"Proxy error {r.status_code}: {r.text[:300]}")
+        data = r.json()
+        return data["status"], data["body"]
+
+    r = requests.request(
+        method,
+        f"https://{host}{path}",
+        json=payload,
+        headers={
+            "Cookie": f"substack.sid={os.environ.get('SUBSTACK_SID', '')}",
+            "Content-Type": "application/json",
+            "User-Agent": BROWSER_UA,
+        },
+        timeout=30,
+    )
+    return r.status_code, r.text
+
+
 SID_REFRESH_HELP = """
   How to refresh SUBSTACK_SID:
     1. Open substack.com in Chrome, signed in as the publication owner
@@ -55,43 +93,38 @@ SID_REFRESH_HELP = """
 """
 
 
-def get_substack_cookie() -> str:
+def verify_substack_session() -> None:
     """
-    Return the Substack session cookie and verify it is still valid.
+    Confirm the Substack session works before doing any real work.
 
     Note: email/password login is NOT usable here. Substack's /api/v1/login
     requires a captcha ("Please complete the captcha to continue"), so the
     session cookie is the only supported auth path.
     """
-    sid = os.environ.get("SUBSTACK_SID", "")
-    if not sid:
+    if not PROXY_URL and not os.environ.get("SUBSTACK_SID"):
         raise RuntimeError("SUBSTACK_SID is not set.\n" + SID_REFRESH_HELP)
 
-    r = requests.get(
-        "https://substack.com/api/v1/user/profile/self",
-        cookies={"substack.sid": sid},
-        headers={"User-Agent": BROWSER_UA, "Accept": "application/json"},
-        timeout=15,
-    )
-    if r.status_code == 403:
+    status, text = substack_request("GET", "substack.com", "/api/v1/user/profile/self")
+
+    if status == 403:
         raise RuntimeError(
-            "Substack returned 403 on the session check.\n"
-            "  The cookie itself may be fine — 403 usually means Substack blocked the\n"
-            "  request by IP (GitHub Actions runners are frequently challenged).\n"
-            "  If this cookie works from your laptop, the runner IP is the problem,\n"
-            "  not the secret.\n" + SID_REFRESH_HELP
+            "Substack returned 403 on the session check — the request was blocked by IP,\n"
+            "  not rejected for a bad cookie. Route Substack calls through the Vercel\n"
+            "  proxy by setting SUBSTACK_PROXY_URL and PROXY_SECRET."
         )
-    if r.status_code == 401 or not r.ok:
+    if status != 200:
         raise RuntimeError(
-            f"SUBSTACK_SID is expired or invalid (profile check returned {r.status_code}).\n"
+            f"SUBSTACK_SID is expired or invalid (profile check returned {status}).\n"
             + SID_REFRESH_HELP
         )
 
-    print(f"  Substack session OK (user: {r.json().get('handle', '?')})")
-    return f"substack.sid={sid}"
+    print(f"  Substack session OK (user: {json.loads(text).get('handle', '?')})")
 
 
-SUBSTACK_COOKIE = get_substack_cookie()
+# Always verified, including on dry runs: the check is the cheapest way to catch
+# an expired cookie or a blocked IP, and a dry run that skips it can't tell us
+# whether the real Monday run would have worked.
+verify_substack_session()
 
 
 # ─── Company → ATS Mapping ──────────────────────────────────────────────────
@@ -420,13 +453,13 @@ def sync_to_substack(emails: list):
     success, failed = 0, 0
     for email in emails:
         try:
-            r = requests.post(
-                f"https://{SUBSTACK_PUB}.substack.com/api/v1/free",
-                json={"email": email, "first_url": "https://buildsaudi.co", "first_referrer": ""},
-                headers={"User-Agent": BROWSER_UA},
-                timeout=10
+            status, _ = substack_request(
+                "POST",
+                f"{SUBSTACK_PUB}.substack.com",
+                "/api/v1/free",
+                {"email": email, "first_url": "https://buildsaudi.co", "first_referrer": ""},
             )
-            if r.ok:
+            if status == 200:
                 success += 1
             else:
                 failed += 1
@@ -604,12 +637,6 @@ def build_prosemirror(company_jobs: dict, date_str: str) -> tuple:
 
 # ─── Substack Publish ────────────────────────────────────────────────────────
 def publish_to_substack(body_json: str, date_str: str, total: int) -> str | None:
-    headers = {
-        "Cookie": SUBSTACK_COOKIE,
-        "Content-Type": "application/json",
-        "User-Agent": BROWSER_UA,
-    }
-
     # 1. Create draft
     draft_payload = {
         "draft_title": f"وظائف الأسبوع · {date_str}",
@@ -619,13 +646,15 @@ def publish_to_substack(body_json: str, date_str: str, total: int) -> str | None
         "type": "newsletter",
         "audience": "everyone",
     }
-    r = requests.post(f"{SUBSTACK_BASE}/api/v1/drafts", json=draft_payload, headers=headers, timeout=20)
-    if not r.ok:
-        print(f"  Draft creation failed: {r.status_code} {r.text[:200]}")
+    pub_host = f"{SUBSTACK_PUB}.substack.com"
+    status, text = substack_request("POST", pub_host, "/api/v1/drafts", draft_payload)
+    if status != 200:
+        print(f"  Draft creation failed: {status} {text[:200]}")
         return None
 
-    draft_id = r.json().get("id")
-    draft_updated_at = r.json().get("draft_updated_at")
+    draft = json.loads(text)
+    draft_id = draft.get("id")
+    draft_updated_at = draft.get("draft_updated_at")
     print(f"  Draft created: ID {draft_id}")
 
     # 2. Publish (sends email to all subscribers)
@@ -633,12 +662,13 @@ def publish_to_substack(body_json: str, date_str: str, total: int) -> str | None
         "send_email": True,
         "audience": "everyone",
         "draft_updated_at": draft_updated_at,
-        "publication_id": r.json().get("publication_id"),
+        "publication_id": draft.get("publication_id"),
     }
-    r2 = requests.post(f"{SUBSTACK_BASE}/api/v1/drafts/{draft_id}/publish",
-                       json=pub_payload, headers=headers, timeout=30)
-    if r2.ok:
-        slug = r2.json().get("slug", "")
+    status2, text2 = substack_request(
+        "POST", pub_host, f"/api/v1/drafts/{draft_id}/publish", pub_payload
+    )
+    if status2 == 200:
+        slug = json.loads(text2).get("slug", "")
         post_url = f"{SUBSTACK_BASE}/p/{slug}"
         print(f"  Published: {post_url}")
         return post_url

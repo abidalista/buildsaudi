@@ -28,7 +28,10 @@ jobs:
         env:
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
           AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
-          SUBSTACK_SID: ${{ secrets.SUBSTACK_SID }}
+          # Substack blocks GitHub runner IPs, so Substack calls go through the
+          # proxy route on buildsaudi.co. The session cookie lives in Vercel.
+          SUBSTACK_PROXY_URL: https://buildsaudi.co/api/substack
+          PROXY_SECRET: ${{ secrets.PROXY_SECRET }}
           SUBSTACK_PUBLICATION: ${{ secrets.SUBSTACK_PUBLICATION }}
           SUBSTACK_AUTHOR_ID: ${{ secrets.SUBSTACK_AUTHOR_ID }}
         run: |
