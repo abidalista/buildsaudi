@@ -1,0 +1,51 @@
+name: Weekly Jobs Digest
+
+on:
+  schedule:
+    - cron: '0 7 * * 1' # Every Monday at 7am UTC (10am Riyadh)
+  workflow_dispatch: # Manual trigger
+    inputs:
+      dry_run:
+        description: 'Dry run (build HTML, do not publish)'
+        type: boolean
+        default: false
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run weekly digest
+        env:
+          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+          AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
+          SUBSTACK_SID: ${{ secrets.SUBSTACK_SID }}
+          SUBSTACK_PUBLICATION: ${{ secrets.SUBSTACK_PUBLICATION }}
+          SUBSTACK_AUTHOR_ID: ${{ secrets.SUBSTACK_AUTHOR_ID }}
+        run: |
+          python3 -u scripts/weekly-digest.py ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      - name: Upload HTML preview
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: digest-preview
+          path: digest-output.html
+          if-no-files-found: warn
+
+      # Runs after publishing so a cleanup failure can never block the newsletter.
+      - name: Delete Airtable jobs older than 30 days
+        if: ${{ !inputs.dry_run }}
+        env:
+          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+          AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
+        run: python3 -u scripts/cleanup-old-jobs.py
