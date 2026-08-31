@@ -38,6 +38,13 @@ SUBSTACK_AUTHOR_ID  = int(os.environ.get("SUBSTACK_AUTHOR_ID", "68540577"))
 SUBSTACK_BASE       = f"https://{SUBSTACK_PUB}.substack.com"
 
 
+# Substack sits behind Cloudflare and rejects requests with a bare/library
+# User-Agent from datacenter IPs (GitHub Actions runners). Send a normal one.
+BROWSER_UA = (
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+)
+
 SID_REFRESH_HELP = """
   How to refresh SUBSTACK_SID:
     1. Open substack.com in Chrome, signed in as the publication owner
@@ -63,9 +70,18 @@ def get_substack_cookie() -> str:
     r = requests.get(
         "https://substack.com/api/v1/user/profile/self",
         cookies={"substack.sid": sid},
+        headers={"User-Agent": BROWSER_UA, "Accept": "application/json"},
         timeout=15,
     )
-    if r.status_code in (401, 403) or not r.ok:
+    if r.status_code == 403:
+        raise RuntimeError(
+            "Substack returned 403 on the session check.\n"
+            "  The cookie itself may be fine — 403 usually means Substack blocked the\n"
+            "  request by IP (GitHub Actions runners are frequently challenged).\n"
+            "  If this cookie works from your laptop, the runner IP is the problem,\n"
+            "  not the secret.\n" + SID_REFRESH_HELP
+        )
+    if r.status_code == 401 or not r.ok:
         raise RuntimeError(
             f"SUBSTACK_SID is expired or invalid (profile check returned {r.status_code}).\n"
             + SID_REFRESH_HELP
@@ -407,6 +423,7 @@ def sync_to_substack(emails: list):
             r = requests.post(
                 f"https://{SUBSTACK_PUB}.substack.com/api/v1/free",
                 json={"email": email, "first_url": "https://buildsaudi.co", "first_referrer": ""},
+                headers={"User-Agent": BROWSER_UA},
                 timeout=10
             )
             if r.ok:
@@ -590,7 +607,7 @@ def publish_to_substack(body_json: str, date_str: str, total: int) -> str | None
     headers = {
         "Cookie": SUBSTACK_COOKIE,
         "Content-Type": "application/json",
-        "User-Agent": "Mozilla/5.0",
+        "User-Agent": BROWSER_UA,
     }
 
     # 1. Create draft
