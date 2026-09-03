@@ -1,0 +1,37 @@
+name: Ingest Jobs
+
+on:
+  schedule:
+    - cron: '0 5 * * *' # Daily 5am UTC (8am Riyadh)
+  workflow_dispatch:
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Ingest ATS jobs
+        run: npx tsx scripts/ingest-jobs.ts
+
+      - name: Commit updated jobs if changed
+        run: |
+          git config user.name "BuildSaudi Bot"
+          git config user.email "bot@buildsaudi.co"
+          git add data/jobs.json
+          if git diff --staged --quiet; then
+            echo "No job changes"
+          else
+            git commit -m "Auto: refresh individual job listings"
+            git push
+          fi

@@ -81,6 +81,11 @@ export default async function SectorPage({ params }: { params: Promise<{ sector:
           <p className="mt-2 text-sm font-mono text-[#06634D]">
             {sectorCompanies.length} companies · Hiring Now · updated {updatedLabel}
           </p>
+          <p className="mt-2 text-sm">
+            <Link href="/jobs" className="text-[#06634D] underline underline-offset-2 hover:text-[#044D3B]">
+              Browse individual openings
+            </Link>
+          </p>
           {hiringNow && (
             <p className="mt-1 text-sm text-[#4B5563]">
               Hiring now includes {hiringNow}

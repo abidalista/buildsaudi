@@ -14,6 +14,7 @@ function allUrls(): string[] {
     `${base}/about`,
     `${base}/faq`,
     `${base}/submit`,
+    `${base}/jobs`,
     ...companies.map((c) => `${base}/company/${c.slug}`),
     ...cities.map((c) => `${base}/jobs/${c.slug}`),
     ...sectors.map((s) => `${base}/jobs/sector/${s.slug}`),

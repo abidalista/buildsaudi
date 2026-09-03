@@ -75,6 +75,7 @@ export default async function CompanyPage({
     datePosted: job.posted_date,
     employmentType: job.job_type === "Full-time" ? "FULL_TIME" : job.job_type === "Part-time" ? "PART_TIME" : job.job_type === "Contract" ? "CONTRACTOR" : "FULL_TIME",
     hiringOrganization: { "@type": "Organization", name: company.name, sameAs: company.website },
+    url: job.apply_url,
     jobLocation: { "@type": "Place", address: { "@type": "PostalAddress", addressLocality: job.location.includes("Remote") ? "Remote" : job.location, addressCountry: "SA" } },
     directApply: true,
   }))
@@ -102,13 +103,13 @@ export default async function CompanyPage({
                 {"["} BUILDSAUDI {"]"}
               </div>
             </Link>
-            <Link href="/submit">
+            <Link href="/jobs">
               <Button
                 variant="outline"
                 size="sm"
                 className="border-[#06634D] text-[#06634D] hover:bg-[#06634D] hover:text-white"
               >
-                Post a Job
+                Jobs
               </Button>
             </Link>
           </div>
@@ -192,6 +193,34 @@ export default async function CompanyPage({
             </div>
           </div>
         </div>
+
+        {companyJobs.length > 0 && (
+          <section className="rounded-lg border border-[#e5e5e5] bg-white p-6 mb-6" aria-labelledby="open-roles-heading">
+            <h2 id="open-roles-heading" className="text-lg font-bold text-[#111827] mb-4">
+              Open roles at {company.name}
+            </h2>
+            <ul className="divide-y divide-gray-100">
+              {companyJobs.map((job) => (
+                <li key={job.id} className="py-3 first:pt-0 last:pb-0 flex items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold text-[#111827]">{job.title}</p>
+                    <p className="text-xs text-[#6b7280] mt-0.5" dir="ltr">
+                      {job.location}
+                    </p>
+                  </div>
+                  <a
+                    href={job.apply_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 px-3 py-1.5 bg-[#06634D] text-white text-xs font-semibold rounded hover:bg-[#044D3B]"
+                  >
+                    Apply
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         <section className="rounded-lg border border-[#e5e5e5] bg-white p-6 mb-6" aria-labelledby="company-faq-heading">
           <h2 id="company-faq-heading" className="text-lg font-bold text-[#111827] mb-4">

@@ -66,6 +66,11 @@ export default async function StagePage({ params }: { params: Promise<{ stage: s
           <h1 className="text-2xl font-bold text-[#111827]">Jobs at {stage.name} Saudi Startups</h1>
           <p className="mt-1 text-sm text-[#6B7280]">{stage.description}</p>
           <p className="mt-2 text-sm font-mono text-[#06634D]">{stageCompanies.length} companies</p>
+          <p className="mt-2 text-sm">
+            <Link href="/jobs" className="text-[#06634D] underline underline-offset-2 hover:text-[#044D3B]">
+              Browse individual openings
+            </Link>
+          </p>
         </div>
       </header>
 
