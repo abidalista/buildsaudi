@@ -77,6 +77,11 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
           <p className="mt-2 text-sm font-mono text-[#06634D]">
             {cityCompanies.length} companies · Hiring Now · updated {updatedLabel}
           </p>
+          <p className="mt-2 text-sm">
+            <Link href="/jobs" className="text-[#06634D] underline underline-offset-2 hover:text-[#044D3B]">
+              Browse individual openings
+            </Link>
+          </p>
           {slug === "riyadh" && examples.length > 0 && (
             <p className="mt-1 text-sm text-[#4B5563]">
               Riyadh startups hiring on BuildSaudi include {examples.join(", ")}

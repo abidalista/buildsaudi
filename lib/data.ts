@@ -1,4 +1,5 @@
 import { Company, Job } from "./types"
+import jobsFile from "../data/jobs.json"
 
 export const companies: Company[] = [
   // ===== UNICORNS & MAJOR TECH =====
@@ -238,8 +239,8 @@ export const companies: Company[] = [
   { slug: "nuzul", name: "Nuzul", website: "https://nuzul.com", linkedin: "https://www.linkedin.com/company/nuzulapp", stage: "Pre-Seed", sector: ["Proptech"], city: "Riyadh", description: "CRM and operating system for real estate professionals.", careers_url: "https://nuzul.com", founders: "Razwa Alharthi, Abdulmajeed Al-Baqami", team_size: "1-10", founded_year: 2023 },
 ]
 
-// Jobs archived — linking directly to company career pages
-export const jobs: Job[] = []
+export const jobs: Job[] = (jobsFile.jobs || []) as Job[]
+export const jobsScrapedAt: string = jobsFile.scraped_at || ""
 
 export function getCompanyBySlug(slug: string): Company | undefined {
   return companies.find((c) => c.slug === slug)
@@ -253,4 +254,10 @@ export const filterOptions = {
   sector: [...new Set(companies.flatMap((c) => c.sector))].sort(),
   city: [...new Set(companies.map((c) => c.city))].sort(),
   companyStage: ["Seed", "Series A", "Series B", "Growth", "Unicorn"],
+}
+
+export const jobFilterOptions = {
+  sector: [...new Set(jobs.map((j) => j.sector).filter(Boolean))].sort(),
+  function: [...new Set(jobs.map((j) => j.function))].sort(),
+  seniority: ["intern", "entry", "mid", "senior"] as const,
 }

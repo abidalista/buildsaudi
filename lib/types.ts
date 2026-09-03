@@ -16,6 +16,19 @@ export interface Company {
   last_round_date?: string
 }
 
+export type JobFunction =
+  | "engineering"
+  | "product"
+  | "design"
+  | "sales"
+  | "marketing"
+  | "operations"
+  | "people"
+  | "finance"
+  | "other"
+
+export type Seniority = "intern" | "entry" | "mid" | "senior"
+
 export interface Job {
   id: string
   company_slug: string
@@ -23,7 +36,8 @@ export interface Job {
   company: string
   location: string
   job_type: string
-  experience_level: string
+  experience_level: Seniority
+  function: JobFunction
   sector: string
   apply_url: string
   posted_date: string
