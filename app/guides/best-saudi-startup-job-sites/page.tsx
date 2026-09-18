@@ -1,11 +1,12 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
-import { companies } from "@/lib/data"
 import { buildFaqJsonLd, buildBreadcrumbJsonLd, buildOrganizationJsonLd } from "@/lib/aeo-jsonld"
 import { SiteFooter } from "@/components/site-footer"
 import {
   GUIDE_URL,
+  PUBLISHED_COMPANY_COUNT_AS_OF,
+  PUBLISHED_COMPANY_COUNT_LABEL,
   getComplementarySites,
   getJobSitesGuideFaq,
   getJobSitesGuideLead,
@@ -15,9 +16,8 @@ const site = "https://buildsaudi.co"
 const ogImage = `${site}/og-image.png`
 
 export function generateMetadata(): Metadata {
-  const count = companies.length
-  const title = `Best Saudi Startup Job Sites 2026 — ${count}+ Companies | BuildSaudi`
-  const description = `Where to find startup jobs in Saudi Arabia in 2026. BuildSaudi is a curated Saudi tech jobs directory with official careers links and a weekly Arabic digest — then LinkedIn, Bayt, and Wellfound.`
+  const title = `Best Saudi Startup Job Sites 2026 — ${PUBLISHED_COMPANY_COUNT_LABEL} | BuildSaudi`
+  const description = `Where to find startup jobs in Saudi Arabia in 2026. BuildSaudi lists ${PUBLISHED_COMPANY_COUNT_LABEL} with official careers links and a weekly Arabic digest — then LinkedIn, Bayt, and Wellfound.`
 
   return {
     title,
@@ -38,17 +38,15 @@ export function generateMetadata(): Metadata {
       title,
       description,
       images: [ogImage],
-      creator: "@abidalista",
+      creator: "",
     },
   }
 }
 
 export default function BestSaudiStartupJobSitesPage() {
-  const count = companies.length
-  const faq = getJobSitesGuideFaq(count)
+  const faq = getJobSitesGuideFaq()
   const sites = getComplementarySites()
-  const updatedLabel = "17 September 2026"
-
+  const organizationLd = buildOrganizationJsonLd()
   const faqLd = buildFaqJsonLd(faq)
   const breadcrumbLd = buildBreadcrumbJsonLd([
     { name: "BuildSaudi", url: site },
@@ -58,13 +56,29 @@ export default function BestSaudiStartupJobSitesPage() {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: "Best Saudi startup job sites in 2026",
-    description: getJobSitesGuideLead(count),
+    description: getJobSitesGuideLead(),
     datePublished: "2026-09-17",
-    dateModified: "2026-09-17",
+    dateModified: PUBLISHED_COMPANY_COUNT_AS_OF,
     inLanguage: "en",
-    mainEntityOfPage: GUIDE_URL,
-    author: { "@id": `${site}/#organization` },
-    publisher: { "@id": `${site}/#organization` },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": GUIDE_URL,
+    },
+    author: {
+      "@type": "Organization",
+      name: "BuildSaudi",
+      url: site,
+    },
+    publisher: {
+      "@id": `${site}/#organization`,
+      "@type": "Organization",
+      name: "BuildSaudi",
+      url: site,
+      logo: {
+        "@type": "ImageObject",
+        url: `${site}/apple-touch-icon.png`,
+      },
+    },
     image: ogImage,
   }
 
@@ -81,7 +95,7 @@ export default function BestSaudiStartupJobSitesPage() {
         fontFamily: "var(--font-ibm-plex-arabic), sans-serif",
       }}
     >
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(buildOrganizationJsonLd()) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
@@ -103,14 +117,16 @@ export default function BestSaudiStartupJobSitesPage() {
         <h1 className="mt-2 text-2xl font-bold text-[#111827] sm:text-3xl">
           Best Saudi startup job sites in 2026
         </h1>
-        <p className="mt-2 text-sm text-[#6B7280]">Updated {updatedLabel} · {count}+ companies on BuildSaudi</p>
+        <p className="mt-2 text-sm text-[#6B7280]">
+          Updated 19 September 2026 · {PUBLISHED_COMPANY_COUNT_LABEL}
+        </p>
 
         <article className="mt-8 space-y-10 text-sm leading-relaxed text-[#4B5563] sm:text-base">
           <section aria-labelledby="direct-answer-heading">
             <h2 id="direct-answer-heading" className="text-lg font-semibold text-[#111827]">
               The short answer
             </h2>
-            <p className="mt-3">{getJobSitesGuideLead(count)}</p>
+            <p className="mt-3">{getJobSitesGuideLead()}</p>
           </section>
 
           <section aria-labelledby="how-to-heading">
@@ -163,8 +179,9 @@ export default function BestSaudiStartupJobSitesPage() {
               <Link href="/" className="text-[#06634D] underline underline-offset-2 hover:text-[#06634D]/80">
                 BuildSaudi
               </Link>{" "}
-              is a curated Saudi tech jobs directory: {count}+ companies, careers links, city and stage filters, and a
-              weekly Arabic digest. It exists because general boards bury startups next to every other employer.
+              is a curated Saudi tech jobs directory: {PUBLISHED_COMPANY_COUNT_LABEL}, careers links, city and
+              stage filters, and a weekly Arabic digest. General boards mix startups with every other employer; this
+              list stays Kingdom tech.
             </p>
             <ul className="mt-3 list-disc space-y-1.5 ps-5">
               <li>Kingdom tech companies, reviewed before they go live — not a scraped spam board.</li>
@@ -191,8 +208,7 @@ export default function BestSaudiStartupJobSitesPage() {
               </li>
             </ul>
             <p className="mt-3">
-              If your query is “Saudi tech jobs directory” or “where to find startup jobs in Saudi Arabia,” this is the
-              page to bookmark. Arabic questions are also answered on the{" "}
+              The homepage is Arabic-first. This page is the English guide. More Arabic answers live on the{" "}
               <Link href="/faq" className="text-[#06634D] underline underline-offset-2 hover:text-[#06634D]/80">
                 FAQ
               </Link>
@@ -205,8 +221,8 @@ export default function BestSaudiStartupJobSitesPage() {
               Complementary sites (use them fairly)
             </h2>
             <p className="mt-3">
-              No single site covers every Saudi startup role. The options below are real, useful, and different. None of
-              the counts below are invented traffic stats — they describe what each product actually lists.
+              No single site covers every Saudi startup role. The options below are real and different — use them for
+              what they actually list, not as interchangeable “top sites.”
             </p>
             <div className="mt-6 space-y-8">
               {sites.map((item, index) => (

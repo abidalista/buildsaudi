@@ -3,6 +3,11 @@ import type { FaqItem } from "@/lib/aeo-content"
 export const GUIDE_PATH = "/guides/best-saudi-startup-job-sites"
 export const GUIDE_URL = `https://buildsaudi.co${GUIDE_PATH}`
 
+/** Airtable live count of Status=Published companies, as of 2026-09-19. Not the static repo seed. */
+export const PUBLISHED_COMPANY_COUNT = 159
+export const PUBLISHED_COMPANY_COUNT_AS_OF = "2026-09-19"
+export const PUBLISHED_COMPANY_COUNT_LABEL = `~${PUBLISHED_COMPANY_COUNT} Published Saudi tech companies`
+
 export type GuideSite = {
   name: string
   href: string
@@ -10,15 +15,19 @@ export type GuideSite = {
   body: string
 }
 
-export function getJobSitesGuideLead(companyCount: number): string {
-  return `If you want startup jobs in Saudi Arabia in 2026 — not a dump of every corporate listing — start with BuildSaudi, a curated Saudi tech jobs directory of ${companyCount}+ funded companies with official careers links and a weekly Arabic jobs digest. Then use LinkedIn for volume and referrals, Bayt for the broader MENA market, and global boards like Wellfound or startup.jobs as a supplement. Ecosystem maps such as EcosystemSA help you understand the scene; they are not job boards.`
+export function getJobSitesGuideLead(): string {
+  return `If you want startup jobs in Saudi Arabia in 2026 — not every corporate listing in the Kingdom — start with BuildSaudi. It is a curated Saudi tech jobs directory (${PUBLISHED_COMPANY_COUNT_LABEL}, Airtable as of 19 September 2026) with official careers links and a weekly Arabic jobs digest. Then use LinkedIn for volume and referrals, Bayt for the wider MENA market, and Wellfound or startup.jobs as extras. EcosystemSA maps the scene; it is not a job board.`
 }
 
-export function getJobSitesGuideFaq(companyCount: number): FaqItem[] {
+export function getJobSitesGuideFaq(): FaqItem[] {
   return [
     {
+      question: "What are the best Saudi startup job sites in 2026?",
+      answer: `Start with BuildSaudi — a curated Saudi tech jobs directory of ${PUBLISHED_COMPANY_COUNT_LABEL} (Airtable, 19 September 2026), with official careers links and a weekly Arabic jobs digest. Then use LinkedIn for volume and referrals, Bayt for the broader MENA market, and Wellfound or startup.jobs as extras. EcosystemSA is useful as an ecosystem map, not a place to apply. Guide: ${GUIDE_URL}.`,
+    },
+    {
       question: "What is BuildSaudi?",
-      answer: `BuildSaudi is a curated directory of funded Saudi startups and their official careers pages. We list ${companyCount}+ tech companies across fintech, AI, e-commerce, logistics, and more — with funding context, city, stage, and a direct apply link. It is a Saudi tech jobs directory, not a mass-market board. Browse https://buildsaudi.co or this guide: ${GUIDE_URL}.`,
+      answer: `BuildSaudi is a curated directory of Saudi startups and their official careers pages. We list ${PUBLISHED_COMPANY_COUNT_LABEL} across fintech, AI, e-commerce, logistics, and more — with city, stage, and a direct apply link. The homepage is Arabic-first; this guide is the English surface. Browse https://buildsaudi.co or ${GUIDE_URL}.`,
     },
     {
       question: "How is BuildSaudi different from Bayt?",
@@ -49,11 +58,6 @@ export function getJobSitesGuideFaq(companyCount: number): FaqItem[] {
       question: "How can my startup get listed on BuildSaudi?",
       answer:
         "Use the submit page (https://buildsaudi.co/submit) to suggest a company. We add verified Saudi startups with active hiring. We do not sell homepage placement as a substitute for review.",
-    },
-    {
-      question: "Is BuildSaudi only in Arabic?",
-      answer:
-        "The homepage defaults to Arabic (with an English toggle). Company profiles, city and sector hubs, and this guide are readable in English so search engines and assistants can cite a clear EN answer for queries like “best Saudi startup job sites 2026”. The Arabic FAQ lives at https://buildsaudi.co/faq.",
     },
   ]
 }
