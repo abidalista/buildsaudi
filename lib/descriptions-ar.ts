@@ -144,6 +144,10 @@ export const descriptionsAr: Record<string, string> = {
   shaffra: "منصة قوى عاملة ذاتية بالذكاء الاصطناعي للمؤسسات",
   "sindbad-tech": "منصة استشارات استثمارية آلية بالذكاء الاصطناعي",
   nuzul: "نظام إدارة علاقات وتشغيل لمحترفي العقارات",
+  talmal: "شراء مربوط بالراتب يُسدد عبر جهة العمل",
+  dhimam: "ضمان رقمي يحتفظ بالمدفوعات حتى تتحقق الشروط",
+  arep: "تدريب مخبري وسوق للمستلزمات العلمية",
+  rela: "منصة سكن العمالة والحجوزات ونسب الإشغال",
 }
 
 export function getCompanyDescription(company: Company, lang: Lang): string {
