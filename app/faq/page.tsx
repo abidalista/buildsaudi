@@ -52,6 +52,15 @@ export default function FaqPage() {
         <p className="mt-2 text-sm text-[#6B7280]" dir="rtl">
           أسئلة شائعة عن وظائف الشركات الناشئة في السعودية
         </p>
+        <p className="mt-3 text-sm text-[#4B5563]">
+          English:{" "}
+          <Link
+            href="/guides/best-saudi-startup-job-sites"
+            className="text-[#06634D] underline underline-offset-2 hover:text-[#06634D]/80"
+          >
+            Best Saudi startup job sites in 2026
+          </Link>
+        </p>
         <div className="mt-8 space-y-8">
           {aeoFaq.map((item) => (
             <div key={item.question}>

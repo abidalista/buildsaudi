@@ -4,6 +4,7 @@ const links = [
   { href: "/jobs", label: "Jobs" },
   { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
+  { href: "/guides/best-saudi-startup-job-sites", label: "Job sites" },
   { href: "/submit", label: "Submit" },
   { href: "/privacy", label: "Privacy" },
   { href: "/terms", label: "Terms" },
