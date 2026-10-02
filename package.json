@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint .",
     "indexnow": "npx --yes tsx scripts/submit-indexnow.ts",
+    "ingest-jobs": "npx --yes tsx scripts/ingest-jobs.ts",
     "upload-sourcemaps": "npx -y @posthog/cli sourcemap upload --directory .next"
   },
   "dependencies": {

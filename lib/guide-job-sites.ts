@@ -38,7 +38,7 @@ export function getJobSitesGuideFaq(): FaqItem[] {
     {
       question: "How do I apply for jobs listed on BuildSaudi?",
       answer:
-        "BuildSaudi does not host applications. Open a company profile, click through to the official careers page, and apply there. Filter the homepage by sector, stage, or city (Riyadh, Jeddah, Dammam, remote), or start from hubs like https://buildsaudi.co/jobs/riyadh and https://buildsaudi.co/jobs/sector/ai.",
+        "BuildSaudi does not host applications. Browse individual openings at https://buildsaudi.co/jobs, or open a company profile and click through to the official careers page. Filter the homepage by sector, stage, or city (Riyadh, Jeddah, Dammam, remote), or start from hubs like https://buildsaudi.co/jobs/riyadh and https://buildsaudi.co/jobs/sector/ai.",
     },
     {
       question: "Is BuildSaudi free?",

@@ -144,8 +144,13 @@ export default function BestSaudiStartupJobSitesPage() {
                 is built for that filter.
               </li>
               <li>
-                Open the company profile, then apply on the <strong className="font-semibold text-[#111827]">official careers page</strong>.
-                We do not process applications.
+                Browse{" "}
+                <Link href="/jobs" className="text-[#06634D] underline underline-offset-2 hover:text-[#06634D]/80">
+                  individual openings
+                </Link>
+                , or open a company profile, then apply on the{" "}
+                <strong className="font-semibold text-[#111827]">official careers page</strong>. We do not process
+                applications.
               </li>
               <li>
                 Narrow by city:{" "}
@@ -186,7 +191,14 @@ export default function BestSaudiStartupJobSitesPage() {
             </p>
             <ul className="mt-3 list-disc space-y-1.5 ps-5">
               <li>Kingdom tech companies, reviewed before they go live, not a scraped spam board.</li>
-              <li>Direct apply links to official careers pages (Greenhouse, Workable, or the company site).</li>
+              <li>
+                Direct apply links to official careers pages (Greenhouse, Workable, or the company site), including
+                individual openings on{" "}
+                <Link href="/jobs" className="text-[#06634D] underline underline-offset-2 hover:text-[#06634D]/80">
+                  /jobs
+                </Link>
+                .
+              </li>
               <li>Weekly Arabic jobs digest via the homepage alert form. Free for job seekers.</li>
               <li>
                 Hubs for{" "}

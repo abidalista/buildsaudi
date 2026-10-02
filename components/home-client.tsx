@@ -329,6 +329,13 @@ export default function HomeClient() {
                   )}
                 </a>
 
+                <Link
+                  href="/jobs"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-[#06634D] text-white rounded hover:bg-[#044D3B] transition-all whitespace-nowrap"
+                >
+                  {t.jobsBoard}
+                </Link>
+
                 <button
                   onClick={() => openJobSeeker("header")}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-transparent text-[#06634D] border border-[#06634D]/40 rounded hover:bg-[#06634D]/5 transition-all whitespace-nowrap cursor-pointer"
@@ -775,6 +782,10 @@ export default function HomeClient() {
             {DIRECTORY_COMPARE_EN}
           </p>
           <p className="mt-4 text-sm text-[#06634D]">
+            <Link href="/jobs" className="underline underline-offset-2 hover:text-[#044D3B]">
+              Jobs
+            </Link>
+            {" · "}
             <Link href="/jobs/sector/fintech" className="underline underline-offset-2 hover:text-[#044D3B]">
               Fintech
             </Link>
