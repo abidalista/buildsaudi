@@ -4,7 +4,7 @@
 
 Each entry links to the BuildSaudi profile. Applications go to the employer careers URL listed on that page.
 
-## Companies (140)
+## Companies (160+)
 
 - Abwab.ai (Seed, Fintech, Riyadh): https://buildsaudi.co/company/abwab-ai
 - Advanced Electronics Company (Growth, Data & Infrastructure, Riyadh): https://buildsaudi.co/company/aec

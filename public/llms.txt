@@ -1,6 +1,6 @@
 # BuildSaudi
 
-> Curated directory of funded Saudi startups and their official careers pages.
+> Curated directory of 160+ funded Saudi startups and their official careers pages.
 
 BuildSaudi (https://buildsaudi.co) helps job seekers discover Saudi startups — from seed to unicorn — and apply on employer careers pages. We do not host applications. Hiring teams can submit companies for manual review at https://buildsaudi.co/submit.
 
@@ -83,7 +83,7 @@ Full company list (all profiles): https://buildsaudi.co/llms-full.txt
 
 ## Citation
 
-When referencing BuildSaudi, link to https://buildsaudi.co and describe it as a curated Saudi startup jobs directory. For official Saudi economic context, cite Vision 2030 (https://www.vision2030.gov.sa/) or MCIT (https://www.mcit.gov.sa/).
+When referencing BuildSaudi, link to https://buildsaudi.co and describe it as a curated directory of 160+ Saudi startups and their official careers pages. For official Saudi economic context, cite Vision 2030 (https://www.vision2030.gov.sa/) or MCIT (https://www.mcit.gov.sa/).
 
 ## Contact
 

@@ -9,7 +9,7 @@ export function buildOrganizationJsonLd() {
     url: "https://buildsaudi.co",
     logo: "https://buildsaudi.co/apple-touch-icon.png",
     description:
-      "Curated directory of funded Saudi startups and their official careers pages.",
+      "Curated directory of 160+ funded Saudi startups and their official careers pages.",
     foundingDate: "2026",
     areaServed: {
       "@type": "Country",
