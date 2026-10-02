@@ -790,6 +790,10 @@ export default function HomeClient() {
             <Link href="/faq" className="underline underline-offset-2 hover:text-[#044D3B]">
               FAQ
             </Link>
+            {" · "}
+            <Link href="/guides/best-saudi-startup-job-sites" className="underline underline-offset-2 hover:text-[#044D3B]">
+              English guide
+            </Link>
           </p>
         </div>
       </section>
