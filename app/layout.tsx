@@ -3,7 +3,7 @@ import { IBM_Plex_Sans_Arabic, Space_Grotesk, Space_Mono } from 'next/font/googl
 import { Analytics } from '@vercel/analytics/next'
 import { PostHogProvider } from './posthog-provider'
 import Script from 'next/script'
-import { companies } from '@/lib/data'
+import { MARKETING_COMPANY_COUNT_LABEL } from '@/lib/marketing'
 import './globals.css'
 
 const ibmPlexArabic = IBM_Plex_Sans_Arabic({
@@ -14,9 +14,9 @@ const ibmPlexArabic = IBM_Plex_Sans_Arabic({
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" })
 const spaceMono = Space_Mono({ weight: ["400", "700"], subsets: ["latin"], variable: "--font-space-mono" })
 
-const siteTitle = `Startup Jobs in Saudi Arabia — ${companies.length}+ Companies | BuildSaudi`
+const siteTitle = `Startup Jobs in Saudi Arabia — ${MARKETING_COMPANY_COUNT_LABEL} Companies | BuildSaudi`
 const siteDescription =
-  `Browse ${companies.length}+ funded Saudi startups hiring in Riyadh and across the Kingdom. Filter by sector and stage — apply direct. وظائف شركات ناشئة في السعودية.`
+  `Browse ${MARKETING_COMPANY_COUNT_LABEL} funded Saudi startups hiring in Riyadh and across the Kingdom. Filter by sector and stage, then apply direct. وظائف شركات ناشئة في السعودية.`
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: siteTitle,
     description:
-      `Browse ${companies.length}+ funded Saudi startups hiring in Riyadh and across the Kingdom. Filter by sector and stage — apply direct.`,
+      `Browse ${MARKETING_COMPANY_COUNT_LABEL} funded Saudi startups hiring in Riyadh and across the Kingdom. Filter by sector and stage, then apply direct.`,
     url: 'https://buildsaudi.co',
     siteName: 'BuildSaudi',
     type: 'website',
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: siteTitle,
-    description: 'Funded Saudi startups hiring now. Apply direct.',
+    description: `${MARKETING_COMPANY_COUNT_LABEL} funded Saudi startups hiring now. Apply direct.`,
     images: ['https://buildsaudi.co/og-image.png'],
     creator: '@abidalista',
   },

@@ -16,6 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { companies, getJobsByCompany, filterOptions } from "@/lib/data"
+import { catalogCountLabel } from "@/lib/marketing"
 import { getCompanyDescription, descriptionsAr } from "@/lib/descriptions-ar"
 import { CompanyLogo } from "@/components/company-logo"
 import { InstallPrompt } from "@/components/install-prompt"
@@ -482,7 +483,7 @@ export default function HomeClient() {
 
             {/* Company count */}
             <p className="text-xs text-[#4B5563]">
-              {filteredCompanies.length} {t.companies}
+              {catalogCountLabel(filteredCompanies.length, companies.length, lang)} {t.companies}
             </p>
           </aside>
 

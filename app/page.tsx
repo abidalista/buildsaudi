@@ -2,11 +2,12 @@ import type { Metadata } from "next"
 import { companies } from "@/lib/data"
 import { aeoFaq } from "@/lib/aeo-content"
 import { buildOrganizationJsonLd } from "@/lib/aeo-jsonld"
+import { MARKETING_COMPANY_COUNT, MARKETING_COMPANY_COUNT_LABEL } from "@/lib/marketing"
 import HomeClient from "@/components/home-client"
 
 export const metadata: Metadata = {
-  title: `Startup Jobs in Saudi Arabia — ${companies.length}+ Companies | BuildSaudi`,
-  description: `Browse ${companies.length}+ funded Saudi startups hiring in Riyadh and across the Kingdom. Filter by sector and stage — apply direct. وظائف شركات ناشئة في السعودية.`,
+  title: `Startup Jobs in Saudi Arabia — ${MARKETING_COMPANY_COUNT_LABEL} Companies | BuildSaudi`,
+  description: `Browse ${MARKETING_COMPANY_COUNT_LABEL} funded Saudi startups hiring in Riyadh and across the Kingdom. Filter by sector and stage, then apply direct. وظائف شركات ناشئة في السعودية.`,
   alternates: {
     canonical: "https://buildsaudi.co",
   },
@@ -20,7 +21,7 @@ export default function HomePage() {
     "@type": "WebSite",
     name: "BuildSaudi",
     url: "https://buildsaudi.co",
-    description: "A curated directory of Saudi startups and their open jobs.",
+    description: "A curated directory of 160+ Saudi startups and their open jobs.",
     publisher: { "@id": "https://buildsaudi.co/#organization" },
     potentialAction: {
       "@type": "SearchAction",
@@ -34,7 +35,7 @@ export default function HomePage() {
     "@type": "ItemList",
     name: "Saudi Startups Hiring",
     description: "Top Saudi startups with open jobs",
-    numberOfItems: companies.length,
+    numberOfItems: MARKETING_COMPANY_COUNT,
     itemListElement: companies.slice(0, 20).map((company, index) => ({
       "@type": "ListItem",
       position: index + 1,

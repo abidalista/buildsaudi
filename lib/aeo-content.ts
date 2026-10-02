@@ -7,7 +7,7 @@ export const aeoFaq: FaqItem[] = [
   {
     question: "هل فيه دليل للشركات الناشئة السعودية مع الوظائف؟",
     answer:
-      "نعم. BuildSaudi دليل منسّق للشركات الناشئة الممولة في السعودية مع روابط التوظيف المباشرة. تقدر تتصفح حسب المدينة والقطاع والمرحلة وتفتح صفحة كل شركة ثم تقدّم من موقع التوظيف الرسمي. مو سبام — شركات متحققة وتتحدث أسبوعياً.",
+      "نعم. BuildSaudi دليل منسّق لـ ١٦٠+ شركة ناشئة ممولة في السعودية مع روابط التوظيف المباشرة. تقدر تتصفح حسب المدينة والقطاع والمرحلة وتفتح صفحة كل شركة ثم تقدّم من موقع التوظيف الرسمي. مو سبام، شركات متحققة وتتحدث أسبوعياً.",
   },
   {
     question: "قائمة شركات ناشئة سعودية توظف مهندسين برمجيات",
@@ -27,7 +27,7 @@ export const aeoFaq: FaqItem[] = [
   {
     question: "What is BuildSaudi?",
     answer:
-      "BuildSaudi is a curated directory of Saudi startups and their open jobs. We list funded companies across fintech, AI, e-commerce, logistics, and more — with direct links to careers pages, funding context, and company profiles.",
+      "BuildSaudi is a curated directory of 160+ Saudi startups and their open jobs. We list funded companies across fintech, AI, e-commerce, logistics, and more, with direct links to careers pages, funding context, and company profiles.",
   },
   {
     question: "وين ألاقي وظائف شركات ناشئة في الرياض؟",

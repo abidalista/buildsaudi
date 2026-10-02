@@ -1,6 +1,6 @@
 export const strings = {
   ar: {
-    tagline: "دليل محدث للشركات السعودية اللي تبني مستقبل التقنية والذكاء الاصطناعي",
+    tagline: "دليل محدث لـ ١٦٠+ شركة سعودية تبني مستقبل التقنية والذكاء الاصطناعي",
     madeBy: "تصميم",
     searchJobs: "تنبيهات الوظائف",
     searchPlaceholder: "ابحث عن شركات...",
@@ -57,7 +57,7 @@ export const strings = {
     aiApplyUpsellSkip: "تخطّي",
   },
   en: {
-    tagline: "A curated directory of companies building the future of Saudi",
+    tagline: "A curated directory of 160+ companies building the future of Saudi",
     madeBy: "Made by",
     searchJobs: "Get job alerts",
     searchPlaceholder: "search companies...",

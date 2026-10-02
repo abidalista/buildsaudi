@@ -6,7 +6,7 @@ import { SiteFooter } from "@/components/site-footer"
 export const metadata: Metadata = {
   title: "About BuildSaudi — Saudi Startup Jobs Directory",
   description:
-    "BuildSaudi is a curated directory of Saudi startups and their open jobs — funded companies in the Kingdom with direct careers links.",
+    "BuildSaudi is a curated directory of 160+ Saudi startups and their open jobs, with direct careers links across the Kingdom.",
   alternates: { canonical: "https://buildsaudi.co/about" },
 }
 
@@ -38,8 +38,8 @@ export default function AboutPage() {
         <h1 className="text-2xl font-bold text-[#111827] sm:text-3xl">About BuildSaudi</h1>
         <div className="mt-6 space-y-4 text-sm leading-relaxed text-[#4B5563] sm:text-base">
           <p>
-            BuildSaudi is a curated directory of Saudi startups and their open jobs. We list funded
-            companies across fintech, AI, e-commerce, logistics, healthtech, and more — with direct
+            BuildSaudi is a curated directory of 160+ Saudi startups and their open jobs. We list funded
+            companies across fintech, AI, e-commerce, logistics, healthtech, and more, with direct
             links to careers pages, funding context, and company profiles.
           </p>
           <p>
