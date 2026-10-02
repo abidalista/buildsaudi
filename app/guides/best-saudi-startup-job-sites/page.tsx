@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/site-footer"
 import {
   GUIDE_URL,
   PUBLISHED_COMPANY_COUNT_AS_OF,
+  PUBLISHED_COMPANY_COUNT_AS_OF_LABEL,
   PUBLISHED_COMPANY_COUNT_LABEL,
   getComplementarySites,
   getJobSitesGuideFaq,
@@ -16,8 +17,8 @@ const site = "https://buildsaudi.co"
 const ogImage = `${site}/og-image.png`
 
 export function generateMetadata(): Metadata {
-  const title = `Best Saudi Startup Job Sites 2026 — ${PUBLISHED_COMPANY_COUNT_LABEL} | BuildSaudi`
-  const description = `Where to find startup jobs in Saudi Arabia in 2026. BuildSaudi lists ${PUBLISHED_COMPANY_COUNT_LABEL} with official careers links and a weekly Arabic digest — then LinkedIn, Bayt, and Wellfound.`
+  const title = `Best Saudi Startup Job Sites 2026 | ${PUBLISHED_COMPANY_COUNT_LABEL} | BuildSaudi`
+  const description = `Where to find startup jobs in Saudi Arabia in 2026. BuildSaudi lists ${PUBLISHED_COMPANY_COUNT_LABEL} with official careers links and a weekly Arabic digest, then LinkedIn, Bayt, and Wellfound.`
 
   return {
     title,
@@ -31,7 +32,7 @@ export function generateMetadata(): Metadata {
       siteName: "BuildSaudi",
       locale: "en_US",
       type: "article",
-      images: [{ url: ogImage, width: 1200, height: 630, alt: "BuildSaudi — Saudi startup jobs directory" }],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: "BuildSaudi: Saudi startup jobs directory" }],
     },
     twitter: {
       card: "summary_large_image",
@@ -118,7 +119,7 @@ export default function BestSaudiStartupJobSitesPage() {
           Best Saudi startup job sites in 2026
         </h1>
         <p className="mt-2 text-sm text-[#6B7280]">
-          Updated 19 September 2026 · {PUBLISHED_COMPANY_COUNT_LABEL}
+          Updated {PUBLISHED_COMPANY_COUNT_AS_OF_LABEL} · {PUBLISHED_COMPANY_COUNT_LABEL}
         </p>
 
         <article className="mt-8 space-y-10 text-sm leading-relaxed text-[#4B5563] sm:text-base">
@@ -147,11 +148,11 @@ export default function BestSaudiStartupJobSitesPage() {
                 We do not process applications.
               </li>
               <li>
-                Narrow by city —{" "}
+                Narrow by city:{" "}
                 <Link href="/jobs/riyadh" className="text-[#06634D] underline underline-offset-2 hover:text-[#06634D]/80">
                   Riyadh
                 </Link>
-                , Jeddah, Dammam, or remote — and by sector, such as{" "}
+                , Jeddah, Dammam, or remote, and by sector, such as{" "}
                 <Link href="/jobs/sector/fintech" className="text-[#06634D] underline underline-offset-2 hover:text-[#06634D]/80">
                   fintech
                 </Link>{" "}
@@ -163,7 +164,7 @@ export default function BestSaudiStartupJobSitesPage() {
               </li>
               <li>
                 Sign up for <strong className="font-semibold text-[#111827]">job alerts</strong> on the homepage. That is
-                the weekly Arabic jobs digest — useful if you read Arabic or want a recurring list instead of checking daily.
+                the weekly Arabic jobs digest. Useful if you read Arabic or want a recurring list instead of checking daily.
               </li>
               <li>
                 Use LinkedIn and Bayt for volume. Global startup boards help only after you have a Kingdom shortlist.
@@ -173,7 +174,7 @@ export default function BestSaudiStartupJobSitesPage() {
 
           <section aria-labelledby="buildsaudi-heading">
             <h2 id="buildsaudi-heading" className="text-lg font-semibold text-[#111827]">
-              1. BuildSaudi — start here for Saudi startup jobs
+              1. BuildSaudi: start here for Saudi startup jobs
             </h2>
             <p className="mt-3">
               <Link href="/" className="text-[#06634D] underline underline-offset-2 hover:text-[#06634D]/80">
@@ -184,7 +185,7 @@ export default function BestSaudiStartupJobSitesPage() {
               list stays Kingdom tech.
             </p>
             <ul className="mt-3 list-disc space-y-1.5 ps-5">
-              <li>Kingdom tech companies, reviewed before they go live — not a scraped spam board.</li>
+              <li>Kingdom tech companies, reviewed before they go live, not a scraped spam board.</li>
               <li>Direct apply links to official careers pages (Greenhouse, Workable, or the company site).</li>
               <li>Weekly Arabic jobs digest via the homepage alert form. Free for job seekers.</li>
               <li>
@@ -221,7 +222,7 @@ export default function BestSaudiStartupJobSitesPage() {
               Complementary sites (use them fairly)
             </h2>
             <p className="mt-3">
-              No single site covers every Saudi startup role. The options below are real and different — use them for
+              No single site covers every Saudi startup role. The options below are real and different. Use them for
               what they actually list, not as interchangeable “top sites.”
             </p>
             <div className="mt-6 space-y-8">
@@ -246,7 +247,7 @@ export default function BestSaudiStartupJobSitesPage() {
             <p className="mt-6">
               Sabbar is another general Saudi jobs surface if you want volume. Funding databases such as MAGNiTT and
               Dealroom are useful for research, not for applying. Wamda covers entrepreneurship news; F6S is a programs
-              marketplace. Those are not job boards — do not treat them as one.
+              marketplace. Those are not job boards. Do not treat them as one.
             </p>
           </section>
 
