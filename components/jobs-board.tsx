@@ -9,13 +9,6 @@ import { JobAlertModal } from "@/components/job-alert-modal"
 import { CompanyLogo } from "@/components/company-logo"
 import { SiteFooter } from "@/components/site-footer"
 import { Input } from "@/components/ui/input"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 import { strings, type Lang } from "@/lib/i18n"
 import { DEFAULT_LANG, getStoredLang, setStoredLang } from "@/lib/lang"
 import { companies, getCompanyBySlug, jobFilterOptions, jobs, jobsScrapedAt } from "@/lib/data"
@@ -198,31 +191,54 @@ export default function JobsBoard() {
             )}
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-            <FilterSelect
+            <label className="sr-only" htmlFor="filter-sector">
+              {t.sector}
+            </label>
+            <select
+              id="filter-sector"
               value={sector}
-              onChange={setSector}
-              options={jobFilterOptions.sector}
-              placeholder={t.allSectors}
-              labels={Object.fromEntries(jobFilterOptions.sector.map((s) => [s, s]))}
-            />
-            <FilterSelect
+              onChange={(e) => setSector(e.target.value)}
+              className="h-10 w-full rounded border border-gray-300 bg-white px-2 text-xs text-gray-900"
+            >
+              <option value="">{t.allSectors}</option>
+              {jobFilterOptions.sector.map((s) => (
+                <option key={s} value={s}>
+                  {s}
+                </option>
+              ))}
+            </select>
+            <label className="sr-only" htmlFor="filter-function">
+              {t.jobFunction}
+            </label>
+            <select
+              id="filter-function"
               value={fn}
-              onChange={setFn}
-              options={[...jobFilterOptions.function]}
-              placeholder={t.allFunctions}
-              labels={Object.fromEntries(
-                jobFilterOptions.function.map((f) => [f, functionLabel(f as JobFunction, t)]),
-              )}
-            />
-            <FilterSelect
+              onChange={(e) => setFn(e.target.value)}
+              className="h-10 w-full rounded border border-gray-300 bg-white px-2 text-xs text-gray-900"
+            >
+              <option value="">{t.allFunctions}</option>
+              {jobFilterOptions.function.map((f) => (
+                <option key={f} value={f}>
+                  {functionLabel(f as JobFunction, t)}
+                </option>
+              ))}
+            </select>
+            <label className="sr-only" htmlFor="filter-seniority">
+              {t.seniority}
+            </label>
+            <select
+              id="filter-seniority"
               value={seniority}
-              onChange={setSeniority}
-              options={[...jobFilterOptions.seniority]}
-              placeholder={t.allSeniority}
-              labels={Object.fromEntries(
-                jobFilterOptions.seniority.map((s) => [s, seniorityLabel(s, t)]),
-              )}
-            />
+              onChange={(e) => setSeniority(e.target.value)}
+              className="h-10 w-full rounded border border-gray-300 bg-white px-2 text-xs text-gray-900"
+            >
+              <option value="">{t.allSeniority}</option>
+              {jobFilterOptions.seniority.map((s) => (
+                <option key={s} value={s}>
+                  {seniorityLabel(s, t)}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
       </div>
@@ -338,35 +354,5 @@ function JobCard({ job, t }: { job: Job; t: (typeof strings)[Lang] }) {
         </a>
       </div>
     </div>
-  )
-}
-
-function FilterSelect({
-  value,
-  onChange,
-  options,
-  placeholder,
-  labels,
-}: {
-  value: string
-  onChange: (value: string) => void
-  options: string[]
-  placeholder: string
-  labels: Record<string, string>
-}) {
-  return (
-    <Select value={value || undefined} onValueChange={(v) => onChange(v === "__all__" ? "" : v)}>
-      <SelectTrigger className="w-full bg-white border border-gray-300 text-gray-900 px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#06634D] rounded text-start text-xs h-10">
-        <SelectValue placeholder={placeholder} />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectItem value="__all__">{placeholder}</SelectItem>
-        {options.map((opt) => (
-          <SelectItem key={opt} value={opt}>
-            {labels[opt] || opt}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
   )
 }
