@@ -17,7 +17,7 @@ function exampleClause(examples: string[]): string {
 export function getCityFaq(
   cityName: string,
   slug: string,
-  companyCount: number,
+  companyCount: number | string,
   examples: string[] = [],
 ): FaqItem[] {
   const cityUrl = `${site}/jobs/${slug}`

@@ -5,6 +5,7 @@ import { companies } from "@/lib/data"
 import { CompanyLogo } from "@/components/company-logo"
 import { cities } from "@/lib/seo"
 import { getCityFaq } from "@/lib/aeo-landing"
+import { catalogCountLabel } from "@/lib/marketing"
 import { buildFaqJsonLd, buildBreadcrumbJsonLd, buildItemListJsonLd } from "@/lib/aeo-jsonld"
 import { SiteFooter } from "@/components/site-footer"
 import type { Metadata } from "next"
@@ -20,13 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
   const city = cities.find((c) => c.slug === slug)
   if (!city) return {}
   const count = companies.filter((c) => c.city.toLowerCase() === city.name.toLowerCase() || slug === "remote").length
+  const countLabel = catalogCountLabel(count, companies.length, "en")
   const arCity =
     slug === "riyadh" ? "الرياض" : slug === "jeddah" ? "جدة" : slug === "dammam" ? "الدمام" : city.name
   return {
     title:
       slug === "riyadh"
-        ? `Riyadh Startup Jobs — ${count} Companies Hiring | BuildSaudi`
-        : `Startup Jobs in ${city.name} — ${count} Companies | BuildSaudi`,
+        ? `Riyadh Startup Jobs — ${countLabel} Companies Hiring | BuildSaudi`
+        : `Startup Jobs in ${city.name} — ${countLabel} Companies | BuildSaudi`,
     description: `Find startup jobs in ${city.name}, Saudi Arabia. Software engineering, product, design, marketing, and more at funded startups. Updated weekly. وظائف شركات ناشئة في ${arCity}.`,
     alternates: { canonical: `${site}/jobs/${slug}` },
   }
@@ -42,7 +44,8 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
   )
 
   const examples = cityCompanies.slice(0, 4).map((c) => c.name)
-  const faq = getCityFaq(city.name, slug, cityCompanies.length, examples)
+  const countLabel = catalogCountLabel(cityCompanies.length, companies.length, "en")
+  const faq = getCityFaq(city.name, slug, countLabel, examples)
   const pageUrl = `${site}/jobs/${slug}`
   const updatedLabel = new Date().toISOString().slice(0, 10)
 
@@ -75,7 +78,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
           <h1 className="text-2xl font-bold text-[#111827]">BuildSaudi — Startup Jobs in {city.name}</h1>
           <p className="mt-1 text-sm text-[#6B7280]">{city.blurb}</p>
           <p className="mt-2 text-sm font-mono text-[#06634D]">
-            {cityCompanies.length} companies · Hiring Now · updated {updatedLabel}
+            {countLabel} companies · Hiring Now · updated {updatedLabel}
           </p>
           {slug === "riyadh" && examples.length > 0 && (
             <p className="mt-1 text-sm text-[#4B5563]">
