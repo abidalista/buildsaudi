@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { companies, getCompanyBySlug, getJobsByCompany, jobsScrapedAt } from "@/lib/data"
 import { jobFreshnessStamp } from "@/lib/job-classify"
 import { withBuildSaudiUtm } from "@/lib/utm"
+import { getCompanyProfile, hiringNowCopy } from "@/lib/company-profiles"
 import { CompanyLogo } from "@/components/company-logo"
 import { getCompanyFaq } from "@/lib/aeo-landing"
 import { buildFaqJsonLd, buildBreadcrumbJsonLd } from "@/lib/aeo-jsonld"
@@ -23,14 +24,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const company = getCompanyBySlug(slug)
   if (!company) return {}
   const jobCount = getJobsByCompany(slug).length
+  const profile = getCompanyProfile(slug)
   const title =
     jobCount > 0
-      ? `${company.name} Jobs & Careers — ${jobCount} Open Roles | BuildSaudi`
-      : `${company.name} Careers — ${company.stage} ${company.sector[0]} Startup | BuildSaudi`
-  const description =
-    jobCount > 0
-      ? `Browse ${jobCount} open roles at ${company.name}. ${company.description.slice(0, 100)} Apply on the official careers page — BuildSaudi does not process applications.`
-      : `${company.description.slice(0, 120)} Explore ${company.name}'s BuildSaudi profile — ${company.stage} ${company.sector[0]} startup in ${company.city}. Careers link included.`
+      ? `${company.name} Jobs and Careers | ${jobCount} Open Roles | BuildSaudi`
+      : `${company.name} Careers | ${company.stage} ${company.sector[0]} Startup | BuildSaudi`
+  const description = profile
+    ? `${profile.summary} ${jobCount > 0 ? `${jobCount} current openings from the official board.` : "Official careers link included."} Last checked ${profile.lastChecked}. BuildSaudi does not process applications.`
+    : jobCount > 0
+      ? `Browse ${jobCount} open roles at ${company.name}. ${company.description.slice(0, 100)} Apply on the official careers page. BuildSaudi does not process applications.`
+      : `${company.description.slice(0, 120)} Explore ${company.name}'s BuildSaudi profile. ${company.stage} ${company.sector[0]} startup in ${company.city}. Careers link included.`
   return {
     title,
     description,
@@ -51,22 +54,39 @@ export default async function CompanyPage({
   }
 
   const companyJobs = getJobsByCompany(slug)
+  const profile = getCompanyProfile(slug)
   const pageUrl = `${site}/company/${slug}`
   const primarySector = company.sector[0]
-  const faq = getCompanyFaq(company.name, primarySector, company.city, company.stage, company.careers_url)
+  const careersUrl = withBuildSaudiUtm(company.careers_url)
+  const faq = [
+    ...(profile?.faq ?? []),
+    ...getCompanyFaq(company.name, primarySector, company.city, company.stage, careersUrl),
+  ]
   const careersSameAsWebsite =
     company.website.replace(/\/$/, "") === company.careers_url.replace(/\/$/, "")
+  const jobsSeen = jobsScrapedAt ? jobsScrapedAt.slice(0, 10) : ""
+  const lastChecked = profile?.lastChecked || jobsSeen
+  const hiringCopy = hiringNowCopy(company.name, companyJobs, jobsScrapedAt)
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: company.name,
     url: company.website,
-    description: company.description,
+    description: profile?.summary || company.description,
     address: { "@type": "PostalAddress", addressLocality: company.city, addressCountry: "SA" },
     areaServed: { "@type": "Country", name: "Saudi Arabia" },
     sameAs: [company.linkedin, company.website].filter(Boolean),
     ...(company.founded_year ? { foundingDate: String(company.founded_year) } : {}),
+  }
+
+  const webPageLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    url: pageUrl,
+    name: `${company.name} careers`,
+    description: profile?.summary || company.description,
+    ...(lastChecked ? { dateModified: lastChecked, lastReviewed: lastChecked } : {}),
   }
 
   const jobPostingsLd = companyJobs.map((job) => ({
@@ -91,6 +111,7 @@ export default async function CompanyPage({
   return (
     <div className="min-h-screen">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       {jobPostingsLd.map((ld, i) => (
@@ -154,12 +175,19 @@ export default async function CompanyPage({
               </div>
 
               <p className="mt-3 text-sm text-[#4b5563] leading-relaxed">
-                {company.description}
+                {profile?.summary || company.description}
               </p>
+              {profile || (jobsSeen && companyJobs.length > 0) ? (
+                <p className="mt-3 text-xs font-mono text-[#06634D]">
+                  {profile ? `Facts last checked ${profile.lastChecked}` : null}
+                  {profile && jobsSeen && companyJobs.length > 0 ? " · " : null}
+                  {jobsSeen && companyJobs.length > 0 ? `Openings last seen ${jobsSeen}` : null}
+                </p>
+              ) : null}
 
               <div className="mt-5 flex flex-col sm:flex-row sm:items-center gap-3">
                 <a
-                  href={withBuildSaudiUtm(company.careers_url)}
+                  href={careersUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-1.5 rounded bg-[#06634D] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#044D3B] transition-colors"
@@ -196,11 +224,53 @@ export default async function CompanyPage({
           </div>
         </div>
 
-        {companyJobs.length > 0 && (
-          <section className="rounded-lg border border-[#e5e5e5] bg-white p-6 mb-6" aria-labelledby="open-roles-heading">
-            <h2 id="open-roles-heading" className="text-lg font-bold text-[#111827] mb-4">
-              Open roles at {company.name}
+        {profile ? (
+          <section className="rounded-lg border border-[#e5e5e5] bg-white p-6 mb-6" aria-labelledby="sourced-facts-heading">
+            <h2 id="sourced-facts-heading" className="text-lg font-bold text-[#111827] mb-1">
+              Funding and investors
             </h2>
+            <p className="text-xs text-[#6b7280] mb-4">
+              Only facts we can cite from a company or investor page. We do not estimate later rounds or headcount.
+            </p>
+            {profile.founders ? (
+              <div className="mb-4">
+                <h3 className="text-sm font-semibold text-[#111827]">Founders</h3>
+                <p className="mt-1 text-sm text-[#4b5563] leading-relaxed">{profile.founders.text}</p>
+                <SourceLink label={profile.founders.sourceLabel} href={profile.founders.sourceUrl} />
+              </div>
+            ) : null}
+            <div className="mb-4">
+              <h3 className="text-sm font-semibold text-[#111827]">Funding</h3>
+              <ul className="mt-2 space-y-3">
+                {profile.funding.map((item) => (
+                  <li key={item.text}>
+                    <p className="text-sm text-[#4b5563] leading-relaxed">{item.text}</p>
+                    <SourceLink label={item.sourceLabel} href={item.sourceUrl} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold text-[#111827]">Investors</h3>
+              <ul className="mt-2 space-y-3">
+                {profile.investors.map((item) => (
+                  <li key={item.text}>
+                    <p className="text-sm text-[#4b5563] leading-relaxed">{item.text}</p>
+                    <SourceLink label={item.sourceLabel} href={item.sourceUrl} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        ) : null}
+
+        {profile || companyJobs.length > 0 ? (
+        <section className="rounded-lg border border-[#e5e5e5] bg-white p-6 mb-6" aria-labelledby="open-roles-heading">
+          <h2 id="open-roles-heading" className="text-lg font-bold text-[#111827] mb-2">
+            {companyJobs.length > 0 ? `Open roles at ${company.name}` : `Roles at ${company.name}`}
+          </h2>
+          <p className="text-sm text-[#4b5563] leading-relaxed mb-4">{hiringCopy}</p>
+          {companyJobs.length > 0 && (
             <ul className="divide-y divide-gray-100">
               {companyJobs.map((job) => {
                 const freshness = jobFreshnessStamp(job, jobsScrapedAt)
@@ -225,12 +295,13 @@ export default async function CompanyPage({
                 )
               })}
             </ul>
-          </section>
-        )}
+          )}
+        </section>
+        ) : null}
 
         <section className="rounded-lg border border-[#e5e5e5] bg-white p-6 mb-6" aria-labelledby="company-faq-heading">
           <h2 id="company-faq-heading" className="text-lg font-bold text-[#111827] mb-4">
-            FAQ — {company.name}
+            FAQ: {company.name}
           </h2>
           <dl className="space-y-4">
             {faq.map((item) => (
@@ -249,7 +320,7 @@ export default async function CompanyPage({
 
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[#e5e5e5] bg-white/95 backdrop-blur px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:hidden">
         <a
-          href={withBuildSaudiUtm(company.careers_url)}
+          href={careersUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="flex w-full items-center justify-center gap-1.5 rounded bg-[#06634D] px-3 py-3 text-sm font-semibold text-white"
@@ -261,5 +332,16 @@ export default async function CompanyPage({
 
       <SiteFooter />
     </div>
+  )
+}
+
+function SourceLink({ label, href }: { label: string; href: string }) {
+  return (
+    <p className="mt-1 text-xs text-[#6b7280]">
+      Source:{" "}
+      <a href={href} target="_blank" rel="noopener noreferrer" className="text-[#06634D] hover:underline">
+        {label}
+      </a>
+    </p>
   )
 }

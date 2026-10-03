@@ -138,11 +138,11 @@ export function getCompanyFaq(
     },
     {
       question: `How do I apply to jobs at ${companyName}?`,
-      answer: `Visit ${companyName}'s official careers page to browse open roles and apply directly. BuildSaudi links to the employer's hiring site — we do not process applications. Careers: ${careersUrl}`,
+      answer: `Visit ${companyName}'s official careers page to browse open roles and apply directly. BuildSaudi links to the employer's hiring site. We do not process applications. Careers: ${careersUrl}`,
     },
     {
       question: `What does ${companyName} do?`,
-      answer: `${companyName} is a ${stage.toLowerCase()} ${sector} startup headquartered in ${city}, Saudi Arabia. See the company profile above for funding, founders, and team size when available.`,
+      answer: `${companyName} is a ${stage.toLowerCase()} ${sector} startup headquartered in ${city}, Saudi Arabia. See the company profile above for funding and founders when we have a cited source.`,
     },
     {
       question: `Is ${companyName} a Saudi startup?`,
