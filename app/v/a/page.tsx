@@ -15,6 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { companies, getJobsByCompany, filterOptions } from "@/lib/data"
+import { withBuildSaudiUtm } from "@/lib/utm"
 import { getCompanyDescription } from "@/lib/descriptions-ar"
 import { CompanyLogo } from "@/components/company-logo"
 
@@ -490,7 +491,7 @@ export default function HomeClient() {
                                   {company.stage}
                                 </span>
                                 <a
-                                  href={company.careers_url}
+                                  href={withBuildSaudiUtm(company.careers_url)}
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   onClick={(e) => { e.stopPropagation(); posthog.capture("job_apply_clicked", { company: company.name, company_slug: company.slug, url: company.careers_url }) }}
@@ -511,7 +512,7 @@ export default function HomeClient() {
                               {company.stage}
                             </span>
                             <a
-                              href={company.careers_url}
+                              href={withBuildSaudiUtm(company.careers_url)}
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={(e) => { e.stopPropagation(); posthog.capture("job_apply_clicked", { company: company.name, company_slug: company.slug, url: company.careers_url }) }}

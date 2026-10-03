@@ -3,7 +3,9 @@ import Link from "next/link"
 import { ArrowLeft, ExternalLink, MapPin, Globe, Linkedin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { companies, getCompanyBySlug, getJobsByCompany } from "@/lib/data"
+import { companies, getCompanyBySlug, getJobsByCompany, jobsScrapedAt } from "@/lib/data"
+import { jobFreshnessStamp } from "@/lib/job-classify"
+import { withBuildSaudiUtm } from "@/lib/utm"
 import { CompanyLogo } from "@/components/company-logo"
 import { getCompanyFaq } from "@/lib/aeo-landing"
 import { buildFaqJsonLd, buildBreadcrumbJsonLd } from "@/lib/aeo-jsonld"
@@ -157,7 +159,7 @@ export default async function CompanyPage({
 
               <div className="mt-5 flex flex-col sm:flex-row sm:items-center gap-3">
                 <a
-                  href={company.careers_url}
+                  href={withBuildSaudiUtm(company.careers_url)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-1.5 rounded bg-[#06634D] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#044D3B] transition-colors"
@@ -200,16 +202,19 @@ export default async function CompanyPage({
               Open roles at {company.name}
             </h2>
             <ul className="divide-y divide-gray-100">
-              {companyJobs.map((job) => (
+              {companyJobs.map((job) => {
+                const freshness = jobFreshnessStamp(job, jobsScrapedAt)
+                return (
                 <li key={job.id} className="py-3 first:pt-0 last:pb-0 flex items-start justify-between gap-3">
                   <div className="min-w-0">
                     <p className="text-sm font-semibold text-[#111827]">{job.title}</p>
                     <p className="text-xs text-[#6b7280] mt-0.5" dir="ltr">
                       {job.location}
+                      {freshness ? ` · ${freshness.kind === "posted" ? "Posted" : "Last seen"} ${freshness.date}` : ""}
                     </p>
                   </div>
                   <a
-                    href={job.apply_url}
+                    href={withBuildSaudiUtm(job.apply_url)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="shrink-0 px-3 py-1.5 bg-[#06634D] text-white text-xs font-semibold rounded hover:bg-[#044D3B]"
@@ -217,7 +222,8 @@ export default async function CompanyPage({
                     Apply
                   </a>
                 </li>
-              ))}
+                )
+              })}
             </ul>
           </section>
         )}
@@ -243,7 +249,7 @@ export default async function CompanyPage({
 
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[#e5e5e5] bg-white/95 backdrop-blur px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:hidden">
         <a
-          href={company.careers_url}
+          href={withBuildSaudiUtm(company.careers_url)}
           target="_blank"
           rel="noopener noreferrer"
           className="flex w-full items-center justify-center gap-1.5 rounded bg-[#06634D] px-3 py-3 text-sm font-semibold text-white"

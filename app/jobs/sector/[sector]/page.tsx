@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { companies } from "@/lib/data"
+import { withBuildSaudiUtm } from "@/lib/utm"
 import { CompanyLogo } from "@/components/company-logo"
 import { sectors } from "@/lib/seo"
 import { getSectorFaq, sectorBlurbs } from "@/lib/aeo-landing"
@@ -112,7 +113,7 @@ export default async function SectorPage({ params }: { params: Promise<{ sector:
                   <div className="flex items-center gap-1 sm:gap-2">
                     <span className="px-1 py-0.5 sm:px-2.5 sm:py-1 bg-gray-100 border border-gray-200 text-gray-700 text-[10px] sm:text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">{company.stage}</span>
                     <a
-                      href={company.careers_url}
+                      href={withBuildSaudiUtm(company.careers_url)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-2 py-1 sm:px-2.5 sm:py-1.5 bg-[#06634D] text-white text-[10px] sm:text-xs font-semibold rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"

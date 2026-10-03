@@ -1,6 +1,7 @@
 "use client"
 
-import { useCallback, useEffect, useMemo, useState } from "react"
+import { Suspense, useCallback, useEffect, useMemo, useState } from "react"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import posthog from "posthog-js"
 import Link from "next/link"
 import { Briefcase, MapPin, Search, X } from "lucide-react"
@@ -19,7 +20,9 @@ import {
 import { strings, type Lang } from "@/lib/i18n"
 import { DEFAULT_LANG, getStoredLang, setStoredLang } from "@/lib/lang"
 import { companies, getCompanyBySlug, jobFilterOptions, jobs, jobsScrapedAt } from "@/lib/data"
+import { extractJobCity, jobFreshnessStamp } from "@/lib/job-classify"
 import type { Job, JobFunction, Seniority } from "@/lib/types"
+import { withBuildSaudiUtm } from "@/lib/utm"
 
 const AI_APPLY_URL = "https://www.aiapply.co/?via=abdulla"
 
@@ -49,13 +52,39 @@ function seniorityLabel(level: Seniority, t: (typeof strings)[Lang]): string {
 }
 
 export default function JobsBoard() {
+  return (
+    <Suspense fallback={<JobsBoardFallback />}>
+      <JobsBoardInner />
+    </Suspense>
+  )
+}
+
+function JobsBoardFallback() {
+  return (
+    <div
+      className="min-h-screen"
+      style={{
+        backgroundColor: "#F5F0E6",
+        backgroundImage: "url(/texture-light.png)",
+        backgroundSize: "100px 100px",
+        backgroundRepeat: "repeat",
+      }}
+    />
+  )
+}
+
+function JobsBoardInner() {
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
   const [lang, setLang] = useState<Lang>(DEFAULT_LANG)
   const t = strings[lang]
   const isRTL = lang === "ar"
-  const [search, setSearch] = useState("")
-  const [sector, setSector] = useState("")
-  const [fn, setFn] = useState("")
-  const [seniority, setSeniority] = useState("")
+  const [search, setSearch] = useState(() => searchParams.get("q") || "")
+  const [sector, setSector] = useState(() => searchParams.get("sector") || "")
+  const [fn, setFn] = useState(() => searchParams.get("role") || "")
+  const [seniority, setSeniority] = useState(() => searchParams.get("level") || "")
+  const [city, setCity] = useState(() => searchParams.get("city") || "")
   const [showAlert, setShowAlert] = useState(false)
 
   useEffect(() => {
@@ -70,6 +99,18 @@ export default function JobsBoard() {
       document.documentElement.lang = "ar"
     }
   }, [isRTL])
+
+  useEffect(() => {
+    const params = new URLSearchParams()
+    if (search.trim()) params.set("q", search.trim())
+    if (fn) params.set("role", fn)
+    if (seniority) params.set("level", seniority)
+    if (city) params.set("city", city)
+    if (sector) params.set("sector", sector)
+    const next = params.toString()
+    if (next === searchParams.toString()) return
+    router.replace(next ? `${pathname}?${next}` : pathname, { scroll: false })
+  }, [search, fn, seniority, city, sector, pathname, router, searchParams])
 
   const handleLangChange = useCallback(
     (next: Lang) => {
@@ -91,9 +132,10 @@ export default function JobsBoard() {
       const matchesSector = !sector || job.sector === sector
       const matchesFn = !fn || job.function === fn
       const matchesSeniority = !seniority || job.experience_level === seniority
-      return matchesSearch && matchesSector && matchesFn && matchesSeniority
+      const matchesCity = !city || extractJobCity(job.location) === city
+      return matchesSearch && matchesSector && matchesFn && matchesSeniority && matchesCity
     })
-  }, [search, sector, fn, seniority])
+  }, [search, sector, fn, seniority, city])
 
   const companyCount = useMemo(() => new Set(filtered.map((j) => j.company_slug)).size, [filtered])
   const updatedLabel = jobsScrapedAt ? jobsScrapedAt.slice(0, 10) : ""
@@ -111,6 +153,7 @@ export default function JobsBoard() {
     setSector("")
     setFn("")
     setSeniority("")
+    setCity("")
   }
 
   return (
@@ -197,14 +240,7 @@ export default function JobsBoard() {
               </button>
             )}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-            <FilterSelect
-              value={sector}
-              onChange={setSector}
-              options={jobFilterOptions.sector}
-              placeholder={t.allSectors}
-              labels={Object.fromEntries(jobFilterOptions.sector.map((s) => [s, s]))}
-            />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
             <FilterSelect
               value={fn}
               onChange={setFn}
@@ -222,6 +258,20 @@ export default function JobsBoard() {
               labels={Object.fromEntries(
                 jobFilterOptions.seniority.map((s) => [s, seniorityLabel(s, t)]),
               )}
+            />
+            <FilterSelect
+              value={city}
+              onChange={setCity}
+              options={jobFilterOptions.city}
+              placeholder={t.allCities}
+              labels={Object.fromEntries(jobFilterOptions.city.map((c) => [c, c]))}
+            />
+            <FilterSelect
+              value={sector}
+              onChange={setSector}
+              options={jobFilterOptions.sector}
+              placeholder={t.allSectors}
+              labels={Object.fromEntries(jobFilterOptions.sector.map((s) => [s, s]))}
             />
           </div>
         </div>
@@ -274,12 +324,14 @@ export default function JobsBoard() {
 
 function JobCard({ job, t }: { job: Job; t: (typeof strings)[Lang] }) {
   const company = getCompanyBySlug(job.company_slug) || companies.find((c) => c.slug === job.company_slug)
+  const applyUrl = withBuildSaudiUtm(job.apply_url)
+  const freshness = jobFreshnessStamp(job, jobsScrapedAt)
 
   const handleApply = () => {
     posthog.capture("job_apply_clicked", {
       company: job.company,
       company_slug: job.company_slug,
-      url: job.apply_url,
+      url: applyUrl,
       job_title: job.title,
       placement: "jobs_board",
     })
@@ -325,10 +377,16 @@ function JobCard({ job, t }: { job: Job; t: (typeof strings)[Lang] }) {
             <span className="px-2 py-0.5 bg-gray-100 border border-gray-200 text-gray-700 text-[11px] uppercase tracking-wider rounded">
               {seniorityLabel(job.experience_level, t)}
             </span>
+            {freshness && (
+              <span className="px-2 py-0.5 text-[#6B7280] text-[11px]">
+                {freshness.kind === "posted" ? t.jobPosted : t.jobSeen}{" "}
+                <span dir="ltr">{freshness.date}</span>
+              </span>
+            )}
           </div>
         </div>
         <a
-          href={job.apply_url}
+          href={applyUrl}
           target="_blank"
           rel="noopener noreferrer"
           onClick={handleApply}

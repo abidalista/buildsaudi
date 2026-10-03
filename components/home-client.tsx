@@ -16,6 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { companies, getJobsByCompany, filterOptions } from "@/lib/data"
+import { withBuildSaudiUtm } from "@/lib/utm"
 import { catalogCountLabel } from "@/lib/marketing"
 import { getCompanyDescription, descriptionsAr } from "@/lib/descriptions-ar"
 import { CompanyLogo } from "@/components/company-logo"
@@ -617,7 +618,7 @@ export default function HomeClient() {
                                   {t.aiApplyCta}
                                 </a>
                                 <a
-                                  href={company.careers_url}
+                                  href={withBuildSaudiUtm(company.careers_url)}
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   onClick={(e) => handleJobApplyClick(e, company, "card_desktop")}
@@ -650,7 +651,7 @@ export default function HomeClient() {
                               {t.aiApplyCta}
                             </a>
                             <a
-                              href={company.careers_url}
+                              href={withBuildSaudiUtm(company.careers_url)}
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={(e) => handleJobApplyClick(e, company, "card_mobile")}
@@ -711,7 +712,7 @@ export default function HomeClient() {
                             {t.aiApplyCta}
                           </a>
                           <a
-                            href={company.careers_url}
+                            href={withBuildSaudiUtm(company.careers_url)}
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => handleJobApplyClick(e, company, "expanded")}

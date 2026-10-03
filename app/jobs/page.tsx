@@ -8,7 +8,7 @@ const companyCount = new Set(jobs.map((j) => j.company_slug)).size
 
 export const metadata: Metadata = {
   title: `Saudi Startup Jobs — ${jobs.length} Open Roles | BuildSaudi`,
-  description: `Browse ${jobs.length} individual openings at ${companyCount} funded Saudi startups. Filter by sector, function, and seniority. Apply on the employer's official careers page. وظائف شركات ناشئة في السعودية.`,
+  description: `Browse ${jobs.length} individual openings at ${companyCount} funded Saudi startups. Filter by role, level, city, and sector. Apply on the employer's official careers page. وظائف شركات ناشئة في السعودية.`,
   alternates: { canonical: `${site}/jobs` },
   openGraph: {
     title: `Saudi Startup Jobs — ${jobs.length} Open Roles | BuildSaudi`,
