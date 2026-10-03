@@ -8,6 +8,8 @@ import { sectors } from "@/lib/seo"
 import { getSectorFaq, sectorBlurbs } from "@/lib/aeo-landing"
 import { buildFaqJsonLd, buildBreadcrumbJsonLd, buildItemListJsonLd } from "@/lib/aeo-jsonld"
 import { SiteFooter } from "@/components/site-footer"
+import { JobHubLinks } from "@/components/job-hub-links"
+import { jobHubsForSeoSector } from "@/lib/job-hubs"
 import type { Metadata } from "next"
 
 const site = "https://buildsaudi.co"
@@ -131,6 +133,11 @@ export default async function SectorPage({ params }: { params: Promise<{ sector:
             </div>
           )}
         </div>
+
+        <JobHubLinks
+          hubs={jobHubsForSeoSector(slug, sector.name)}
+          heading={`${sector.name} openings by city`}
+        />
 
         <section className="mt-12 border-t border-[#06634D]/15 pt-8" aria-labelledby="sector-faq-heading">
           <h2 id="sector-faq-heading" className="text-lg font-bold text-[#111827]">

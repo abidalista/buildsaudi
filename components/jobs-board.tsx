@@ -23,6 +23,7 @@ import { companies, getCompanyBySlug, jobFilterOptions, jobs, jobsScrapedAt } fr
 import { extractJobCity, jobFreshnessStamp } from "@/lib/job-classify"
 import type { Job, JobFunction, Seniority } from "@/lib/types"
 import { withBuildSaudiUtm } from "@/lib/utm"
+import { JobHubLinks } from "@/components/job-hub-links"
 
 const AI_APPLY_URL = "https://www.aiapply.co/?via=abdulla"
 
@@ -295,6 +296,7 @@ export default function JobsBoard({
             </div>
           )}
         </div>
+        <JobHubLinks />
       </div>
 
       <SiteFooter />

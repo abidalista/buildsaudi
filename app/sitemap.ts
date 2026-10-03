@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next"
 import { companies } from "@/lib/data"
-import { cities, roles, sectors, stages } from "@/lib/seo"
+import { cities, sectors, stages } from "@/lib/seo"
+import { getAllJobHubs } from "@/lib/job-hubs"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://buildsaudi.co"
@@ -44,5 +45,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }))
 
-  return [...staticPages, ...companyPages, ...cityPages, ...sectorPages, ...stagePages]
+  const jobHubPages = getAllJobHubs().map((hub) => ({
+    url: `${base}${hub.path}`,
+    lastModified: new Date(),
+    changeFrequency: "daily" as const,
+    priority: 0.8,
+  }))
+
+  return [...staticPages, ...companyPages, ...cityPages, ...sectorPages, ...stagePages, ...jobHubPages]
 }
