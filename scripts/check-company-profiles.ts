@@ -3,16 +3,41 @@ import { COMPANY_PROFILES, hiringNowCopy } from "../lib/company-profiles"
 import { getJobsByCompany, jobsScrapedAt } from "../lib/data"
 import { withBuildSaudiUtm } from "../lib/utm"
 
-const slugs = ["tamara", "foodics", "lean-technologies"] as const
+const slugs = [
+  "tamara",
+  "foodics",
+  "lean-technologies",
+  "humain",
+  "salla",
+  "unifonic",
+  "sary",
+  "cognna",
+  "mozn",
+  "lucidya",
+  "hala",
+  "gathern",
+  "rasan",
+  "classera",
+  "erad",
+  "sifi",
+  "governata",
+  "wakecap",
+  "nabt",
+  "deep-sa",
+] as const
+
+const mustHaveFunding = new Set(["tamara", "foodics", "lean-technologies"])
 
 for (const slug of slugs) {
   const profile = COMPANY_PROFILES[slug]
   assert.ok(profile, `missing profile ${slug}`)
   assert.equal(profile.lastChecked, "2026-10-03")
   assert.ok(profile.summary)
-  assert.ok(profile.funding.length > 0)
-  assert.ok(profile.investors.length > 0)
   assert.ok(profile.faq.length > 0)
+  if (mustHaveFunding.has(slug)) {
+    assert.ok(profile.funding.length > 0)
+    assert.ok(profile.investors.length > 0)
+  }
   for (const line of [...profile.funding, ...profile.investors, profile.founders].filter(Boolean)) {
     assert.ok(line!.sourceUrl.startsWith("https://"))
     assert.doesNotMatch(line!.text, /[\u2014\u2013]/)
