@@ -68,14 +68,14 @@ export function JobHubView({ hub }: { hub: JobHub }) {
             {hub.facetName} jobs in {hub.cityName}
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[#4B5563]">
-            {hub.jobs.length} current opening{hub.jobs.length === 1 ? "" : "s"} from official ATS boards.
-            Companies on this list: {companiesOnList.join(", ")}. Apply on the employer page. BuildSaudi does
-            not process applications.
+            {hub.jobs.length} current {hub.jobs.length === 1 ? "opening" : "openings"} from official ATS
+            boards. Companies on this list: {companiesOnList.join(", ")}. Apply on the employer page.
+            BuildSaudi does not process applications.
           </p>
           {checked ? (
             <p className="mt-2 font-mono text-sm text-[#06634D]">
-              {hub.jobs.length} openings · {companiesOnList.length} compan
-              {companiesOnList.length === 1 ? "y" : "ies"} · Last checked {checked}
+              {hub.jobs.length} {hub.jobs.length === 1 ? "opening" : "openings"} · {companiesOnList.length}{" "}
+              {companiesOnList.length === 1 ? "company" : "companies"} · Last checked {checked}
             </p>
           ) : null}
         </div>
