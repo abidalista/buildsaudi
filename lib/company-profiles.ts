@@ -200,7 +200,7 @@ const FUNCTION_COPY: Record<Job["function"], string> = {
   operations: "operations",
   people: "people",
   finance: "finance",
-  other: "specialist roles outside those teams",
+  other: "other",
 }
 
 export function hiringNowCopy(name: string, jobs: Job[], scrapedAt: string): string {
