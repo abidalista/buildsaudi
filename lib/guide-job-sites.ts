@@ -1,4 +1,5 @@
 import type { FaqItem } from "@/lib/aeo-content"
+import { formatHowToAsFaqAnswer, getFundedStartupJobHowToEn } from "@/lib/howto-funded-jobs"
 
 export const GUIDE_PATH = "/guides/best-saudi-startup-job-sites"
 export const GUIDE_URL = `https://buildsaudi.co${GUIDE_PATH}`
@@ -36,9 +37,13 @@ export function getJobSitesGuideFaq(): FaqItem[] {
         "Bayt.com is a large MENA general job board: high volume, many employers, and broad Saudi coverage. BuildSaudi is narrower on purpose: funded Kingdom startups only, with careers links you open on the company's own site. Use BuildSaudi to shortlist startups. Use Bayt when you also want banks, enterprises, and high-volume listings.",
     },
     {
+      question: getFundedStartupJobHowToEn().name,
+      answer: formatHowToAsFaqAnswer(getFundedStartupJobHowToEn()),
+    },
+    {
       question: "How do I apply for jobs listed on BuildSaudi?",
       answer:
-        "BuildSaudi does not host applications. Browse individual openings at https://buildsaudi.co/jobs, or open a company profile and click through to the official careers page. Filter the homepage by sector, stage, or city (Riyadh, Jeddah, Dammam, remote), or start from hubs like https://buildsaudi.co/jobs/riyadh and https://buildsaudi.co/jobs/sector/ai.",
+        "BuildSaudi does not host applications. Browse individual openings at https://buildsaudi.co/jobs, or open a company profile and click through to the official careers page. Filter the homepage by sector, stage, or city (Riyadh, Jeddah, Dammam, remote), or start from hubs like https://buildsaudi.co/jobs/riyadh and https://buildsaudi.co/jobs/sector/ai. Arabic walk-through: https://buildsaudi.co/faq#funded-startup-jobs.",
     },
     {
       question: "Is BuildSaudi free?",

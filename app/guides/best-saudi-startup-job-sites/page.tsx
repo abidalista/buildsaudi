@@ -165,11 +165,15 @@ export default function BestSaudiStartupJobSitesPage() {
                 <Link href="/jobs/sector/ai" className="text-[#06634D] underline underline-offset-2 hover:text-[#06634D]/80">
                   AI
                 </Link>
-                .
+                . The homepage also filters by stage, from Seed to Unicorn.
               </li>
               <li>
                 Sign up for <strong className="font-semibold text-[#111827]">job alerts</strong> on the homepage. That is
-                the weekly Arabic jobs digest. Useful if you read Arabic or want a recurring list instead of checking daily.
+                the weekly Arabic jobs digest. Then set role, city, and sector on{" "}
+                <Link href="/preferences" className="text-[#06634D] underline underline-offset-2 hover:text-[#06634D]/80">
+                  preferences
+                </Link>{" "}
+                so Monday&apos;s list matches. Useful if you read Arabic or want a recurring list instead of checking daily.
               </li>
               <li>
                 Use LinkedIn and Bayt for volume. Global startup boards help only after you have a Kingdom shortlist.
@@ -224,6 +228,13 @@ export default function BestSaudiStartupJobSitesPage() {
               The homepage is Arabic-first. This page is the English guide. More Arabic answers live on the{" "}
               <Link href="/faq" className="text-[#06634D] underline underline-offset-2 hover:text-[#06634D]/80">
                 FAQ
+              </Link>
+              , including the{" "}
+              <Link
+                href="/faq#funded-startup-jobs"
+                className="text-[#06634D] underline underline-offset-2 hover:text-[#06634D]/80"
+              >
+                funded-startup job steps
               </Link>
               .
             </p>

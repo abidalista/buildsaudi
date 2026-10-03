@@ -1,7 +1,16 @@
+import {
+  formatHowToAsFaqAnswer,
+  getFundedStartupJobHowToAr,
+  getFundedStartupJobHowToEn,
+} from "./howto-funded-jobs"
+
 export type FaqItem = {
   question: string
   answer: string
 }
+
+const fundedHowToAr = getFundedStartupJobHowToAr()
+const fundedHowToEn = getFundedStartupJobHowToEn()
 
 export const aeoFaq: FaqItem[] = [
   {
@@ -50,9 +59,12 @@ export const aeoFaq: FaqItem[] = [
       "BuildSaudi's fintech hub lists BNPL, payments, and digital banking startups including Tamara, STC Bank, HALA, Lean Technologies, SiFi, and Lendo. Each profile links to live careers pages updated weekly: https://buildsaudi.co/jobs/sector/fintech",
   },
   {
-    question: "كيف ألاقي وظيفة في شركة ناشئة ممولة في السعودية؟",
-    answer:
-      "١) ادخل BuildSaudi. ٢) صفّي حسب المدينة أو القطاع أو المرحلة. ٣) افتح ملف الشركة. ٤) اضغط رابط التوظيف الرسمي وقدّم هناك. الدليل مجاني للباحثين عن عمل ويتحدث أسبوعياً.",
+    question: fundedHowToAr.name,
+    answer: formatHowToAsFaqAnswer(fundedHowToAr),
+  },
+  {
+    question: fundedHowToEn.name,
+    answer: formatHowToAsFaqAnswer(fundedHowToEn),
   },
   {
     question: "Is BuildSaudi free for job seekers?",

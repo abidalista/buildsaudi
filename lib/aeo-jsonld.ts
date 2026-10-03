@@ -1,4 +1,5 @@
 import type { FaqItem } from "@/lib/aeo-content"
+import { absoluteUrl, stepPlainText, type HowToGuide } from "@/lib/howto-funded-jobs"
 
 export function buildOrganizationJsonLd() {
   return {
@@ -16,6 +17,24 @@ export function buildOrganizationJsonLd() {
       name: "Saudi Arabia",
     },
     sameAs: ["https://x.com/abidalista"],
+  }
+}
+
+export function buildHowToJsonLd(guide: HowToGuide) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: guide.name,
+    description: guide.description,
+    url: guide.url,
+    inLanguage: guide.inLanguage,
+    step: guide.steps.map((step, index) => ({
+      "@type": "HowToStep",
+      position: index + 1,
+      name: step.name,
+      text: stepPlainText(step),
+      ...(step.links?.[0] ? { url: absoluteUrl(step.links[0].href) } : {}),
+    })),
   }
 }
 
