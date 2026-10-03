@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
+import { preferencesPath } from "@/lib/preferences-token"
 
 const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY!
 const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID!
@@ -119,7 +120,10 @@ export async function POST(req: NextRequest) {
     // add to substack newsletter (non-blocking)
     addToSubstack(email)
 
-    return NextResponse.json({ success: true })
+    return NextResponse.json({
+      success: true,
+      preferencesPath: preferencesPath(email),
+    })
   } catch {
     return NextResponse.json({ error: "Server error" }, { status: 500 })
   }

@@ -17,6 +17,7 @@ export function JobAlertModal({
   const t = strings[lang]
   const [form, setForm] = useState({ name: "", title: "", email: "" })
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")
+  const [preferencesPath, setPreferencesPath] = useState("/preferences")
 
   if (!open) return null
 
@@ -31,13 +32,12 @@ export function JobAlertModal({
         body: JSON.stringify(form),
       })
       if (res.ok) {
+        const data = (await res.json().catch(() => ({}))) as { preferencesPath?: string }
         posthog.capture("job_seeker_signup", { name: form.name, title: form.title, source: "jobs_board" })
+        const nextPath =
+          data.preferencesPath || `/preferences?email=${encodeURIComponent(form.email.trim())}`
+        setPreferencesPath(nextPath)
         setStatus("success")
-        setTimeout(() => {
-          setForm({ name: "", title: "", email: "" })
-          setStatus("idle")
-          onClose("success")
-        }, 1800)
       } else {
         setStatus("error")
       }
@@ -78,6 +78,12 @@ export function JobAlertModal({
               </svg>
             </div>
             <p className="text-sm font-medium text-green-700">{t.jobAlertSuccess}</p>
+            <a
+              href={preferencesPath}
+              className="mt-3 inline-block text-sm font-medium text-[#06634D] underline underline-offset-2"
+            >
+              {t.jobAlertPrefsCta}
+            </a>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">

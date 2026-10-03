@@ -24,6 +24,9 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
+      # Builds from data/jobs.json and drops openings that match no stored Pref*
+      # fields. One Substack post still goes to the whole list. --skip-session
+      # is only for local filter checks and must not be used here.
       - name: Run weekly digest
         env:
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}

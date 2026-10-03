@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 """
 BuildSaudi Weekly Jobs Digest
-- Fetches SA jobs from Greenhouse, Workable, Lever, Recruitee
+- Builds the Monday list from data/jobs.json (function / city / sector / level)
+- Filters to Airtable Pref* fields when subscribers have set them
 - Syncs Airtable subscribers → Substack (fills gaps)
-- Creates and publishes the digest as a Substack newsletter post
+- Publishes one Substack post (one-click unsub stays on Substack)
 
 Run:  python3 scripts/weekly-digest.py
 Dry:  python3 scripts/weekly-digest.py --dry-run   (no publish, saves HTML only)
+Check: python3 scripts/weekly-digest.py --check-prefs
+Skip Substack session: --skip-session
+Single-subscriber filter (no send): --prefs-json '{"roles":["engineering"]}'
 """
 
 import json
@@ -14,12 +18,27 @@ import os
 import re
 import sys
 import time
-import requests
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
+
+import requests
 
 DRY_RUN = "--dry-run" in sys.argv
 SKIP_SYNC = "--skip-sync" in sys.argv
+SKIP_SESSION = "--skip-session" in sys.argv
+CHECK_PREFS = "--check-prefs" in sys.argv
+FROM_ATS = "--from-ats" in sys.argv
+
+def _argv_value(flag: str) -> str:
+    for i, arg in enumerate(sys.argv):
+        if arg == flag and i + 1 < len(sys.argv):
+            return sys.argv[i + 1]
+        if arg.startswith(flag + "="):
+            return arg.split("=", 1)[1]
+    return ""
+
+PREFS_JSON_RAW = _argv_value("--prefs-json")
 
 # ─── Load env ────────────────────────────────────────────────────────────────
 env_file = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", ".env.local"))
@@ -31,8 +50,8 @@ if os.path.exists(env_file):
                 k, v = line.split("=", 1)
                 os.environ.setdefault(k.strip(), v.strip())
 
-AIRTABLE_API_KEY    = os.environ["AIRTABLE_API_KEY"]
-AIRTABLE_BASE_ID    = os.environ["AIRTABLE_BASE_ID"]
+AIRTABLE_API_KEY    = os.environ.get("AIRTABLE_API_KEY", "")
+AIRTABLE_BASE_ID    = os.environ.get("AIRTABLE_BASE_ID", "")
 SUBSTACK_PUB        = os.environ.get("SUBSTACK_PUBLICATION", "averageabidall")
 SUBSTACK_AUTHOR_ID  = int(os.environ.get("SUBSTACK_AUTHOR_ID", "68540577"))
 SUBSTACK_BASE       = f"https://{SUBSTACK_PUB}.substack.com"
@@ -121,10 +140,8 @@ def verify_substack_session() -> None:
     print(f"  Substack session OK (user: {json.loads(text).get('handle', '?')})")
 
 
-# Always verified, including on dry runs: the check is the cheapest way to catch
-# an expired cookie or a blocked IP, and a dry run that skips it can't tell us
-# whether the real Monday run would have worked.
-verify_substack_session()
+# Session check stays in main() so --check-prefs and --skip-session never
+# contact Substack. Monday still verifies before any publish.
 
 
 # ─── Company → ATS Mapping ──────────────────────────────────────────────────
@@ -262,6 +279,117 @@ def clean_location(loc: str) -> str:
         if not deduped or deduped[-1].lower() != p.lower():
             deduped.append(p)
     return ", ".join(deduped)
+
+
+CITY_ALIASES = {
+    "mecca": "Makkah",
+    "makkah": "Makkah",
+    "medina": "Madinah",
+    "madinah": "Madinah",
+    "al khobar": "Al Khobar",
+    "khobar": "Al Khobar",
+}
+COUNTRY_ONLY = {"saudi arabia", "ksa", "saudi"}
+
+
+def extract_job_city(location: str) -> str:
+    """First real city token. Mirrors lib/job-classify.ts extractJobCity."""
+    if not location:
+        return ""
+    first = location.split(",")[0].strip()
+    if not first:
+        return ""
+    key = first.lower()
+    if key in COUNTRY_ONLY:
+        return ""
+    return CITY_ALIASES.get(key, first)
+
+
+def with_utm(url: str) -> str:
+    """Append utm_source=buildsaudi. Leaves AI Apply affiliate links untouched."""
+    if not url:
+        return url
+    try:
+        parts = urlsplit(url)
+    except Exception:
+        return url
+    host = (parts.hostname or "").lower()
+    if host in {"www.aiapply.co", "aiapply.co"}:
+        return url
+    if not parts.scheme or not parts.netloc:
+        return url
+    query = dict(parse_qsl(parts.query, keep_blank_values=True))
+    query.setdefault("utm_source", "buildsaudi")
+    query.setdefault("utm_medium", "referral")
+    return urlunsplit((parts.scheme, parts.netloc, parts.path, urlencode(query), parts.fragment))
+
+
+def parse_pref_list(raw) -> list:
+    if raw is None or raw == "":
+        return []
+    if isinstance(raw, list):
+        parts = [str(p) for p in raw]
+    else:
+        parts = re.split(r"[,;\n|/]+", str(raw))
+    seen = set()
+    out = []
+    for part in parts:
+        value = part.strip()
+        if not value:
+            continue
+        key = value.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(value)
+    return out
+
+
+def empty_prefs() -> dict:
+    return {"roles": [], "cities": [], "sectors": [], "experience": [], "stages": []}
+
+
+def prefs_from_airtable_fields(fields: dict) -> dict:
+    fields = fields or {}
+    return {
+        "roles": parse_pref_list(fields.get("Pref Job Types")),
+        "cities": parse_pref_list(fields.get("Pref Locations")),
+        "sectors": parse_pref_list(fields.get("Pref Sectors")),
+        "experience": parse_pref_list(fields.get("Pref Experience")),
+        "stages": parse_pref_list(fields.get("Pref Stages")),
+    }
+
+
+def has_any_pref(prefs: dict) -> bool:
+    return any(prefs.get(k) for k in ("roles", "cities", "sectors", "experience", "stages"))
+
+
+def _axis_matches(wanted: list, value: str) -> bool:
+    if not wanted:
+        return True
+    needle = (value or "").strip().lower()
+    if not needle:
+        return False
+    return any(item.strip().lower() == needle for item in wanted)
+
+
+def job_matches_prefs(job: dict, prefs: dict) -> bool:
+    """Empty Pref* axis = no constraint. Mirrors lib/digest-prefs.ts."""
+    prefs = prefs or empty_prefs()
+    return (
+        _axis_matches(prefs.get("roles") or [], job.get("function") or "")
+        and _axis_matches(prefs.get("cities") or [], job.get("city") or "")
+        and _axis_matches(prefs.get("sectors") or [], job.get("sector") or "")
+        and _axis_matches(prefs.get("experience") or [], job.get("experience_level") or "")
+        and _axis_matches(prefs.get("stages") or [], job.get("stage") or "")
+    )
+
+
+def job_matches_any_configured_prefs(job: dict, prefs_list: list) -> bool:
+    configured = [p for p in prefs_list if has_any_pref(p)]
+    if not configured:
+        return True
+    return any(job_matches_prefs(job, prefs) for prefs in configured)
 
 
 # ─── ATS Fetchers ────────────────────────────────────────────────────────────
@@ -427,25 +555,41 @@ def fetch_all():
 
 
 # ─── Airtable → Substack Sync ────────────────────────────────────────────────
+PREF_FIELDS = [
+    "Email",
+    "Pref Job Types",
+    "Pref Locations",
+    "Pref Sectors",
+    "Pref Experience",
+    "Pref Stages",
+]
+
+
 def get_airtable_subscribers():
-    """Fetch all emails from the Job Seekers table."""
+    """Fetch subscriber emails and Pref* fields from the Job Seekers table."""
     emails = []
+    prefs_list = []
     url = f"https://api.airtable.com/v0/{AIRTABLE_BASE_ID}/Job%20Seekers"
     headers = {"Authorization": f"Bearer {AIRTABLE_API_KEY}"}
-    params = {"fields[]": "Email", "pageSize": 100}
+    params = [("pageSize", 100)]
+    for field in PREF_FIELDS:
+        params.append(("fields[]", field))
     while True:
         r = requests.get(url, headers=headers, params=params, timeout=15)
         r.raise_for_status()
         data = r.json()
         for rec in data.get("records", []):
-            email = rec.get("fields", {}).get("Email", "").strip()
+            fields = rec.get("fields", {}) or {}
+            email = (fields.get("Email") or "").strip()
             if email:
                 emails.append(email)
+                prefs_list.append(prefs_from_airtable_fields(fields))
         offset = data.get("offset")
         if not offset:
             break
-        params["offset"] = offset
-    return emails
+        params = [item for item in params if item[0] != "offset"]
+        params.append(("offset", offset))
+    return emails, prefs_list
 
 def sync_to_substack(emails: list):
     """Add any missing subscribers to Substack."""
@@ -471,9 +615,10 @@ def sync_to_substack(emails: list):
 
 # ─── Company metadata (logos/stage/sector/careers_url) from lib/data.ts ─────
 def load_company_meta():
-    """Parse lib/data.ts for stage/sector/careers_url, keyed by lowercased company name."""
+    """Parse lib/data.ts for stage/sector/careers_url, keyed by lowercased company name and slug."""
     data_path = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "lib", "data.ts"))
-    meta = {}
+    by_name = {}
+    by_slug = {}
     try:
         with open(data_path) as f:
             content = f.read()
@@ -483,12 +628,56 @@ def load_company_meta():
         )
         for slug, name, stage, sector, careers_url in entries:
             sector_clean = sector.replace('"', "").split(",")[0].strip()
-            meta[name.lower()] = {"slug": slug, "stage": stage, "sector": sector_clean, "careers_url": careers_url}
+            row = {"slug": slug, "stage": stage, "sector": sector_clean, "careers_url": careers_url}
+            by_name[name.lower()] = row
+            by_slug[slug] = row
     except Exception:
         pass
-    return meta
+    return by_name, by_slug
 
-COMPANY_META = load_company_meta()
+COMPANY_META, COMPANY_META_BY_SLUG = load_company_meta()
+
+
+def load_jobs_json(path=None):
+    jobs_path = path or os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "data", "jobs.json"))
+    with open(jobs_path) as f:
+        data = json.load(f)
+    return data.get("jobs") or [], data.get("scraped_at") or ""
+
+
+def jobs_to_company_jobs(raw_jobs: list, prefs_list: list | None = None, single_prefs: dict | None = None) -> dict:
+    """Group jobs.json openings by company after applying Pref* filters."""
+    result = {}
+    for raw in raw_jobs:
+        meta = COMPANY_META.get((raw.get("company") or "").lower()) or COMPANY_META_BY_SLUG.get(raw.get("company_slug") or "")
+        job = {
+            "title": raw.get("title") or "",
+            "location": clean_location(raw.get("location") or ""),
+            "url": with_utm(raw.get("apply_url") or ""),
+            "posted": days_ago(raw.get("posted_date") or ""),
+            "function": (raw.get("function") or "").lower(),
+            "sector": raw.get("sector") or "",
+            "experience_level": (raw.get("experience_level") or "").lower(),
+            "city": extract_job_city(raw.get("location") or ""),
+            "stage": (meta or {}).get("stage") or "",
+        }
+        if single_prefs is not None:
+            if not job_matches_prefs(job, single_prefs):
+                continue
+        elif prefs_list is not None:
+            if not job_matches_any_configured_prefs(job, prefs_list):
+                continue
+        company_name = raw.get("company") or ""
+        if not company_name:
+            continue
+        entry = result.setdefault(company_name, {
+            "jobs": [],
+            "url": with_utm((meta or {}).get("careers_url") or ""),
+        })
+        if len(entry["jobs"]) >= MAX_JOBS_PER_COMPANY:
+            continue
+        entry["jobs"].append(job)
+    return {name: data for name, data in result.items() if data["jobs"]}
 
 
 # ─── Build Substack Prosemirror Body ─────────────────────────────────────────
@@ -541,7 +730,7 @@ def bullet_list(items):
 def company_group(company_name, jobs, fallback_url):
     """One company block: name + stage/sector tag, its jobs, and an Apply button."""
     meta = COMPANY_META.get(company_name.lower())
-    careers_url = (meta.get("careers_url") if meta else "") or fallback_url
+    careers_url = with_utm((meta.get("careers_url") if meta else "") or fallback_url)
 
     head_content = [text_node(company_name, marks=[{"type": "strong"}])]
     if meta:
@@ -596,6 +785,11 @@ def build_prosemirror(company_jobs: dict, date_str: str) -> tuple:
         f"هذا هو ملخصكم الأسبوعي للوظائف من شركات التقنية السعودية. "
         f"جمعنا هذا الأسبوع {total} وظيفة من {companies_count} شركة."
     )))
+    content.append(para(
+        text_node("تبي الوظائف على مقاسك؟ حدّد تخصصك ومدينتك وقطاعك من "),
+        text_node("صفحة التفضيلات", marks=[{"type": "link", "attrs": {"href": "https://buildsaudi.co/preferences"}}]),
+        text_node(". النشرة تبقي الوظائف اللي تطابق اختيار المشتركين.")
+    ))
     content.append(hr())
 
     # Stats line
@@ -629,6 +823,7 @@ def build_prosemirror(company_jobs: dict, date_str: str) -> tuple:
         text_node("buildsaudi.co", marks=[{"type": "link", "attrs": {"href": "https://buildsaudi.co"}}]),
         text_node(" لاستقبال النشرة كل أسبوع. بالتوفيق 🌟")
     ))
+    content.append(para(text_node("لإلغاء الاشتراك استخدم رابط إلغاء الاشتراك أسفل رسالة النشرة.")))
     content.append(ai_apply_footer_line())  # soft footer CTA (ABI-30)
 
     doc = {"type": "doc", "content": content}
@@ -725,7 +920,8 @@ def build_html(company_jobs: dict, categorized: dict, total: int, date_str: str)
 </td></tr>
 <tr><td style="background:#f9f5ee;padding:24px 32px;border-right:4px solid #c9a84c;direction:rtl;text-align:right;">
   <p style="margin:0 0 10px;color:#1a1a1a;font-size:15px;line-height:1.8;">السلام عليكم،</p>
-  <p style="margin:0;color:#333;font-size:14px;line-height:1.8;">جمعنا هذا الأسبوع <strong>{total} وظيفة</strong> من <strong>{len(company_jobs)} شركة</strong> في السعودية.</p>
+  <p style="margin:0 0 10px;color:#333;font-size:14px;line-height:1.8;">جمعنا هذا الأسبوع <strong>{total} وظيفة</strong> من <strong>{len(company_jobs)} شركة</strong> في السعودية.</p>
+  <p style="margin:0;color:#333;font-size:13px;line-height:1.8;">تبي الوظائف على مقاسك؟ حدّد تخصصك ومدينتك وقطاعك من <a href="https://buildsaudi.co/preferences" style="color:#06634D;text-decoration:none;">صفحة التفضيلات</a>.</p>
 </td></tr>
 <tr><td style="background:#c9a84c;padding:12px 32px;">
   <span style="color:#1a1a1a;font-size:13px;font-weight:700;">{total} open roles · {len(company_jobs)} companies · Saudi Arabia only</span>
@@ -734,36 +930,103 @@ def build_html(company_jobs: dict, categorized: dict, total: int, date_str: str)
 <tr><td style="background:#f5f0e8;padding:0 32px 24px;">{sections}</td></tr>
 <tr><td style="background:#1a1a1a;padding:28px 32px;direction:rtl;text-align:right;">
   <p style="margin:0 0 12px;color:#c9a84c;font-size:15px;font-weight:700;">شارك النشرة مع أصدقائك</p>
-  <p style="margin:0;color:#ccc;font-size:13px;line-height:1.8;">سجّل في <a href="https://buildsaudi.co" style="color:#c9a84c;text-decoration:none;">buildsaudi.co</a> لاستقبال النشرة كل أسبوع. بالتوفيق 🌟</p>
+  <p style="margin:0 0 12px;color:#ccc;font-size:13px;line-height:1.8;">سجّل في <a href="https://buildsaudi.co" style="color:#c9a84c;text-decoration:none;">buildsaudi.co</a> لاستقبال النشرة كل أسبوع. بالتوفيق 🌟</p>
+  <p style="margin:0;color:#ccc;font-size:13px;line-height:1.8;">لإلغاء الاشتراك استخدم رابط إلغاء الاشتراك أسفل رسالة النشرة.</p>
   {ai_apply_footer_html}
 </td></tr>
 </table></td></tr></table></body></html>'''
 
 
+def run_pref_checks() -> None:
+    """No network. Verifies Pref* matching and UTM rules."""
+    assert extract_job_city("Riyadh, Saudi Arabia") == "Riyadh"
+    assert extract_job_city("Mecca, Saudi Arabia") == "Makkah"
+    assert extract_job_city("Saudi Arabia") == ""
+
+    job = {
+        "function": "engineering",
+        "city": "Riyadh",
+        "sector": "Fintech",
+        "experience_level": "mid",
+        "stage": "Seed",
+    }
+    assert job_matches_prefs(job, empty_prefs())
+    assert job_matches_prefs(job, {"roles": ["engineering"], "cities": [], "sectors": [], "experience": [], "stages": []})
+    assert not job_matches_prefs(job, {"roles": ["design"], "cities": [], "sectors": [], "experience": [], "stages": []})
+    assert job_matches_prefs(job, {"roles": [], "cities": ["Riyadh"], "sectors": ["Fintech"], "experience": ["mid"], "stages": ["Seed"]})
+    assert not job_matches_prefs(job, {"roles": [], "cities": ["Jeddah"], "sectors": [], "experience": [], "stages": []})
+    assert job_matches_any_configured_prefs(job, [empty_prefs()])
+    assert not job_matches_any_configured_prefs(job, [{"roles": ["design"], "cities": [], "sectors": [], "experience": [], "stages": []}])
+    assert job_matches_any_configured_prefs(
+        job,
+        [
+            {"roles": ["design"], "cities": [], "sectors": [], "experience": [], "stages": []},
+            {"roles": ["engineering"], "cities": [], "sectors": [], "experience": [], "stages": []},
+        ],
+    )
+
+    tagged = with_utm("https://apply.workable.com/foodics/j/ABC/")
+    assert "utm_source=buildsaudi" in tagged
+    affiliate = "https://www.aiapply.co/?via=abdulla"
+    assert with_utm(affiliate) == affiliate
+    assert "—" not in "تبي الوظائف على مقاسك؟ حدّد تخصصك ومدينتك وقطاعك من صفحة التفضيلات."
+    assert "—" not in "لإلغاء الاشتراك استخدم رابط إلغاء الاشتراك أسفل رسالة النشرة."
+    print("pref checks passed")
+
+
 # ─── Main ────────────────────────────────────────────────────────────────────
 def main():
+    if CHECK_PREFS:
+        run_pref_checks()
+        return
+
     flags = []
     if DRY_RUN: flags.append("DRY RUN")
     if SKIP_SYNC: flags.append("SKIP SYNC")
+    if SKIP_SESSION: flags.append("SKIP SESSION")
     print(f"=== BuildSaudi Weekly Jobs Digest {('(' + ', '.join(flags) + ')') if flags else ''} ===")
     print(f"Date: {datetime.now().strftime('%A, %d %B %Y')}\n")
 
     date_str = datetime.now().strftime("%-d %B %Y")
 
-    # 1. Sync Airtable subscribers to Substack
-    if not DRY_RUN and not SKIP_SYNC:
-        print("Syncing subscribers...")
-        try:
-            emails = get_airtable_subscribers()
-            print(f"  Found {len(emails)} subscribers in Airtable")
-            sync_to_substack(emails)
-        except Exception as e:
-            print(f"  Sync error (continuing anyway): {e}")
-        print()
+    if not SKIP_SESSION:
+        # Always verified, including on dry runs: the check is the cheapest way to catch
+        # an expired cookie or a blocked IP, and a dry run that skips it can't tell us
+        # whether the real Monday run would have worked.
+        verify_substack_session()
 
-    # 2. Fetch jobs
-    print("Fetching jobs...")
-    company_jobs = fetch_all()
+    emails = []
+    prefs_list = []
+    single_prefs = json.loads(PREFS_JSON_RAW) if PREFS_JSON_RAW else None
+    if single_prefs is not None:
+        single_prefs = {**empty_prefs(), **single_prefs}
+
+    # 1. Sync Airtable subscribers to Substack
+    if AIRTABLE_API_KEY and AIRTABLE_BASE_ID:
+        try:
+            emails, prefs_list = get_airtable_subscribers()
+            print(f"  Found {len(emails)} subscribers in Airtable")
+            print(f"  Subscribers with prefs: {sum(1 for p in prefs_list if has_any_pref(p))}")
+        except Exception as e:
+            print(f"  Airtable read error (continuing anyway): {e}")
+        if not DRY_RUN and not SKIP_SYNC:
+            print("Syncing subscribers...")
+            try:
+                sync_to_substack(emails)
+            except Exception as e:
+                print(f"  Sync error (continuing anyway): {e}")
+            print()
+    elif not DRY_RUN and not SKIP_SYNC:
+        raise RuntimeError("AIRTABLE_API_KEY and AIRTABLE_BASE_ID are required to sync subscribers.")
+
+    # 2. Load jobs (jobs.json so Pref* axes exist). --from-ats keeps the old scrape.
+    print("Loading jobs...")
+    if FROM_ATS:
+        company_jobs = fetch_all()
+    else:
+        raw_jobs, _scraped = load_jobs_json()
+        company_jobs = jobs_to_company_jobs(raw_jobs, prefs_list=prefs_list, single_prefs=single_prefs)
+        print(f"  jobs.json openings after prefs filter: {sum(len(d['jobs']) for d in company_jobs.values())}")
 
     if not company_jobs:
         print("No jobs found. Exiting.")
