@@ -1,7 +1,7 @@
 "use client"
 
-import { Suspense, useCallback, useEffect, useMemo, useState } from "react"
-import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import { useCallback, useEffect, useMemo, useState } from "react"
+import { usePathname, useRouter } from "next/navigation"
 import posthog from "posthog-js"
 import Link from "next/link"
 import { Briefcase, MapPin, Search, X } from "lucide-react"
@@ -51,44 +51,33 @@ function seniorityLabel(level: Seniority, t: (typeof strings)[Lang]): string {
   return map[level]
 }
 
+function readFilterParam(params: URLSearchParams, key: string): string {
+  return params.get(key) || ""
+}
+
 export default function JobsBoard() {
-  return (
-    <Suspense fallback={<JobsBoardFallback />}>
-      <JobsBoardInner />
-    </Suspense>
-  )
-}
-
-function JobsBoardFallback() {
-  return (
-    <div
-      className="min-h-screen"
-      style={{
-        backgroundColor: "#F5F0E6",
-        backgroundImage: "url(/texture-light.png)",
-        backgroundSize: "100px 100px",
-        backgroundRepeat: "repeat",
-      }}
-    />
-  )
-}
-
-function JobsBoardInner() {
   const router = useRouter()
   const pathname = usePathname()
-  const searchParams = useSearchParams()
   const [lang, setLang] = useState<Lang>(DEFAULT_LANG)
   const t = strings[lang]
   const isRTL = lang === "ar"
-  const [search, setSearch] = useState(() => searchParams.get("q") || "")
-  const [sector, setSector] = useState(() => searchParams.get("sector") || "")
-  const [fn, setFn] = useState(() => searchParams.get("role") || "")
-  const [seniority, setSeniority] = useState(() => searchParams.get("level") || "")
-  const [city, setCity] = useState(() => searchParams.get("city") || "")
+  const [search, setSearch] = useState("")
+  const [sector, setSector] = useState("")
+  const [fn, setFn] = useState("")
+  const [seniority, setSeniority] = useState("")
+  const [city, setCity] = useState("")
+  const [filtersReady, setFiltersReady] = useState(false)
   const [showAlert, setShowAlert] = useState(false)
 
   useEffect(() => {
     setLang(getStoredLang())
+    const params = new URLSearchParams(window.location.search)
+    setSearch(readFilterParam(params, "q"))
+    setSector(readFilterParam(params, "sector"))
+    setFn(readFilterParam(params, "role"))
+    setSeniority(readFilterParam(params, "level"))
+    setCity(readFilterParam(params, "city"))
+    setFiltersReady(true)
   }, [])
 
   useEffect(() => {
@@ -101,6 +90,7 @@ function JobsBoardInner() {
   }, [isRTL])
 
   useEffect(() => {
+    if (!filtersReady) return
     const params = new URLSearchParams()
     if (search.trim()) params.set("q", search.trim())
     if (fn) params.set("role", fn)
@@ -108,9 +98,10 @@ function JobsBoardInner() {
     if (city) params.set("city", city)
     if (sector) params.set("sector", sector)
     const next = params.toString()
-    if (next === searchParams.toString()) return
+    const current = window.location.search.replace(/^\?/, "")
+    if (next === current) return
     router.replace(next ? `${pathname}?${next}` : pathname, { scroll: false })
-  }, [search, fn, seniority, city, sector, pathname, router, searchParams])
+  }, [search, fn, seniority, city, sector, pathname, router, filtersReady])
 
   const handleLangChange = useCallback(
     (next: Lang) => {
