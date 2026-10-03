@@ -15,6 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { companies, getJobsByCompany, filterOptions } from "@/lib/data"
+import { withBuildSaudiUtm } from "@/lib/utm"
 import { getCompanyDescription } from "@/lib/descriptions-ar"
 import { CompanyLogo } from "@/components/company-logo"
 
@@ -482,7 +483,7 @@ export default function HomePage() {
                                   {company.stage}
                                 </span>
                                 <a
-                                  href={company.careers_url}
+                                  href={withBuildSaudiUtm(company.careers_url)}
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   onClick={(e) => e.stopPropagation()}
@@ -503,7 +504,7 @@ export default function HomePage() {
                               {company.stage}
                             </span>
                             <a
-                              href={company.careers_url}
+                              href={withBuildSaudiUtm(company.careers_url)}
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={(e) => e.stopPropagation()}

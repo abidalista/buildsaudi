@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react"
 import { companies, filterOptions } from "@/lib/data"
+import { withBuildSaudiUtm } from "@/lib/utm"
 import { CompanyLogo } from "@/components/company-logo"
 
 export default function NewspaperPage() {
@@ -370,7 +371,7 @@ export default function NewspaperPage() {
                         Website
                       </a>
                       <a
-                        href={company.careers_url}
+                        href={withBuildSaudiUtm(company.careers_url)}
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}

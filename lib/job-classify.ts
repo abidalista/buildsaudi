@@ -1,4 +1,4 @@
-import type { JobFunction, Seniority } from "./types"
+import type { Job, JobFunction, Seniority } from "./types"
 
 export function classifyFunction(title: string): JobFunction {
   const t = title.toLowerCase()
@@ -111,4 +111,34 @@ const SA_INDICATORS = [
 export function isSaudiLocation(text: string): boolean {
   const t = (text || "").toLowerCase()
   return SA_INDICATORS.some((s) => t.includes(s))
+}
+
+const CITY_ALIASES: Record<string, string> = {
+  mecca: "Makkah",
+  makkah: "Makkah",
+  medina: "Madinah",
+  madinah: "Madinah",
+  "al khobar": "Al Khobar",
+  khobar: "Al Khobar",
+}
+
+const COUNTRY_ONLY = new Set(["saudi arabia", "ksa", "saudi"])
+
+/** First real city token from a job location string. Empty when only a country is present. */
+export function extractJobCity(location: string): string {
+  if (!location) return ""
+  const first = location.split(",")[0]?.trim() || ""
+  if (!first) return ""
+  const key = first.toLowerCase()
+  if (COUNTRY_ONLY.has(key)) return ""
+  return CITY_ALIASES[key] || first
+}
+
+export function jobFreshnessStamp(
+  job: Pick<Job, "posted_date">,
+  scrapedAt: string,
+): { date: string; kind: "posted" | "seen" } | null {
+  if (job.posted_date) return { date: job.posted_date.slice(0, 10), kind: "posted" }
+  if (scrapedAt) return { date: scrapedAt.slice(0, 10), kind: "seen" }
+  return null
 }

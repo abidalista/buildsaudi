@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react"
 import { companies, filterOptions } from "@/lib/data"
+import { withBuildSaudiUtm } from "@/lib/utm"
 import { CompanyLogo } from "@/components/company-logo"
 
 export default function PixelSaudiPage() {
@@ -427,7 +428,7 @@ export default function PixelSaudiPage() {
                       {[
                         { label: "LINKEDIN", href: company.linkedin, color: "#0ea5e9" },
                         { label: "WEBSITE", href: company.website, color: "#4ade80" },
-                        { label: "CAREERS", href: company.careers_url, color: "#f59e0b" },
+                        { label: "CAREERS", href: withBuildSaudiUtm(company.careers_url), color: "#f59e0b" },
                       ].map((link) => (
                         <a
                           key={link.label}

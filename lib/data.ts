@@ -1,5 +1,6 @@
 import { Company, Job } from "./types"
 import jobsFile from "../data/jobs.json"
+import { extractJobCity } from "./job-classify"
 
 export const companies: Company[] = [
   // ===== UNICORNS & MAJOR TECH =====
@@ -264,4 +265,5 @@ export const jobFilterOptions = {
   sector: [...new Set(jobs.map((j) => j.sector).filter(Boolean))].sort(),
   function: [...new Set(jobs.map((j) => j.function))].sort(),
   seniority: ["intern", "entry", "mid", "senior"] as const,
+  city: [...new Set(jobs.map((j) => extractJobCity(j.location)).filter(Boolean))].sort(),
 }

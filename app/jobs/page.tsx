@@ -8,7 +8,7 @@ const companyCount = new Set(jobs.map((j) => j.company_slug)).size
 
 export const metadata: Metadata = {
   title: `Saudi Startup Jobs — ${jobs.length} Open Roles | BuildSaudi`,
-  description: `Browse ${jobs.length} individual openings at ${companyCount} funded Saudi startups. Filter by sector, function, and seniority. Apply on the employer's official careers page. وظائف شركات ناشئة في السعودية.`,
+  description: `Browse ${jobs.length} individual openings at ${companyCount} funded Saudi startups. Filter by role, level, city, and sector. Apply on the employer's official careers page. وظائف شركات ناشئة في السعودية.`,
   alternates: { canonical: `${site}/jobs` },
   openGraph: {
     title: `Saudi Startup Jobs — ${jobs.length} Open Roles | BuildSaudi`,
@@ -17,7 +17,24 @@ export const metadata: Metadata = {
   },
 }
 
-export default function JobsPage() {
+function firstParam(value: string | string[] | undefined): string {
+  return typeof value === "string" ? value : ""
+}
+
+export default async function JobsPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>
+}) {
+  const params = await searchParams
+  const initialFilters = {
+    q: firstParam(params.q),
+    role: firstParam(params.role),
+    level: firstParam(params.level),
+    city: firstParam(params.city),
+    sector: firstParam(params.sector),
+  }
+
   const breadcrumbLd = buildBreadcrumbJsonLd([
     { name: "BuildSaudi", url: site },
     { name: "Jobs", url: `${site}/jobs` },
@@ -40,7 +57,7 @@ export default function JobsPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
-      <JobsBoard />
+      <JobsBoard initialFilters={initialFilters} />
     </>
   )
 }
