@@ -4,6 +4,7 @@
  */
 import { companies } from "../lib/data"
 import { cities, sectors, stages } from "../lib/seo"
+import { getAllJobHubs } from "../lib/job-hubs"
 import { submitIndexNow, INDEXNOW_KEY, INDEXNOW_HOST } from "../lib/indexnow"
 
 const base = `https://${INDEXNOW_HOST}`
@@ -20,6 +21,7 @@ function allUrls(): string[] {
     ...cities.map((c) => `${base}/jobs/${c.slug}`),
     ...sectors.map((s) => `${base}/jobs/sector/${s.slug}`),
     ...stages.map((s) => `${base}/jobs/stage/${s.slug}`),
+    ...getAllJobHubs().map((hub) => `${base}${hub.path}`),
   ]
 }
 

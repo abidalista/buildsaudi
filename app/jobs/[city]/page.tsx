@@ -9,6 +9,8 @@ import { getCityFaq } from "@/lib/aeo-landing"
 import { catalogCountLabel } from "@/lib/marketing"
 import { buildFaqJsonLd, buildBreadcrumbJsonLd, buildItemListJsonLd } from "@/lib/aeo-jsonld"
 import { SiteFooter } from "@/components/site-footer"
+import { JobHubLinks } from "@/components/job-hub-links"
+import { jobHubsForCity } from "@/lib/job-hubs"
 import type { Metadata } from "next"
 
 const site = "https://buildsaudi.co"
@@ -125,6 +127,8 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
             </div>
           ))}
         </div>
+
+        <JobHubLinks hubs={jobHubsForCity(slug)} heading={`Openings in ${city.name} by sector or role`} />
 
         <section className="mt-12 border-t border-[#06634D]/15 pt-8" aria-labelledby="city-faq-heading">
           <h2 id="city-faq-heading" className="text-lg font-bold text-[#111827]">
