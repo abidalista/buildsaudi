@@ -239,28 +239,37 @@ export default async function CompanyPage({
                 <SourceLink label={profile.founders.sourceLabel} href={profile.founders.sourceUrl} />
               </div>
             ) : null}
-            <div className="mb-4">
-              <h3 className="text-sm font-semibold text-[#111827]">Funding</h3>
-              <ul className="mt-2 space-y-3">
-                {profile.funding.map((item) => (
-                  <li key={item.text}>
-                    <p className="text-sm text-[#4b5563] leading-relaxed">{item.text}</p>
-                    <SourceLink label={item.sourceLabel} href={item.sourceUrl} />
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-sm font-semibold text-[#111827]">Investors</h3>
-              <ul className="mt-2 space-y-3">
-                {profile.investors.map((item) => (
-                  <li key={item.text}>
-                    <p className="text-sm text-[#4b5563] leading-relaxed">{item.text}</p>
-                    <SourceLink label={item.sourceLabel} href={item.sourceUrl} />
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {profile.funding.length > 0 ? (
+              <div className="mb-4">
+                <h3 className="text-sm font-semibold text-[#111827]">Funding</h3>
+                <ul className="mt-2 space-y-3">
+                  {profile.funding.map((item) => (
+                    <li key={item.text}>
+                      <p className="text-sm text-[#4b5563] leading-relaxed">{item.text}</p>
+                      <SourceLink label={item.sourceLabel} href={item.sourceUrl} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+            {profile.investors.length > 0 ? (
+              <div>
+                <h3 className="text-sm font-semibold text-[#111827]">Investors</h3>
+                <ul className="mt-2 space-y-3">
+                  {profile.investors.map((item) => (
+                    <li key={item.text}>
+                      <p className="text-sm text-[#4b5563] leading-relaxed">{item.text}</p>
+                      <SourceLink label={item.sourceLabel} href={item.sourceUrl} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+            {!profile.founders && profile.funding.length === 0 && profile.investors.length === 0 ? (
+              <p className="text-sm text-[#4b5563] leading-relaxed">
+                We have not verified founders, funding amounts, or investor names on a company or investor page for this profile.
+              </p>
+            ) : null}
           </section>
         ) : null}
 
