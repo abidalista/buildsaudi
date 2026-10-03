@@ -51,33 +51,33 @@ function seniorityLabel(level: Seniority, t: (typeof strings)[Lang]): string {
   return map[level]
 }
 
-function readFilterParam(params: URLSearchParams, key: string): string {
-  return params.get(key) || ""
+type JobBoardFilters = {
+  q: string
+  role: string
+  level: string
+  city: string
+  sector: string
 }
 
-export default function JobsBoard() {
+export default function JobsBoard({
+  initialFilters = { q: "", role: "", level: "", city: "", sector: "" },
+}: {
+  initialFilters?: JobBoardFilters
+}) {
   const router = useRouter()
   const pathname = usePathname()
   const [lang, setLang] = useState<Lang>(DEFAULT_LANG)
   const t = strings[lang]
   const isRTL = lang === "ar"
-  const [search, setSearch] = useState("")
-  const [sector, setSector] = useState("")
-  const [fn, setFn] = useState("")
-  const [seniority, setSeniority] = useState("")
-  const [city, setCity] = useState("")
-  const [filtersReady, setFiltersReady] = useState(false)
+  const [search, setSearch] = useState(initialFilters.q)
+  const [sector, setSector] = useState(initialFilters.sector)
+  const [fn, setFn] = useState(initialFilters.role)
+  const [seniority, setSeniority] = useState(initialFilters.level)
+  const [city, setCity] = useState(initialFilters.city)
   const [showAlert, setShowAlert] = useState(false)
 
   useEffect(() => {
     setLang(getStoredLang())
-    const params = new URLSearchParams(window.location.search)
-    setSearch(readFilterParam(params, "q"))
-    setSector(readFilterParam(params, "sector"))
-    setFn(readFilterParam(params, "role"))
-    setSeniority(readFilterParam(params, "level"))
-    setCity(readFilterParam(params, "city"))
-    setFiltersReady(true)
   }, [])
 
   useEffect(() => {
@@ -90,7 +90,6 @@ export default function JobsBoard() {
   }, [isRTL])
 
   useEffect(() => {
-    if (!filtersReady) return
     const params = new URLSearchParams()
     if (search.trim()) params.set("q", search.trim())
     if (fn) params.set("role", fn)
@@ -101,7 +100,7 @@ export default function JobsBoard() {
     const current = window.location.search.replace(/^\?/, "")
     if (next === current) return
     router.replace(next ? `${pathname}?${next}` : pathname, { scroll: false })
-  }, [search, fn, seniority, city, sector, pathname, router, filtersReady])
+  }, [search, fn, seniority, city, sector, pathname, router])
 
   const handleLangChange = useCallback(
     (next: Lang) => {
@@ -344,7 +343,10 @@ function JobCard({ job, t }: { job: Job; t: (typeof strings)[Lang] }) {
           </div>
         )}
         <div className="flex-1 min-w-0">
-          <h2 className="text-base sm:text-lg font-bold text-[#111827] group-hover:text-[#06634D] transition-colors">
+          <h2
+            className="text-base sm:text-lg font-bold text-[#111827] group-hover:text-[#06634D] transition-colors"
+            dir="auto"
+          >
             {job.title}
           </h2>
           <div className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-sm text-[#6B7280]">

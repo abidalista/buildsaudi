@@ -1,6 +1,6 @@
 import posthog from "posthog-js"
 
-const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN!.trim()
+const POSTHOG_KEY = (process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN || "").trim()
 const POSTHOG_HOST = "/ingest"
 
 function shouldDropException(event: { event?: string; properties?: Record<string, unknown> }) {
@@ -18,6 +18,7 @@ function shouldDropException(event: { event?: string; properties?: Record<string
   return false
 }
 
+if (POSTHOG_KEY) {
 posthog.init(POSTHOG_KEY, {
   api_host: POSTHOG_HOST,
   ui_host: "https://eu.posthog.com",
@@ -49,3 +50,4 @@ posthog.init(POSTHOG_KEY, {
   capture_dead_clicks: true,
   scroll_root_selector: ["#main-content", "body"],
 })
+}
