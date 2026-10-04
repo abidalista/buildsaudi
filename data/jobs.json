@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-03T10:17:31.822Z",
+  "scraped_at": "2026-10-04T11:01:41.958Z",
   "jobs": [
     {
       "id": "foodics-fzoqqc",
@@ -366,6 +366,62 @@
       "source": "workable"
     },
     {
+      "id": "mrsool-r5uk1s",
+      "company_slug": "mrsool",
+      "title": "Co-op Intern , IT",
+      "company": "Mrsool",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "intern",
+      "function": "other",
+      "sector": "Logistics",
+      "apply_url": "https://apply.workable.com/mrsool-3/j/832726DF4D/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "mrsool-otbg9i",
+      "company_slug": "mrsool",
+      "title": "Co-op Intern , Logistics",
+      "company": "Mrsool",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "intern",
+      "function": "operations",
+      "sector": "Logistics",
+      "apply_url": "https://apply.workable.com/mrsool-3/j/BE8B2DD65F/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "mrsool-pe8nw2",
+      "company_slug": "mrsool",
+      "title": "Creative Copywriter",
+      "company": "Mrsool",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "marketing",
+      "sector": "Logistics",
+      "apply_url": "https://apply.workable.com/mrsool-3/j/13BC24D7C9/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "mrsool-g6hd8n",
+      "company_slug": "mrsool",
+      "title": "Representative, Customer Care",
+      "company": "Mrsool",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "operations",
+      "sector": "Logistics",
+      "apply_url": "https://apply.workable.com/mrsool-3/j/29356C93C5/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
       "id": "unifonic-rtvhkc",
       "company_slug": "unifonic",
       "title": "Product Manager - Data & Insights",
@@ -532,20 +588,6 @@
       "apply_url": "https://job-boards.greenhouse.io/hala/jobs/5364098008",
       "posted_date": "2026-08-27",
       "source": "greenhouse"
-    },
-    {
-      "id": "unifonic-8062de",
-      "company_slug": "unifonic",
-      "title": "Senior Customer Solutions Consultant",
-      "company": "Unifonic",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "other",
-      "sector": "AI",
-      "apply_url": "https://jobs.unifonic.com/o/senior-customer-solutions-consultant",
-      "posted_date": "2026-08-27",
-      "source": "recruitee"
     },
     {
       "id": "unifonic-6m1y3i",
@@ -954,48 +996,6 @@
       "source": "workable"
     },
     {
-      "id": "mrsool-r5uk1s",
-      "company_slug": "mrsool",
-      "title": "Co-op Intern , IT",
-      "company": "Mrsool",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "intern",
-      "function": "other",
-      "sector": "Logistics",
-      "apply_url": "https://apply.workable.com/mrsool-3/j/832726DF4D/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "mrsool-otbg9i",
-      "company_slug": "mrsool",
-      "title": "Co-op Intern , Logistics",
-      "company": "Mrsool",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "intern",
-      "function": "operations",
-      "sector": "Logistics",
-      "apply_url": "https://apply.workable.com/mrsool-3/j/BE8B2DD65F/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "mrsool-pe8nw2",
-      "company_slug": "mrsool",
-      "title": "Creative Copywriter",
-      "company": "Mrsool",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "marketing",
-      "sector": "Logistics",
-      "apply_url": "https://apply.workable.com/mrsool-3/j/13BC24D7C9/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
       "id": "salla-2b76g",
       "company_slug": "salla",
       "title": "Accountant (Shipping or Logistic)",
@@ -1104,20 +1104,6 @@
       "function": "marketing",
       "sector": "E-commerce",
       "apply_url": "https://apply.workable.com/salla/j/9B7214D1B5/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "salla-3ohiui",
-      "company_slug": "salla",
-      "title": "Sales Manager",
-      "company": "Salla",
-      "location": "Jeddah, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "sales",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/salla/j/5D9D790CE2/",
       "posted_date": "",
       "source": "workable"
     },
