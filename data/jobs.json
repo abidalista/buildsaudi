@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-05T12:08:51.895Z",
+  "scraped_at": "2026-10-06T11:52:45.329Z",
   "jobs": [
     {
       "id": "foodics-fzoqqc",
@@ -26,20 +26,6 @@
       "function": "other",
       "sector": "Foodtech",
       "apply_url": "https://apply.workable.com/foodics/j/8B8A457674/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "foodics-h6whfw",
-      "company_slug": "foodics",
-      "title": "Associate AI Quality Engineer",
-      "company": "Foodics",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "entry",
-      "function": "engineering",
-      "sector": "Foodtech",
-      "apply_url": "https://apply.workable.com/foodics/j/4EDB5A3F05/",
       "posted_date": "",
       "source": "workable"
     },
@@ -82,6 +68,20 @@
       "function": "operations",
       "sector": "Foodtech",
       "apply_url": "https://apply.workable.com/foodics/j/6B80B888D2/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "foodics-diwqjp",
+      "company_slug": "foodics",
+      "title": "Director of FP&A and Investor Relations",
+      "company": "Foodics",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "senior",
+      "function": "other",
+      "sector": "Foodtech",
+      "apply_url": "https://apply.workable.com/foodics/j/26D2DC803F/",
       "posted_date": "",
       "source": "workable"
     },
@@ -282,6 +282,20 @@
       "source": "workable"
     },
     {
+      "id": "gathern-kalxjo",
+      "company_slug": "gathern",
+      "title": "Host Relations Associate (Fresh Graduates)",
+      "company": "Gathern",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "entry",
+      "function": "other",
+      "sector": "E-commerce",
+      "apply_url": "https://apply.workable.com/gathern/j/30F79BA26C/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
       "id": "gathern-fxv67o",
       "company_slug": "gathern",
       "title": "Risk Management Lead",
@@ -420,48 +434,6 @@
       "apply_url": "https://job-boards.greenhouse.io/hala/jobs/5424279008",
       "posted_date": "2026-09-20",
       "source": "greenhouse"
-    },
-    {
-      "id": "mrsool-r5uk1s",
-      "company_slug": "mrsool",
-      "title": "Co-op Intern , IT",
-      "company": "Mrsool",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "intern",
-      "function": "other",
-      "sector": "Logistics",
-      "apply_url": "https://apply.workable.com/mrsool-3/j/832726DF4D/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "mrsool-pe8nw2",
-      "company_slug": "mrsool",
-      "title": "Creative Copywriter",
-      "company": "Mrsool",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "marketing",
-      "sector": "Logistics",
-      "apply_url": "https://apply.workable.com/mrsool-3/j/13BC24D7C9/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "mrsool-g6hd8n",
-      "company_slug": "mrsool",
-      "title": "Representative, Customer Care",
-      "company": "Mrsool",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "operations",
-      "sector": "Logistics",
-      "apply_url": "https://apply.workable.com/mrsool-3/j/29356C93C5/",
-      "posted_date": "",
-      "source": "workable"
     },
     {
       "id": "unifonic-8d7szr",
@@ -940,6 +912,20 @@
       "source": "workable"
     },
     {
+      "id": "mrsool-r5uk1s",
+      "company_slug": "mrsool",
+      "title": "Co-op Intern , IT",
+      "company": "Mrsool",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "intern",
+      "function": "other",
+      "sector": "Logistics",
+      "apply_url": "https://apply.workable.com/mrsool-3/j/832726DF4D/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
       "id": "mrsool-otbg9i",
       "company_slug": "mrsool",
       "title": "Co-op Intern , Logistics",
@@ -950,6 +936,34 @@
       "function": "operations",
       "sector": "Logistics",
       "apply_url": "https://apply.workable.com/mrsool-3/j/BE8B2DD65F/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "mrsool-pe8nw2",
+      "company_slug": "mrsool",
+      "title": "Creative Copywriter",
+      "company": "Mrsool",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "marketing",
+      "sector": "Logistics",
+      "apply_url": "https://apply.workable.com/mrsool-3/j/13BC24D7C9/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "mrsool-g6hd8n",
+      "company_slug": "mrsool",
+      "title": "Representative, Customer Care",
+      "company": "Mrsool",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "operations",
+      "sector": "Logistics",
+      "apply_url": "https://apply.workable.com/mrsool-3/j/29356C93C5/",
       "posted_date": "",
       "source": "workable"
     },
@@ -978,6 +992,20 @@
       "function": "product",
       "sector": "E-commerce",
       "apply_url": "https://apply.workable.com/salla/j/6D8FF206D6/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "salla-6hsfno",
+      "company_slug": "salla",
+      "title": "Creative Content Manager",
+      "company": "Salla",
+      "location": "Jeddah, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "senior",
+      "function": "marketing",
+      "sector": "E-commerce",
+      "apply_url": "https://apply.workable.com/salla/j/3EE94DA795/",
       "posted_date": "",
       "source": "workable"
     },
@@ -1076,6 +1104,20 @@
       "function": "other",
       "sector": "E-commerce",
       "apply_url": "https://apply.workable.com/salla/j/C7A8D3B9DD/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "salla-b6f5wm",
+      "company_slug": "salla",
+      "title": "Search Engine Optimization Manager",
+      "company": "Salla",
+      "location": "Jeddah, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "senior",
+      "function": "other",
+      "sector": "E-commerce",
+      "apply_url": "https://apply.workable.com/salla/j/028A1DF2A6/",
       "posted_date": "",
       "source": "workable"
     },
@@ -1416,20 +1458,6 @@
       "source": "workable"
     },
     {
-      "id": "tamara-hmi48x",
-      "company_slug": "tamara",
-      "title": "Tamara Internship Program",
-      "company": "Tamara",
-      "location": "Riyadh Saudi Arabia, Dubai United Arab Emirates",
-      "job_type": "Full-time",
-      "experience_level": "intern",
-      "function": "other",
-      "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996993101",
-      "posted_date": "2026-10-05",
-      "source": "greenhouse"
-    },
-    {
       "id": "tamara-wwslqn",
       "company_slug": "tamara",
       "title": "AML Officer",
@@ -1440,21 +1468,7 @@
       "function": "other",
       "sector": "Fintech",
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4971774101",
-      "posted_date": "2026-09-30",
-      "source": "greenhouse"
-    },
-    {
-      "id": "tamara-u2nwm7",
-      "company_slug": "tamara",
-      "title": "Merchant Acquisition Specialist",
-      "company": "Tamara",
-      "location": "Dammam, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4975185101",
-      "posted_date": "2026-09-22",
+      "posted_date": "2026-10-06",
       "source": "greenhouse"
     },
     {
@@ -1468,7 +1482,7 @@
       "function": "operations",
       "sector": "Fintech",
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4819453101",
-      "posted_date": "2026-09-17",
+      "posted_date": "2026-10-06",
       "source": "greenhouse"
     },
     {
@@ -1482,7 +1496,7 @@
       "function": "operations",
       "sector": "Fintech",
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4726623101",
-      "posted_date": "2026-09-17",
+      "posted_date": "2026-10-06",
       "source": "greenhouse"
     },
     {
@@ -1496,7 +1510,7 @@
       "function": "other",
       "sector": "Fintech",
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4630959101",
-      "posted_date": "2026-09-17",
+      "posted_date": "2026-10-06",
       "source": "greenhouse"
     },
     {
@@ -1510,7 +1524,7 @@
       "function": "other",
       "sector": "Fintech",
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4897236101",
-      "posted_date": "2026-09-17",
+      "posted_date": "2026-10-06",
       "source": "greenhouse"
     },
     {
@@ -1524,7 +1538,21 @@
       "function": "other",
       "sector": "Fintech",
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4964015101",
-      "posted_date": "2026-09-17",
+      "posted_date": "2026-10-06",
+      "source": "greenhouse"
+    },
+    {
+      "id": "tamara-u2nwm7",
+      "company_slug": "tamara",
+      "title": "Merchant Acquisition Specialist",
+      "company": "Tamara",
+      "location": "Dammam, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "other",
+      "sector": "Fintech",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4975185101",
+      "posted_date": "2026-10-06",
       "source": "greenhouse"
     },
     {
@@ -1538,7 +1566,7 @@
       "function": "other",
       "sector": "Fintech",
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4962179101",
-      "posted_date": "2026-09-17",
+      "posted_date": "2026-10-06",
       "source": "greenhouse"
     },
     {
@@ -1552,7 +1580,35 @@
       "function": "other",
       "sector": "Fintech",
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4951395101",
-      "posted_date": "2026-09-17",
+      "posted_date": "2026-10-06",
+      "source": "greenhouse"
+    },
+    {
+      "id": "tamara-v06fgz",
+      "company_slug": "tamara",
+      "title": "Tamara Builders Program",
+      "company": "Tamara",
+      "location": "Riyadh Saudi Arabia, Dubai United Arab Emirates",
+      "job_type": "Full-time",
+      "experience_level": "entry",
+      "function": "other",
+      "sector": "Fintech",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4997585101",
+      "posted_date": "2026-10-06",
+      "source": "greenhouse"
+    },
+    {
+      "id": "tamara-hmi48x",
+      "company_slug": "tamara",
+      "title": "Tamara Internship Program",
+      "company": "Tamara",
+      "location": "Riyadh Saudi Arabia, Dubai United Arab Emirates",
+      "job_type": "Full-time",
+      "experience_level": "intern",
+      "function": "other",
+      "sector": "Fintech",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996993101",
+      "posted_date": "2026-10-06",
       "source": "greenhouse"
     },
     {
