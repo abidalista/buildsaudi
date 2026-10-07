@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-06T11:52:45.329Z",
+  "scraped_at": "2026-10-07T11:37:47.612Z",
   "jobs": [
     {
       "id": "foodics-fzoqqc",
@@ -366,6 +366,62 @@
       "source": "workable"
     },
     {
+      "id": "hala-u97ss7",
+      "company_slug": "hala",
+      "title": "Sanction Officer",
+      "company": "HALA",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "other",
+      "sector": "Fintech",
+      "apply_url": "https://job-boards.greenhouse.io/hala/jobs/5399219008",
+      "posted_date": "2026-10-07",
+      "source": "greenhouse"
+    },
+    {
+      "id": "mrsool-r5uk1s",
+      "company_slug": "mrsool",
+      "title": "Co-op Intern , IT",
+      "company": "Mrsool",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "intern",
+      "function": "other",
+      "sector": "Logistics",
+      "apply_url": "https://apply.workable.com/mrsool-3/j/832726DF4D/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "mrsool-pe8nw2",
+      "company_slug": "mrsool",
+      "title": "Creative Copywriter",
+      "company": "Mrsool",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "marketing",
+      "sector": "Logistics",
+      "apply_url": "https://apply.workable.com/mrsool-3/j/13BC24D7C9/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "mrsool-6agkyf",
+      "company_slug": "mrsool",
+      "title": "Logistics Operations Specialist - Part-Time",
+      "company": "Mrsool",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "operations",
+      "sector": "Logistics",
+      "apply_url": "https://apply.workable.com/mrsool-3/j/1BD904B301/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
       "id": "unifonic-rtvhkc",
       "company_slug": "unifonic",
       "title": "Product Manager - Data & Insights",
@@ -560,20 +616,6 @@
       "apply_url": "https://job-boards.greenhouse.io/hala/jobs/4977378008",
       "posted_date": "2026-08-18",
       "source": "greenhouse"
-    },
-    {
-      "id": "unifonic-5zrmfk",
-      "company_slug": "unifonic",
-      "title": "Key Account Manager",
-      "company": "Unifonic",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "sales",
-      "sector": "AI",
-      "apply_url": "https://jobs.unifonic.com/o/key-account-manager-2",
-      "posted_date": "2026-08-04",
-      "source": "recruitee"
     },
     {
       "id": "jisr-vyb4gz",
@@ -908,48 +950,6 @@
       "function": "people",
       "sector": "AI",
       "apply_url": "https://apply.workable.com/lucidya/j/840F54D259/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "mrsool-r5uk1s",
-      "company_slug": "mrsool",
-      "title": "Co-op Intern , IT",
-      "company": "Mrsool",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "intern",
-      "function": "other",
-      "sector": "Logistics",
-      "apply_url": "https://apply.workable.com/mrsool-3/j/832726DF4D/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "mrsool-otbg9i",
-      "company_slug": "mrsool",
-      "title": "Co-op Intern , Logistics",
-      "company": "Mrsool",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "intern",
-      "function": "operations",
-      "sector": "Logistics",
-      "apply_url": "https://apply.workable.com/mrsool-3/j/BE8B2DD65F/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "mrsool-pe8nw2",
-      "company_slug": "mrsool",
-      "title": "Creative Copywriter",
-      "company": "Mrsool",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "marketing",
-      "sector": "Logistics",
-      "apply_url": "https://apply.workable.com/mrsool-3/j/13BC24D7C9/",
       "posted_date": "",
       "source": "workable"
     },
@@ -1610,6 +1610,20 @@
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996993101",
       "posted_date": "2026-10-06",
       "source": "greenhouse"
+    },
+    {
+      "id": "unifonic-5zrmfk",
+      "company_slug": "unifonic",
+      "title": "Key Account Manager",
+      "company": "Unifonic",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "senior",
+      "function": "sales",
+      "sector": "AI",
+      "apply_url": "https://jobs.unifonic.com/o/key-account-manager-2",
+      "posted_date": "2026-08-04",
+      "source": "recruitee"
     },
     {
       "id": "unifonic-pdomnd",
