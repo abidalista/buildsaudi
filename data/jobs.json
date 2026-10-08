@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-07T11:37:47.612Z",
+  "scraped_at": "2026-10-08T11:52:22.214Z",
   "jobs": [
     {
       "id": "foodics-fzoqqc",
@@ -26,6 +26,20 @@
       "function": "other",
       "sector": "Foodtech",
       "apply_url": "https://apply.workable.com/foodics/j/8B8A457674/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "foodics-v1rs5x",
+      "company_slug": "foodics",
+      "title": "Anti Money laundering Officer",
+      "company": "Foodics",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "other",
+      "sector": "Foodtech",
+      "apply_url": "https://apply.workable.com/foodics/j/78F8554CB7/",
       "posted_date": "",
       "source": "workable"
     },
@@ -296,7 +310,7 @@
       "source": "workable"
     },
     {
-      "id": "gathern-fxv67o",
+      "id": "gathern-3fegig",
       "company_slug": "gathern",
       "title": "Risk Management Lead",
       "company": "Gathern",
@@ -305,12 +319,12 @@
       "experience_level": "senior",
       "function": "other",
       "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/gathern/j/69B3A7E0B2/",
+      "apply_url": "https://apply.workable.com/gathern/j/F3E795D2B2/",
       "posted_date": "",
       "source": "workable"
     },
     {
-      "id": "gathern-wlt0t6",
+      "id": "gathern-3u6biy",
       "company_slug": "gathern",
       "title": "Senior DevOps Engineer",
       "company": "Gathern",
@@ -319,7 +333,7 @@
       "experience_level": "senior",
       "function": "engineering",
       "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/gathern/j/4206209D59/",
+      "apply_url": "https://apply.workable.com/gathern/j/3F9AAF5244/",
       "posted_date": "",
       "source": "workable"
     },
@@ -380,20 +394,6 @@
       "source": "greenhouse"
     },
     {
-      "id": "mrsool-r5uk1s",
-      "company_slug": "mrsool",
-      "title": "Co-op Intern , IT",
-      "company": "Mrsool",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "intern",
-      "function": "other",
-      "sector": "Logistics",
-      "apply_url": "https://apply.workable.com/mrsool-3/j/832726DF4D/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
       "id": "mrsool-pe8nw2",
       "company_slug": "mrsool",
       "title": "Creative Copywriter",
@@ -408,16 +408,16 @@
       "source": "workable"
     },
     {
-      "id": "mrsool-6agkyf",
+      "id": "mrsool-g6hd8n",
       "company_slug": "mrsool",
-      "title": "Logistics Operations Specialist - Part-Time",
+      "title": "Representative, Customer Care",
       "company": "Mrsool",
       "location": "Riyadh, Saudi Arabia",
       "job_type": "Full-time",
       "experience_level": "mid",
       "function": "operations",
       "sector": "Logistics",
-      "apply_url": "https://apply.workable.com/mrsool-3/j/1BD904B301/",
+      "apply_url": "https://apply.workable.com/mrsool-3/j/29356C93C5/",
       "posted_date": "",
       "source": "workable"
     },
@@ -954,16 +954,16 @@
       "source": "workable"
     },
     {
-      "id": "mrsool-g6hd8n",
+      "id": "mrsool-6agkyf",
       "company_slug": "mrsool",
-      "title": "Representative, Customer Care",
+      "title": "Logistics Operations Specialist - Part-Time",
       "company": "Mrsool",
       "location": "Riyadh, Saudi Arabia",
       "job_type": "Full-time",
       "experience_level": "mid",
       "function": "operations",
       "sector": "Logistics",
-      "apply_url": "https://apply.workable.com/mrsool-3/j/29356C93C5/",
+      "apply_url": "https://apply.workable.com/mrsool-3/j/1BD904B301/",
       "posted_date": "",
       "source": "workable"
     },
@@ -1038,20 +1038,6 @@
       "source": "workable"
     },
     {
-      "id": "salla-jwkm8n",
-      "company_slug": "salla",
-      "title": "Engineering Manager - Enterprise Solutions & Delivery",
-      "company": "Salla",
-      "location": "Makkah, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "other",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/salla/j/D3542D99D4/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
       "id": "salla-87gbuj",
       "company_slug": "salla",
       "title": "Head of Security",
@@ -1090,6 +1076,20 @@
       "function": "marketing",
       "sector": "E-commerce",
       "apply_url": "https://apply.workable.com/salla/j/9B7214D1B5/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "salla-kjq9hb",
+      "company_slug": "salla",
+      "title": "Product Manager - Storefront",
+      "company": "Salla",
+      "location": "Jeddah, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "senior",
+      "function": "product",
+      "sector": "E-commerce",
+      "apply_url": "https://apply.workable.com/salla/j/6FEBF88574/",
       "posted_date": "",
       "source": "workable"
     },
@@ -1290,20 +1290,6 @@
       "source": "workable"
     },
     {
-      "id": "salla-6tbmtr",
-      "company_slug": "salla",
-      "title": "Senior SRE Engineer (MLOps) - AI",
-      "company": "Salla",
-      "location": "Makkah, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "engineering",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/salla/j/3DE2560ED6/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
       "id": "salla-injigv",
       "company_slug": "salla",
       "title": "Staff Analytics Engineer - Product Data Instrumentation",
@@ -1458,6 +1444,20 @@
       "source": "workable"
     },
     {
+      "id": "tamara-oh11y2",
+      "company_slug": "tamara",
+      "title": "Product Engineer II - Web",
+      "company": "Tamara",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "engineering",
+      "sector": "Fintech",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4822263101",
+      "posted_date": "2026-10-07",
+      "source": "greenhouse"
+    },
+    {
       "id": "tamara-wwslqn",
       "company_slug": "tamara",
       "title": "AML Officer",
@@ -1496,20 +1496,6 @@
       "function": "operations",
       "sector": "Fintech",
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4726623101",
-      "posted_date": "2026-10-06",
-      "source": "greenhouse"
-    },
-    {
-      "id": "tamara-23ekh2",
-      "company_slug": "tamara",
-      "title": "Data Analyst II - Credit",
-      "company": "Tamara",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4630959101",
       "posted_date": "2026-10-06",
       "source": "greenhouse"
     },
