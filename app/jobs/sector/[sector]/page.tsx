@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react"
 import { companies } from "@/lib/data"
 import { withBuildSaudiUtm } from "@/lib/utm"
 import { CompanyLogo } from "@/components/company-logo"
+import { AiApplyBenefit } from "@/components/ai-apply-benefit"
 import { sectors } from "@/lib/seo"
 import { getSectorFaq, sectorBlurbs } from "@/lib/aeo-landing"
 import { buildFaqJsonLd, buildBreadcrumbJsonLd, buildItemListJsonLd } from "@/lib/aeo-jsonld"
@@ -125,6 +126,7 @@ export default async function SectorPage({ params }: { params: Promise<{ sector:
                   </div>
                 </div>
               </div>
+              <AiApplyBenefit placement="sector_card" className="px-5 pb-3 -mt-1 ms-auto" />
             </div>
           ))}
           {sectorCompanies.length === 0 && (

@@ -8,6 +8,7 @@ import { jobFreshnessStamp } from "@/lib/job-classify"
 import { withBuildSaudiUtm } from "@/lib/utm"
 import { getCompanyProfile, hiringNowCopy } from "@/lib/company-profiles"
 import { CompanyLogo } from "@/components/company-logo"
+import { AiApplyBenefit } from "@/components/ai-apply-benefit"
 import { getCompanyFaq } from "@/lib/aeo-landing"
 import { buildFaqJsonLd, buildBreadcrumbJsonLd } from "@/lib/aeo-jsonld"
 import { SiteFooter } from "@/components/site-footer"
@@ -139,7 +140,7 @@ export default async function CompanyPage({
         </div>
       </header>
 
-      <main className="mx-auto max-w-[1200px] px-6 py-8 pb-24 sm:pb-8">
+      <main className="mx-auto max-w-[1200px] px-6 py-8 pb-32 sm:pb-8">
         <Link
           href="/"
           className="inline-flex items-center gap-1.5 text-sm text-[#6b7280] hover:text-[#1a1a1a] mb-6"
@@ -186,15 +187,18 @@ export default async function CompanyPage({
               ) : null}
 
               <div className="mt-5 flex flex-col sm:flex-row sm:items-center gap-3">
-                <a
-                  href={careersUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-1.5 rounded bg-[#06634D] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#044D3B] transition-colors"
-                >
-                  <ExternalLink className="size-3.5" />
-                  Apply at {company.name}
-                </a>
+                <div className="flex flex-col items-start gap-1.5">
+                  <a
+                    href={careersUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-1.5 rounded bg-[#06634D] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#044D3B] transition-colors"
+                  >
+                    <ExternalLink className="size-3.5" />
+                    Apply at {company.name}
+                  </a>
+                  <AiApplyBenefit placement="company_apply" />
+                </div>
                 <div className="flex items-center gap-4 text-sm text-[#6b7280]">
                   {!careersSameAsWebsite ? (
                     <a
@@ -284,22 +288,25 @@ export default async function CompanyPage({
               {companyJobs.map((job) => {
                 const freshness = jobFreshnessStamp(job, jobsScrapedAt)
                 return (
-                <li key={job.id} className="py-3 first:pt-0 last:pb-0 flex items-start justify-between gap-3">
-                  <div className="min-w-0">
-                    <p className="text-sm font-semibold text-[#111827]">{job.title}</p>
-                    <p className="text-xs text-[#6b7280] mt-0.5" dir="ltr">
-                      {job.location}
-                      {freshness ? ` · ${freshness.kind === "posted" ? "Posted" : "Last seen"} ${freshness.date}` : ""}
-                    </p>
+                <li key={job.id} className="py-3 first:pt-0 last:pb-0">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <p className="text-sm font-semibold text-[#111827]">{job.title}</p>
+                      <p className="text-xs text-[#6b7280] mt-0.5" dir="ltr">
+                        {job.location}
+                        {freshness ? ` · ${freshness.kind === "posted" ? "Posted" : "Last seen"} ${freshness.date}` : ""}
+                      </p>
+                    </div>
+                    <a
+                      href={withBuildSaudiUtm(job.apply_url)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="shrink-0 px-3 py-1.5 bg-[#06634D] text-white text-xs font-semibold rounded hover:bg-[#044D3B]"
+                    >
+                      Apply
+                    </a>
                   </div>
-                  <a
-                    href={withBuildSaudiUtm(job.apply_url)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="shrink-0 px-3 py-1.5 bg-[#06634D] text-white text-xs font-semibold rounded hover:bg-[#044D3B]"
-                  >
-                    Apply
-                  </a>
+                  <AiApplyBenefit placement="company_job" className="mt-1 ms-auto" />
                 </li>
                 )
               })}
@@ -337,6 +344,7 @@ export default async function CompanyPage({
           <ExternalLink className="size-3.5" />
           Apply at {company.name}
         </a>
+        <AiApplyBenefit placement="company_mobile" className="mt-2 block text-center" />
       </div>
 
       <SiteFooter />

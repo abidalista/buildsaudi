@@ -4,6 +4,7 @@ import { companies, getCompanyBySlug, jobsScrapedAt } from "@/lib/data"
 import { jobFreshnessStamp } from "@/lib/job-classify"
 import { withBuildSaudiUtm } from "@/lib/utm"
 import { CompanyLogo } from "@/components/company-logo"
+import { AiApplyBenefit } from "@/components/ai-apply-benefit"
 import { SiteFooter } from "@/components/site-footer"
 import { buildFaqJsonLd, buildBreadcrumbJsonLd } from "@/lib/aeo-jsonld"
 import {
@@ -84,7 +85,7 @@ export function JobHubView({ hub }: { hub: JobHub }) {
       <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <ul className="space-y-3">
           {hub.jobs.map((job) => (
-            <HubJobRow key={job.id} job={job} />
+            <HubJobRow key={job.id} job={job} placement={hub.kind === "role" ? "role_page" : "city_sector_hub"} />
           ))}
         </ul>
 
@@ -132,7 +133,7 @@ export function JobHubView({ hub }: { hub: JobHub }) {
   )
 }
 
-function HubJobRow({ job }: { job: Job }) {
+function HubJobRow({ job, placement }: { job: Job; placement: string }) {
   const company = getCompanyBySlug(job.company_slug) || companies.find((c) => c.slug === job.company_slug)
   const applyUrl = withBuildSaudiUtm(job.apply_url)
   const freshness = jobFreshnessStamp(job, jobsScrapedAt)
@@ -181,6 +182,7 @@ function HubJobRow({ job }: { job: Job }) {
           Apply
         </a>
       </div>
+      <AiApplyBenefit placement={placement} className="mt-2 ms-auto" />
     </li>
   )
 }

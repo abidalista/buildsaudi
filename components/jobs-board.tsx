@@ -23,9 +23,9 @@ import { companies, getCompanyBySlug, jobFilterOptions, jobs, jobsScrapedAt } fr
 import { extractJobCity, jobFreshnessStamp } from "@/lib/job-classify"
 import type { Job, JobFunction, Seniority } from "@/lib/types"
 import { withBuildSaudiUtm } from "@/lib/utm"
+import { aiApplyHref } from "@/lib/ai-apply"
 import { JobHubLinks } from "@/components/job-hub-links"
-
-const AI_APPLY_URL = "https://www.aiapply.co/?via=abdulla"
+import { AiApplyBenefit } from "@/components/ai-apply-benefit"
 
 function functionLabel(fn: JobFunction, t: (typeof strings)[Lang]): string {
   const map: Record<JobFunction, string> = {
@@ -159,7 +159,7 @@ export default function JobsBoard({
       }}
     >
       <a
-        href={AI_APPLY_URL}
+        href={aiApplyHref("jobs_banner")}
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => posthog.capture("ai_apply_clicked", { placement: "jobs_banner" })}
@@ -390,6 +390,7 @@ function JobCard({ job, t }: { job: Job; t: (typeof strings)[Lang] }) {
           {t.apply}
         </a>
       </div>
+      <AiApplyBenefit placement="job_card" className="px-4 sm:px-5 pb-3 -mt-1 ms-auto" />
     </div>
   )
 }

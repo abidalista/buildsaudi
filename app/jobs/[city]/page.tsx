@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react"
 import { companies } from "@/lib/data"
 import { withBuildSaudiUtm } from "@/lib/utm"
 import { CompanyLogo } from "@/components/company-logo"
+import { AiApplyBenefit } from "@/components/ai-apply-benefit"
 import { cities } from "@/lib/seo"
 import { getCityFaq } from "@/lib/aeo-landing"
 import { catalogCountLabel } from "@/lib/marketing"
@@ -124,6 +125,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
                   </div>
                 </div>
               </div>
+              <AiApplyBenefit placement="city_card" className="px-5 pb-3 -mt-1 ms-auto" />
             </div>
           ))}
         </div>
