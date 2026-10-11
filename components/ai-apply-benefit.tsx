@@ -15,8 +15,9 @@ export function AiApplyBenefit({
       href={aiApplyHref(placement)}
       target="_blank"
       rel="noopener noreferrer"
+      dir="ltr"
       onClick={() => posthog.capture("ai_apply_clicked", { placement })}
-      className={`text-[11px] leading-snug text-[#06634D] hover:underline ${className}`.trim()}
+      className={`block w-fit max-w-full text-[11px] leading-snug text-[#06634D] hover:underline ${className}`.trim()}
     >
       {AI_APPLY_BENEFIT_LINE}
     </a>

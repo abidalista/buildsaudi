@@ -123,9 +123,9 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
                       Apply
                     </a>
                   </div>
-                  <AiApplyBenefit placement="city_card" className="text-end max-w-[10.5rem] sm:max-w-[13rem]" />
                 </div>
               </div>
+              <AiApplyBenefit placement="city_card" className="px-5 pb-3 -mt-1 ms-auto" />
             </div>
           ))}
         </div>

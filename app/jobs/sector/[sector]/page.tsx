@@ -124,9 +124,9 @@ export default async function SectorPage({ params }: { params: Promise<{ sector:
                       Apply
                     </a>
                   </div>
-                  <AiApplyBenefit placement="sector_card" className="text-end max-w-[10.5rem] sm:max-w-[13rem]" />
                 </div>
               </div>
+              <AiApplyBenefit placement="sector_card" className="px-5 pb-3 -mt-1 ms-auto" />
             </div>
           ))}
           {sectorCompanies.length === 0 && (

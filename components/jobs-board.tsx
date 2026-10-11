@@ -380,19 +380,17 @@ function JobCard({ job, t }: { job: Job; t: (typeof strings)[Lang] }) {
             )}
           </div>
         </div>
-        <div className="shrink-0 flex flex-col items-end gap-1.5 max-w-[10.5rem] sm:max-w-[13rem]">
-          <a
-            href={applyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={handleApply}
-            className="px-3 py-2 bg-[#06634D] text-white text-xs sm:text-sm font-semibold rounded hover:bg-[#044D3B] transition-colors whitespace-nowrap"
-          >
-            {t.apply}
-          </a>
-          <AiApplyBenefit placement="job_card" className="text-end" />
-        </div>
+        <a
+          href={applyUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={handleApply}
+          className="shrink-0 px-3 py-2 bg-[#06634D] text-white text-xs sm:text-sm font-semibold rounded hover:bg-[#044D3B] transition-colors whitespace-nowrap"
+        >
+          {t.apply}
+        </a>
       </div>
+      <AiApplyBenefit placement="job_card" className="px-4 sm:px-5 pb-3 -mt-1 ms-auto" />
     </div>
   )
 }

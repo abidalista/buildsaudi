@@ -288,25 +288,25 @@ export default async function CompanyPage({
               {companyJobs.map((job) => {
                 const freshness = jobFreshnessStamp(job, jobsScrapedAt)
                 return (
-                <li key={job.id} className="py-3 first:pt-0 last:pb-0 flex items-start justify-between gap-3">
-                  <div className="min-w-0">
-                    <p className="text-sm font-semibold text-[#111827]">{job.title}</p>
-                    <p className="text-xs text-[#6b7280] mt-0.5" dir="ltr">
-                      {job.location}
-                      {freshness ? ` · ${freshness.kind === "posted" ? "Posted" : "Last seen"} ${freshness.date}` : ""}
-                    </p>
-                  </div>
-                  <div className="shrink-0 flex flex-col items-end gap-1 max-w-[10.5rem]">
+                <li key={job.id} className="py-3 first:pt-0 last:pb-0">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <p className="text-sm font-semibold text-[#111827]">{job.title}</p>
+                      <p className="text-xs text-[#6b7280] mt-0.5" dir="ltr">
+                        {job.location}
+                        {freshness ? ` · ${freshness.kind === "posted" ? "Posted" : "Last seen"} ${freshness.date}` : ""}
+                      </p>
+                    </div>
                     <a
                       href={withBuildSaudiUtm(job.apply_url)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-3 py-1.5 bg-[#06634D] text-white text-xs font-semibold rounded hover:bg-[#044D3B]"
+                      className="shrink-0 px-3 py-1.5 bg-[#06634D] text-white text-xs font-semibold rounded hover:bg-[#044D3B]"
                     >
                       Apply
                     </a>
-                    <AiApplyBenefit placement="company_job" className="text-end" />
                   </div>
+                  <AiApplyBenefit placement="company_job" className="mt-1 ms-auto" />
                 </li>
                 )
               })}

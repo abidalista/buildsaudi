@@ -172,19 +172,17 @@ function HubJobRow({ job, placement }: { job: Job; placement: string }) {
             </p>
           ) : null}
         </div>
-        <div className="shrink-0 flex flex-col items-end gap-1.5 max-w-[10.5rem] sm:max-w-[13rem]">
-          <a
-            href={applyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded bg-[#06634D] px-3 py-2 text-xs font-semibold text-white hover:bg-[#044D3B] sm:text-sm"
-          >
-            <ExternalLink className="size-3.5" />
-            Apply
-          </a>
-          <AiApplyBenefit placement={placement} className="text-end" />
-        </div>
+        <a
+          href={applyUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex shrink-0 items-center gap-1.5 rounded bg-[#06634D] px-3 py-2 text-xs font-semibold text-white hover:bg-[#044D3B] sm:text-sm"
+        >
+          <ExternalLink className="size-3.5" />
+          Apply
+        </a>
       </div>
+      <AiApplyBenefit placement={placement} className="mt-2 ms-auto" />
     </li>
   )
 }
