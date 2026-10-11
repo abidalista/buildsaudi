@@ -4,6 +4,7 @@ import { companies, getCompanyBySlug, jobsScrapedAt } from "@/lib/data"
 import { jobFreshnessStamp } from "@/lib/job-classify"
 import { withBuildSaudiUtm } from "@/lib/utm"
 import { CompanyLogo } from "@/components/company-logo"
+import { AiApplyBenefit } from "@/components/ai-apply-benefit"
 import { SiteFooter } from "@/components/site-footer"
 import { buildFaqJsonLd, buildBreadcrumbJsonLd } from "@/lib/aeo-jsonld"
 import {
@@ -84,7 +85,7 @@ export function JobHubView({ hub }: { hub: JobHub }) {
       <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <ul className="space-y-3">
           {hub.jobs.map((job) => (
-            <HubJobRow key={job.id} job={job} />
+            <HubJobRow key={job.id} job={job} placement={hub.kind === "role" ? "role_page" : "city_sector_hub"} />
           ))}
         </ul>
 
@@ -132,7 +133,7 @@ export function JobHubView({ hub }: { hub: JobHub }) {
   )
 }
 
-function HubJobRow({ job }: { job: Job }) {
+function HubJobRow({ job, placement }: { job: Job; placement: string }) {
   const company = getCompanyBySlug(job.company_slug) || companies.find((c) => c.slug === job.company_slug)
   const applyUrl = withBuildSaudiUtm(job.apply_url)
   const freshness = jobFreshnessStamp(job, jobsScrapedAt)
@@ -171,15 +172,18 @@ function HubJobRow({ job }: { job: Job }) {
             </p>
           ) : null}
         </div>
-        <a
-          href={applyUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex shrink-0 items-center gap-1.5 rounded bg-[#06634D] px-3 py-2 text-xs font-semibold text-white hover:bg-[#044D3B] sm:text-sm"
-        >
-          <ExternalLink className="size-3.5" />
-          Apply
-        </a>
+        <div className="shrink-0 flex flex-col items-end gap-1.5 max-w-[10.5rem] sm:max-w-[13rem]">
+          <a
+            href={applyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded bg-[#06634D] px-3 py-2 text-xs font-semibold text-white hover:bg-[#044D3B] sm:text-sm"
+          >
+            <ExternalLink className="size-3.5" />
+            Apply
+          </a>
+          <AiApplyBenefit placement={placement} className="text-end" />
+        </div>
       </div>
     </li>
   )

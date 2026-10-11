@@ -17,13 +17,13 @@ import {
 } from "@/components/ui/select"
 import { companies, getJobsByCompany, filterOptions } from "@/lib/data"
 import { withBuildSaudiUtm } from "@/lib/utm"
+import { aiApplyHref } from "@/lib/ai-apply"
 import { catalogCountLabel } from "@/lib/marketing"
 import { getCompanyDescription, descriptionsAr } from "@/lib/descriptions-ar"
 import { CompanyLogo } from "@/components/company-logo"
 import { InstallPrompt } from "@/components/install-prompt"
 import { SiteFooter } from "@/components/site-footer"
 
-const AI_APPLY_URL = "https://www.aiapply.co/?via=abdulla"
 const AI_APPLY_UPSELL_KEY = "buildsaudi_ai_apply_upsell_shown"
 
 const DIRECTORY_COMPARE_AR =
@@ -282,7 +282,7 @@ export default function HomeClient() {
     <div dir={isRTL ? "rtl" : "ltr"} className="min-h-screen" style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat" }}>
       {/* AI Apply — proven money path; no dismiss (eyes + permanence) */}
       <a
-        href={AI_APPLY_URL}
+        href={aiApplyHref("banner")}
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => trackAiApply("banner")}
@@ -606,7 +606,7 @@ export default function HomeClient() {
                                   {company.stage}
                                 </span>
                                 <a
-                                  href={AI_APPLY_URL}
+                                  href={aiApplyHref("card_desktop")}
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   onClick={(e) => {
@@ -639,7 +639,7 @@ export default function HomeClient() {
                               {company.stage}
                             </span>
                             <a
-                              href={AI_APPLY_URL}
+                              href={aiApplyHref("card_mobile")}
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={(e) => {
@@ -703,7 +703,7 @@ export default function HomeClient() {
                         </div>
                         <div className="mt-4 flex flex-col sm:flex-row gap-2">
                           <a
-                            href={AI_APPLY_URL}
+                            href={aiApplyHref("expanded")}
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={() => trackAiApply("expanded", company.slug)}
@@ -847,7 +847,7 @@ export default function HomeClient() {
             </p>
             <div className="mt-5 flex flex-col gap-2">
               <a
-                href={AI_APPLY_URL}
+                href={aiApplyHref("upsell")}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => {

@@ -23,9 +23,9 @@ import { companies, getCompanyBySlug, jobFilterOptions, jobs, jobsScrapedAt } fr
 import { extractJobCity, jobFreshnessStamp } from "@/lib/job-classify"
 import type { Job, JobFunction, Seniority } from "@/lib/types"
 import { withBuildSaudiUtm } from "@/lib/utm"
+import { aiApplyHref } from "@/lib/ai-apply"
 import { JobHubLinks } from "@/components/job-hub-links"
-
-const AI_APPLY_URL = "https://www.aiapply.co/?via=abdulla"
+import { AiApplyBenefit } from "@/components/ai-apply-benefit"
 
 function functionLabel(fn: JobFunction, t: (typeof strings)[Lang]): string {
   const map: Record<JobFunction, string> = {
@@ -159,7 +159,7 @@ export default function JobsBoard({
       }}
     >
       <a
-        href={AI_APPLY_URL}
+        href={aiApplyHref("jobs_banner")}
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => posthog.capture("ai_apply_clicked", { placement: "jobs_banner" })}
@@ -380,15 +380,18 @@ function JobCard({ job, t }: { job: Job; t: (typeof strings)[Lang] }) {
             )}
           </div>
         </div>
-        <a
-          href={applyUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={handleApply}
-          className="shrink-0 px-3 py-2 bg-[#06634D] text-white text-xs sm:text-sm font-semibold rounded hover:bg-[#044D3B] transition-colors whitespace-nowrap"
-        >
-          {t.apply}
-        </a>
+        <div className="shrink-0 flex flex-col items-end gap-1.5 max-w-[10.5rem] sm:max-w-[13rem]">
+          <a
+            href={applyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={handleApply}
+            className="px-3 py-2 bg-[#06634D] text-white text-xs sm:text-sm font-semibold rounded hover:bg-[#044D3B] transition-colors whitespace-nowrap"
+          >
+            {t.apply}
+          </a>
+          <AiApplyBenefit placement="job_card" className="text-end" />
+        </div>
       </div>
     </div>
   )
