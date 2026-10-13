@@ -1,0 +1,9 @@
+{
+  "name": "control-buildsaudi",
+  "private": true,
+  "type": "module",
+  "description": "Verification scaffolding for driving a local BuildSaudi instance. Not an app runtime dependency.",
+  "dependencies": {
+    "playwright-core": "1.56.1"
+  }
+}

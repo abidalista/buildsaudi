@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Verification scaffolding. Drive a local BuildSaudi instance started by this run.
+set -euo pipefail
+ROOT="$(cd "$(dirname "$0")" && pwd)"
+if [[ ! -d "$ROOT/node_modules/playwright-core" ]]; then
+  (cd "$ROOT" && npm install --omit=dev)
+fi
+exec node "$ROOT/control-buildsaudi.mjs" "$@"
