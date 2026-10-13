@@ -56,6 +56,7 @@ Harness: `control-buildsaudi browser` (Playwright-core over Chrome CDP, viewport
 .cursor/skills/verify-buildsaudi/scripts/control-buildsaudi browser goto /
 .cursor/skills/verify-buildsaudi/scripts/control-buildsaudi browser click --role link --name "Humain" --nth 0
 .cursor/skills/verify-buildsaudi/scripts/control-buildsaudi browser fill --selector "#search-input" --value "Humain"
+.cursor/skills/verify-buildsaudi/scripts/control-buildsaudi browser fill --selector "#search-input" --clear
 .cursor/skills/verify-buildsaudi/scripts/control-buildsaudi browser fill --role textbox --name "search companies..." --value "Humain"
 .cursor/skills/verify-buildsaudi/scripts/control-buildsaudi browser click --role button --name "Switch to English"
 .cursor/skills/verify-buildsaudi/scripts/control-buildsaudi browser dismiss-job-alert --wait 9000

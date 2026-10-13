@@ -1,0 +1,299 @@
+{
+  "title": "Startup Jobs in Saudi Arabia — 160+ Companies | BuildSaudi",
+  "lang": "ar",
+  "dir": "rtl",
+  "url": "http://127.0.0.1:4317/",
+  "identity": true,
+  "heading": "BUILDSAUDI",
+  "mainText": "FILTERS SECTOR كل القطاعات STAGE كل المراحل اقترح شركة 1 شركة Humain تبني بنية تحتية للذكاء الاصطناعي في السعودية AI GROWTH تقديم تلقائي بالـ AI صفحة الوظائف المؤسسين Tareq Amin (CEO) اجمالي التمويل $10B+ (PIF-backed) المقر Riyadh الموظفين 201-500 التأسيس 2024 LAST ROUND — تقديم تلقائي بالـ AI صفحة الوظائف Humain profile",
+  "controls": [
+    {
+      "role": "link",
+      "name": "لسه تقدّم على وظايف بنفسك؟ تقديم تلقائي بالـ AI — خصم ٤٠٪ للطلاب والمتخرجين",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "heading",
+      "name": "BUILDSAUDI",
+      "tag": "h1",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Abdulla تصميم",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "الوظائف",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "button",
+      "name": "تنبيهات الوظائف",
+      "tag": "button",
+      "id": ""
+    },
+    {
+      "role": "button",
+      "name": "Switch to English",
+      "tag": "button",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "HumainAI",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "LucidyaAI",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "SignitAI",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "button",
+      "name": "Switch to English",
+      "tag": "button",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Humain AI",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Lucidya AI",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Signit AI",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "textbox",
+      "name": "ابحث عن شركات...",
+      "tag": "input",
+      "id": "search-input"
+    },
+    {
+      "role": "button",
+      "name": "",
+      "tag": "button",
+      "id": ""
+    },
+    {
+      "role": "combobox",
+      "name": "كل القطاعات",
+      "tag": "button",
+      "id": ""
+    },
+    {
+      "role": "combobox",
+      "name": "كل المراحل",
+      "tag": "button",
+      "id": ""
+    },
+    {
+      "role": "button",
+      "name": "اقترح شركة",
+      "tag": "button",
+      "id": ""
+    },
+    {
+      "role": "combobox",
+      "name": "القطاع",
+      "tag": "button",
+      "id": ""
+    },
+    {
+      "role": "combobox",
+      "name": "المرحلة",
+      "tag": "button",
+      "id": ""
+    },
+    {
+      "role": "button",
+      "name": "اقترح شركة",
+      "tag": "button",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Humain",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "تقديم تلقائي بالـ AI",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "صفحة الوظائف",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "تقديم تلقائي بالـ AI",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "صفحة الوظائف",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "تقديم تلقائي بالـ AI",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "صفحة الوظائف",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Humain profile",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "heading",
+      "name": "أفضل مواقع لوظائف تقنية في الشركات الناشئة السعودية",
+      "tag": "h2",
+      "id": "directory-compare-heading"
+    },
+    {
+      "role": "heading",
+      "name": "Best platforms for tech jobs at Saudi startups",
+      "tag": "h2",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Jobs",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Fintech",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "AI",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Riyadh",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "FAQ",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "English guide",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Jobs",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Preferences",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "About",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "FAQ",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Job sites",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Submit",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Privacy",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Terms",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "X",
+      "tag": "a",
+      "id": ""
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "title": "Humain Careers | Growth AI Startup | BuildSaudi",
+  "lang": "en",
+  "dir": "ltr",
+  "url": "http://127.0.0.1:4317/company/humain",
+  "identity": true,
+  "heading": "Humain",
+  "mainText": "",
+  "controls": [
+    {
+      "role": "link",
+      "name": "[ BUILDSAUDI ]",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Jobs",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "button",
+      "name": "Jobs",
+      "tag": "button",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Back",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "heading",
+      "name": "Humain",
+      "tag": "h1",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Apply at Humain",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "AI Apply increases your chances of getting interviews by 50%",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Website",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "LinkedIn",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "heading",
+      "name": "Funding and investors",
+      "tag": "h2",
+      "id": "sourced-facts-heading"
+    },
+    {
+      "role": "heading",
+      "name": "Funding",
+      "tag": "h3",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "PIF HUMAIN launch release, 12 May 2025",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "heading",
+      "name": "Investors",
+      "tag": "h3",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "PIF HUMAIN launch release, 12 May 2025",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "heading",
+      "name": "Roles at Humain",
+      "tag": "h2",
+      "id": "open-roles-heading"
+    },
+    {
+      "role": "heading",
+      "name": "FAQ: Humain",
+      "tag": "h2",
+      "id": "company-faq-heading"
+    },
+    {
+      "role": "link",
+      "name": "Apply at Humain",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "AI Apply increases your chances of getting interviews by 50%",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Jobs",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Preferences",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "About",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "FAQ",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Job sites",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Submit",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Privacy",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "Terms",
+      "tag": "a",
+      "id": ""
+    },
+    {
+      "role": "link",
+      "name": "X",
+      "tag": "a",
+      "id": ""
+    }
+  ]
+}

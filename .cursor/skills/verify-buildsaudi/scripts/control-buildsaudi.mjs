@@ -410,8 +410,10 @@ function parseFlags(argv) {
     if (token.startsWith("--")) {
       const key = token.slice(2)
       const next = argv[i + 1]
-      if (!next || next.startsWith("--")) flags[key] = true
-      else {
+      if (next === undefined || next.startsWith("--")) {
+        // `fill --value` with no text must clear the field; bash often drops "".
+        flags[key] = key === "value" ? "" : true
+      } else {
         flags[key] = next
         i++
       }
@@ -471,7 +473,6 @@ async function withPage(fn) {
   const browser = await chromium.connectOverCDP(`http://${HOST}:${state.cdpPort}`)
   try {
     const context = browser.contexts()[0] || (await browser.newContext({ viewport: VIEWPORT }))
-    await context.setViewportSize(VIEWPORT).catch(() => {})
     const page = context.pages()[0] || (await context.newPage())
     await page.setViewportSize(VIEWPORT)
     return await fn(page, state)
@@ -610,7 +611,13 @@ async function cmdBrowser(argv) {
   if (sub === "click") {
     await withPage(async (page) => {
       const loc = await nthLocator(locatorFromFlags(page, flags), flags)
+      const before = page.url()
       await loc.click()
+      try {
+        await page.waitForFunction((prev) => location.href !== prev, before, { timeout: 5000 })
+      } catch {
+        /* click did not navigate */
+      }
       console.log(`clicked ${flags.role || flags.selector} ${flags.name || ""}`.trim())
     })
     return
@@ -618,9 +625,10 @@ async function cmdBrowser(argv) {
 
   if (sub === "fill") {
     await withPage(async (page) => {
-      if (flags.value === undefined) throw new Error("Need --value")
+      const value = flags.clear ? "" : flags.value
+      if (value === undefined) throw new Error("Need --value or --clear")
       const loc = await nthLocator(locatorFromFlags(page, flags), flags)
-      await loc.fill(String(flags.value))
+      await loc.fill(String(value))
       console.log(`filled ${flags.selector || flags.name}`)
     })
     return
