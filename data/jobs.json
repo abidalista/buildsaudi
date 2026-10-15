@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-14T09:59:54.810Z",
+  "scraped_at": "2026-10-15T09:41:44.581Z",
   "jobs": [
     {
       "id": "foodics-fzoqqc",
@@ -96,20 +96,6 @@
       "function": "operations",
       "sector": "Foodtech",
       "apply_url": "https://apply.workable.com/foodics/j/6B80B888D2/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "foodics-diwqjp",
-      "company_slug": "foodics",
-      "title": "Director of FP&A and Investor Relations",
-      "company": "Foodics",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "other",
-      "sector": "Foodtech",
-      "apply_url": "https://apply.workable.com/foodics/j/26D2DC803F/",
       "posted_date": "",
       "source": "workable"
     },
@@ -212,16 +198,16 @@
       "source": "workable"
     },
     {
-      "id": "foodics-tbdpsa",
+      "id": "foodics-lkqgeb",
       "company_slug": "foodics",
       "title": "Sales Executive",
       "company": "Foodics",
-      "location": "Jeddah, Saudi Arabia",
+      "location": "Al Khobar, Saudi Arabia",
       "job_type": "Full-time",
       "experience_level": "mid",
       "function": "sales",
       "sector": "Foodtech",
-      "apply_url": "https://apply.workable.com/foodics/j/52A7AAE632/",
+      "apply_url": "https://apply.workable.com/foodics/j/C169BAA809/",
       "posted_date": "",
       "source": "workable"
     },
@@ -250,20 +236,6 @@
       "function": "sales",
       "sector": "Foodtech",
       "apply_url": "https://apply.workable.com/foodics/j/8BE5CEB4DA/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "foodics-no90w4",
-      "company_slug": "foodics",
-      "title": "Senior Product Manager (Capital)",
-      "company": "Foodics",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "product",
-      "sector": "Foodtech",
-      "apply_url": "https://apply.workable.com/foodics/j/902C025212/",
       "posted_date": "",
       "source": "workable"
     },
@@ -1178,6 +1150,20 @@
       "source": "workable"
     },
     {
+      "id": "salla-ejbopc",
+      "company_slug": "salla",
+      "title": "Senior ML Backend Engineer - Search & Recommendations",
+      "company": "Salla",
+      "location": "Makkah, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "senior",
+      "function": "engineering",
+      "sector": "E-commerce",
+      "apply_url": "https://apply.workable.com/salla/j/D29678F002/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
       "id": "salla-dq11pl",
       "company_slug": "salla",
       "title": "Senior Product Designer Web & Mobile",
@@ -1388,6 +1374,20 @@
       "source": "workable"
     },
     {
+      "id": "tamara-3p4ahv",
+      "company_slug": "tamara",
+      "title": "Trust & Safety Quality Analyst",
+      "company": "Tamara",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "other",
+      "sector": "Fintech",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996307101",
+      "posted_date": "2026-10-15",
+      "source": "greenhouse"
+    },
+    {
       "id": "tamara-j0ggvi",
       "company_slug": "tamara",
       "title": "Associate Product Manager - Care",
@@ -1486,20 +1486,6 @@
       "source": "greenhouse"
     },
     {
-      "id": "tamara-gzhs5j",
-      "company_slug": "tamara",
-      "title": "Merchant Acquisition Specialist",
-      "company": "Tamara",
-      "location": "Jeddah, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996940101",
-      "posted_date": "2026-10-12",
-      "source": "greenhouse"
-    },
-    {
       "id": "tamara-vyqpfz",
       "company_slug": "tamara",
       "title": "Merchant Acquisition Specialist",
@@ -1528,16 +1514,16 @@
       "source": "greenhouse"
     },
     {
-      "id": "tamara-u53k9k",
+      "id": "tamara-gzhs5j",
       "company_slug": "tamara",
-      "title": "Public Engagement Lead",
+      "title": "Merchant Acquisition Specialist",
       "company": "Tamara",
-      "location": "Riyadh, Saudi Arabia",
+      "location": "Jeddah, Saudi Arabia",
       "job_type": "Full-time",
-      "experience_level": "senior",
+      "experience_level": "mid",
       "function": "other",
       "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4962179101",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996940101",
       "posted_date": "2026-10-12",
       "source": "greenhouse"
     },
