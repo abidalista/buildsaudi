@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-17T09:06:05.537Z",
+  "scraped_at": "2026-10-18T09:24:12.354Z",
   "jobs": [
     {
       "id": "foodics-fzoqqc",
@@ -110,6 +110,20 @@
       "function": "engineering",
       "sector": "Foodtech",
       "apply_url": "https://apply.workable.com/foodics/j/6B8790DE1A/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "foodics-pgn63g",
+      "company_slug": "foodics",
+      "title": "Installation & Delivery Specialist",
+      "company": "Foodics",
+      "location": "Taif, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "other",
+      "sector": "Foodtech",
+      "apply_url": "https://apply.workable.com/foodics/j/B123B81FEB/",
       "posted_date": "",
       "source": "workable"
     },
@@ -250,20 +264,6 @@
       "function": "sales",
       "sector": "Foodtech",
       "apply_url": "https://apply.workable.com/foodics/j/2F5E59C68F/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "foodics-rtbo4h",
-      "company_slug": "foodics",
-      "title": "Sales Expansion Executive",
-      "company": "Foodics",
-      "location": "Jeddah, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "sales",
-      "sector": "Foodtech",
-      "apply_url": "https://apply.workable.com/foodics/j/8BE5CEB4DA/",
       "posted_date": "",
       "source": "workable"
     },
@@ -1248,20 +1248,6 @@
       "source": "workable"
     },
     {
-      "id": "salla-qqp0l1",
-      "company_slug": "salla",
-      "title": "Staff Data Analyst",
-      "company": "Salla",
-      "location": "Jeddah, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "other",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/salla/j/FA4BAC2917/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
       "id": "salla-snkes3",
       "company_slug": "salla",
       "title": "Staff Product Manager - Enterprise",
@@ -1388,6 +1374,20 @@
       "source": "workable"
     },
     {
+      "id": "tamara-j0ggvi",
+      "company_slug": "tamara",
+      "title": "Associate Product Manager - Care",
+      "company": "Tamara",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "entry",
+      "function": "product",
+      "sector": "Fintech",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/5000135101",
+      "posted_date": "2026-10-18",
+      "source": "greenhouse"
+    },
+    {
       "id": "tamara-bdhlg1",
       "company_slug": "tamara",
       "title": "Collections Advisor",
@@ -1500,20 +1500,6 @@
       "source": "greenhouse"
     },
     {
-      "id": "tamara-gzhs5j",
-      "company_slug": "tamara",
-      "title": "Merchant Acquisition Specialist",
-      "company": "Tamara",
-      "location": "Jeddah, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996940101",
-      "posted_date": "2026-10-12",
-      "source": "greenhouse"
-    },
-    {
       "id": "tamara-vyqpfz",
       "company_slug": "tamara",
       "title": "Merchant Acquisition Specialist",
@@ -1528,6 +1514,20 @@
       "source": "greenhouse"
     },
     {
+      "id": "tamara-gzhs5j",
+      "company_slug": "tamara",
+      "title": "Merchant Acquisition Specialist",
+      "company": "Tamara",
+      "location": "Jeddah, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "other",
+      "sector": "Fintech",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996940101",
+      "posted_date": "2026-10-12",
+      "source": "greenhouse"
+    },
+    {
       "id": "tamara-u2nwm7",
       "company_slug": "tamara",
       "title": "Merchant Acquisition Specialist",
@@ -1538,20 +1538,6 @@
       "function": "other",
       "sector": "Fintech",
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4975185101",
-      "posted_date": "2026-10-12",
-      "source": "greenhouse"
-    },
-    {
-      "id": "tamara-l8fgfi",
-      "company_slug": "tamara",
-      "title": "Real-Time Analyst (RTA)",
-      "company": "Tamara",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4951395101",
       "posted_date": "2026-10-12",
       "source": "greenhouse"
     },
