@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-18T09:24:12.354Z",
+  "scraped_at": "2026-10-19T10:36:39.178Z",
   "jobs": [
     {
       "id": "foodics-fzoqqc",
@@ -282,16 +282,16 @@
       "source": "workable"
     },
     {
-      "id": "gathern-ay7b7t",
-      "company_slug": "gathern",
-      "title": "Director of Operations",
-      "company": "Gathern",
+      "id": "foodics-xc1z03",
+      "company_slug": "foodics",
+      "title": "VP of FP&A and Investor Relations",
+      "company": "Foodics",
       "location": "Riyadh, Saudi Arabia",
       "job_type": "Full-time",
       "experience_level": "senior",
-      "function": "operations",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/gathern/j/7B0459CA4D/",
+      "function": "other",
+      "sector": "Foodtech",
+      "apply_url": "https://apply.workable.com/foodics/j/26D2DC803F/",
       "posted_date": "",
       "source": "workable"
     },
@@ -348,20 +348,6 @@
       "function": "engineering",
       "sector": "E-commerce",
       "apply_url": "https://apply.workable.com/gathern/j/31325FF0B2/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "gathern-y7mtr1",
-      "company_slug": "gathern",
-      "title": "Strategy Manager",
-      "company": "Gathern",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "other",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/gathern/j/1FC6CED660/",
       "posted_date": "",
       "source": "workable"
     },
@@ -1192,20 +1178,6 @@
       "source": "workable"
     },
     {
-      "id": "salla-dq11pl",
-      "company_slug": "salla",
-      "title": "Senior Product Designer Web & Mobile",
-      "company": "Salla",
-      "location": "Jeddah, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "design",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/salla/j/B066E7056E/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
       "id": "salla-igdhha",
       "company_slug": "salla",
       "title": "Senior Product Manager - Catalog",
@@ -1398,7 +1370,21 @@
       "function": "other",
       "sector": "Fintech",
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/5005774101",
-      "posted_date": "2026-10-15",
+      "posted_date": "2026-10-18",
+      "source": "greenhouse"
+    },
+    {
+      "id": "tamara-oh11y2",
+      "company_slug": "tamara",
+      "title": "Product Engineer II - Web",
+      "company": "Tamara",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "engineering",
+      "sector": "Fintech",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4822263101",
+      "posted_date": "2026-10-18",
       "source": "greenhouse"
     },
     {
@@ -1500,20 +1486,6 @@
       "source": "greenhouse"
     },
     {
-      "id": "tamara-vyqpfz",
-      "company_slug": "tamara",
-      "title": "Merchant Acquisition Specialist",
-      "company": "Tamara",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996939101",
-      "posted_date": "2026-10-12",
-      "source": "greenhouse"
-    },
-    {
       "id": "tamara-gzhs5j",
       "company_slug": "tamara",
       "title": "Merchant Acquisition Specialist",
@@ -1538,6 +1510,20 @@
       "function": "other",
       "sector": "Fintech",
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4975185101",
+      "posted_date": "2026-10-12",
+      "source": "greenhouse"
+    },
+    {
+      "id": "tamara-vyqpfz",
+      "company_slug": "tamara",
+      "title": "Merchant Acquisition Specialist",
+      "company": "Tamara",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "other",
+      "sector": "Fintech",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996939101",
       "posted_date": "2026-10-12",
       "source": "greenhouse"
     },
