@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-20T09:53:57.891Z",
+  "scraped_at": "2026-10-21T09:54:32.381Z",
   "jobs": [
     {
       "id": "foodics-fzoqqc",
@@ -86,20 +86,6 @@
       "source": "workable"
     },
     {
-      "id": "foodics-obkl9x",
-      "company_slug": "foodics",
-      "title": "Customer Support Specialist",
-      "company": "Foodics",
-      "location": "Al Khobar, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "operations",
-      "sector": "Foodtech",
-      "apply_url": "https://apply.workable.com/foodics/j/6B80B888D2/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
       "id": "foodics-bvmxol",
       "company_slug": "foodics",
       "title": "Global Cybersecurity GRC Manager",
@@ -110,6 +96,20 @@
       "function": "engineering",
       "sector": "Foodtech",
       "apply_url": "https://apply.workable.com/foodics/j/6B8790DE1A/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "foodics-auuyx5",
+      "company_slug": "foodics",
+      "title": "Head of Marketing",
+      "company": "Foodics",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "senior",
+      "function": "marketing",
+      "sector": "Foodtech",
+      "apply_url": "https://apply.workable.com/foodics/j/D2EC248EF8/",
       "posted_date": "",
       "source": "workable"
     },
@@ -240,7 +240,7 @@
       "source": "workable"
     },
     {
-      "id": "foodics-lkqgeb",
+      "id": "foodics-n75q6h",
       "company_slug": "foodics",
       "title": "Sales Executive",
       "company": "Foodics",
@@ -249,7 +249,7 @@
       "experience_level": "mid",
       "function": "sales",
       "sector": "Foodtech",
-      "apply_url": "https://apply.workable.com/foodics/j/C169BAA809/",
+      "apply_url": "https://apply.workable.com/foodics/j/A080E07946/",
       "posted_date": "",
       "source": "workable"
     },
@@ -534,6 +534,20 @@
       "source": "workable"
     },
     {
+      "id": "lucidya-gyntee",
+      "company_slug": "lucidya",
+      "title": "AI Tech Lead",
+      "company": "Lucidya",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "senior",
+      "function": "engineering",
+      "sector": "AI",
+      "apply_url": "https://apply.workable.com/lucidya/j/22AEF7E88E/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
       "id": "lucidya-2h0nu3",
       "company_slug": "lucidya",
       "title": "Client Delivery Specialist (Project Based)",
@@ -576,9 +590,23 @@
       "source": "workable"
     },
     {
-      "id": "lucidya-bwdebh",
+      "id": "lucidya-yppuia",
       "company_slug": "lucidya",
-      "title": "DevOps Engineer (Saudi)",
+      "title": "Database Administrator (PostgreSQL & MySQL) - Saudi only",
+      "company": "Lucidya",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "other",
+      "sector": "AI",
+      "apply_url": "https://apply.workable.com/lucidya/j/3A3E2DB67B/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "lucidya-yn2jvh",
+      "company_slug": "lucidya",
+      "title": "DevOps Engineer (Saudi Only)",
       "company": "Lucidya",
       "location": "Riyadh, Saudi Arabia",
       "job_type": "Full-time",
@@ -1444,20 +1472,6 @@
       "source": "greenhouse"
     },
     {
-      "id": "tamara-pgo3mm",
-      "company_slug": "tamara",
-      "title": "Data Analyst II - Finance",
-      "company": "Tamara",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "finance",
-      "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4999167101",
-      "posted_date": "2026-10-14",
-      "source": "greenhouse"
-    },
-    {
       "id": "tamara-sml9pg",
       "company_slug": "tamara",
       "title": "Customer Care Advisor (Non-voice)",
@@ -1528,6 +1542,20 @@
       "source": "greenhouse"
     },
     {
+      "id": "tamara-vyqpfz",
+      "company_slug": "tamara",
+      "title": "Merchant Acquisition Specialist",
+      "company": "Tamara",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "other",
+      "sector": "Fintech",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996939101",
+      "posted_date": "2026-10-12",
+      "source": "greenhouse"
+    },
+    {
       "id": "tamara-gzhs5j",
       "company_slug": "tamara",
       "title": "Merchant Acquisition Specialist",
@@ -1552,20 +1580,6 @@
       "function": "other",
       "sector": "Fintech",
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4975185101",
-      "posted_date": "2026-10-12",
-      "source": "greenhouse"
-    },
-    {
-      "id": "tamara-vyqpfz",
-      "company_slug": "tamara",
-      "title": "Merchant Acquisition Specialist",
-      "company": "Tamara",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996939101",
       "posted_date": "2026-10-12",
       "source": "greenhouse"
     },
