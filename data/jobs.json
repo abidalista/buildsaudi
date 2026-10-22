@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-21T09:54:32.381Z",
+  "scraped_at": "2026-10-22T09:54:39.269Z",
   "jobs": [
     {
       "id": "foodics-fzoqqc",
@@ -12,20 +12,6 @@
       "function": "engineering",
       "sector": "Foodtech",
       "apply_url": "https://apply.workable.com/foodics/j/9BDF0B39E6/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "foodics-89i5p0",
-      "company_slug": "foodics",
-      "title": "Anti Fraud Specialist",
-      "company": "Foodics",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "Foodtech",
-      "apply_url": "https://apply.workable.com/foodics/j/8B8A457674/",
       "posted_date": "",
       "source": "workable"
     },
@@ -940,20 +926,6 @@
       "source": "workable"
     },
     {
-      "id": "salla-6hsfno",
-      "company_slug": "salla",
-      "title": "Creative Content Manager",
-      "company": "Salla",
-      "location": "Jeddah, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "marketing",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/salla/j/3EE94DA795/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
       "id": "salla-ocks3v",
       "company_slug": "salla",
       "title": "Data Protection Officer (DPO) - PayLink",
@@ -1038,6 +1010,20 @@
       "source": "workable"
     },
     {
+      "id": "salla-nps9oz",
+      "company_slug": "salla",
+      "title": "Marketing Communications Manager",
+      "company": "Salla",
+      "location": "Jeddah, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "senior",
+      "function": "marketing",
+      "sector": "E-commerce",
+      "apply_url": "https://apply.workable.com/salla/j/3EE94DA795/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
       "id": "salla-g64pz5",
       "company_slug": "salla",
       "title": "Marketing Specialist ( Tamheer ) x 3",
@@ -1090,20 +1076,6 @@
       "function": "other",
       "sector": "E-commerce",
       "apply_url": "https://apply.workable.com/salla/j/C7A8D3B9DD/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "salla-b6f5wm",
-      "company_slug": "salla",
-      "title": "Search Engine Optimization Manager",
-      "company": "Salla",
-      "location": "Jeddah, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "other",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/salla/j/028A1DF2A6/",
       "posted_date": "",
       "source": "workable"
     },
@@ -1262,6 +1234,20 @@
       "source": "workable"
     },
     {
+      "id": "salla-4qes2k",
+      "company_slug": "salla",
+      "title": "SEO Manager",
+      "company": "Salla",
+      "location": "Jeddah, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "senior",
+      "function": "marketing",
+      "sector": "E-commerce",
+      "apply_url": "https://apply.workable.com/salla/j/028A1DF2A6/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
       "id": "salla-snkes3",
       "company_slug": "salla",
       "title": "Staff Product Manager - Enterprise",
@@ -1416,6 +1402,48 @@
       "source": "workable"
     },
     {
+      "id": "tamara-1f5vg4",
+      "company_slug": "tamara",
+      "title": "Compliance Officer",
+      "company": "Tamara",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "other",
+      "sector": "Fintech",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4969685101",
+      "posted_date": "2026-10-22",
+      "source": "greenhouse"
+    },
+    {
+      "id": "tamara-metbvw",
+      "company_slug": "tamara",
+      "title": "Compliance Senior Associate",
+      "company": "Tamara",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "entry",
+      "function": "other",
+      "sector": "Fintech",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4969694101",
+      "posted_date": "2026-10-22",
+      "source": "greenhouse"
+    },
+    {
+      "id": "tamara-c3jziu",
+      "company_slug": "tamara",
+      "title": "Dispute Operations Specialist",
+      "company": "Tamara",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "operations",
+      "sector": "Fintech",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4977400101",
+      "posted_date": "2026-10-22",
+      "source": "greenhouse"
+    },
+    {
       "id": "tamara-bdhlg1",
       "company_slug": "tamara",
       "title": "Collections Advisor",
@@ -1556,20 +1584,6 @@
       "source": "greenhouse"
     },
     {
-      "id": "tamara-gzhs5j",
-      "company_slug": "tamara",
-      "title": "Merchant Acquisition Specialist",
-      "company": "Tamara",
-      "location": "Jeddah, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996940101",
-      "posted_date": "2026-10-12",
-      "source": "greenhouse"
-    },
-    {
       "id": "tamara-u2nwm7",
       "company_slug": "tamara",
       "title": "Merchant Acquisition Specialist",
@@ -1580,6 +1594,20 @@
       "function": "other",
       "sector": "Fintech",
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4975185101",
+      "posted_date": "2026-10-12",
+      "source": "greenhouse"
+    },
+    {
+      "id": "tamara-gzhs5j",
+      "company_slug": "tamara",
+      "title": "Merchant Acquisition Specialist",
+      "company": "Tamara",
+      "location": "Jeddah, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "other",
+      "sector": "Fintech",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996940101",
       "posted_date": "2026-10-12",
       "source": "greenhouse"
     },
