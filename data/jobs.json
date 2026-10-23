@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-22T09:54:39.269Z",
+  "scraped_at": "2026-10-23T09:49:20.573Z",
   "jobs": [
     {
       "id": "foodics-fzoqqc",
@@ -138,20 +138,6 @@
       "function": "engineering",
       "sector": "Foodtech",
       "apply_url": "https://apply.workable.com/foodics/j/1E02F42336/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "foodics-g4kody",
-      "company_slug": "foodics",
-      "title": "Merchant Success Specialist",
-      "company": "Foodics",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "Foodtech",
-      "apply_url": "https://apply.workable.com/foodics/j/932F843ADA/",
       "posted_date": "",
       "source": "workable"
     },
@@ -1570,34 +1556,6 @@
       "source": "greenhouse"
     },
     {
-      "id": "tamara-vyqpfz",
-      "company_slug": "tamara",
-      "title": "Merchant Acquisition Specialist",
-      "company": "Tamara",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996939101",
-      "posted_date": "2026-10-12",
-      "source": "greenhouse"
-    },
-    {
-      "id": "tamara-u2nwm7",
-      "company_slug": "tamara",
-      "title": "Merchant Acquisition Specialist",
-      "company": "Tamara",
-      "location": "Dammam, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4975185101",
-      "posted_date": "2026-10-12",
-      "source": "greenhouse"
-    },
-    {
       "id": "tamara-gzhs5j",
       "company_slug": "tamara",
       "title": "Merchant Acquisition Specialist",
@@ -1608,6 +1566,20 @@
       "function": "other",
       "sector": "Fintech",
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996940101",
+      "posted_date": "2026-10-12",
+      "source": "greenhouse"
+    },
+    {
+      "id": "tamara-vyqpfz",
+      "company_slug": "tamara",
+      "title": "Merchant Acquisition Specialist",
+      "company": "Tamara",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "other",
+      "sector": "Fintech",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996939101",
       "posted_date": "2026-10-12",
       "source": "greenhouse"
     },
