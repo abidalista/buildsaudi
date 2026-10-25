@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-24T09:21:44.589Z",
+  "scraped_at": "2026-10-25T09:38:50.843Z",
   "jobs": [
     {
       "id": "foodics-fzoqqc",
@@ -310,34 +310,6 @@
       "source": "workable"
     },
     {
-      "id": "gathern-m5k0uu",
-      "company_slug": "gathern",
-      "title": "Software Engineering Manager",
-      "company": "Gathern",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "engineering",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/gathern/j/31325FF0B2/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "gathern-e7lvmv",
-      "company_slug": "gathern",
-      "title": "Tamheer (Product Designer)",
-      "company": "Gathern",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "intern",
-      "function": "design",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/gathern/j/05AD7E7514/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
       "id": "lean-technologies-k4h43g",
       "company_slug": "lean-technologies",
       "title": "Customer Support Intern (TechOps)",
@@ -392,6 +364,20 @@
       "apply_url": "https://jobs.ashbyhq.com/leantech/b7d5f79d-118e-486f-bf59-bac38dd4ef3a",
       "posted_date": "2026-10-12",
       "source": "ashby"
+    },
+    {
+      "id": "unifonic-pdomnd",
+      "company_slug": "unifonic",
+      "title": "Customer Solutions Consultant",
+      "company": "Unifonic",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "other",
+      "sector": "AI",
+      "apply_url": "https://jobs.unifonic.com/o/customer-solutions-consultant-1",
+      "posted_date": "2026-10-12",
+      "source": "recruitee"
     },
     {
       "id": "lean-technologies-l2lbbz",
@@ -1542,20 +1528,6 @@
       "source": "greenhouse"
     },
     {
-      "id": "tamara-vyqpfz",
-      "company_slug": "tamara",
-      "title": "Merchant Acquisition Specialist",
-      "company": "Tamara",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996939101",
-      "posted_date": "2026-10-12",
-      "source": "greenhouse"
-    },
-    {
       "id": "tamara-gzhs5j",
       "company_slug": "tamara",
       "title": "Merchant Acquisition Specialist",
@@ -1566,6 +1538,20 @@
       "function": "other",
       "sector": "Fintech",
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996940101",
+      "posted_date": "2026-10-12",
+      "source": "greenhouse"
+    },
+    {
+      "id": "tamara-vyqpfz",
+      "company_slug": "tamara",
+      "title": "Merchant Acquisition Specialist",
+      "company": "Tamara",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "other",
+      "sector": "Fintech",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996939101",
       "posted_date": "2026-10-12",
       "source": "greenhouse"
     },
@@ -1596,20 +1582,6 @@
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996993101",
       "posted_date": "2026-10-12",
       "source": "greenhouse"
-    },
-    {
-      "id": "unifonic-pdomnd",
-      "company_slug": "unifonic",
-      "title": "Customer Solutions Consultant",
-      "company": "Unifonic",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "AI",
-      "apply_url": "https://jobs.unifonic.com/o/customer-solutions-consultant-1",
-      "posted_date": "2026-10-12",
-      "source": "recruitee"
     },
     {
       "id": "unifonic-rtvhkc",
