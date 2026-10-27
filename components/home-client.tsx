@@ -282,7 +282,7 @@ export default function HomeClient() {
     <div dir={isRTL ? "rtl" : "ltr"} className="min-h-screen" style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat" }}>
       {/* AI Apply — proven money path; no dismiss (eyes + permanence) */}
       <a
-        href={aiApplyHref("banner")}
+        href={aiApplyHref("banner", lang)}
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => trackAiApply("banner")}
@@ -606,7 +606,7 @@ export default function HomeClient() {
                                   {company.stage}
                                 </span>
                                 <a
-                                  href={aiApplyHref("card_desktop")}
+                                  href={aiApplyHref("card_desktop", lang)}
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   onClick={(e) => {
@@ -639,7 +639,7 @@ export default function HomeClient() {
                               {company.stage}
                             </span>
                             <a
-                              href={aiApplyHref("card_mobile")}
+                              href={aiApplyHref("card_mobile", lang)}
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={(e) => {
@@ -703,7 +703,7 @@ export default function HomeClient() {
                         </div>
                         <div className="mt-4 flex flex-col sm:flex-row gap-2">
                           <a
-                            href={aiApplyHref("expanded")}
+                            href={aiApplyHref("expanded", lang)}
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={() => trackAiApply("expanded", company.slug)}
@@ -847,7 +847,7 @@ export default function HomeClient() {
             </p>
             <div className="mt-5 flex flex-col gap-2">
               <a
-                href={aiApplyHref("upsell")}
+                href={aiApplyHref("upsell", lang)}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => {

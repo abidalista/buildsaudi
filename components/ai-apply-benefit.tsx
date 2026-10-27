@@ -1,25 +1,30 @@
 "use client"
 
 import posthog from "posthog-js"
-import { AI_APPLY_BENEFIT_LINE, aiApplyHref } from "@/lib/ai-apply"
+import { strings, type Lang } from "@/lib/i18n"
+import { aiApplyHref } from "@/lib/ai-apply"
+import { useResolvedLang } from "@/lib/use-page-lang"
 
 export function AiApplyBenefit({
   placement,
+  lang,
   className = "",
 }: {
   placement: string
+  lang?: Lang
   className?: string
 }) {
+  const resolved = useResolvedLang(lang)
+  const t = strings[resolved]
   return (
     <a
-      href={aiApplyHref(placement)}
+      href={aiApplyHref(placement, resolved)}
       target="_blank"
       rel="noopener noreferrer"
-      dir="ltr"
       onClick={() => posthog.capture("ai_apply_clicked", { placement })}
-      className={`block w-fit max-w-full text-[11px] leading-snug text-[#06634D] hover:underline ${className}`.trim()}
+      className={`inline-flex items-center rounded bg-[#FFBA0A] px-2.5 py-1 text-xs font-bold text-[#111827] hover:bg-[#FFD060] transition-colors whitespace-nowrap ${className}`.trim()}
     >
-      {AI_APPLY_BENEFIT_LINE}
+      {t.aiApplyCta}
     </a>
   )
 }

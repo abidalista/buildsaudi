@@ -3,7 +3,7 @@
  *
  * Workflow:
  * 1. You add a Website URL to Airtable (that's it)
- * 2. This script finds rows with a URL but missing Name/Description
+ * 2. This script finds non-archived rows with a URL but missing Name/Description
  * 3. Scrapes the website to extract: name, description, logo, careers page
  * 4. Downloads the logo to public/logos/
  * 5. Updates the Airtable record with all data
@@ -229,9 +229,11 @@ async function main() {
 
   console.log(`📊 ${allRecords.length} total records in Airtable\n`)
 
-  // Find records that need enrichment: have Website but missing Name or Description
+  // Find records that need enrichment: have Website but missing Name or Description.
+  // Skip Archived rows so empty archived duplicates are never re-scraped back to Published.
   const needsEnrichment = allRecords.filter((r: any) => {
     const f = r.fields
+    if (f.Status === "Archived") return false
     return f.Website && (!f.Name || !f.Description || f.Status === "Draft" || !f.Status)
   })
 
