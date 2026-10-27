@@ -59,17 +59,17 @@ function CompanyProfileView({
 
         <header className="border-b border-[#e5e5e5] bg-white">
           <div className="mx-auto max-w-[1200px] px-6 py-6">
-            <div className="flex items-center justify-between gap-3">
-              <Link href="/" className="block">
+            <div className="flex items-center justify-between gap-2 sm:gap-3">
+              <Link href="/" className="block min-w-0">
                 <div
-                  className="text-3xl font-bold tracking-tight text-[#06634D]"
+                  className="text-lg sm:text-3xl font-bold tracking-tight text-[#06634D] whitespace-nowrap"
                   style={{ fontFamily: "var(--font-space-mono), monospace" }}
                   aria-label="BuildSaudi"
                 >
                   {"["} BUILDSAUDI {"]"}
                 </div>
               </Link>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 sm:gap-3 shrink-0">
                 <LanguageToggle lang={lang} onLanguageChange={handleLangChange} />
                 <Link href="/jobs">
                   <Button
