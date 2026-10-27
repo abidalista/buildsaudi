@@ -2,9 +2,9 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { companies } from "@/lib/data"
-import { withBuildSaudiUtm } from "@/lib/utm"
-import { CompanyLogo } from "@/components/company-logo"
-import { AiApplyBenefit } from "@/components/ai-apply-benefit"
+import { AiApplyPageShell } from "@/components/ai-apply-page-shell"
+import { CompanyApplyList } from "@/components/company-apply-list"
+import { PageLangToggle } from "@/components/page-lang-toggle"
 import { sectors } from "@/lib/seo"
 import { getSectorFaq, sectorBlurbs } from "@/lib/aeo-landing"
 import { buildFaqJsonLd, buildBreadcrumbJsonLd, buildItemListJsonLd } from "@/lib/aeo-jsonld"
@@ -67,17 +67,20 @@ export default async function SectorPage({ params }: { params: Promise<{ sector:
   )
 
   return (
-    <div className="min-h-screen bg-[#F9F9F9]">
+    <AiApplyPageShell bannerSrc="sector_banner" upsellSrc="sector_upsell" page="jobs_sector">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
 
       <header className="border-b border-[#06634D]/20 bg-[#F9F9F9]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
-          <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-[#6B7280] hover:text-[#111827] mb-4">
-            <ArrowLeft className="size-3.5" />
-            Back to all companies
-          </Link>
+          <div className="mb-4 flex items-center justify-between gap-3">
+            <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-[#6B7280] hover:text-[#111827]">
+              <ArrowLeft className="size-3.5 rtl:rotate-180" />
+              Back to all companies
+            </Link>
+            <PageLangToggle />
+          </div>
           <h1 className="text-2xl font-bold text-[#111827]">
             BuildSaudi — {sector.name} Startup Jobs in Saudi Arabia
           </h1>
@@ -100,41 +103,13 @@ export default async function SectorPage({ params }: { params: Promise<{ sector:
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div className="space-y-3">
-          {sectorCompanies.map((company) => (
-            <div key={company.slug} className="group bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden">
-              <div className="flex items-center gap-3 sm:gap-5 px-5 py-4">
-                <Link href={`/company/${company.slug}`} className="flex size-12 sm:size-14 shrink-0 items-center justify-center rounded-xl bg-white border border-gray-200 overflow-hidden">
-                  <CompanyLogo company={company} />
-                </Link>
-                <Link href={`/company/${company.slug}`} className="flex-1 min-w-0 block">
-                  <span className="text-lg font-bold text-[#111827] group-hover:text-[#06634D] transition-colors">{company.name}</span>
-                  <p className="mt-0.5 text-sm text-[#6B7280] truncate">{company.description}</p>
-                </Link>
-                <div className="flex-shrink-0 flex flex-col items-end gap-1 sm:gap-2">
-                  <span className="px-1 py-0.5 sm:px-2.5 sm:py-1 bg-gray-100 border border-gray-200 text-gray-700 text-[10px] sm:text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">{company.sector[0]}</span>
-                  <div className="flex items-center gap-1 sm:gap-2">
-                    <span className="px-1 py-0.5 sm:px-2.5 sm:py-1 bg-gray-100 border border-gray-200 text-gray-700 text-[10px] sm:text-xs font-mono uppercase tracking-wider rounded whitespace-nowrap">{company.stage}</span>
-                    <a
-                      href={withBuildSaudiUtm(company.careers_url)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-2 py-1 sm:px-2.5 sm:py-1.5 bg-[#06634D] text-white text-[10px] sm:text-xs font-semibold rounded hover:bg-[#06634D]/90 transition-colors whitespace-nowrap"
-                    >
-                      Apply
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <AiApplyBenefit placement="sector_card" className="px-5 pb-3 -mt-1 ms-auto" />
-            </div>
-          ))}
-          {sectorCompanies.length === 0 && (
-            <div className="rounded-lg border border-[#E5E7EB] bg-white px-6 py-16 text-center">
-              <p className="text-sm text-[#6B7280]">No companies in this sector yet.</p>
-            </div>
-          )}
-        </div>
+        {sectorCompanies.length > 0 ? (
+          <CompanyApplyList companies={sectorCompanies} aiPlacement="sector_card" promoSrc="sector_card" />
+        ) : (
+          <div className="rounded-lg border border-[#E5E7EB] bg-white px-6 py-16 text-center">
+            <p className="text-sm text-[#6B7280]">No companies in this sector yet.</p>
+          </div>
+        )}
 
         <JobHubLinks
           hubs={jobHubsForSeoSector(slug, sector.name)}
@@ -161,6 +136,6 @@ export default async function SectorPage({ params }: { params: Promise<{ sector:
       </div>
 
       <SiteFooter />
-    </div>
+    </AiApplyPageShell>
   )
 }

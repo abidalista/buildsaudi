@@ -23,9 +23,12 @@ import { companies, getCompanyBySlug, jobFilterOptions, jobs, jobsScrapedAt } fr
 import { extractJobCity, jobFreshnessStamp } from "@/lib/job-classify"
 import type { Job, JobFunction, Seniority } from "@/lib/types"
 import { withBuildSaudiUtm } from "@/lib/utm"
-import { aiApplyHref } from "@/lib/ai-apply"
+import { shouldInsertAiApplyPromo } from "@/lib/ai-apply"
 import { JobHubLinks } from "@/components/job-hub-links"
+import { AiApplyBanner } from "@/components/ai-apply-banner"
 import { AiApplyBenefit } from "@/components/ai-apply-benefit"
+import { AiApplyPromoCard } from "@/components/ai-apply-promo-card"
+import { AiApplyUpsellProvider, TrackedApplyLink } from "@/components/ai-apply-upsell"
 
 function functionLabel(fn: JobFunction, t: (typeof strings)[Lang]): string {
   const map: Record<JobFunction, string> = {
@@ -148,6 +151,7 @@ export default function JobsBoard({
   }
 
   return (
+    <AiApplyUpsellProvider src="jobs_upsell" lang={lang}>
     <div
       dir={isRTL ? "rtl" : "ltr"}
       className="min-h-screen"
@@ -158,20 +162,7 @@ export default function JobsBoard({
         backgroundRepeat: "repeat",
       }}
     >
-      <a
-        href={aiApplyHref("jobs_banner")}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => posthog.capture("ai_apply_clicked", { placement: "jobs_banner" })}
-        className="block bg-[#06634D] text-white px-4 py-3 sm:py-3.5 hover:bg-[#044D3B] transition-colors"
-      >
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-center">
-          <span className="text-sm sm:text-base font-semibold">{t.aiApplyBannerLine}</span>
-          <span className="inline-flex items-center bg-[#FFBA0A] text-[#111827] font-bold px-4 py-1.5 rounded text-sm whitespace-nowrap">
-            {t.aiApplyBannerOffer}
-          </span>
-        </div>
-      </a>
+      <AiApplyBanner src="jobs_banner" lang={lang} />
 
       <header className="border-b border-[#06634D]/20">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
@@ -280,9 +271,20 @@ export default function JobsBoard({
           </button>
         </div>
 
+        <div className="mb-4">
+          <AiApplyPromoCard src="jobs_card" lang={lang} />
+        </div>
+
         <div className="space-y-3">
-          {filtered.map((job) => (
-            <JobCard key={job.id} job={job} t={t} />
+          {filtered.map((job, index) => (
+            <div key={job.id}>
+              <JobCard job={job} t={t} lang={lang} />
+              {shouldInsertAiApplyPromo(index) ? (
+                <div className="mt-3">
+                  <AiApplyPromoCard src="jobs_card" lang={lang} />
+                </div>
+              ) : null}
+            </div>
           ))}
           {filtered.length === 0 && (
             <div className="rounded-lg border border-[#E5E7EB] bg-white px-6 py-16 text-center">
@@ -311,23 +313,14 @@ export default function JobsBoard({
         }}
       />
     </div>
+    </AiApplyUpsellProvider>
   )
 }
 
-function JobCard({ job, t }: { job: Job; t: (typeof strings)[Lang] }) {
+function JobCard({ job, t, lang }: { job: Job; t: (typeof strings)[Lang]; lang: Lang }) {
   const company = getCompanyBySlug(job.company_slug) || companies.find((c) => c.slug === job.company_slug)
   const applyUrl = withBuildSaudiUtm(job.apply_url)
   const freshness = jobFreshnessStamp(job, jobsScrapedAt)
-
-  const handleApply = () => {
-    posthog.capture("job_apply_clicked", {
-      company: job.company,
-      company_slug: job.company_slug,
-      url: applyUrl,
-      job_title: job.title,
-      placement: "jobs_board",
-    })
-  }
 
   return (
     <div className="group bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300 rounded-lg overflow-hidden">
@@ -380,17 +373,20 @@ function JobCard({ job, t }: { job: Job; t: (typeof strings)[Lang] }) {
             )}
           </div>
         </div>
-        <a
-          href={applyUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={handleApply}
-          className="shrink-0 px-3 py-2 bg-[#06634D] text-white text-xs sm:text-sm font-semibold rounded hover:bg-[#044D3B] transition-colors whitespace-nowrap"
-        >
-          {t.apply}
-        </a>
+        <div className="shrink-0 flex flex-col sm:flex-row items-end sm:items-center gap-1.5">
+          <AiApplyBenefit placement="job_card" lang={lang} />
+          <TrackedApplyLink
+            href={applyUrl}
+            companyName={job.company}
+            companySlug={job.company_slug}
+            jobTitle={job.title}
+            placement="job_card"
+            className="px-3 py-2 bg-[#06634D] text-white text-xs sm:text-sm font-semibold rounded hover:bg-[#044D3B] transition-colors whitespace-nowrap"
+          >
+            {t.apply}
+          </TrackedApplyLink>
+        </div>
       </div>
-      <AiApplyBenefit placement="job_card" className="px-4 sm:px-5 pb-3 -mt-1 ms-auto" />
     </div>
   )
 }

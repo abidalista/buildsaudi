@@ -20,7 +20,7 @@ const DEAD_COMPANY_SLUGS = [
   "sadeem", "sahmalgo", "salesfine", "saudi-robotics-club", "sayfi", "scai",
   "sdaia", "sdaia-hexagon", "shift", "silq", "splyd", "spore", "squadio",
   "stitch-money", "tabby", "takamul", "tam", "tarmeez", "teammates-ai",
-  "thya-technology", "trukker", "tulip-technologies", "ummar", "unitx",
+  "thya-technology", "throughput", "trukker", "tulip-technologies", "ummar", "unitx",
   "visiontech-ai", "vminds", "widebot", "xbites", "zenhr",
   "zetta-technologies", "ziadah",
 ]

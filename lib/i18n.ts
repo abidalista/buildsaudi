@@ -1,3 +1,5 @@
+import { AI_APPLY_COPY } from "@/lib/ai-apply"
+
 export const strings = {
   ar: {
     tagline: "دليل محدث لـ ١٦٠+ شركة سعودية تبني مستقبل التقنية والذكاء الاصطناعي",
@@ -51,10 +53,14 @@ export const strings = {
     aiApplyCta: "تقديم تلقائي بالـ AI",
     aiApplyBannerLine: "لسه تقدّم على وظايف بنفسك؟",
     aiApplyBannerOffer: "تقديم تلقائي بالـ AI — خصم ٤٠٪ للطلاب والمتخرجين",
+    aiApplyBenefitLine: AI_APPLY_COPY.ar.benefit,
+    aiApplySpeedLine: AI_APPLY_COPY.ar.speed,
     aiApplyUpsellTitle: "تبي تقدّم أسرع؟",
     aiApplyUpsellDesc: "أداة التقديم التلقائي بالـ AI تكتب سيرتك وتقدّم عنك على مئات الوظائف — خصم ٤٠٪ للطلاب والمتخرجين.",
     aiApplyUpsellCta: "تقديم تلقائي بالـ AI",
     aiApplyUpsellSkip: "تخطّي",
+    applyAt: "قدّم في",
+    back: "رجوع",
     jobsBoard: "الوظائف",
     jobsTagline: "وظائف فردية في شركات سعودية ممولة — التقديم على موقع الشركة الرسمي.",
     jobsCount: "وظيفة",
@@ -157,10 +163,14 @@ export const strings = {
     aiApplyCta: "Auto-apply with AI",
     aiApplyBannerLine: "Still applying one-by-one?",
     aiApplyBannerOffer: "Auto-apply with AI — 40% off for students & grads",
+    aiApplyBenefitLine: AI_APPLY_COPY.en.benefit,
+    aiApplySpeedLine: AI_APPLY_COPY.en.speed,
     aiApplyUpsellTitle: "Apply faster?",
     aiApplyUpsellDesc: "Auto-apply with AI writes your CV and submits applications for you — 40% off for students & grads.",
     aiApplyUpsellCta: "Auto-apply with AI",
     aiApplyUpsellSkip: "Skip",
+    applyAt: "Apply at",
+    back: "Back",
     jobsBoard: "Jobs",
     jobsTagline: "Individual openings at funded Saudi companies — apply on the employer's official page.",
     jobsCount: "jobs",

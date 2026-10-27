@@ -1,12 +1,12 @@
 import Link from "next/link"
-import { ArrowLeft, ExternalLink, MapPin } from "lucide-react"
-import { companies, getCompanyBySlug, jobsScrapedAt } from "@/lib/data"
-import { jobFreshnessStamp } from "@/lib/job-classify"
-import { withBuildSaudiUtm } from "@/lib/utm"
-import { CompanyLogo } from "@/components/company-logo"
-import { AiApplyBenefit } from "@/components/ai-apply-benefit"
+import { ArrowLeft } from "lucide-react"
+import { AiApplyPageShell } from "@/components/ai-apply-page-shell"
+import { AiApplyPromoCard } from "@/components/ai-apply-promo-card"
+import { HubJobRow } from "@/components/hub-job-row"
+import { PageLangToggle } from "@/components/page-lang-toggle"
 import { SiteFooter } from "@/components/site-footer"
 import { buildFaqJsonLd, buildBreadcrumbJsonLd } from "@/lib/aeo-jsonld"
+import { shouldInsertAiApplyPromo } from "@/lib/ai-apply"
 import {
   getJobHubFaq,
   jobHubCompanies,
@@ -15,7 +15,6 @@ import {
   relatedJobHubs,
   type JobHub,
 } from "@/lib/job-hubs"
-import type { Job } from "@/lib/types"
 
 const site = "https://buildsaudi.co"
 
@@ -53,18 +52,23 @@ export function JobHubView({ hub }: { hub: JobHub }) {
     })),
   }
 
+  const placement = hub.kind === "role" ? "role_page" : "city_sector_hub"
+
   return (
-    <div className="min-h-screen bg-[#F9F9F9]">
+    <AiApplyPageShell bannerSrc="hub_banner" upsellSrc="hub_upsell" page="job_hub">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
 
       <header className="border-b border-[#06634D]/20 bg-[#F9F9F9]">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 sm:py-6 lg:px-8">
-          <Link href="/jobs" className="mb-4 inline-flex items-center gap-1.5 text-sm text-[#6B7280] hover:text-[#111827]">
-            <ArrowLeft className="size-3.5" />
-            Back to all openings
-          </Link>
+          <div className="mb-4 flex items-center justify-between gap-3">
+            <Link href="/jobs" className="inline-flex items-center gap-1.5 text-sm text-[#6B7280] hover:text-[#111827]">
+              <ArrowLeft className="size-3.5 rtl:rotate-180" />
+              Back to all openings
+            </Link>
+            <PageLangToggle />
+          </div>
           <h1 className="text-2xl font-bold text-[#111827]">
             {hub.facetName} jobs in {hub.cityName}
           </h1>
@@ -83,9 +87,12 @@ export function JobHubView({ hub }: { hub: JobHub }) {
       </header>
 
       <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <div className="mb-4">
+          <AiApplyPromoCard src="hub_card" />
+        </div>
         <ul className="space-y-3">
-          {hub.jobs.map((job) => (
-            <HubJobRow key={job.id} job={job} placement={hub.kind === "role" ? "role_page" : "city_sector_hub"} />
+          {hub.jobs.map((job, index) => (
+            <HubJobRow key={job.id} job={job} placement={placement} promo={shouldInsertAiApplyPromo(index)} />
           ))}
         </ul>
 
@@ -129,60 +136,6 @@ export function JobHubView({ hub }: { hub: JobHub }) {
       </main>
 
       <SiteFooter />
-    </div>
-  )
-}
-
-function HubJobRow({ job, placement }: { job: Job; placement: string }) {
-  const company = getCompanyBySlug(job.company_slug) || companies.find((c) => c.slug === job.company_slug)
-  const applyUrl = withBuildSaudiUtm(job.apply_url)
-  const freshness = jobFreshnessStamp(job, jobsScrapedAt)
-
-  return (
-    <li className="rounded-lg border border-gray-200 bg-white px-4 py-4 sm:px-5">
-      <div className="flex items-start gap-3 sm:items-center sm:gap-5">
-        {company ? (
-          <Link
-            href={`/company/${company.slug}`}
-            className="flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-gray-200 bg-white sm:size-14"
-          >
-            <CompanyLogo company={company} />
-          </Link>
-        ) : (
-          <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-[#06634D] font-bold text-white sm:size-14">
-            {job.company.charAt(0)}
-          </div>
-        )}
-        <div className="min-w-0 flex-1">
-          <p className="text-base font-bold text-[#111827] sm:text-lg" dir="auto">
-            {job.title}
-          </p>
-          <p className="mt-0.5 flex flex-wrap items-center gap-x-2 text-sm text-[#6B7280]">
-            <Link href={`/company/${job.company_slug}`} className="font-medium text-[#111827] hover:text-[#06634D]">
-              {job.company}
-            </Link>
-            <span className="inline-flex items-center gap-1">
-              <MapPin className="size-3.5" />
-              <span dir="ltr">{job.location}</span>
-            </span>
-          </p>
-          {freshness ? (
-            <p className="mt-1 text-xs text-[#6B7280]" dir="ltr">
-              {freshness.kind === "posted" ? "Posted" : "Last seen"} {freshness.date}
-            </p>
-          ) : null}
-        </div>
-        <a
-          href={applyUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex shrink-0 items-center gap-1.5 rounded bg-[#06634D] px-3 py-2 text-xs font-semibold text-white hover:bg-[#044D3B] sm:text-sm"
-        >
-          <ExternalLink className="size-3.5" />
-          Apply
-        </a>
-      </div>
-      <AiApplyBenefit placement={placement} className="mt-2 ms-auto" />
-    </li>
+    </AiApplyPageShell>
   )
 }
