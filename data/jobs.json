@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-26T10:51:50.302Z",
+  "scraped_at": "2026-10-27T10:17:18.002Z",
   "jobs": [
     {
       "id": "foodics-fzoqqc",
@@ -96,20 +96,6 @@
       "function": "marketing",
       "sector": "Foodtech",
       "apply_url": "https://apply.workable.com/foodics/j/D2EC248EF8/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "foodics-pgn63g",
-      "company_slug": "foodics",
-      "title": "Installation & Delivery Specialist",
-      "company": "Foodics",
-      "location": "Taif, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "Foodtech",
-      "apply_url": "https://apply.workable.com/foodics/j/B123B81FEB/",
       "posted_date": "",
       "source": "workable"
     },
