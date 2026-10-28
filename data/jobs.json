@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-27T10:17:18.002Z",
+  "scraped_at": "2026-10-28T11:09:30.760Z",
   "jobs": [
     {
       "id": "foodics-fzoqqc",
@@ -226,6 +226,20 @@
       "source": "workable"
     },
     {
+      "id": "foodics-n877sg",
+      "company_slug": "foodics",
+      "title": "Senior Consultant - Foodics Black",
+      "company": "Foodics",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "senior",
+      "function": "other",
+      "sector": "Foodtech",
+      "apply_url": "https://apply.workable.com/foodics/j/53A665F571/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
       "id": "foodics-u6cyw",
       "company_slug": "foodics",
       "title": "Sr. Product Manager - Foodics ERP",
@@ -254,16 +268,16 @@
       "source": "workable"
     },
     {
-      "id": "gathern-3meu9d",
+      "id": "gathern-fq1cfb",
       "company_slug": "gathern",
-      "title": "CEO Planning and Excellence Specialist",
+      "title": "Executive Secretary",
       "company": "Gathern",
       "location": "Riyadh, Saudi Arabia",
       "job_type": "Full-time",
       "experience_level": "mid",
       "function": "other",
       "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/gathern/j/88541E7D1A/",
+      "apply_url": "https://apply.workable.com/gathern/j/10F3FA18A3/",
       "posted_date": "",
       "source": "workable"
     },
@@ -364,20 +378,6 @@
       "apply_url": "https://jobs.ashbyhq.com/leantech/b7d5f79d-118e-486f-bf59-bac38dd4ef3a",
       "posted_date": "2026-10-12",
       "source": "ashby"
-    },
-    {
-      "id": "unifonic-pdomnd",
-      "company_slug": "unifonic",
-      "title": "Customer Solutions Consultant",
-      "company": "Unifonic",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "AI",
-      "apply_url": "https://jobs.unifonic.com/o/customer-solutions-consultant-1",
-      "posted_date": "2026-10-12",
-      "source": "recruitee"
     },
     {
       "id": "lean-technologies-l2lbbz",
@@ -786,6 +786,20 @@
       "source": "workable"
     },
     {
+      "id": "lucidya-jta13z",
+      "company_slug": "lucidya",
+      "title": "Sr. Customer Success Manager",
+      "company": "Lucidya",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "senior",
+      "function": "operations",
+      "sector": "AI",
+      "apply_url": "https://apply.workable.com/lucidya/j/75C8A4D801/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
       "id": "lucidya-d8bqef",
       "company_slug": "lucidya",
       "title": "Talent Acquisition Lead",
@@ -996,20 +1010,6 @@
       "source": "workable"
     },
     {
-      "id": "salla-yeq8wo",
-      "company_slug": "salla",
-      "title": "Merchant Care Officer",
-      "company": "Salla",
-      "location": "Makkah, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/salla/j/091CAF5AE9/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
       "id": "salla-kjq9hb",
       "company_slug": "salla",
       "title": "Product Manager - Storefront",
@@ -1048,20 +1048,6 @@
       "function": "finance",
       "sector": "E-commerce",
       "apply_url": "https://apply.workable.com/salla/j/4A19D3F901/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "salla-js8y1n",
-      "company_slug": "salla",
-      "title": "Senior AI Backend Engineer - Agent Evaluation & Quality",
-      "company": "Salla",
-      "location": "Makkah, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "engineering",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/salla/j/9BEE421DB2/",
       "posted_date": "",
       "source": "workable"
     },
@@ -1374,6 +1360,20 @@
       "source": "workable"
     },
     {
+      "id": "tamara-yt0tzu",
+      "company_slug": "tamara",
+      "title": "Data Analyst II",
+      "company": "Tamara",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "other",
+      "sector": "Fintech",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4630959101",
+      "posted_date": "2026-10-27",
+      "source": "greenhouse"
+    },
+    {
       "id": "tamara-1f5vg4",
       "company_slug": "tamara",
       "title": "Compliance Officer",
@@ -1528,34 +1528,6 @@
       "source": "greenhouse"
     },
     {
-      "id": "tamara-gzhs5j",
-      "company_slug": "tamara",
-      "title": "Merchant Acquisition Specialist",
-      "company": "Tamara",
-      "location": "Jeddah, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996940101",
-      "posted_date": "2026-10-12",
-      "source": "greenhouse"
-    },
-    {
-      "id": "tamara-vyqpfz",
-      "company_slug": "tamara",
-      "title": "Merchant Acquisition Specialist",
-      "company": "Tamara",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996939101",
-      "posted_date": "2026-10-12",
-      "source": "greenhouse"
-    },
-    {
       "id": "tamara-v06fgz",
       "company_slug": "tamara",
       "title": "Tamara Builders Program",
@@ -1582,6 +1554,20 @@
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996993101",
       "posted_date": "2026-10-12",
       "source": "greenhouse"
+    },
+    {
+      "id": "unifonic-pdomnd",
+      "company_slug": "unifonic",
+      "title": "Customer Solutions Consultant",
+      "company": "Unifonic",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "other",
+      "sector": "AI",
+      "apply_url": "https://jobs.unifonic.com/o/customer-solutions-consultant-1",
+      "posted_date": "2026-10-12",
+      "source": "recruitee"
     },
     {
       "id": "unifonic-rtvhkc",
