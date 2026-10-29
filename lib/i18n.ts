@@ -3,6 +3,13 @@ import { AI_APPLY_COPY } from "@/lib/ai-apply"
 export const strings = {
   ar: {
     tagline: "دليل محدث لـ ١٦٠+ شركة سعودية تبني مستقبل التقنية والذكاء الاصطناعي",
+    heroHeadline: "دور على وظايف في ١٦٠+ شركة سعودية ناشئة ممولة",
+    heroCta: "تصفح ١٦٠+ وظيفة في الشركات الناشئة",
+    skipToContent: "تخطي إلى المحتوى الرئيسي",
+    searchLabel: "ابحث عن شركات",
+    searchExample: "مثال: Humain، Tamara",
+    opensInNewTab: "(يفتح في تبويب جديد)",
+    clearSearch: "مسح البحث",
     madeBy: "تصميم",
     searchJobs: "تنبيهات الوظائف",
     searchPlaceholder: "ابحث عن شركات...",
@@ -113,6 +120,13 @@ export const strings = {
   },
   en: {
     tagline: "A curated directory of 160+ companies building the future of Saudi",
+    heroHeadline: "Find jobs at 160+ funded Saudi startups",
+    heroCta: "Browse 160+ startup jobs",
+    skipToContent: "Skip to main content",
+    searchLabel: "Search companies",
+    searchExample: "e.g. Humain, Tamara",
+    opensInNewTab: "(opens in new tab)",
+    clearSearch: "Clear search",
     madeBy: "Made by",
     searchJobs: "Get job alerts",
     searchPlaceholder: "search companies...",
