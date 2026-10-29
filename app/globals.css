@@ -95,6 +95,24 @@
   }
 }
 
+.skip-link {
+  position: absolute;
+  inset-inline-start: 1rem;
+  top: -100%;
+  z-index: 200;
+  padding: 0.5rem 1rem;
+  background: #06634D;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 0.25rem;
+}
+.skip-link:focus {
+  top: 1rem;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
 /* ===== iOS / Safari optimizations (81% of users) ===== */
 
 /* Prevent iOS zoom on input focus */

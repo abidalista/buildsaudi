@@ -38,6 +38,7 @@ export function SiteFooter() {
             className="transition-colors hover:text-[#06634D]"
           >
             X
+            <span className="sr-only">(opens in new tab)</span>
           </a>
         </span>
       </div>

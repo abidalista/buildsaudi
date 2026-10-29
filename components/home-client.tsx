@@ -280,19 +280,24 @@ export default function HomeClient() {
 
   return (
     <div dir={isRTL ? "rtl" : "ltr"} className="min-h-screen" style={{ backgroundColor: "#F5F0E6", backgroundImage: "url(/texture-light.png)", backgroundSize: "100px 100px", backgroundRepeat: "repeat" }}>
-      {/* AI Apply — proven money path; no dismiss (eyes + permanence) */}
+      <a href="#main-content" className="skip-link">
+        {t.skipToContent}
+      </a>
+
+      {/* AI Apply — announcement bar (not the page primary CTA). Tracking and copy unchanged. */}
       <a
         href={aiApplyHref("banner", lang)}
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => trackAiApply("banner")}
-        className="block bg-[#06634D] text-white px-4 py-3 sm:py-3.5 hover:bg-[#044D3B] transition-colors"
+        className="block bg-[#06634D] text-white px-4 py-2.5 sm:py-3 hover:bg-[#044D3B] transition-colors"
       >
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-center">
           <span className="text-sm sm:text-base font-semibold">{t.aiApplyBannerLine}</span>
           <span className="inline-flex items-center bg-[#FFBA0A] text-[#111827] font-bold px-4 py-1.5 rounded text-sm whitespace-nowrap">
             {t.aiApplyBannerOffer}
           </span>
+          <NewTabHint lang={lang} />
         </div>
       </a>
 
@@ -309,41 +314,41 @@ export default function HomeClient() {
                   <span className="absolute top-0 right-0 w-4 h-4 sm:w-5 sm:h-5 border-r-[3px] border-t-[3px] border-[#06634D]/30" />
                   <span className="absolute bottom-0 left-0 w-4 h-4 sm:w-5 sm:h-5 border-l-[3px] border-b-[3px] border-[#06634D]/30" />
                   <span className="absolute bottom-0 right-0 w-4 h-4 sm:w-5 sm:h-5 border-r-[3px] border-b-[3px] border-[#06634D]/30" />
-                  <h1 className="text-[clamp(1.8rem,4vw,3rem)] font-bold leading-none text-[#06634D] tracking-tight">
+                  <p className="text-[clamp(1.8rem,4vw,3rem)] font-bold leading-none text-[#06634D] tracking-tight">
                     BUILDSAUDI
-                  </h1>
+                  </p>
                 </div>
               </div>
 
-              {/* Tagline */}
-              <p className="text-[#111827] text-base font-semibold mb-2 text-center sm:text-start">
-                {t.tagline}
-              </p>
+              <h1 className="text-[#111827] text-lg sm:text-xl font-semibold mb-3 text-center sm:text-start">
+                {t.heroHeadline}
+              </h1>
 
-              {/* Action buttons row */}
-              <div className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-3">
-                {/* Made by pill */}
+              {/* Action buttons row: one primary CTA, everything else secondary */}
+              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-3">
+                <Link
+                  href="/jobs"
+                  className="inline-flex items-center justify-center px-4 py-2.5 text-sm font-bold bg-[#06634D] text-white rounded hover:bg-[#044D3B] transition-all whitespace-nowrap"
+                >
+                  {t.heroCta}
+                </Link>
+
+                <button
+                  type="button"
+                  onClick={() => openJobSeeker("header")}
+                  className="inline-flex items-center justify-center px-3 py-2 text-sm font-medium bg-transparent text-[#06634D] border border-[#06634D]/40 rounded hover:bg-[#06634D]/5 transition-all whitespace-nowrap cursor-pointer"
+                >
+                  {t.searchJobs}
+                </button>
+
                 <a href="https://x.com/abidalista" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-1.5 sm:px-3 py-0.5 sm:py-1.5 bg-[#06634D]/5 border border-[#06634D]/30 rounded text-xs text-[#06634D] whitespace-nowrap hover:bg-[#06634D]/10 transition-colors">
                   {lang === "ar" ? (
                     <span dir="ltr"><span className="text-[#D73833] font-bold">Abdulla</span> {t.madeBy}</span>
                   ) : (
                     <><span>{t.madeBy}</span> <span className="text-[#D73833] font-bold">Abdulla</span></>
                   )}
+                  <NewTabHint lang={lang} />
                 </a>
-
-                <Link
-                  href="/jobs"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-[#06634D] text-white rounded hover:bg-[#044D3B] transition-all whitespace-nowrap"
-                >
-                  {t.jobsBoard}
-                </Link>
-
-                <button
-                  onClick={() => openJobSeeker("header")}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-transparent text-[#06634D] border border-[#06634D]/40 rounded hover:bg-[#06634D]/5 transition-all whitespace-nowrap cursor-pointer"
-                >
-                  {t.searchJobs}
-                </button>
               </div>
 
               {/* Mobile install + language toggle */}
@@ -405,21 +410,30 @@ export default function HomeClient() {
         </div>
       </header>
 
+      <main id="main-content" tabIndex={-1} className="outline-none">
       {/* ============ SEARCH BAR ============ */}
       <div className="border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-3">
+          <label htmlFor="search-input" className="block text-sm font-medium text-[#111827] mb-1.5">
+            {t.searchLabel}
+          </label>
           <div className="relative">
             <Search className="absolute start-4 top-1/2 -translate-y-1/2 size-4 text-[#4B5563]" />
             <Input
               id="search-input"
-              placeholder={t.searchPlaceholder}
+              type="search"
+              name="search"
+              placeholder={t.searchExample}
+              aria-label={t.searchLabel}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="h-11 rounded-lg text-base sm:text-sm border-[#E5E7EB] bg-white ps-11 text-sm shadow-sm placeholder:text-[#4B5563] focus-visible:border-[#06634D] focus-visible:ring-[#06634D]/20"
+              className="h-11 rounded-lg text-base sm:text-sm border-[#6B7280] bg-white ps-11 text-sm shadow-sm placeholder:text-[#4B5563] focus-visible:border-[#06634D] focus-visible:ring-[#06634D]/20 [&::-webkit-search-decoration]:appearance-none [&::-webkit-search-cancel-button]:appearance-none"
             />
             {search && (
               <button
+                type="button"
                 onClick={() => setSearch("")}
+                aria-label={t.clearSearch}
                 className="absolute end-4 top-1/2 -translate-y-1/2 text-[#4B5563] hover:text-[#111827]"
               >
                 <X className="size-4" />
@@ -430,7 +444,7 @@ export default function HomeClient() {
       </div>
 
       {/* ============ MAIN CONTENT ============ */}
-      <div id="main-content" className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-5">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-5">
         <div className="flex gap-8">
           {/* Filters Sidebar */}
           <aside className="hidden w-64 shrink-0 lg:block sticky top-20 z-40 space-y-4 lg:space-y-6">
@@ -534,7 +548,7 @@ export default function HomeClient() {
                   posthog.capture("suggest_company_opened", { placement: "mobile_filters" })
                   setShowSuggest(true)
                 }}
-                className="inline-flex items-center gap-1 px-2 py-1 bg-[#FFBA0A]/10 border border-[#FFBA0A] rounded text-[11px] text-[#333333] hover:bg-[#FFBA0A]/20 transition-all"
+                className="inline-flex items-center gap-1 px-2 py-1 bg-[#FFBA0A]/10 border border-[#FFBA0A] rounded text-xs text-[#333333] hover:bg-[#FFBA0A]/20 transition-all"
               >
                 <PlusCircle className="w-3 h-3" />
                 {t.suggestCompany}
@@ -588,7 +602,7 @@ export default function HomeClient() {
                                       const monthsAgo =
                                         (now.getUTCFullYear() * 12 + now.getUTCMonth()) - (y * 12 + m)
                                       if (monthsAgo <= 12) return (
-                                        <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-emerald-50 border border-emerald-300 text-emerald-700 text-[10px] font-semibold rounded-full whitespace-nowrap">
+                                        <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-emerald-50 border border-emerald-300 text-emerald-700 text-xs font-semibold rounded-full whitespace-nowrap">
                                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse inline-block" />
                                           Recently Funded
                                         </span>
@@ -616,6 +630,7 @@ export default function HomeClient() {
                                   className="px-3 py-1.5 bg-[#FFBA0A] text-[#111827] text-xs font-bold rounded hover:bg-[#FFD060] transition-colors whitespace-nowrap"
                                 >
                                   {t.aiApplyCta}
+                                  <NewTabHint lang={lang} />
                                 </a>
                                 <a
                                   href={withBuildSaudiUtm(company.careers_url)}
@@ -625,6 +640,7 @@ export default function HomeClient() {
                                   className="px-3 py-1.5 border border-[#06634D] text-[#06634D] text-xs font-semibold rounded hover:bg-[#06634D]/5 transition-colors whitespace-nowrap"
                                 >
                                   {t.viewJobs}
+                                  <NewTabHint lang={lang} />
                                 </a>
                               </div>
                             </div>
@@ -632,10 +648,10 @@ export default function HomeClient() {
 
                           {/* Badges - mobile */}
                           <div className="flex items-center gap-1.5 mt-2 sm:hidden flex-wrap">
-                            <span className="px-2 py-0.5 bg-gray-100 border border-gray-200 text-gray-700 text-[11px] uppercase tracking-wider rounded whitespace-nowrap">
+                            <span className="px-2 py-0.5 bg-gray-100 border border-gray-200 text-gray-700 text-xs uppercase tracking-wider rounded whitespace-nowrap">
                               {company.sector[0]}
                             </span>
-                            <span className="px-2 py-0.5 bg-gray-100 border border-gray-200 text-gray-700 text-[11px] uppercase tracking-wider rounded whitespace-nowrap">
+                            <span className="px-2 py-0.5 bg-gray-100 border border-gray-200 text-gray-700 text-xs uppercase tracking-wider rounded whitespace-nowrap">
                               {company.stage}
                             </span>
                             <a
@@ -646,18 +662,20 @@ export default function HomeClient() {
                                 e.stopPropagation()
                                 trackAiApply("card_mobile", company.slug)
                               }}
-                              className="px-2.5 py-1 bg-[#FFBA0A] text-[#111827] text-[11px] font-bold rounded hover:bg-[#FFD060] transition-colors whitespace-nowrap"
+                              className="px-2.5 py-1 bg-[#FFBA0A] text-[#111827] text-xs font-bold rounded hover:bg-[#FFD060] transition-colors whitespace-nowrap"
                             >
                               {t.aiApplyCta}
+                              <NewTabHint lang={lang} />
                             </a>
                             <a
                               href={withBuildSaudiUtm(company.careers_url)}
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={(e) => handleJobApplyClick(e, company, "card_mobile")}
-                              className="px-2.5 py-1 border border-[#06634D] text-[#06634D] text-[11px] font-semibold rounded hover:bg-[#06634D]/5 transition-colors whitespace-nowrap"
+                              className="px-2.5 py-1 border border-[#06634D] text-[#06634D] text-xs font-semibold rounded hover:bg-[#06634D]/5 transition-colors whitespace-nowrap"
                             >
                               {t.viewJobs}
+                              <NewTabHint lang={lang} />
                             </a>
                           </div>
                         </div>
@@ -677,27 +695,27 @@ export default function HomeClient() {
                       <div className="border-t border-gray-200 bg-gray-50 px-4 sm:px-6 py-4">
                         <div className="grid grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-3">
                           <div className="flex flex-col gap-0.5">
-                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-600">{t.founders}</div>
+                            <div className="font-mono text-xs uppercase tracking-wider text-gray-600">{t.founders}</div>
                             <div className="text-xs sm:text-sm text-gray-900 break-words font-medium">{company.founders || "—"}</div>
                           </div>
                           <div className="flex flex-col gap-0.5">
-                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-600">{t.totalRaised}</div>
+                            <div className="font-mono text-xs uppercase tracking-wider text-gray-600">{t.totalRaised}</div>
                             <div className="text-xs sm:text-sm text-gray-900 font-medium">{company.total_raised || "—"}</div>
                           </div>
                           <div className="flex flex-col gap-0.5">
-                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-600">{t.hqCity}</div>
+                            <div className="font-mono text-xs uppercase tracking-wider text-gray-600">{t.hqCity}</div>
                             <div className="text-xs sm:text-sm text-gray-900 font-medium">{company.city}</div>
                           </div>
                           <div className="flex flex-col gap-0.5">
-                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-600">{t.employees}</div>
+                            <div className="font-mono text-xs uppercase tracking-wider text-gray-600">{t.employees}</div>
                             <div className="text-xs sm:text-sm text-gray-900 font-medium">{company.team_size || "—"}</div>
                           </div>
                           <div className="flex flex-col gap-0.5">
-                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-600">{t.founded}</div>
+                            <div className="font-mono text-xs uppercase tracking-wider text-gray-600">{t.founded}</div>
                             <div className="text-xs sm:text-sm text-gray-900 font-medium">{company.founded_year || "—"}</div>
                           </div>
                           <div className="flex flex-col gap-0.5">
-                            <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-600">Last Round</div>
+                            <div className="font-mono text-xs uppercase tracking-wider text-gray-600">Last Round</div>
                             <div className="text-xs sm:text-sm text-gray-900 font-medium">{company.last_round_date || "—"}</div>
                           </div>
                         </div>
@@ -710,6 +728,7 @@ export default function HomeClient() {
                             className="inline-flex items-center justify-center rounded bg-[#FFBA0A] px-4 py-2.5 text-sm font-bold text-[#111827] hover:bg-[#FFD060] transition-colors"
                           >
                             {t.aiApplyCta}
+                            <NewTabHint lang={lang} />
                           </a>
                           <a
                             href={withBuildSaudiUtm(company.careers_url)}
@@ -719,6 +738,7 @@ export default function HomeClient() {
                             className="inline-flex items-center justify-center gap-1.5 rounded border border-[#06634D] px-4 py-2.5 text-sm font-semibold text-[#06634D] hover:bg-[#06634D]/5 transition-colors"
                           >
                             {t.viewJobs}
+                            <NewTabHint lang={lang} />
                           </a>
                           <Link
                             href={`/company/${company.slug}`}
@@ -729,12 +749,12 @@ export default function HomeClient() {
                         </div>
                         {/* Socials row */}
                         <div className="flex items-center gap-4 mt-3 pt-3 border-t border-gray-200">
-                          <a href={company.linkedin} target="_blank" rel="noopener noreferrer" onClick={(e) => { e.stopPropagation(); posthog.capture("company_linkedin_clicked", { company_slug: company.slug }) }} className="text-gray-600 hover:text-gray-900 transition-colors p-1">
+                          <a href={company.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${company.name} LinkedIn ${t.opensInNewTab}`} onClick={(e) => { e.stopPropagation(); posthog.capture("company_linkedin_clicked", { company_slug: company.slug }) }} className="text-gray-600 hover:text-gray-900 transition-colors p-1">
                             <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor">
                               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                             </svg>
                           </a>
-                          <a href={company.website} target="_blank" rel="noopener noreferrer" onClick={(e) => { e.stopPropagation(); posthog.capture("company_website_clicked", { company_slug: company.slug }) }} className="text-gray-600 hover:text-gray-900 transition-colors p-1">
+                          <a href={company.website} target="_blank" rel="noopener noreferrer" aria-label={`${company.name} website ${t.opensInNewTab}`} onClick={(e) => { e.stopPropagation(); posthog.capture("company_website_clicked", { company_slug: company.slug }) }} className="text-gray-600 hover:text-gray-900 transition-colors p-1">
                             <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                               <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                             </svg>
@@ -810,6 +830,7 @@ export default function HomeClient() {
           </p>
         </div>
       </section>
+      </main>
 
       <SiteFooter />
 
@@ -857,6 +878,7 @@ export default function HomeClient() {
                 className="inline-flex items-center justify-center rounded bg-[#FFBA0A] px-4 py-3 text-sm font-bold text-[#111827] hover:bg-[#FFD060] transition-colors"
               >
                 {t.aiApplyUpsellCta}
+                <NewTabHint lang={lang} />
               </a>
               <button
                 type="button"
@@ -1031,6 +1053,10 @@ export default function HomeClient() {
 
     </div>
   )
+}
+
+function NewTabHint({ lang }: { lang: Lang }) {
+  return <span className="sr-only">{strings[lang].opensInNewTab}</span>
 }
 
 function FilterSelect({
