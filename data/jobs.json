@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-29T11:22:39.704Z",
+  "scraped_at": "2026-10-30T11:14:58.446Z",
   "jobs": [
     {
       "id": "foodics-fzoqqc",
@@ -1388,20 +1388,6 @@
       "source": "workable"
     },
     {
-      "id": "tamara-yt0tzu",
-      "company_slug": "tamara",
-      "title": "Data Analyst II",
-      "company": "Tamara",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4630959101",
-      "posted_date": "2026-10-27",
-      "source": "greenhouse"
-    },
-    {
       "id": "tamara-1f5vg4",
       "company_slug": "tamara",
       "title": "Compliance Officer",
@@ -1458,20 +1444,6 @@
       "source": "greenhouse"
     },
     {
-      "id": "tamara-oh11y2",
-      "company_slug": "tamara",
-      "title": "Product Engineer II - Web",
-      "company": "Tamara",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "engineering",
-      "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4822263101",
-      "posted_date": "2026-10-18",
-      "source": "greenhouse"
-    },
-    {
       "id": "tamara-3p4ahv",
       "company_slug": "tamara",
       "title": "Trust & Safety Quality Analyst",
@@ -1510,20 +1482,6 @@
       "function": "operations",
       "sector": "Fintech",
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4726623101",
-      "posted_date": "2026-10-12",
-      "source": "greenhouse"
-    },
-    {
-      "id": "tamara-s5nl1y",
-      "company_slug": "tamara",
-      "title": "Data Engineering Manager II",
-      "company": "Tamara",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "other",
-      "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4970394101",
       "posted_date": "2026-10-12",
       "source": "greenhouse"
     },
