@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-11-01T11:45:03.515Z",
+  "scraped_at": "2026-11-02T13:16:09.674Z",
   "jobs": [
     {
       "id": "foodics-fzoqqc",
@@ -282,16 +282,16 @@
       "source": "workable"
     },
     {
-      "id": "gathern-kalxjo",
+      "id": "gathern-h9ecwt",
       "company_slug": "gathern",
-      "title": "Host Relations Associate (Fresh Graduates)",
+      "title": "Guest Relations Associate (Fresh Graduates)",
       "company": "Gathern",
       "location": "Riyadh, Saudi Arabia",
       "job_type": "Full-time",
       "experience_level": "entry",
       "function": "other",
       "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/gathern/j/30F79BA26C/",
+      "apply_url": "https://apply.workable.com/gathern/j/CF860B924F/",
       "posted_date": "",
       "source": "workable"
     },
@@ -856,20 +856,6 @@
       "source": "workable"
     },
     {
-      "id": "mrsool-6agkyf",
-      "company_slug": "mrsool",
-      "title": "Logistics Operations Specialist - Part-Time",
-      "company": "Mrsool",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "operations",
-      "sector": "Logistics",
-      "apply_url": "https://apply.workable.com/mrsool-3/j/1BD904B301/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
       "id": "mrsool-g6hd8n",
       "company_slug": "mrsool",
       "title": "Representative, Customer Care",
@@ -1386,6 +1372,34 @@
       "apply_url": "https://apply.workable.com/syarah/j/2DCC55A17B/",
       "posted_date": "",
       "source": "workable"
+    },
+    {
+      "id": "tamara-acjbpd",
+      "company_slug": "tamara",
+      "title": "People Business Partner",
+      "company": "Tamara",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "other",
+      "sector": "Fintech",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4805287101",
+      "posted_date": "2026-11-02",
+      "source": "greenhouse"
+    },
+    {
+      "id": "tamara-2fk91a",
+      "company_slug": "tamara",
+      "title": "Senior Data Engineering Manager",
+      "company": "Tamara",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "senior",
+      "function": "other",
+      "sector": "Fintech",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/5017250101",
+      "posted_date": "2026-11-02",
+      "source": "greenhouse"
     },
     {
       "id": "tamara-1f5vg4",
