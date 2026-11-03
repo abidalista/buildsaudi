@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-11-02T13:16:09.674Z",
+  "scraped_at": "2026-11-03T12:41:05.005Z",
   "jobs": [
     {
       "id": "foodics-fzoqqc",
@@ -170,13 +170,13 @@
       "source": "workable"
     },
     {
-      "id": "foodics-7b7ktp",
+      "id": "foodics-1sjyfm",
       "company_slug": "foodics",
-      "title": "Renewals Specialist",
+      "title": "Relationship Manager",
       "company": "Foodics",
       "location": "Madinah, Saudi Arabia",
       "job_type": "Full-time",
-      "experience_level": "mid",
+      "experience_level": "senior",
       "function": "other",
       "sector": "Foodtech",
       "apply_url": "https://apply.workable.com/foodics/j/46BBD74B98/",
@@ -377,20 +377,6 @@
       "sector": "Fintech",
       "apply_url": "https://jobs.ashbyhq.com/leantech/878f2d6c-355c-4195-ad44-fc4a81e953ed",
       "posted_date": "2026-10-13",
-      "source": "ashby"
-    },
-    {
-      "id": "lean-technologies-lp9h2u",
-      "company_slug": "lean-technologies",
-      "title": "Strategic Finance Intern",
-      "company": "Lean Technologies",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "intern",
-      "function": "finance",
-      "sector": "Fintech",
-      "apply_url": "https://jobs.ashbyhq.com/leantech/b7d5f79d-118e-486f-bf59-bac38dd4ef3a",
-      "posted_date": "2026-10-12",
       "source": "ashby"
     },
     {
@@ -954,34 +940,6 @@
       "source": "workable"
     },
     {
-      "id": "salla-dhiy5q",
-      "company_slug": "salla",
-      "title": "Head of Cyber Security - PayLink",
-      "company": "Salla",
-      "location": "Jeddah, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "engineering",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/salla/j/D8C636C37E/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "salla-87gbuj",
-      "company_slug": "salla",
-      "title": "Head of Security",
-      "company": "Salla",
-      "location": "Makkah, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "engineering",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/salla/j/2B5B9145B7/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
       "id": "salla-gehae9",
       "company_slug": "salla",
       "title": "Lead Backend Engineer - PayLink",
@@ -1272,6 +1230,20 @@
       "function": "sales",
       "sector": "E-commerce",
       "apply_url": "https://apply.workable.com/syarah/j/6BB30EC062/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "syarah-s4qaih",
+      "company_slug": "syarah",
+      "title": "Auto Technician Team Leader",
+      "company": "Syarah",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "other",
+      "sector": "E-commerce",
+      "apply_url": "https://apply.workable.com/syarah/j/A85F57EF31/",
       "posted_date": "",
       "source": "workable"
     },
