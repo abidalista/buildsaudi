@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-11-04T12:51:44.831Z",
+  "scraped_at": "2026-11-05T13:00:01.586Z",
   "jobs": [
     {
       "id": "foodics-fzoqqc",
@@ -1010,6 +1010,20 @@
       "source": "workable"
     },
     {
+      "id": "salla-oz61kd",
+      "company_slug": "salla",
+      "title": "Risk Manager - Paylink",
+      "company": "Salla",
+      "location": "Al Khobar, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "senior",
+      "function": "other",
+      "sector": "E-commerce",
+      "apply_url": "https://apply.workable.com/salla/j/469561639D/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
       "id": "salla-bv2mkx",
       "company_slug": "salla",
       "title": "Salla Online Store Expert",
@@ -1360,20 +1374,6 @@
       "source": "workable"
     },
     {
-      "id": "syarah-2x6cva",
-      "company_slug": "syarah",
-      "title": "Service Manager",
-      "company": "Syarah",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "other",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/syarah/j/A29B85AE79/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
       "id": "syarah-4tyw5p",
       "company_slug": "syarah",
       "title": "Used Cars Refurbishment Manager",
@@ -1386,6 +1386,20 @@
       "apply_url": "https://apply.workable.com/syarah/j/2DCC55A17B/",
       "posted_date": "",
       "source": "workable"
+    },
+    {
+      "id": "tamara-x73ega",
+      "company_slug": "tamara",
+      "title": "Tamara Builders Program - Data",
+      "company": "Tamara",
+      "location": "Riyadh Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "entry",
+      "function": "other",
+      "sector": "Fintech",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/5028314101",
+      "posted_date": "2026-11-05",
+      "source": "greenhouse"
     },
     {
       "id": "tamara-90ncl7",
