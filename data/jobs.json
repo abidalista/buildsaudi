@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-11-05T13:00:01.586Z",
+  "scraped_at": "2026-11-06T12:47:30.513Z",
   "jobs": [
     {
       "id": "foodics-fzoqqc",
@@ -1426,20 +1426,6 @@
       "function": "other",
       "sector": "Fintech",
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4805287101",
-      "posted_date": "2026-11-02",
-      "source": "greenhouse"
-    },
-    {
-      "id": "tamara-2fk91a",
-      "company_slug": "tamara",
-      "title": "Senior Data Engineering Manager",
-      "company": "Tamara",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "other",
-      "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/5017250101",
       "posted_date": "2026-11-02",
       "source": "greenhouse"
     },
