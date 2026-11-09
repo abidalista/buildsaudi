@@ -1,6 +1,20 @@
 {
-  "scraped_at": "2026-11-08T11:47:22.688Z",
+  "scraped_at": "2026-11-09T13:42:27.127Z",
   "jobs": [
+    {
+      "id": "foodics-kgooc7",
+      "company_slug": "foodics",
+      "title": "Accountant-ERP",
+      "company": "Foodics",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "finance",
+      "sector": "Foodtech",
+      "apply_url": "https://apply.workable.com/foodics/j/FB74E1BE9C/",
+      "posted_date": "",
+      "source": "workable"
+    },
     {
       "id": "foodics-fzoqqc",
       "company_slug": "foodics",
@@ -30,20 +44,6 @@
       "source": "workable"
     },
     {
-      "id": "foodics-zd03x",
-      "company_slug": "foodics",
-      "title": "BCM Officer",
-      "company": "Foodics",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "Foodtech",
-      "apply_url": "https://apply.workable.com/foodics/j/126A1EE982/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
       "id": "foodics-w90gec",
       "company_slug": "foodics",
       "title": "CEO Office Manager- Riyadh",
@@ -54,6 +54,20 @@
       "function": "operations",
       "sector": "Foodtech",
       "apply_url": "https://apply.workable.com/foodics/j/26B9363EE8/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "foodics-85xca7",
+      "company_slug": "foodics",
+      "title": "Foodics Recruitment Open Day - Relationship Management Specialist | Al Madinah",
+      "company": "Foodics",
+      "location": "Madinah, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "other",
+      "sector": "Foodtech",
+      "apply_url": "https://apply.workable.com/foodics/j/42737545C3/",
       "posted_date": "",
       "source": "workable"
     },
@@ -278,6 +292,20 @@
       "function": "other",
       "sector": "Foodtech",
       "apply_url": "https://apply.workable.com/foodics/j/26D2DC803F/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "gathern-2n6kea",
+      "company_slug": "gathern",
+      "title": "Director of Growth",
+      "company": "Gathern",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "senior",
+      "function": "marketing",
+      "sector": "E-commerce",
+      "apply_url": "https://apply.workable.com/gathern/j/D2A0518C61/",
       "posted_date": "",
       "source": "workable"
     },
@@ -586,6 +614,20 @@
       "function": "engineering",
       "sector": "AI",
       "apply_url": "https://apply.workable.com/lucidya/j/FAE968EB43/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "lucidya-houwt9",
+      "company_slug": "lucidya",
+      "title": "Director of Products",
+      "company": "Lucidya",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "senior",
+      "function": "other",
+      "sector": "AI",
+      "apply_url": "https://apply.workable.com/lucidya/j/FF4ABEFE0D/",
       "posted_date": "",
       "source": "workable"
     },
@@ -1370,20 +1412,6 @@
       "function": "other",
       "sector": "E-commerce",
       "apply_url": "https://apply.workable.com/syarah/j/40E13C8B82/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "syarah-4tyw5p",
-      "company_slug": "syarah",
-      "title": "Used Cars Refurbishment Manager",
-      "company": "Syarah",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "other",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/syarah/j/2DCC55A17B/",
       "posted_date": "",
       "source": "workable"
     },
