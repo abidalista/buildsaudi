@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-11-09T13:42:27.127Z",
+  "scraped_at": "2026-11-10T13:20:52.761Z",
   "jobs": [
     {
       "id": "foodics-kgooc7",
@@ -26,20 +26,6 @@
       "function": "engineering",
       "sector": "Foodtech",
       "apply_url": "https://apply.workable.com/foodics/j/9BDF0B39E6/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "foodics-muiawi",
-      "company_slug": "foodics",
-      "title": "Anti Money laundering Specialist",
-      "company": "Foodics",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "Foodtech",
-      "apply_url": "https://apply.workable.com/foodics/j/78F8554CB7/",
       "posted_date": "",
       "source": "workable"
     },
@@ -394,31 +380,17 @@
       "source": "workable"
     },
     {
-      "id": "lean-technologies-pouk04",
+      "id": "lean-technologies-qoth98",
       "company_slug": "lean-technologies",
-      "title": "Customer Support Intern (TechOps)",
+      "title": "Staff Engineer",
       "company": "Lean Technologies",
       "location": "Riyadh, Saudi Arabia",
       "job_type": "Full-time",
-      "experience_level": "intern",
-      "function": "operations",
-      "sector": "Fintech",
-      "apply_url": "https://jobs.ashbyhq.com/LeanTech/9026570c-5ba5-4a15-a78a-d412201e1e10",
-      "posted_date": "2026-10-13",
-      "source": "ashby"
-    },
-    {
-      "id": "lean-technologies-aocf8x",
-      "company_slug": "lean-technologies",
-      "title": "Software Engineering Intern",
-      "company": "Lean Technologies",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "intern",
+      "experience_level": "senior",
       "function": "engineering",
       "sector": "Fintech",
-      "apply_url": "https://jobs.ashbyhq.com/LeanTech/878f2d6c-355c-4195-ad44-fc4a81e953ed",
-      "posted_date": "2026-10-13",
+      "apply_url": "https://jobs.ashbyhq.com/LeanTech/bd9a8374-9e27-41eb-bdb6-e5ba586d4bd9",
+      "posted_date": "2026-11-10",
       "source": "ashby"
     },
     {
@@ -1416,17 +1388,31 @@
       "source": "workable"
     },
     {
-      "id": "tamara-x73ega",
+      "id": "tamara-sml9pg",
       "company_slug": "tamara",
-      "title": "Tamara Builders Program - Data",
+      "title": "Customer Care Advisor (Non-voice)",
       "company": "Tamara",
-      "location": "Riyadh Saudi Arabia",
+      "location": "Riyadh, Saudi Arabia",
       "job_type": "Full-time",
-      "experience_level": "entry",
-      "function": "other",
+      "experience_level": "mid",
+      "function": "operations",
       "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/5028314101",
-      "posted_date": "2026-11-05",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4819453101",
+      "posted_date": "2026-11-10",
+      "source": "greenhouse"
+    },
+    {
+      "id": "tamara-f41x0y",
+      "company_slug": "tamara",
+      "title": "Customer Care Advisor (Voice)",
+      "company": "Tamara",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "operations",
+      "sector": "Fintech",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4726623101",
+      "posted_date": "2026-11-10",
       "source": "greenhouse"
     },
     {
@@ -1440,7 +1426,35 @@
       "function": "operations",
       "sector": "Fintech",
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/5027129101",
-      "posted_date": "2026-11-04",
+      "posted_date": "2026-11-10",
+      "source": "greenhouse"
+    },
+    {
+      "id": "unifonic-nudxcl",
+      "company_slug": "unifonic",
+      "title": "Senior Treasury Specialist",
+      "company": "Unifonic",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "senior",
+      "function": "finance",
+      "sector": "AI",
+      "apply_url": "https://jobs.unifonic.com/o/senior-treasury-specialist",
+      "posted_date": "2026-11-10",
+      "source": "recruitee"
+    },
+    {
+      "id": "tamara-x73ega",
+      "company_slug": "tamara",
+      "title": "Tamara Builders Program - Data",
+      "company": "Tamara",
+      "location": "Riyadh Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "entry",
+      "function": "other",
+      "sector": "Fintech",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/5028314101",
+      "posted_date": "2026-11-05",
       "source": "greenhouse"
     },
     {
@@ -1486,20 +1500,6 @@
       "source": "greenhouse"
     },
     {
-      "id": "tamara-c3jziu",
-      "company_slug": "tamara",
-      "title": "Dispute Operations Specialist",
-      "company": "Tamara",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "operations",
-      "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4977400101",
-      "posted_date": "2026-10-22",
-      "source": "greenhouse"
-    },
-    {
       "id": "tamara-bdhlg1",
       "company_slug": "tamara",
       "title": "Collections Advisor",
@@ -1525,34 +1525,6 @@
       "sector": "Fintech",
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996307101",
       "posted_date": "2026-10-15",
-      "source": "greenhouse"
-    },
-    {
-      "id": "tamara-sml9pg",
-      "company_slug": "tamara",
-      "title": "Customer Care Advisor (Non-voice)",
-      "company": "Tamara",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "operations",
-      "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4819453101",
-      "posted_date": "2026-10-12",
-      "source": "greenhouse"
-    },
-    {
-      "id": "tamara-f41x0y",
-      "company_slug": "tamara",
-      "title": "Customer Care Advisor (Voice)",
-      "company": "Tamara",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "operations",
-      "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4726623101",
-      "posted_date": "2026-10-12",
       "source": "greenhouse"
     },
     {
@@ -1637,20 +1609,6 @@
       "sector": "AI",
       "apply_url": "https://jobs.unifonic.com/o/strategic-account-manager",
       "posted_date": "2026-09-10",
-      "source": "recruitee"
-    },
-    {
-      "id": "unifonic-k46zhi",
-      "company_slug": "unifonic",
-      "title": "Saudi Internship - 2026",
-      "company": "Unifonic",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "intern",
-      "function": "other",
-      "sector": "AI",
-      "apply_url": "https://jobs.unifonic.com/o/saudi-internship-2026",
-      "posted_date": "2026-09-02",
       "source": "recruitee"
     },
     {
