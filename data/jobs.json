@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-11-10T13:20:52.761Z",
+  "scraped_at": "2026-11-11T12:32:03.026Z",
   "jobs": [
     {
       "id": "foodics-kgooc7",
@@ -40,6 +40,20 @@
       "function": "operations",
       "sector": "Foodtech",
       "apply_url": "https://apply.workable.com/foodics/j/26B9363EE8/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "foodics-gmrw4",
+      "company_slug": "foodics",
+      "title": "Field Sales Representative",
+      "company": "Foodics",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "sales",
+      "sector": "Foodtech",
+      "apply_url": "https://apply.workable.com/foodics/j/D84B028E41/",
       "posted_date": "",
       "source": "workable"
     },
@@ -282,7 +296,7 @@
       "source": "workable"
     },
     {
-      "id": "gathern-2n6kea",
+      "id": "gathern-gxd07a",
       "company_slug": "gathern",
       "title": "Director of Growth",
       "company": "Gathern",
@@ -291,7 +305,7 @@
       "experience_level": "senior",
       "function": "marketing",
       "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/gathern/j/D2A0518C61/",
+      "apply_url": "https://apply.workable.com/gathern/j/9EAF8D8145/",
       "posted_date": "",
       "source": "workable"
     },
@@ -660,6 +674,20 @@
       "source": "workable"
     },
     {
+      "id": "lucidya-cut2t",
+      "company_slug": "lucidya",
+      "title": "People Operations Specialist",
+      "company": "Lucidya",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "people",
+      "sector": "AI",
+      "apply_url": "https://apply.workable.com/lucidya/j/43C9E0B639/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
       "id": "lucidya-7of29j",
       "company_slug": "lucidya",
       "title": "Principal Product Manager - Customer Service Suite",
@@ -894,20 +922,6 @@
       "function": "finance",
       "sector": "E-commerce",
       "apply_url": "https://apply.workable.com/salla/j/B656D5F0F3/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "salla-a4klom",
-      "company_slug": "salla",
-      "title": "Associate Product Manager (Tamheer)",
-      "company": "Salla",
-      "location": "Jeddah, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "intern",
-      "function": "product",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/salla/j/6D8FF206D6/",
       "posted_date": "",
       "source": "workable"
     },
@@ -1220,34 +1234,6 @@
       "source": "workable"
     },
     {
-      "id": "salla-khcvu9",
-      "company_slug": "salla",
-      "title": "Staff Product Manager - Shipping and Fulfillment",
-      "company": "Salla",
-      "location": "Jeddah, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "product",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/salla/j/2E93214C2E/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "salla-5yz9wf",
-      "company_slug": "salla",
-      "title": "UX Writer (Tamheer)",
-      "company": "Salla",
-      "location": "Jeddah, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "intern",
-      "function": "design",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/salla/j/D6752CC9A9/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
       "id": "syarah-i9a828",
       "company_slug": "syarah",
       "title": "Auctions & Wholesale Sales Officer",
@@ -1472,6 +1458,20 @@
       "source": "greenhouse"
     },
     {
+      "id": "unifonic-iecyrk",
+      "company_slug": "unifonic",
+      "title": "Infrastructure Engineering Manager",
+      "company": "Unifonic",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "senior",
+      "function": "other",
+      "sector": "AI",
+      "apply_url": "https://jobs.unifonic.com/o/infrastructure-engineering-manager-2",
+      "posted_date": "2026-10-29",
+      "source": "recruitee"
+    },
+    {
       "id": "tamara-1f5vg4",
       "company_slug": "tamara",
       "title": "Compliance Officer",
@@ -1511,20 +1511,6 @@
       "sector": "Fintech",
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/5005774101",
       "posted_date": "2026-10-19",
-      "source": "greenhouse"
-    },
-    {
-      "id": "tamara-3p4ahv",
-      "company_slug": "tamara",
-      "title": "Trust & Safety Quality Analyst",
-      "company": "Tamara",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996307101",
-      "posted_date": "2026-10-15",
       "source": "greenhouse"
     },
     {
