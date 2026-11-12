@@ -1,0 +1,33 @@
+// BuildSaudi on Cloudflare Workers via @opennextjs/cloudflare.
+//
+// Images stay unoptimized (next.config images.unoptimized). Do not add an
+// IMAGES binding — Cloudflare Images is not free-tier and is not wanted.
+//
+// No Vercel cron (no vercel.json). Scheduled jobs stay on GitHub Actions:
+// ingest-jobs.yml, scraper.yml, weekly-digest.yml. Those scripts write git
+// or run Python and cannot run as Worker Cron Triggers.
+//
+// Secrets (wrangler secret put — never commit):
+//   AIRTABLE_API_KEY, AIRTABLE_BASE_ID, PROXY_SECRET, SUBSTACK_SID,
+//   PREFERENCES_SECRET (optional; falls back to AIRTABLE_API_KEY)
+// Build-time public env:
+//   NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "buildsaudi",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-11-12",
+  "compatibility_flags": [
+    // Node.js APIs used by Next.js / OpenNext on Workers
+    "nodejs_compat",
+    // Allow the Worker to fetch public URLs (Airtable, Substack, PostHog)
+    "global_fetch_strictly_public"
+  ],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
