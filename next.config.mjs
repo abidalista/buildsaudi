@@ -1,3 +1,5 @@
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare"
+
 // Company slugs that used to exist and were indexed by Google, but were removed
 // from lib/data.ts (dead/unverifiable listings). Redirect them instead of 404ing
 // so Search Console stops flagging them and any residual traffic lands somewhere useful.
@@ -33,6 +35,7 @@ const nextConfig = {
   // Needed so PostHog can resolve minified stacks (upload via `npm run upload-sourcemaps`)
   productionBrowserSourceMaps: true,
   images: {
+    // Keep serving original files. Do not enable Cloudflare Images / OpenNext IMAGES binding.
     unoptimized: true,
   },
   async rewrites() {
@@ -62,3 +65,5 @@ const nextConfig = {
 }
 
 export default nextConfig
+
+initOpenNextCloudflareForDev()

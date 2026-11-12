@@ -1,0 +1,11 @@
+NEXTJS_ENV=development
+
+# Copy this file to `.dev.vars` for `npm run preview`.
+# Do not commit `.dev.vars` if it contains real secrets.
+#
+# AIRTABLE_API_KEY=
+# AIRTABLE_BASE_ID=
+# PROXY_SECRET=
+# SUBSTACK_SID=
+# PREFERENCES_SECRET=
+# NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN=

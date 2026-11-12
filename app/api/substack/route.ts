@@ -1,10 +1,11 @@
 // Substack proxy.
 //
 // Substack (Cloudflare) blocks GitHub Actions IP ranges with a 403, but accepts
-// requests from Vercel. So the digest runs on GitHub Actions and sends only its
-// Substack calls through here.
+// requests from some app-host egress. So the digest runs on GitHub Actions and
+// sends only its Substack calls through here (Vercel today, Cloudflare Workers
+// after cutover).
 //
-// The session cookie lives in Vercel env vars and never leaves this function.
+// The session cookie lives in host secrets (SUBSTACK_SID) and never leaves this function.
 //
 // Env required:
 //   SUBSTACK_SID    the substack.sid cookie value
