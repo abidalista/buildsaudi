@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-11-11T12:32:03.026Z",
+  "scraped_at": "2026-11-12T13:36:43.955Z",
   "jobs": [
     {
       "id": "foodics-kgooc7",
@@ -1146,20 +1146,6 @@
       "function": "marketing",
       "sector": "E-commerce",
       "apply_url": "https://apply.workable.com/salla/j/8DAC1B0D17/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "salla-ejbopc",
-      "company_slug": "salla",
-      "title": "Senior ML Backend Engineer - Search & Recommendations",
-      "company": "Salla",
-      "location": "Makkah, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "engineering",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/salla/j/D29678F002/",
       "posted_date": "",
       "source": "workable"
     },
