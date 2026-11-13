@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-11-12T13:36:43.955Z",
+  "scraped_at": "2026-11-13T12:55:38.895Z",
   "jobs": [
     {
       "id": "foodics-kgooc7",
@@ -264,6 +264,20 @@
       "function": "other",
       "sector": "Foodtech",
       "apply_url": "https://apply.workable.com/foodics/j/53A665F571/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "foodics-o4on1j",
+      "company_slug": "foodics",
+      "title": "Senior Forward Deployed Engineer (FDE)",
+      "company": "Foodics",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "senior",
+      "function": "engineering",
+      "sector": "Foodtech",
+      "apply_url": "https://apply.workable.com/foodics/j/A165F5C263/",
       "posted_date": "",
       "source": "workable"
     },
