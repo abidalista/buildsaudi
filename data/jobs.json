@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-11-13T12:55:38.895Z",
+  "scraped_at": "2026-11-14T11:59:11.387Z",
   "jobs": [
     {
       "id": "foodics-kgooc7",
@@ -250,20 +250,6 @@
       "function": "sales",
       "sector": "Foodtech",
       "apply_url": "https://apply.workable.com/foodics/j/BE7C417460/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "foodics-n877sg",
-      "company_slug": "foodics",
-      "title": "Senior Consultant - Foodics Black",
-      "company": "Foodics",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "other",
-      "sector": "Foodtech",
-      "apply_url": "https://apply.workable.com/foodics/j/53A665F571/",
       "posted_date": "",
       "source": "workable"
     },
