@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-11-15T12:34:44.665Z",
+  "scraped_at": "2026-11-16T13:26:59.208Z",
   "jobs": [
     {
       "id": "foodics-kgooc7",
@@ -198,20 +198,6 @@
       "source": "workable"
     },
     {
-      "id": "foodics-n75q6h",
-      "company_slug": "foodics",
-      "title": "Sales Executive",
-      "company": "Foodics",
-      "location": "Al Khobar, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "sales",
-      "sector": "Foodtech",
-      "apply_url": "https://apply.workable.com/foodics/j/A080E07946/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
       "id": "foodics-rv2wf",
       "company_slug": "foodics",
       "title": "Sales Executive - Expansion Team",
@@ -268,20 +254,6 @@
       "source": "workable"
     },
     {
-      "id": "foodics-u6cyw",
-      "company_slug": "foodics",
-      "title": "Sr. Product Manager - Foodics ERP",
-      "company": "Foodics",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "product",
-      "sector": "Foodtech",
-      "apply_url": "https://apply.workable.com/foodics/j/0631C51D4B/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
       "id": "foodics-xc1z03",
       "company_slug": "foodics",
       "title": "VP of FP&A and Investor Relations",
@@ -334,6 +306,20 @@
       "function": "other",
       "sector": "E-commerce",
       "apply_url": "https://apply.workable.com/gathern/j/CF860B924F/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "gathern-kalxjo",
+      "company_slug": "gathern",
+      "title": "Host Relations Associate (Fresh Graduates)",
+      "company": "Gathern",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "entry",
+      "function": "other",
+      "sector": "E-commerce",
+      "apply_url": "https://apply.workable.com/gathern/j/30F79BA26C/",
       "posted_date": "",
       "source": "workable"
     },
@@ -1276,20 +1262,6 @@
       "source": "workable"
     },
     {
-      "id": "syarah-s4qaih",
-      "company_slug": "syarah",
-      "title": "Auto Technician Team Leader",
-      "company": "Syarah",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/syarah/j/A85F57EF31/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
       "id": "syarah-liyp1s",
       "company_slug": "syarah",
       "title": "Executive Assistant",
@@ -1388,18 +1360,18 @@
       "source": "workable"
     },
     {
-      "id": "syarah-7jqp01",
-      "company_slug": "syarah",
-      "title": "Purchasing Officer",
-      "company": "Syarah",
+      "id": "tamara-bge12r",
+      "company_slug": "tamara",
+      "title": "Senior Product Engineer - Backend",
+      "company": "Tamara",
       "location": "Riyadh, Saudi Arabia",
       "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/syarah/j/40E13C8B82/",
-      "posted_date": "",
-      "source": "workable"
+      "experience_level": "senior",
+      "function": "engineering",
+      "sector": "Fintech",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4784971101",
+      "posted_date": "2026-11-16",
+      "source": "greenhouse"
     },
     {
       "id": "tamara-b126wg",
