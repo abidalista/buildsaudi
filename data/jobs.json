@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-11-16T13:26:59.208Z",
+  "scraped_at": "2026-11-17T14:12:48.051Z",
   "jobs": [
     {
       "id": "foodics-kgooc7",
@@ -1568,20 +1568,6 @@
       "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4996993101",
       "posted_date": "2026-10-12",
       "source": "greenhouse"
-    },
-    {
-      "id": "unifonic-8d7szr",
-      "company_slug": "unifonic",
-      "title": "Corporate Operations Specialist",
-      "company": "Unifonic",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "operations",
-      "sector": "AI",
-      "apply_url": "https://jobs.unifonic.com/o/corporate-operations-specialist",
-      "posted_date": "2026-09-15",
-      "source": "recruitee"
     },
     {
       "id": "unifonic-ltdoib",
