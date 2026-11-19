@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-11-18T13:44:42.440Z",
+  "scraped_at": "2026-11-19T14:12:48.695Z",
   "jobs": [
     {
       "id": "foodics-kgooc7",
@@ -380,6 +380,20 @@
       "source": "workable"
     },
     {
+      "id": "lean-technologies-pjfgiz",
+      "company_slug": "lean-technologies",
+      "title": "Senior Data Scientist",
+      "company": "Lean Technologies",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "senior",
+      "function": "engineering",
+      "sector": "Fintech",
+      "apply_url": "https://jobs.ashbyhq.com/LeanTech/c91018c7-8c82-4c05-83e3-821ae9ade49c",
+      "posted_date": "2026-11-19",
+      "source": "ashby"
+    },
+    {
       "id": "lean-technologies-qoth98",
       "company_slug": "lean-technologies",
       "title": "Staff Engineer",
@@ -726,6 +740,20 @@
       "function": "design",
       "sector": "AI",
       "apply_url": "https://apply.workable.com/lucidya/j/87CCA82651/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "lucidya-r6ugnk",
+      "company_slug": "lucidya",
+      "title": "Product Marketing Manager - Agentic AI",
+      "company": "Lucidya",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "senior",
+      "function": "engineering",
+      "sector": "AI",
+      "apply_url": "https://apply.workable.com/lucidya/j/26425C6FB1/",
       "posted_date": "",
       "source": "workable"
     },
