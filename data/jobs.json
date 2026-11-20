@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-11-19T14:12:48.695Z",
+  "scraped_at": "2026-11-20T13:54:33.536Z",
   "jobs": [
     {
       "id": "foodics-kgooc7",
@@ -254,6 +254,20 @@
       "source": "workable"
     },
     {
+      "id": "foodics-6aer72",
+      "company_slug": "foodics",
+      "title": "Senior Risk And BCM Specialist",
+      "company": "Foodics",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "senior",
+      "function": "other",
+      "sector": "Foodtech",
+      "apply_url": "https://apply.workable.com/foodics/j/6196531DC6/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
       "id": "foodics-xc1z03",
       "company_slug": "foodics",
       "title": "VP of FP&A and Investor Relations",
@@ -405,20 +419,6 @@
       "sector": "Fintech",
       "apply_url": "https://jobs.ashbyhq.com/LeanTech/bd9a8374-9e27-41eb-bdb6-e5ba586d4bd9",
       "posted_date": "2026-11-10",
-      "source": "ashby"
-    },
-    {
-      "id": "lean-technologies-yg3yov",
-      "company_slug": "lean-technologies",
-      "title": "Internal Auditor – Risk & Regulatory Assurance",
-      "company": "Lean Technologies",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "finance",
-      "sector": "Fintech",
-      "apply_url": "https://jobs.ashbyhq.com/LeanTech/18f875d1-261f-4a98-b2bb-810f65294d53",
-      "posted_date": "2026-09-21",
       "source": "ashby"
     },
     {
