@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-11-20T13:54:33.536Z",
+  "scraped_at": "2026-11-21T13:17:41.831Z",
   "jobs": [
     {
       "id": "foodics-kgooc7",
@@ -1386,20 +1386,6 @@
       "apply_url": "https://apply.workable.com/syarah/j/46467FFB0E/",
       "posted_date": "",
       "source": "workable"
-    },
-    {
-      "id": "tamara-bge12r",
-      "company_slug": "tamara",
-      "title": "Senior Product Engineer - Backend",
-      "company": "Tamara",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "engineering",
-      "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/4784971101",
-      "posted_date": "2026-11-16",
-      "source": "greenhouse"
     },
     {
       "id": "tamara-b126wg",
