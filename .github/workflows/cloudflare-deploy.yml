@@ -152,31 +152,50 @@ jobs:
           fi
           echo "ZONE_ID=${ZONE_ID}" | tee -a "$GITHUB_STEP_SUMMARY"
 
-          # Custom Domains refuse to overwrite existing A/CNAME (Vercel). Remove
-          # those zone records only — do not touch the Vercel project.
-          clear_host_records() {
+          DNS_LIST=$(curl -sS "${AUTH[@]}" \
+            "https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/dns_records?per_page=100")
+          echo "$DNS_LIST" | jq '{success, errors, records: [.result[]? | {id,type,name,content,proxied}]}' \
+            | tee /tmp/cf-dns.json | tee -a "$GITHUB_STEP_SUMMARY"
+
+          # Orange-cloud apex/www so Worker routes can intercept. Leave record
+          # targets as-is (Vercel project stays). Custom Domains cannot overwrite
+          # those records.
+          proxy_host() {
             local host="$1"
-            curl -sS "${AUTH[@]}" \
-              "https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/dns_records?name=${host}" \
-              | jq -c '.result[]? | select(.type=="A" or .type=="AAAA" or .type=="CNAME")' \
-              > /tmp/cf-recs.jsonl
+            echo "$DNS_LIST" | jq -c --arg h "$host" \
+              '.result[]? | select(.name==$h and (.type=="A" or .type=="AAAA" or .type=="CNAME"))' \
+              > /tmp/cf-host.jsonl
             while IFS= read -r rec; do
               [ -z "$rec" ] && continue
               rid=$(echo "$rec" | jq -r '.id')
-              rtype=$(echo "$rec" | jq -r '.type')
-              rcontent=$(echo "$rec" | jq -r '.content')
-              echo "Deleting ${rtype} ${host} → ${rcontent} (${rid})"
-              del=$(curl -sS "${AUTH[@]}" -X DELETE \
-                "https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/dns_records/${rid}")
-              echo "$del" | jq -c '{success,errors}'
-              if ! echo "$del" | jq -e '.success == true' >/dev/null; then
-                echo "::error::Could not delete ${rtype} record for ${host}. Token needs Zone → DNS → Edit on buildsaudi.co. Leave ${WORKER_URL} as the live URL."
-                return 1
-              fi
-            done < /tmp/cf-recs.jsonl
+              echo "Setting proxied=true on $(echo "$rec" | jq -r '[.type,.name,.content]|join(" ")')"
+              curl -sS "${AUTH[@]}" -X PATCH \
+                "https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/dns_records/${rid}" \
+                --data '{"proxied":true}' | jq -c '{success,errors,proxied:.result.proxied}'
+            done < /tmp/cf-host.jsonl
           }
-          clear_host_records buildsaudi.co
-          clear_host_records www.buildsaudi.co
+          proxy_host buildsaudi.co
+          proxy_host www.buildsaudi.co
+
+          add_route() {
+            local pattern="$1"
+            echo "Adding Worker route ${pattern} → buildsaudi"
+            curl -sS "${AUTH[@]}" -X POST \
+              "https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/workers/routes" \
+              --data "{\"pattern\":\"${pattern}\",\"script\":\"buildsaudi\"}" \
+              | tee /tmp/cf-route.json
+            echo
+            jq -e '.success == true' /tmp/cf-route.json >/dev/null
+          }
+          ROUTE_OK=1
+          add_route "buildsaudi.co/*" || ROUTE_OK=0
+          add_route "www.buildsaudi.co/*" || ROUTE_OK=0
+          if [ "$ROUTE_OK" != "1" ]; then
+            echo "::warning::Worker route attach failed. Live URL remains ${WORKER_URL}. Token needs Zone → Workers Routes → Edit (and DNS Edit to orange-cloud records)."
+            echo "routes: failed" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "routes: buildsaudi.co/* and www.buildsaudi.co/* → buildsaudi" >> "$GITHUB_STEP_SUMMARY"
+          fi
 
           attach() {
             local host="$1"
@@ -188,15 +207,8 @@ jobs:
             echo
             jq -e '.success == true' /tmp/cf-domain.json >/dev/null
           }
-          DOMAIN_OK=1
-          attach buildsaudi.co || DOMAIN_OK=0
-          attach www.buildsaudi.co || DOMAIN_OK=0
-          if [ "$DOMAIN_OK" != "1" ]; then
-            echo "::warning::Custom domain attach failed. Site is still on ${WORKER_URL}."
-            cat /tmp/cf-domain.json | tee -a "$GITHUB_STEP_SUMMARY" || true
-            echo "custom domain: failed (workers.dev still live)" >> "$GITHUB_STEP_SUMMARY"
-            exit 0
-          fi
+          attach buildsaudi.co || true
+          attach www.buildsaudi.co || true
 
           sleep 8
           APEX_STATUS=$(curl -sS -o /tmp/cf-apex.html -w "%{http_code}" --max-time 30 https://buildsaudi.co/ || true)
