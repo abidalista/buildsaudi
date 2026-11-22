@@ -152,6 +152,32 @@ jobs:
           fi
           echo "ZONE_ID=${ZONE_ID}" | tee -a "$GITHUB_STEP_SUMMARY"
 
+          # Custom Domains refuse to overwrite existing A/CNAME (Vercel). Remove
+          # those zone records only — do not touch the Vercel project.
+          clear_host_records() {
+            local host="$1"
+            curl -sS "${AUTH[@]}" \
+              "https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/dns_records?name=${host}" \
+              | jq -c '.result[]? | select(.type=="A" or .type=="AAAA" or .type=="CNAME")' \
+              > /tmp/cf-recs.jsonl
+            while IFS= read -r rec; do
+              [ -z "$rec" ] && continue
+              rid=$(echo "$rec" | jq -r '.id')
+              rtype=$(echo "$rec" | jq -r '.type')
+              rcontent=$(echo "$rec" | jq -r '.content')
+              echo "Deleting ${rtype} ${host} → ${rcontent} (${rid})"
+              del=$(curl -sS "${AUTH[@]}" -X DELETE \
+                "https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/dns_records/${rid}")
+              echo "$del" | jq -c '{success,errors}'
+              if ! echo "$del" | jq -e '.success == true' >/dev/null; then
+                echo "::error::Could not delete ${rtype} record for ${host}. Token needs Zone → DNS → Edit on buildsaudi.co. Leave ${WORKER_URL} as the live URL."
+                return 1
+              fi
+            done < /tmp/cf-recs.jsonl
+          }
+          clear_host_records buildsaudi.co
+          clear_host_records www.buildsaudi.co
+
           attach() {
             local host="$1"
             echo "Attaching custom domain ${host}"
@@ -166,7 +192,8 @@ jobs:
           attach buildsaudi.co || DOMAIN_OK=0
           attach www.buildsaudi.co || DOMAIN_OK=0
           if [ "$DOMAIN_OK" != "1" ]; then
-            echo "::warning::Custom domain attach failed. Site is still on ${WORKER_URL}. Need Zone → Workers Routes:Edit and Zone → DNS:Edit on the token."
+            echo "::warning::Custom domain attach failed. Site is still on ${WORKER_URL}."
+            cat /tmp/cf-domain.json | tee -a "$GITHUB_STEP_SUMMARY" || true
             echo "custom domain: failed (workers.dev still live)" >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
