@@ -9,7 +9,7 @@ on:
 
 concurrency:
   group: cloudflare-workers-production
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 permissions:
   contents: read
@@ -151,6 +151,7 @@ jobs:
             exit 0
           fi
           echo "ZONE_ID=${ZONE_ID}" | tee -a "$GITHUB_STEP_SUMMARY"
+          echo "DNS + routes attach for apex/www (Vercel project left in place)"
 
           DNS_LIST=$(curl -sS "${AUTH[@]}" \
             "https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/dns_records?per_page=100")
