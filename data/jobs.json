@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-11-21T13:17:41.831Z",
+  "scraped_at": "2026-11-22T13:09:59.297Z",
   "jobs": [
     {
       "id": "foodics-kgooc7",
@@ -296,6 +296,20 @@
       "source": "workable"
     },
     {
+      "id": "gathern-nqw4k5",
+      "company_slug": "gathern",
+      "title": "Director of Talent Acquisition",
+      "company": "Gathern",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "senior",
+      "function": "people",
+      "sector": "E-commerce",
+      "apply_url": "https://apply.workable.com/gathern/j/AA37223F54/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
       "id": "gathern-fq1cfb",
       "company_slug": "gathern",
       "title": "Executive Secretary",
@@ -306,34 +320,6 @@
       "function": "other",
       "sector": "E-commerce",
       "apply_url": "https://apply.workable.com/gathern/j/10F3FA18A3/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "gathern-h9ecwt",
-      "company_slug": "gathern",
-      "title": "Guest Relations Associate (Fresh Graduates)",
-      "company": "Gathern",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "entry",
-      "function": "other",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/gathern/j/CF860B924F/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "gathern-kalxjo",
-      "company_slug": "gathern",
-      "title": "Host Relations Associate (Fresh Graduates)",
-      "company": "Gathern",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "entry",
-      "function": "other",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/gathern/j/30F79BA26C/",
       "posted_date": "",
       "source": "workable"
     },
@@ -376,20 +362,6 @@
       "function": "engineering",
       "sector": "E-commerce",
       "apply_url": "https://apply.workable.com/gathern/j/3F9AAF5244/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "gathern-2hp6vr",
-      "company_slug": "gathern",
-      "title": "Strategy Manager",
-      "company": "Gathern",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "senior",
-      "function": "other",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/gathern/j/9C018328AE/",
       "posted_date": "",
       "source": "workable"
     },
