@@ -66,6 +66,8 @@ jobs:
           if [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
             unset CLOUDFLARE_ACCOUNT_ID
           fi
+          # `deploy` does not build; same sequence as package.json "deploy"
+          npx opennextjs-cloudflare build
           npx opennextjs-cloudflare deploy
 
       - name: Set Worker runtime secrets
