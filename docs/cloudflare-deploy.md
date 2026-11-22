@@ -1,10 +1,27 @@
 # Deploy BuildSaudi to Cloudflare Workers
 
-The site stays on Vercel until you cut DNS. This repo can also build and run on Cloudflare Workers via `@opennextjs/cloudflare`. Do not delete the Vercel project or change DNS as part of setup.
+This repo builds and runs on Cloudflare Workers via `@opennextjs/cloudflare`. Do not delete the Vercel project. Custom domains `buildsaudi.co` and `www` are attached by the deploy workflow when the zone is on the same Cloudflare account (it already uses Cloudflare nameservers).
 
 `@opennextjs/cloudflare` 1.20.16+ requires Next.js `>=16.4.5` (Nov 2026 security floor). This app is on Next `16.4.6`.
 
-## One-time Cloudflare setup
+## GitHub Actions deploy
+
+`.github/workflows/cloudflare-deploy.yml` deploys on push to `main` and `workflow_dispatch`.
+
+Repo secrets (`abidalista/buildsaudi` → Settings → Secrets and variables → Actions):
+
+| Secret | Required | Why |
+| --- | --- | --- |
+| `CLOUDFLARE_API_TOKEN` | yes | Wrangler deploy. Token template **Edit Cloudflare Workers**, plus Zone Read / DNS Edit / Workers Routes Edit for `buildsaudi.co` |
+| `CLOUDFLARE_ACCOUNT_ID` | recommended | Account that owns the Worker |
+| `AIRTABLE_API_KEY` | for API routes | already used by scraper/digest workflows |
+| `AIRTABLE_BASE_ID` | for API routes | already used by scraper/digest workflows |
+| `PROXY_SECRET` | for `/api/substack` | already used by weekly-digest |
+| `SUBSTACK_SID` | for `/api/substack` | previously a Vercel env; GitHub may not have it |
+| `PREFERENCES_SECRET` | optional | falls back to `AIRTABLE_API_KEY` |
+| `NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN` | optional | inlined at **build** time |
+
+## One-time Cloudflare setup (local)
 
 1. Create a free Cloudflare account and a Workers subdomain (`*.workers.dev`).
 2. From this repo:
