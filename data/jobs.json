@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-11-22T13:09:59.297Z",
+  "scraped_at": "2026-11-23T15:46:31.353Z",
   "jobs": [
     {
       "id": "foodics-kgooc7",
@@ -364,6 +364,34 @@
       "apply_url": "https://apply.workable.com/gathern/j/3F9AAF5244/",
       "posted_date": "",
       "source": "workable"
+    },
+    {
+      "id": "gathern-kgyyta",
+      "company_slug": "gathern",
+      "title": "Senior Product Manager",
+      "company": "Gathern",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "senior",
+      "function": "product",
+      "sector": "E-commerce",
+      "apply_url": "https://apply.workable.com/gathern/j/C26ABD2A55/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "lean-technologies-bap5aw",
+      "company_slug": "lean-technologies",
+      "title": "IT Support Engineer - Saudi National",
+      "company": "Lean Technologies",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "mid",
+      "function": "engineering",
+      "sector": "Fintech",
+      "apply_url": "https://jobs.ashbyhq.com/LeanTech/8fbff99b-86d0-4067-b42b-855ad48a8286",
+      "posted_date": "2026-11-23",
+      "source": "ashby"
     },
     {
       "id": "lean-technologies-pjfgiz",
