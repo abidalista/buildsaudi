@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-11-23T15:46:31.353Z",
+  "scraped_at": "2026-11-24T15:38:23.836Z",
   "jobs": [
     {
       "id": "foodics-kgooc7",
@@ -320,6 +320,20 @@
       "function": "other",
       "sector": "E-commerce",
       "apply_url": "https://apply.workable.com/gathern/j/10F3FA18A3/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "gathern-h9ecwt",
+      "company_slug": "gathern",
+      "title": "Guest Relations Associate (Fresh Graduates)",
+      "company": "Gathern",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "entry",
+      "function": "other",
+      "sector": "E-commerce",
+      "apply_url": "https://apply.workable.com/gathern/j/CF860B924F/",
       "posted_date": "",
       "source": "workable"
     },
@@ -926,34 +940,6 @@
       "source": "workable"
     },
     {
-      "id": "mrsool-pe8nw2",
-      "company_slug": "mrsool",
-      "title": "Creative Copywriter",
-      "company": "Mrsool",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "marketing",
-      "sector": "Logistics",
-      "apply_url": "https://apply.workable.com/mrsool-3/j/13BC24D7C9/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "mrsool-g6hd8n",
-      "company_slug": "mrsool",
-      "title": "Representative, Customer Care",
-      "company": "Mrsool",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "operations",
-      "sector": "Logistics",
-      "apply_url": "https://apply.workable.com/mrsool-3/j/29356C93C5/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
       "id": "salla-2b76g",
       "company_slug": "salla",
       "title": "Accountant (Shipping or Logistic)",
@@ -1286,20 +1272,6 @@
       "function": "sales",
       "sector": "E-commerce",
       "apply_url": "https://apply.workable.com/syarah/j/6BB30EC062/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "syarah-liyp1s",
-      "company_slug": "syarah",
-      "title": "Executive Assistant",
-      "company": "Syarah",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "other",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/syarah/j/489F89719D/",
       "posted_date": "",
       "source": "workable"
     },
