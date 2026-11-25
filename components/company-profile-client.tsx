@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { AiApplyBanner } from "@/components/ai-apply-banner"
 import { AiApplyBenefit } from "@/components/ai-apply-benefit"
+import { AiApplyPitch } from "@/components/ai-apply-pitch"
 import { AiApplyPromoCard } from "@/components/ai-apply-promo-card"
 import { AiApplyUpsellProvider, TrackedApplyLink } from "@/components/ai-apply-upsell"
 import { CompanyLogo } from "@/components/company-logo"
@@ -175,7 +176,13 @@ function CompanyProfileView({
           </div>
 
           <div className="mb-6">
-            <AiApplyPromoCard src="company_card" lang={lang} />
+            <AiApplyPitch
+              src="company_pitch"
+              lang={lang}
+              page={`/company/${company.slug}`}
+              companySlug={company.slug}
+              className=""
+            />
           </div>
 
           {profile ? (
