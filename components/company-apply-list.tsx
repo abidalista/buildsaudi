@@ -10,17 +10,15 @@ export function CompanyApplyList({
   companies,
   aiPlacement,
   promoSrc,
-  showLeadPromo = true,
 }: {
   companies: Company[]
   aiPlacement: string
   promoSrc: string
-  showLeadPromo?: boolean
 }) {
   const { lang } = usePageLang()
   return (
     <div className="space-y-3">
-      {showLeadPromo ? <AiApplyPromoCard src={promoSrc} lang={lang} /> : null}
+      <AiApplyPromoCard src={promoSrc} lang={lang} />
       {companies.map((company, index) => (
         <div key={company.slug}>
           <CompanyApplyRow company={company} aiPlacement={aiPlacement} />

@@ -67,20 +67,10 @@ assert.equal(shouldInsertAiApplyPromo(4), true)
 assert.equal(shouldInsertAiApplyPromo(0), false)
 assert.equal(shouldInsertAiApplyPromo(9), true)
 
-assert.equal(aiApplyHref("city_pitch", "ar"), "/go/ai-apply?src=city_pitch&lang=ar")
-assert.equal(aiApplyHref("company_pitch", "en"), "/go/ai-apply?src=company_pitch&lang=en")
-const destCity = new URL(aiApplyDestination("city_pitch", "ar"))
-assert.equal(destCity.searchParams.get("via"), "abdulla")
-assert.equal(destCity.searchParams.get("utm_source"), "buildsaudi")
-assert.equal(destCity.searchParams.get("utm_medium"), "city_pitch")
-const destCompany = new URL(aiApplyDestination("company_pitch", "en"))
-assert.equal(destCompany.searchParams.get("utm_medium"), "company_pitch")
-
 const files = [
   "components/ai-apply-benefit.tsx",
   "components/ai-apply-banner.tsx",
   "components/ai-apply-promo-card.tsx",
-  "components/ai-apply-pitch.tsx",
   "components/ai-apply-upsell.tsx",
   "components/jobs-board.tsx",
   "components/job-hub-view.tsx",
@@ -116,25 +106,12 @@ for (const file of files) {
     assert.match(text, /AiApplyPromoCard/)
     assert.match(text, /TrackedApplyLink/)
   }
-  if (file === "components/ai-apply-pitch.tsx") {
-    assert.match(text, /ai_apply_shown/)
-    assert.match(text, /ai_apply_clicked/)
-    assert.match(text, /aiApplyHref\(/)
-    assert.match(text, /target="_blank"/)
-    assert.doesNotMatch(text, PRICE)
-    assert.doesNotMatch(text, /https:\/\/www\.aiapply\.co\/\?via=abdulla/)
-  }
   if (file === "components/company-profile-client.tsx") {
     assert.match(text, /company_banner/)
     assert.match(text, /company_upsell/)
     assert.match(text, /company_apply/)
     assert.match(text, /company_job/)
-    assert.match(text, /company_pitch/)
     assert.match(text, /TrackedApplyLink/)
-  }
-  if (file === "app/jobs/[city]/page.tsx") {
-    assert.match(text, /city_pitch/)
-    assert.match(text, /AiApplyPitch/)
   }
   if (file === "app/go/ai-apply/route.ts") {
     assert.match(text, /lang/)
