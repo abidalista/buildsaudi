@@ -6,7 +6,6 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { AiApplyBanner } from "@/components/ai-apply-banner"
 import { AiApplyBenefit } from "@/components/ai-apply-benefit"
-import { AiApplyPitch } from "@/components/ai-apply-pitch"
 import { AiApplyPromoCard } from "@/components/ai-apply-promo-card"
 import { AiApplyUpsellProvider, TrackedApplyLink } from "@/components/ai-apply-upsell"
 import { CompanyLogo } from "@/components/company-logo"
@@ -95,14 +94,6 @@ function CompanyProfileView({
             {t.back}
           </Link>
 
-          <AiApplyPitch
-            src="company_pitch"
-            lang={lang}
-            page={`/company/${company.slug}`}
-            companySlug={company.slug}
-            className="mb-6"
-          />
-
           <div className="rounded-lg border border-[#e5e5e5] bg-white p-6 mb-6">
             <div className="flex items-start gap-5">
               <div className="flex size-16 shrink-0 items-center justify-center rounded-xl bg-white border border-gray-200 overflow-hidden">
@@ -181,6 +172,10 @@ function CompanyProfileView({
                 </div>
               </div>
             </div>
+          </div>
+
+          <div className="mb-6">
+            <AiApplyPromoCard src="company_card" lang={lang} />
           </div>
 
           {profile ? (

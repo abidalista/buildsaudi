@@ -3,7 +3,6 @@ import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { companies } from "@/lib/data"
 import { AiApplyPageShell } from "@/components/ai-apply-page-shell"
-import { AiApplyPitch } from "@/components/ai-apply-pitch"
 import { CompanyApplyList } from "@/components/company-apply-list"
 import { PageLangToggle } from "@/components/page-lang-toggle"
 import { cities } from "@/lib/seo"
@@ -99,17 +98,11 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
               {cityCompanies.length > examples.length ? ", and more" : ""}. Apply on each company&apos;s official careers page — not a Telegram list dump.
             </p>
           )}
-          <AiApplyPitch src="city_pitch" page={`/jobs/${slug}`} city={city.name} />
         </div>
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <CompanyApplyList
-          companies={cityCompanies}
-          aiPlacement="city_card"
-          promoSrc="city_card"
-          showLeadPromo={false}
-        />
+        <CompanyApplyList companies={cityCompanies} aiPlacement="city_card" promoSrc="city_card" />
 
         <JobHubLinks hubs={jobHubsForCity(slug)} heading={`Openings in ${city.name} by sector or role`} />
 
