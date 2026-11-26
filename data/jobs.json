@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-11-25T15:22:59.132Z",
+  "scraped_at": "2026-11-26T14:50:47.103Z",
   "jobs": [
     {
       "id": "foodics-kgooc7",
@@ -516,6 +516,20 @@
       "function": "engineering",
       "sector": "AI",
       "apply_url": "https://apply.workable.com/lucidya/j/22AEF7E88E/",
+      "posted_date": "",
+      "source": "workable"
+    },
+    {
+      "id": "lucidya-6s31rw",
+      "company_slug": "lucidya",
+      "title": "Associate Director - FP&A & Investor Reporting",
+      "company": "Lucidya",
+      "location": "Riyadh, Saudi Arabia",
+      "job_type": "Full-time",
+      "experience_level": "entry",
+      "function": "other",
+      "sector": "AI",
+      "apply_url": "https://apply.workable.com/lucidya/j/0928C7A3A3/",
       "posted_date": "",
       "source": "workable"
     },
@@ -1262,20 +1276,6 @@
       "source": "workable"
     },
     {
-      "id": "syarah-r10uxk",
-      "company_slug": "syarah",
-      "title": "Financial Analyst -Tamheer Program",
-      "company": "Syarah",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "intern",
-      "function": "finance",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/syarah/j/87BF4865FC/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
       "id": "syarah-k0ajfo",
       "company_slug": "syarah",
       "title": "Human Resources Trainee - Tamheer Program",
@@ -1304,31 +1304,17 @@
       "source": "workable"
     },
     {
-      "id": "syarah-58k5fc",
-      "company_slug": "syarah",
-      "title": "Outbound Procurement Officer (B2B)",
-      "company": "Syarah",
-      "location": "Riyadh, Saudi Arabia",
-      "job_type": "Full-time",
-      "experience_level": "mid",
-      "function": "operations",
-      "sector": "E-commerce",
-      "apply_url": "https://apply.workable.com/syarah/j/46467FFB0E/",
-      "posted_date": "",
-      "source": "workable"
-    },
-    {
-      "id": "tamara-uaol6s",
+      "id": "tamara-134pxs",
       "company_slug": "tamara",
-      "title": "Head of Procurement",
+      "title": "Collections Team Lead",
       "company": "Tamara",
-      "location": "Riyadh, Saudi Arabia",
+      "location": "Riyadh",
       "job_type": "Full-time",
       "experience_level": "senior",
-      "function": "operations",
+      "function": "other",
       "sector": "Fintech",
-      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/5044545101",
-      "posted_date": "2026-11-25",
+      "apply_url": "https://job-boards.eu.greenhouse.io/tamara/jobs/5047640101",
+      "posted_date": "2026-11-26",
       "source": "greenhouse"
     },
     {
